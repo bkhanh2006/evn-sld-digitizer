@@ -1,0 +1,213 @@
+{
+ "meta": {
+  "split": "real_gold/dev",
+  "text_reader": "theo cấu hình",
+  "config": "inference_config.yaml",
+  "thời gian trung bình / bản vẽ": "77.8 s"
+ },
+ "aggregate": {
+  "nDrawings": 1,
+  "level1_symbols": {
+   "mAP50": 0.48654722615118645,
+   "mAP50_95": 0.4865472261511864,
+   "apPerClass50": {
+    "ground_symbol": 0.5544554455445545,
+    "line_feeder_arrow": 0.6435643564356436,
+    "disconnector_open": 0.5720572057205712,
+    "voltage_transformer": 0.6237623762376238,
+    "earthing_switch_open": 0.3188118811881188,
+    "current_transformer": 0.6435643564356436,
+    "circuit_breaker": 1.0,
+    "surge_arrester": 1.0,
+    "transformer_2w": 0.504950495049505,
+    "drawout_breaker": 0.504950495049505,
+    "cable_termination": 0.10891089108910891,
+    "fuse_disconnector": 0.33663366336633666,
+    "coupling_capacitor": 0.0,
+    "transformer_3w": 0.0,
+    "spark_gap": NaN,
+    "shunt_capacitor": NaN
+   },
+   "recallPerClass50": {
+    "ground_symbol": 0.5555555555555556,
+    "line_feeder_arrow": 0.6428571428571429,
+    "disconnector_open": 0.6153846153846154,
+    "voltage_transformer": 0.625,
+    "earthing_switch_open": 0.3235294117647059,
+    "current_transformer": 0.6470588235294118,
+    "circuit_breaker": 1.0,
+    "surge_arrester": 1.0,
+    "transformer_2w": 0.5,
+    "drawout_breaker": 0.5,
+    "cable_termination": 0.11538461538461539,
+    "fuse_disconnector": 0.3333333333333333,
+    "coupling_capacitor": 0.0,
+    "transformer_3w": 0.0,
+    "spark_gap": NaN,
+    "shunt_capacitor": NaN
+   },
+   "nGtPerClass": {
+    "ground_symbol": 9,
+    "line_feeder_arrow": 14,
+    "disconnector_open": 13,
+    "voltage_transformer": 8,
+    "earthing_switch_open": 34,
+    "current_transformer": 17,
+    "circuit_breaker": 5,
+    "surge_arrester": 5,
+    "transformer_2w": 2,
+    "drawout_breaker": 12,
+    "cable_termination": 26,
+    "fuse_disconnector": 3,
+    "coupling_capacitor": 12,
+    "transformer_3w": 1,
+    "spark_gap": 0,
+    "shunt_capacitor": 0
+   },
+   "nPredPerClass": {
+    "ground_symbol": 5,
+    "line_feeder_arrow": 9,
+    "disconnector_open": 17,
+    "voltage_transformer": 5,
+    "earthing_switch_open": 15,
+    "current_transformer": 24,
+    "circuit_breaker": 11,
+    "surge_arrester": 5,
+    "transformer_2w": 1,
+    "drawout_breaker": 6,
+    "cable_termination": 4,
+    "fuse_disconnector": 1,
+    "coupling_capacitor": 5,
+    "transformer_3w": 0,
+    "spark_gap": 10,
+    "shunt_capacitor": 1
+   },
+   "orientationAccuracy": 0.9166666666666666,
+   "orientationN": 36,
+   "typeErrors": 22
+  },
+  "level2_text_labels": {
+   "codeExactMatch": 0.7864077669902912,
+   "codeTotal": 103,
+   "allTextExactMatch": 0.7209302325581395,
+   "labelPairs": {
+    "precision": 0.8070175438596491,
+    "recall": 0.46938775510204084,
+    "f1": 0.5935483870967743,
+    "tp": 46,
+    "nPred": 57,
+    "nGt": 98
+   },
+   "deviceCodeAccuracy": 0.46
+  },
+  "level3_wires": {
+   "dice": 0.7865910537927359,
+   "iou": 0.648248932275778,
+   "falseSplits": 13,
+   "falseMerges": 2,
+   "gtNets": 77,
+   "junctionTypeAccuracy": 1.0,
+   "junctionRecall": 0.7864077669902912,
+   "crossingRecall": 0.5,
+   "crossingGt": 2
+  },
+  "level4_topology": {
+   "terminalPair": {
+    "precision": 0.83,
+    "recall": 0.35724533715925394,
+    "f1": 0.49949849548645936,
+    "tp": 249,
+    "nPred": 300,
+    "nGt": 697
+   },
+   "bayFullyCorrect": 0.0,
+   "baysCorrect": 0,
+   "baysTotal": 22
+  }
+ },
+ "perDrawing": {
+  "E18.9": {
+   "deviceMatch": {
+    "matched": 92,
+    "pred": 119,
+    "gt": 161,
+    "typeErrors": 22
+   },
+   "orientation": {
+    "ok": 33,
+    "n": 36
+   },
+   "text": {
+    "codeExact": 81,
+    "codeTotal": 103,
+    "allExact": 93,
+    "allTotal": 129
+   },
+   "label": {
+    "labelTp": 46,
+    "labelPred": 57,
+    "labelGt": 98,
+    "deviceCodeOk": 46,
+    "deviceCodeTotal": 100
+   },
+   "wire": {
+    "maskInter": 79686,
+    "maskPred": 114500,
+    "maskGt": 88111,
+    "dice": 0.7865910537927359,
+    "iou": 0.648248932275778
+   },
+   "netSplitMerge": {
+    "falseSplits": 13,
+    "falseMerges": 2,
+    "gtNets": 77,
+    "predNets": 188
+   },
+   "junction": {
+    "nodeMatched": 81,
+    "nodeTypeOk": 81,
+    "nodeGt": 103,
+    "nodePred": 156,
+    "crossGt": 2,
+    "crossHit": 1
+   },
+   "terminalPair": {
+    "precision": 0.83,
+    "recall": 0.35724533715925394,
+    "f1": 0.49949849548645936,
+    "tp": 249,
+    "nPred": 300,
+    "nGt": 697
+   },
+   "bays": {
+    "correct": 0,
+    "total": 22,
+    "ratio": 0.0,
+    "details": {
+     "bay-172": "thiếu dev-172-7",
+     "bay-171": "thiếu dev-171-cc1",
+     "bay-175": "dev-current_transformer-1: loại/mã current_transformer/None ≠ current_transformer/TI175",
+     "bay-173": "dev-disconnector_open-7: loại/mã disconnector/None ≠ disconnector/173-7",
+     "bay-112": "thiếu dev-112-2",
+     "bay-131": "thiếu dev-131-35",
+     "bay-T1": "dev-surge_arrester-1: loại/mã surge_arrester/None ≠ surge_arrester/CS0T1",
+     "bay-441": "thiếu dev-441",
+     "bay-477": "thiếu dev-477",
+     "bay-475": "thiếu dev-475",
+     "bay-473": "thiếu dev-473",
+     "bay-331": "thiếu dev-331-38",
+     "bay-371": "thiếu dev-371-76",
+     "bay-373": "thiếu dev-373-76",
+     "bay-375": "thiếu dev-375-76",
+     "bay-377": "thiếu dev-377-76",
+     "bay-379": "thiếu dev-379-76",
+     "bay-TUC31": "thiếu dev-TUC31-14",
+     "bay-471": "thiếu dev-471",
+     "bay-431": "thiếu dev-431",
+     "bay-TD31": "thiếu dev-SI-TD31",
+     "bay-TUC41": "thiếu dev-CC-TUC41"
+    }
+   }
+  }
+ }
+}

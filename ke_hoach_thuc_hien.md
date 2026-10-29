@@ -5,7 +5,6 @@
 Thư mục dự án hiện **chỉ có tài liệu, chưa có mã nguồn**. Thiết kế đã khá chín:
 - `thiet_ke_he_thong_sdd.md` (SDD v1.1): schema `SubstationTopologyGraph`, 17 lớp ký hiệu, interface từng khâu, thuật toán, tiêu chí nghiệm thu, cây thư mục `src/`.
 - `bao_cao_dinh_huong_phat_trien_san_pham.md`: lộ trình 6 giai đoạn.
-- `tong_hop_cac_doan_chat.md`: các quyết định đã chốt và điểm còn tranh luận.
 
 Mục tiêu của kế hoạch: biến SDD thành chuỗi công việc lập trình cụ thể cho cả 6 giai đoạn, có tiêu chí xong cho từng giai đoạn, đồng thời bổ sung những gì tìm được khi khảo sát dữ liệu thật và tài liệu bên ngoài. Dự án là nghiên cứu/nội bộ, nên dùng được cả YOLO (AGPL) để đối chứng.
 

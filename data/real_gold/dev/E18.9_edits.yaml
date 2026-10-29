@@ -1,0 +1,590 @@
+# Hiệu chỉnh đáp án E18.9 trên bản nháp pipeline (scripts/build_real_gold.py).
+# Người soát: Claude (bán tự động, soát bằng mắt từng vùng ảnh) — CHỜ KỸ SƯ DUYỆT.
+# Ký hiệu ngoài danh mục không gán nhãn: vòng tròn có mũi tên cạnh 172-7 (SDD 13.7), bộ tiếp điểm
+# rút 312-1 (chỉ có « » không có máy cắt), MBA tự dùng TD41 phía 0,4 kV nối đất.
+remove_devices:
+- dev-spark_gap-1
+- dev-spark_gap-2
+- dev-spark_gap-3
+- dev-spark_gap-4
+- dev-spark_gap-5
+- dev-spark_gap-6
+- dev-spark_gap-7
+- dev-spark_gap-8
+- dev-spark_gap-9
+- dev-spark_gap-10
+- dev-disconnector_open-1
+- dev-disconnector_open-2
+- dev-disconnector_open-3
+- dev-disconnector_open-4
+- dev-disconnector_open-5
+- dev-disconnector_open-6
+- dev-earthing_switch_open-1
+devices:
+- id: dev-175-line
+  class: line_feeder_arrow
+  rotation: 90
+  bbox: [455, 261, 72, 12]
+  mirror: false
+- id: dev-175-cc1
+  class: coupling_capacitor
+  at: [722, 267]
+  rotation: 90
+  radius: 8
+- id: dev-175-cc2
+  class: coupling_capacitor
+  at: [856, 267]
+  rotation: 90
+  radius: 8
+- id: dev-175-gnd
+  class: ground_symbol
+  at: [883, 267]
+  rotation: 270
+  radius: 8
+- id: dev-173-line
+  class: line_feeder_arrow
+  rotation: 90
+  bbox: [1000, 261, 72, 12]
+  mirror: false
+- id: dev-173-cc1
+  class: coupling_capacitor
+  at: [1283, 267]
+  rotation: 90
+  radius: 8
+- id: dev-173-cc2
+  class: coupling_capacitor
+  at: [1416, 267]
+  rotation: 90
+  radius: 8
+- id: dev-173-gnd
+  class: ground_symbol
+  at: [1443, 267]
+  rotation: 270
+  radius: 8
+- id: dev-171-cc1
+  class: coupling_capacitor
+  at: [1938, 267]
+  rotation: 90
+  radius: 8
+- id: dev-171-cc2
+  class: coupling_capacitor
+  at: [2071, 267]
+  rotation: 90
+  radius: 8
+- id: dev-172-line
+  class: line_feeder_arrow
+  rotation: 270
+  bbox: [3023, 261, 72, 12]
+  mirror: false
+- id: dev-172-cc1
+  class: coupling_capacitor
+  at: [2636, 267]
+  rotation: 90
+  radius: 8
+- id: dev-172-cc2
+  class: coupling_capacitor
+  at: [2503, 267]
+  rotation: 90
+  radius: 8
+- id: dev-175-15
+  class: earthing_switch_open
+  at: [600, 576]
+  code: 175-15
+- {id: dev-current_transformer-1, code: TI175}
+- id: dev-173-15
+  class: earthing_switch_open
+  at: [1160, 576]
+  code: 173-15
+- id: dev-173-1
+  class: disconnector_open
+  at: [1209, 621]
+  code: 173-1
+- {id: dev-disconnector_open-7, code: 173-7}
+- {id: dev-current_transformer-2, code: TI173}
+- id: dev-172-7
+  class: disconnector_open
+  at: [2751, 350]
+  code: 172-7
+- {id: dev-current_transformer-3, code: TI172}
+- id: dev-172-75
+  class: earthing_switch_open
+  at: [2788, 398]
+  code: 172-75
+- id: dev-172-25
+  class: earthing_switch_open
+  at: [2788, 576]
+  code: 172-25
+- id: dev-172-24
+  class: earthing_switch_open
+  at: [2788, 663]
+  code: 172-24
+- id: dev-112-1
+  class: disconnector_open
+  at: [1958, 692]
+  code: 112-1
+  rotation: 90
+- id: dev-112-2
+  class: earthing_switch_open
+  at: [2414, 730]
+  code: 112-25
+- id: dev-112-2b
+  class: disconnector_open
+  at: [2467, 680]
+  code: 112-2
+  rotation: 90
+- id: dev-TUC11-cc1
+  class: coupling_capacitor
+  at: [1242, 760]
+  rotation: 0
+  radius: 8
+- id: dev-TUC11-cc2
+  class: coupling_capacitor
+  at: [1242, 825]
+  rotation: 0
+  radius: 8
+- id: dev-TUC11
+  class: voltage_transformer
+  at: [1200, 792]
+  code: TUC11
+  scales: [0.4, 0.45, 0.5]
+- id: dev-TUC11-gnd
+  class: ground_symbol
+  at: [1242, 857]
+  rotation: 0
+  radius: 8
+- id: dev-TUC12-cc1
+  class: coupling_capacitor
+  at: [2945, 760]
+  rotation: 0
+  radius: 8
+- id: dev-TUC12-cc2
+  class: coupling_capacitor
+  at: [2945, 825]
+  rotation: 0
+  radius: 8
+- id: dev-TUC12
+  class: voltage_transformer
+  at: [2985, 792]
+  code: TUC12
+  scales: [0.4, 0.45, 0.5]
+- id: dev-TUC12-gnd
+  class: ground_symbol
+  at: [2945, 857]
+  rotation: 0
+  radius: 8
+- id: dev-131-35
+  class: earthing_switch_open
+  at: [1580, 915]
+  code: 131-35
+- id: dev-131-38
+  class: earthing_switch_open
+  at: [1580, 1000]
+  code: 131-38
+- id: dev-T1
+  class: transformer_3w
+  at: [1582, 1200]
+  code: T1
+- {id: dev-surge_arrester-1, code: CS0T1}
+- {id: dev-surge_arrester-2, code: CS4T1}
+- id: dev-131-08
+  class: earthing_switch_open
+  at: [1332, 1200]
+  code: 131-08
+- id: dev-coupling_capacitor-1
+  class: cable_termination
+  at: [1917, 1198]
+  radius: 10
+- id: dev-current_transformer-4
+  class: cable_termination
+  at: [1534, 1400]
+  radius: 10
+- id: dev-331-38
+  class: earthing_switch_open
+  at: [752, 1805]
+  code: 331-38
+  radius: 8
+  rotation: 0
+- id: dev-current_transformer-7
+  class: cable_termination
+  at: [799, 1800]
+  radius: 10
+- id: dev-TUC31-14
+  class: earthing_switch_open
+  at: [1010, 1592]
+  code: TUC31-14
+- id: dev-371-76
+  class: earthing_switch_open
+  at: [1265, 1803]
+  code: 371-76
+  radius: 8
+  rotation: 0
+- id: dev-current_transformer-5
+  class: cable_termination
+  at: [1309, 1800]
+  radius: 10
+- id: dev-current_transformer-11
+  class: cable_termination
+  at: [1309, 1879]
+  radius: 10
+- id: dev-373-76
+  class: earthing_switch_open
+  at: [1504, 1803]
+  code: 373-76
+  radius: 8
+  rotation: 0
+- id: dev-current_transformer-8
+  class: cable_termination
+  at: [1548, 1800]
+  radius: 10
+- id: dev-current_transformer-12
+  class: cable_termination
+  at: [1548, 1879]
+  radius: 10
+- id: dev-375-76
+  class: earthing_switch_open
+  at: [1795, 1803]
+  code: 375-76
+  radius: 8
+  rotation: 0
+- id: dev-current_transformer-9
+  class: cable_termination
+  at: [1839, 1800]
+  radius: 10
+- id: dev-current_transformer-13
+  class: cable_termination
+  at: [1839, 1879]
+  radius: 10
+- id: dev-377-76
+  class: earthing_switch_open
+  at: [2035, 1803]
+  code: 377-76
+  radius: 8
+  rotation: 0
+- id: dev-current_transformer-10
+  class: cable_termination
+  at: [2079, 1800]
+  radius: 10
+- id: dev-current_transformer-14
+  class: cable_termination
+  at: [2079, 1879]
+  radius: 10
+- id: dev-379-76
+  class: earthing_switch_open
+  at: [2275, 1803]
+  code: 379-76
+  radius: 8
+  rotation: 0
+- id: dev-current_transformer-6
+  class: cable_termination
+  at: [2319, 1800]
+  radius: 10
+- id: dev-current_transformer-15
+  class: cable_termination
+  at: [2319, 1879]
+  radius: 10
+- id: dev-371-line
+  class: line_feeder_arrow
+  at: [1307, 1950]
+  rotation: 0
+- id: dev-375-line
+  class: line_feeder_arrow
+  at: [1840, 1975]
+  rotation: 0
+- id: dev-375-7
+  class: disconnector_open
+  at: [1832, 1920]
+  code: 375-7
+- id: dev-shunt_capacitor-1
+  class: cable_termination
+  at: [2558, 1797]
+  radius: 10
+- id: dev-current_transformer-16
+  class: cable_termination
+  at: [2558, 1879]
+  radius: 10
+- id: dev-SI-TD31
+  class: fuse_disconnector
+  at: [1667, 2003]
+  code: SI-TD31
+  scales: [0.4, 0.5, 0.6]
+- id: dev-TD31
+  class: transformer_2w
+  at: [1677, 2080]
+  code: TD31
+  scales: [0.5, 0.6, 0.7]
+- id: dev-441
+  class: drawout_breaker
+  at: [2870, 1180]
+  code: '441'
+  rotation: 90
+  scales: [0.75, 0.8, 0.85, 0.9]
+- id: dev-TI441
+  class: current_transformer
+  at: [2955, 1180]
+  code: TI441
+  scales: [0.7, 0.8, 0.9, 1.0]
+  radius: 10
+  rotation: 90
+- id: dev-441-38
+  class: earthing_switch_open
+  at: [2990, 1220]
+  code: 441-38
+  rotation: 0
+- id: dev-477
+  class: drawout_breaker
+  at: [2870, 1300]
+  code: '477'
+  rotation: 90
+  scales: [0.75, 0.8, 0.85, 0.9]
+- id: dev-TI477
+  class: current_transformer
+  at: [2955, 1300]
+  code: TI477
+  scales: [0.7, 0.8, 0.9, 1.0]
+  radius: 10
+  rotation: 90
+- id: dev-477-76
+  class: earthing_switch_open
+  at: [2990, 1340]
+  code: 477-76
+  rotation: 0
+- id: dev-475
+  class: drawout_breaker
+  at: [2870, 1420]
+  code: '475'
+  rotation: 90
+  scales: [0.75, 0.8, 0.85, 0.9]
+- id: dev-TI475
+  class: current_transformer
+  at: [2955, 1420]
+  code: TI475
+  scales: [0.7, 0.8, 0.9, 1.0]
+  radius: 10
+  rotation: 90
+- id: dev-475-76
+  class: earthing_switch_open
+  at: [2990, 1460]
+  code: 475-76
+  rotation: 0
+- id: dev-473
+  class: drawout_breaker
+  at: [2870, 1540]
+  code: '473'
+  rotation: 90
+  scales: [0.75, 0.8, 0.85, 0.9]
+- id: dev-TI473
+  class: current_transformer
+  at: [2955, 1540]
+  code: TI473
+  scales: [0.7, 0.8, 0.9, 1.0]
+  radius: 10
+  rotation: 90
+- id: dev-473-76
+  class: earthing_switch_open
+  at: [2990, 1580]
+  code: 473-76
+  rotation: 0
+- id: dev-471
+  class: drawout_breaker
+  at: [2870, 1660]
+  code: '471'
+  rotation: 90
+  scales: [0.75, 0.8, 0.85, 0.9]
+- id: dev-TI471
+  class: current_transformer
+  at: [2955, 1660]
+  code: TI471
+  scales: [0.7, 0.8, 0.9, 1.0]
+  radius: 10
+  rotation: 90
+- id: dev-471-76
+  class: earthing_switch_open
+  at: [2990, 1700]
+  code: 471-76
+  rotation: 0
+- id: dev-431
+  class: drawout_breaker
+  at: [2944, 1899]
+  code: '431'
+  rotation: 90
+  scales: [0.75, 0.8, 0.85, 0.9]
+- id: dev-coupling_capacitor-2
+  class: cable_termination
+  at: [3120, 1300]
+  radius: 10
+- id: dev-cbt-in-1300
+  class: cable_termination
+  at: [3022, 1300]
+  radius: 10
+- id: dev-coupling_capacitor-3
+  class: cable_termination
+  at: [3120, 1420]
+  radius: 10
+- id: dev-cbt-in-1420
+  class: cable_termination
+  at: [3022, 1420]
+  radius: 10
+- id: dev-coupling_capacitor-4
+  class: cable_termination
+  at: [3120, 1540]
+  radius: 10
+- id: dev-cbt-in-1540
+  class: cable_termination
+  at: [3022, 1540]
+  radius: 10
+- id: dev-coupling_capacitor-5
+  class: cable_termination
+  at: [3120, 1660]
+  radius: 10
+- id: dev-cbt-in-1660
+  class: cable_termination
+  at: [3022, 1660]
+  radius: 10
+- {id: dev-transformer_2w-1, code: TD41}
+- id: dev-CC-TUC41
+  class: fuse_disconnector
+  at: [2950, 1780]
+  code: CC-TUC41
+  rotation: 90
+  scales: [0.7, 0.8, 0.9, 1.0]
+- id: dev-TUC41
+  class: voltage_transformer
+  at: [3070, 1770]
+  code: TUC41
+- id: dev-TUC41-14
+  class: earthing_switch_open
+  at: [2833, 1815]
+  code: TUC41-14
+  rotation: 0
+- id: dev-cable_termination-4
+  class: current_transformer
+  at: [3037, 1900]
+  code: TI431
+  scales: [0.7, 0.8, 0.9, 1.0]
+  radius: 10
+  rotation: 90
+- id: dev-disconnector_open-8
+  class: earthing_switch_open
+  at: [3072, 1939]
+  code: 431-38
+  rotation: 0
+- {id: dev-line_feeder_arrow-1, rotation: 90}
+- {id: dev-CS1T1, rotation: 90}
+- {id: dev-CS3T1, rotation: 90}
+busbars:
+- at: [1000, 690]
+  code: C11
+- at: [3000, 690]
+  code: C12
+- at: [1500, 1544]
+  code: C31
+- at: [2784, 1500]
+  code: C41
+texts: {txt-0008: ĐMT Cẩm Hưng, txt-0011: Cẩm Nhượng, txt-0012: Thiên Cầm, txt-0014: TG Cẩm Xuyên, txt-0016: DỰ PHÒNG, txt-0025: DỰ
+    PHÒNG, txt-0092: DỰ PHÒNG, txt-0017: ĐMT Cẩm Hòa, txt-0023: KỲ ANH 2, txt-0037: Cẩm Minh, txt-0059: CẨM THĂNG, txt-0085: CẨM
+    TRUNG, txt-0096: CẨM HÒA, txt-0010: 176 T500 HÀ TĨNH, txt-0018: 131-38, txt-0034: 131-35, txt-0031: 172-24, txt-0046: 172-75,
+  txt-0035: TI 173, txt-0043: TI 175, txt-0048: TI 172, txt-0068: 173-7, txt-0132: TUC11, txt-0133: TI431, txt-0141: TI471,
+  txt-0115: 475-76}
+remove_texts: [txt-0105, txt-0107, txt-0118, txt-0136, txt-0140, txt-0143, txt-0147, txt-0149, txt-0150, txt-0153, txt-0154,
+  txt-0155, txt-0156, txt-0157, txt-0158, txt-0159, txt-0161, txt-0162, txt-0164, txt-0165, txt-0166, txt-0167, txt-0168,
+  txt-0169, txt-0170, txt-0171, txt-0172, txt-0173, txt-0174, txt-0175, txt-0176]
+add_texts:
+- id: txt-g37176
+  raw: 371-76
+  bbox: [1234, 1765, 22, 72]
+  angle: 270
+- id: txt-g37376
+  raw: 373-76
+  bbox: [1473, 1765, 22, 72]
+  angle: 270
+- id: txt-g37576
+  raw: 375-76
+  bbox: [1764, 1765, 22, 72]
+  angle: 270
+- id: txt-g37776
+  raw: 377-76
+  bbox: [2004, 1765, 22, 72]
+  angle: 270
+- id: txt-g37976
+  raw: 379-76
+  bbox: [2244, 1765, 22, 72]
+  angle: 270
+- id: txt-g33138
+  raw: 331-38
+  bbox: [705, 1765, 22, 72]
+  angle: 270
+- id: txt-g13108
+  raw: 131-08
+  bbox: [1290, 1160, 30, 95]
+  angle: 270
+- id: txt-gCS0T1
+  raw: CS0T1
+  bbox: [1375, 1160, 30, 95]
+  angle: 270
+- id: txt-gCS4T1
+  raw: CS4T1
+  bbox: [1800, 1235, 30, 95]
+  angle: 270
+- id: txt-gC41
+  raw: C41
+  bbox: [2725, 1440, 30, 65]
+  angle: 270
+text_roles: {txt-0001: title_block, txt-0006: title_block, txt-0027: title_block, txt-0101: pole_number, txt-0016: line_name,
+  txt-0025: line_name, txt-0092: line_name}
+remove_wires:
+- [1055, 787]
+- [1160, 800]
+- [2780, 368]
+- [2770, 345]
+remove_wires_in:
+- [1285, 1155, 1320, 1255]
+- [1370, 1160, 1410, 1255]
+- [1795, 1230, 1835, 1335]
+- [1590, 1030, 1655, 1085]
+- [1229, 1755, 1253, 1855]
+- [1468, 1755, 1492, 1855]
+- [1759, 1755, 1783, 1855]
+- [1999, 1755, 2023, 1855]
+- [2239, 1755, 2263, 1855]
+- [2725, 1440, 2765, 1505]
+- [1695, 2085, 1725, 2125]
+- [2885, 1765, 2912, 1800]
+disconnect:
+- [dev-TD31, p_hv]
+- [dev-TI441, p2]
+- [dev-TI477, p2]
+- [dev-TI475, p2]
+- [dev-TI473, p2]
+- [dev-TI471, p2]
+connect:
+- ['dev-TU175:p1', '@802,286']
+- ['dev-TU173:p1', '@1362,286']
+- ['dev-172-76:p1', '@2745,310']
+- ['dev-131-15:p1', '@1534,773']
+- ['dev-surge_arrester-1:p1', '@1405,1148']
+- ['dev-175-cc2:p1', 'dev-175-gnd:p1']
+- ['dev-TUC11-cc2:p2', 'dev-TUC11-gnd:p1']
+- ['dev-TUC12-cc2:p2', 'dev-TUC12-gnd:p1']
+- ['dev-375-line:p1', '@1823,1937']
+- ['dev-375-7:p2', '@1823,1937']
+- ['dev-SI-TD31:p1', '@1678,1975']
+- ['dev-SI-TD31:p2', 'dev-TD31:p_hv']
+- ['dev-TI441:p1', '@2935,1180']
+- ['dev-TI477:p1', '@2935,1300']
+- ['dev-TI475:p1', '@2935,1420']
+- ['dev-TI473:p1', '@2935,1540']
+- ['dev-TI471:p1', '@2935,1660']
+- ['@2818,1780', '@2847,1780']
+- ['dev-TUC41-14:p1', '@2833,1780']
+- ['dev-CC-TUC41:p2', '@2995,1780']
+- ['dev-TI441:p2', 'dev-cable_termination-1:p1']
+- ['dev-441-38:p1', '@2991,1181']
+- ['dev-TI477:p2', 'dev-cbt-in-1300:p1']
+- ['dev-477-76:p1', '@2991,1300']
+- ['dev-TI475:p2', 'dev-cbt-in-1420:p1']
+- ['dev-475-76:p1', '@2991,1420']
+- ['dev-TI473:p2', 'dev-cbt-in-1540:p1']
+- ['dev-473-76:p1', '@2991,1540']
+- ['dev-TI471:p2', 'dev-cbt-in-1660:p1']
+- ['dev-471-76:p1', '@2991,1660']
+- ['@1410,1148', '@1440,1148']

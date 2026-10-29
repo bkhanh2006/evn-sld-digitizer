@@ -1,0 +1,954 @@
+{
+ "meta": {
+  "split": "synthetic/v001_n100:val",
+  "text_reader": "theo cấu hình",
+  "config": "inference_config.yaml",
+  "thời gian trung bình / bản vẽ": "98.2 s"
+ },
+ "aggregate": {
+  "nDrawings": 10,
+  "level1_symbols": {
+   "mAP50": 0.9416635840733483,
+   "mAP50_95": 0.7631432604990046,
+   "apPerClass50": {
+    "disconnector_closed": 0.7181411795526607,
+    "circuit_breaker": 1.0,
+    "current_transformer": 1.0,
+    "earthing_switch_open": 0.9702970297029703,
+    "voltage_transformer": 1.0,
+    "line_feeder_arrow": 1.0,
+    "disconnector_open": 1.0,
+    "earthing_switch_closed": 0.8910891089108911,
+    "surge_arrester": 0.9603960396039604,
+    "transformer_3w": 1.0,
+    "cable_termination": 0.9060831199502947,
+    "coupling_capacitor": 0.9778081256401522,
+    "ground_symbol": 0.8408225437928404,
+    "drawout_breaker": 0.8910891089108911,
+    "transformer_2w": 1.0,
+    "fuse_disconnector": 0.9108910891089109,
+    "spark_gap": NaN
+   },
+   "recallPerClass50": {
+    "disconnector_closed": 0.7378640776699029,
+    "circuit_breaker": 1.0,
+    "current_transformer": 1.0,
+    "earthing_switch_open": 0.9797979797979798,
+    "voltage_transformer": 1.0,
+    "line_feeder_arrow": 1.0,
+    "disconnector_open": 1.0,
+    "earthing_switch_closed": 0.8974358974358975,
+    "surge_arrester": 0.9696969696969697,
+    "transformer_3w": 1.0,
+    "cable_termination": 0.9183673469387755,
+    "coupling_capacitor": 1.0,
+    "ground_symbol": 0.8571428571428571,
+    "drawout_breaker": 0.8947368421052632,
+    "transformer_2w": 1.0,
+    "fuse_disconnector": 0.9166666666666666,
+    "spark_gap": NaN
+   },
+   "nGtPerClass": {
+    "disconnector_closed": 103,
+    "circuit_breaker": 88,
+    "current_transformer": 164,
+    "earthing_switch_open": 297,
+    "voltage_transformer": 64,
+    "line_feeder_arrow": 98,
+    "disconnector_open": 101,
+    "earthing_switch_closed": 39,
+    "surge_arrester": 66,
+    "transformer_3w": 8,
+    "cable_termination": 98,
+    "coupling_capacitor": 28,
+    "ground_symbol": 14,
+    "drawout_breaker": 76,
+    "transformer_2w": 16,
+    "fuse_disconnector": 24,
+    "spark_gap": 0
+   },
+   "nPredPerClass": {
+    "disconnector_closed": 84,
+    "circuit_breaker": 88,
+    "current_transformer": 164,
+    "earthing_switch_open": 304,
+    "voltage_transformer": 64,
+    "line_feeder_arrow": 155,
+    "disconnector_open": 149,
+    "earthing_switch_closed": 37,
+    "surge_arrester": 64,
+    "transformer_3w": 8,
+    "cable_termination": 131,
+    "coupling_capacitor": 29,
+    "ground_symbol": 14,
+    "drawout_breaker": 68,
+    "transformer_2w": 16,
+    "fuse_disconnector": 22,
+    "spark_gap": 23
+   },
+   "orientationAccuracy": 0.9489795918367347,
+   "orientationN": 588,
+   "typeErrors": 9
+  },
+  "level2_text_labels": {
+   "codeExactMatch": 0.5639853747714808,
+   "codeTotal": 1094,
+   "allTextExactMatch": 0.5336,
+   "labelPairs": {
+    "precision": 0.7326869806094183,
+    "recall": 0.505736137667304,
+    "f1": 0.5984162895927602,
+    "tp": 529,
+    "nPred": 722,
+    "nGt": 1046
+   },
+   "deviceCodeAccuracy": 0.6854684512428298
+  },
+  "level3_wires": {
+   "dice": 0.7668307354297873,
+   "iou": 0.6218373725824614,
+   "falseSplits": 97,
+   "falseMerges": 20,
+   "gtNets": 456,
+   "junctionTypeAccuracy": 0.9903100775193798,
+   "junctionRecall": 0.7610619469026548,
+   "crossingRecall": 0.5833333333333334,
+   "crossingGt": 12
+  },
+  "level4_topology": {
+   "terminalPair": {
+    "precision": 0.7548888888888889,
+    "recall": 0.7449561403508772,
+    "f1": 0.7498896247240617,
+    "tp": 3397,
+    "nPred": 4500,
+    "nGt": 4560
+   },
+   "bayFullyCorrect": 0.20952380952380953,
+   "baysCorrect": 44,
+   "baysTotal": 210
+  }
+ },
+ "perDrawing": {
+  "v001_n100_0005": {
+   "deviceMatch": {
+    "matched": 151,
+    "pred": 165,
+    "gt": 162,
+    "typeErrors": 0
+   },
+   "orientation": {
+    "ok": 74,
+    "n": 78
+   },
+   "text": {
+    "codeExact": 84,
+    "codeTotal": 135,
+    "allExact": 90,
+    "allTotal": 152
+   },
+   "label": {
+    "labelTp": 67,
+    "labelPred": 88,
+    "labelGt": 129,
+    "deviceCodeOk": 87,
+    "deviceCodeTotal": 129
+   },
+   "wire": {
+    "maskInter": 36938,
+    "maskPred": 53101,
+    "maskGt": 48599,
+    "dice": 0.7264110127826942,
+    "iou": 0.5703653376980328
+   },
+   "netSplitMerge": {
+    "falseSplits": 11,
+    "falseMerges": 4,
+    "gtNets": 55,
+    "predNets": 74
+   },
+   "junction": {
+    "nodeMatched": 67,
+    "nodeTypeOk": 67,
+    "nodeGt": 87,
+    "nodePred": 119,
+    "crossGt": 2,
+    "crossHit": 2
+   },
+   "terminalPair": {
+    "precision": 0.6889580093312597,
+    "recall": 0.7358803986710963,
+    "f1": 0.7116465863453815,
+    "tp": 443,
+    "nPred": 643,
+    "nGt": 602
+   },
+   "bays": {
+    "correct": 5,
+    "total": 26,
+    "ratio": 0.19230769230769232,
+    "details": {
+     "bay-171": "dev-171-ct: loại/mã current_transformer/None ≠ current_transformer/TI171",
+     "bay-175": "dev-175-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/175-15",
+     "bay-TUC11": "ok",
+     "bay-131": "dev-131-ct: loại/mã current_transformer/None ≠ current_transformer/TI131",
+     "bay-112": "thiếu dev-112-dcl_b",
+     "bay-172": "dev-172-dcl_bus: loại/mã disconnector/None ≠ disconnector/172-2",
+     "bay-174": "dev-174-dcl_bus: loại/mã disconnector/None ≠ disconnector/174-2",
+     "bay-TUC12": "dev-TUC12-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC12-24",
+     "bay-132": "dev-132-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/132-25",
+     "bay-431": "thiếu dev-431-cb",
+     "bay-441": "ok",
+     "bay-471": "thiếu dev-471-cb",
+     "bay-TUC41": "thiếu dev-TUC41-fuse",
+     "bay-412": "dev-412-es_a: loại/mã earthing_switch/None ≠ earthing_switch/412-15",
+     "bay-432": "thiếu dev-432-cb",
+     "bay-472": "ok",
+     "bay-474": "thiếu dev-474-cb",
+     "bay-TUC42": "ok",
+     "bay-371": "thiếu dev-371-cb",
+     "bay-373": "thiếu dev-373-cb",
+     "bay-331": "thiếu dev-331-cb",
+     "bay-TUC31": "dev-TUC31-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC31-14",
+     "bay-312": "ok",
+     "bay-372": "thiếu dev-372-cb",
+     "bay-374": "dev-374-es_line: loại/mã earthing_switch/None ≠ earthing_switch/374-76",
+     "bay-332": "dev-332-es_tx: loại/mã earthing_switch/T332-38 ≠ earthing_switch/332-38"
+    }
+   }
+  },
+  "v001_n100_0006": {
+   "deviceMatch": {
+    "matched": 159,
+    "pred": 162,
+    "gt": 162,
+    "typeErrors": 2
+   },
+   "orientation": {
+    "ok": 74,
+    "n": 77
+   },
+   "text": {
+    "codeExact": 90,
+    "codeTotal": 135,
+    "allExact": 97,
+    "allTotal": 152
+   },
+   "label": {
+    "labelTp": 80,
+    "labelPred": 95,
+    "labelGt": 129,
+    "deviceCodeOk": 95,
+    "deviceCodeTotal": 129
+   },
+   "wire": {
+    "maskInter": 46890,
+    "maskPred": 57415,
+    "maskGt": 56810,
+    "dice": 0.8210111621799081,
+    "iou": 0.6963689017598574
+   },
+   "netSplitMerge": {
+    "falseSplits": 1,
+    "falseMerges": 3,
+    "gtNets": 55,
+    "predNets": 56
+   },
+   "junction": {
+    "nodeMatched": 88,
+    "nodeTypeOk": 86,
+    "nodeGt": 88,
+    "nodePred": 89,
+    "crossGt": 3,
+    "crossHit": 1
+   },
+   "terminalPair": {
+    "precision": 0.7822349570200573,
+    "recall": 0.9069767441860465,
+    "f1": 0.8400000000000001,
+    "tp": 546,
+    "nPred": 698,
+    "nGt": 602
+   },
+   "bays": {
+    "correct": 10,
+    "total": 26,
+    "ratio": 0.38461538461538464,
+    "details": {
+     "bay-171": "dev-171-dcl_bus: loại/mã disconnector/None ≠ disconnector/171-1",
+     "bay-175": "dev-175-ct: loại/mã current_transformer/None ≠ current_transformer/TI175",
+     "bay-TUC11": "ok",
+     "bay-131": "dev-131-ct: loại/mã current_transformer/None ≠ current_transformer/TI131",
+     "bay-112": "dev-112-dcl_a: loại/mã line_terminal/None ≠ disconnector/112-1",
+     "bay-172": "dev-172-ct: loại/mã current_transformer/None ≠ current_transformer/TI172",
+     "bay-174": "dev-174-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/174-25",
+     "bay-TUC12": "dev-TUC12-vt: loại/mã voltage_transformer/None ≠ voltage_transformer/TUC12",
+     "bay-132": "dev-132-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/132-25",
+     "bay-431": "ok",
+     "bay-441": "ok",
+     "bay-471": "ok",
+     "bay-TUC41": "ok",
+     "bay-412": "dev-412-es_b: loại/mã earthing_switch/None ≠ earthing_switch/412-25",
+     "bay-432": "ok",
+     "bay-472": "ok",
+     "bay-474": "ok",
+     "bay-TUC42": "ok",
+     "bay-371": "dev-371-ct: loại/mã current_transformer/None ≠ current_transformer/TI371",
+     "bay-373": "dev-373-ct: loại/mã current_transformer/None ≠ current_transformer/TI373",
+     "bay-331": "dev-331-ct: loại/mã current_transformer/None ≠ current_transformer/TI331",
+     "bay-TUC31": "ok",
+     "bay-312": "dev-312-dcl_a: loại/mã line_terminal/None ≠ disconnector/312-1",
+     "bay-372": "dev-372-ct: loại/mã current_transformer/None ≠ current_transformer/TI372",
+     "bay-374": "dev-374-ct: loại/mã current_transformer/None ≠ current_transformer/TI374",
+     "bay-332": "dev-332-dcl_bus: loại/mã disconnector/None ≠ disconnector/332-2"
+    }
+   }
+  },
+  "v001_n100_0020": {
+   "deviceMatch": {
+    "matched": 122,
+    "pred": 136,
+    "gt": 127,
+    "typeErrors": 3
+   },
+   "orientation": {
+    "ok": 55,
+    "n": 58
+   },
+   "text": {
+    "codeExact": 60,
+    "codeTotal": 108,
+    "allExact": 63,
+    "allTotal": 126
+   },
+   "label": {
+    "labelTp": 50,
+    "labelPred": 64,
+    "labelGt": 104,
+    "deviceCodeOk": 63,
+    "deviceCodeTotal": 104
+   },
+   "wire": {
+    "maskInter": 27452,
+    "maskPred": 34394,
+    "maskGt": 34829,
+    "dice": 0.7931467864727042,
+    "iou": 0.6572023652773455
+   },
+   "netSplitMerge": {
+    "falseSplits": 7,
+    "falseMerges": 2,
+    "gtNets": 44,
+    "predNets": 80
+   },
+   "junction": {
+    "nodeMatched": 57,
+    "nodeTypeOk": 57,
+    "nodeGt": 66,
+    "nodePred": 57,
+    "crossGt": 0,
+    "crossHit": 0
+   },
+   "terminalPair": {
+    "precision": 0.8337078651685393,
+    "recall": 0.8262806236080178,
+    "f1": 0.8299776286353467,
+    "tp": 371,
+    "nPred": 445,
+    "nGt": 449
+   },
+   "bays": {
+    "correct": 5,
+    "total": 22,
+    "ratio": 0.22727272727272727,
+    "details": {
+     "bay-171": "dev-171-ct: loại/mã current_transformer/None ≠ current_transformer/TI171",
+     "bay-173": "dev-173-dcl_bus: loại/mã spark_gap/None ≠ disconnector/173-1",
+     "bay-175": "thiếu dev-175-dcl_bus",
+     "bay-TUC11": "dev-TUC11-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC11-14",
+     "bay-131": "dev-131-es_cb: loại/mã earthing_switch/None ≠ earthing_switch/131-35",
+     "bay-112": "dev-112-dcl_a: loại/mã line_terminal/None ≠ disconnector/112-1",
+     "bay-172": "thiếu dev-172-dcl_bus",
+     "bay-174": "dev-174-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/174-25",
+     "bay-TUC12": "ok",
+     "bay-132": "dev-132-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/132-25",
+     "bay-431": "dev-431-es_tx: loại/mã earthing_switch/None ≠ earthing_switch/431-38",
+     "bay-441": "dev-441-tx: loại/mã transformer/None ≠ transformer/TD41",
+     "bay-471": "dev-471-es_line: loại/mã earthing_switch/None ≠ earthing_switch/471-76",
+     "bay-473": "dev-473-es_line: loại/mã earthing_switch/None ≠ earthing_switch/473-76",
+     "bay-475": "dev-475-es_line: loại/mã earthing_switch/None ≠ earthing_switch/475-76",
+     "bay-TUC41": "ok",
+     "bay-412": "ok",
+     "bay-432": "ok",
+     "bay-472": "dev-472-ct: loại/mã current_transformer/None ≠ current_transformer/TI472",
+     "bay-474": "dev-474-ct: loại/mã current_transformer/None ≠ current_transformer/TI474",
+     "bay-476": "dev-476-es_line: loại/mã earthing_switch/None ≠ earthing_switch/476-76",
+     "bay-TUC42": "ok"
+    }
+   }
+  },
+  "v001_n100_0021": {
+   "deviceMatch": {
+    "matched": 118,
+    "pred": 130,
+    "gt": 127,
+    "typeErrors": 0
+   },
+   "orientation": {
+    "ok": 57,
+    "n": 61
+   },
+   "text": {
+    "codeExact": 58,
+    "codeTotal": 108,
+    "allExact": 63,
+    "allTotal": 126
+   },
+   "label": {
+    "labelTp": 45,
+    "labelPred": 70,
+    "labelGt": 104,
+    "deviceCodeOk": 69,
+    "deviceCodeTotal": 104
+   },
+   "wire": {
+    "maskInter": 28715,
+    "maskPred": 40202,
+    "maskGt": 39413,
+    "dice": 0.7213464799346857,
+    "iou": 0.5641453831041258
+   },
+   "netSplitMerge": {
+    "falseSplits": 7,
+    "falseMerges": 6,
+    "gtNets": 44,
+    "predNets": 56
+   },
+   "junction": {
+    "nodeMatched": 53,
+    "nodeTypeOk": 53,
+    "nodeGt": 66,
+    "nodePred": 53,
+    "crossGt": 0,
+    "crossHit": 0
+   },
+   "terminalPair": {
+    "precision": 0.6783505154639176,
+    "recall": 0.732739420935412,
+    "f1": 0.7044967880085653,
+    "tp": 329,
+    "nPred": 485,
+    "nGt": 449
+   },
+   "bays": {
+    "correct": 3,
+    "total": 22,
+    "ratio": 0.13636363636363635,
+    "details": {
+     "bay-171": "thiếu dev-171-dcl_line",
+     "bay-173": "thiếu dev-173-dcl_bus",
+     "bay-175": "dev-175-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/175-15",
+     "bay-TUC11": "thiếu dev-TUC11-dcl",
+     "bay-131": "dev-131-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/131-15",
+     "bay-112": "thiếu dev-112-dcl_b",
+     "bay-172": "thiếu dev-172-dcl_bus",
+     "bay-174": "dev-174-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/174-25",
+     "bay-TUC12": "thiếu dev-TUC12-dcl",
+     "bay-132": "dev-132-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/132-25",
+     "bay-431": "dev-431-es_tx: loại/mã earthing_switch/None ≠ earthing_switch/431-38",
+     "bay-441": "dev-441-es: loại/mã earthing_switch/None ≠ earthing_switch/441-38",
+     "bay-471": "dev-471-es_line: loại/mã earthing_switch/None ≠ earthing_switch/471-76",
+     "bay-473": "dev-473-es_line: loại/mã earthing_switch/None ≠ earthing_switch/473-76",
+     "bay-475": "ok",
+     "bay-TUC41": "dev-TUC41-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC41-14",
+     "bay-412": "ok",
+     "bay-432": "ok",
+     "bay-472": "dev-472-es_line: loại/mã earthing_switch/None ≠ earthing_switch/472-76",
+     "bay-474": "dev-474-es_line: loại/mã earthing_switch/None ≠ earthing_switch/474-76",
+     "bay-476": "dev-476-ct: loại/mã current_transformer/None ≠ current_transformer/TI476",
+     "bay-TUC42": "dev-TUC42-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC42-24"
+    }
+   }
+  },
+  "v001_n100_0028": {
+   "deviceMatch": {
+    "matched": 105,
+    "pred": 128,
+    "gt": 111,
+    "typeErrors": 1
+   },
+   "orientation": {
+    "ok": 53,
+    "n": 53
+   },
+   "text": {
+    "codeExact": 65,
+    "codeTotal": 104,
+    "allExact": 69,
+    "allTotal": 114
+   },
+   "label": {
+    "labelTp": 57,
+    "labelPred": 90,
+    "labelGt": 98,
+    "deviceCodeOk": 90,
+    "deviceCodeTotal": 98
+   },
+   "wire": {
+    "maskInter": 27841,
+    "maskPred": 36292,
+    "maskGt": 38953,
+    "dice": 0.7400093029437171,
+    "iou": 0.587313306893933
+   },
+   "netSplitMerge": {
+    "falseSplits": 10,
+    "falseMerges": 1,
+    "gtNets": 41,
+    "predNets": 75
+   },
+   "junction": {
+    "nodeMatched": 42,
+    "nodeTypeOk": 40,
+    "nodeGt": 63,
+    "nodePred": 43,
+    "crossGt": 2,
+    "crossHit": 0
+   },
+   "terminalPair": {
+    "precision": 0.7171717171717171,
+    "recall": 0.5406091370558376,
+    "f1": 0.6164978292329956,
+    "tp": 213,
+    "nPred": 297,
+    "nGt": 394
+   },
+   "bays": {
+    "correct": 8,
+    "total": 18,
+    "ratio": 0.4444444444444444,
+    "details": {
+     "bay-171": "dev-171-ct: loại/mã current_transformer/None ≠ current_transformer/TI171",
+     "bay-173": "ok",
+     "bay-TUC11": "ok",
+     "bay-131": "thiếu dev-131-cable_mv",
+     "bay-112": "thiếu dev-112-dcl_b",
+     "bay-172": "ok",
+     "bay-TUC12": "dev-TUC12-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC12-24",
+     "bay-132": "thiếu dev-132-cable_mv",
+     "bay-431": "ok",
+     "bay-412": "dev-412-es_a: loại/mã earthing_switch/None ≠ earthing_switch/412-15",
+     "bay-432": "thiếu dev-432-cable",
+     "bay-TUC42": "ok",
+     "bay-371": "dev-371-ct: loại/mã current_transformer/None ≠ current_transformer/TI371",
+     "bay-331": "ok",
+     "bay-TUC31": "ok",
+     "bay-312": "thiếu dev-312-dcl_a",
+     "bay-332": "dev-332-cable: loại/mã ground/None ≠ cable_termination/None",
+     "bay-TUC32": "ok"
+    }
+   }
+  },
+  "v001_n100_0029": {
+   "deviceMatch": {
+    "matched": 106,
+    "pred": 142,
+    "gt": 111,
+    "typeErrors": 1
+   },
+   "orientation": {
+    "ok": 47,
+    "n": 48
+   },
+   "text": {
+    "codeExact": 59,
+    "codeTotal": 104,
+    "allExact": 63,
+    "allTotal": 114
+   },
+   "label": {
+    "labelTp": 52,
+    "labelPred": 67,
+    "labelGt": 98,
+    "deviceCodeOk": 66,
+    "deviceCodeTotal": 98
+   },
+   "wire": {
+    "maskInter": 54123,
+    "maskPred": 62025,
+    "maskGt": 66693,
+    "dice": 0.84095464503799,
+    "iou": 0.725558013271667
+   },
+   "netSplitMerge": {
+    "falseSplits": 10,
+    "falseMerges": 0,
+    "gtNets": 41,
+    "predNets": 92
+   },
+   "junction": {
+    "nodeMatched": 36,
+    "nodeTypeOk": 36,
+    "nodeGt": 63,
+    "nodePred": 58,
+    "crossGt": 2,
+    "crossHit": 2
+   },
+   "terminalPair": {
+    "precision": 0.6555269922879178,
+    "recall": 0.6472081218274112,
+    "f1": 0.6513409961685824,
+    "tp": 255,
+    "nPred": 389,
+    "nGt": 394
+   },
+   "bays": {
+    "correct": 3,
+    "total": 18,
+    "ratio": 0.16666666666666666,
+    "details": {
+     "bay-171": "dev-171-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/171-15",
+     "bay-173": "dev-173-dcl_bus: loại/mã disconnector/None ≠ disconnector/173-1",
+     "bay-TUC11": "dev-TUC11-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC11-14",
+     "bay-131": "dev-131-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/131-15",
+     "bay-112": "dev-112-ct: loại/mã current_transformer/None ≠ current_transformer/TI112",
+     "bay-172": "dev-172-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/172-25",
+     "bay-TUC12": "dev-TUC12-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC12-24",
+     "bay-132": "dev-132-ct: loại/mã current_transformer/None ≠ current_transformer/TI132",
+     "bay-431": "dev-431-ct: loại/mã current_transformer/None ≠ current_transformer/TI431",
+     "bay-412": "dev-412-es_a: loại/mã earthing_switch/None ≠ earthing_switch/412-15",
+     "bay-432": "ok",
+     "bay-TUC42": "dev-TUC42-es: loại/mã spark_gap/None ≠ earthing_switch/TUC42-24",
+     "bay-371": "dev-371-ct: loại/mã current_transformer/None ≠ current_transformer/TI371",
+     "bay-331": "dev-331-ct: loại/mã current_transformer/None ≠ current_transformer/TI331",
+     "bay-TUC31": "thiếu dev-TUC31-es",
+     "bay-312": "ok",
+     "bay-332": "ok",
+     "bay-TUC32": "thiếu dev-TUC32-es"
+    }
+   }
+  },
+  "v001_n100_0036": {
+   "deviceMatch": {
+    "matched": 104,
+    "pred": 121,
+    "gt": 109,
+    "typeErrors": 1
+   },
+   "orientation": {
+    "ok": 44,
+    "n": 47
+   },
+   "text": {
+    "codeExact": 44,
+    "codeTotal": 90,
+    "allExact": 51,
+    "allTotal": 105
+   },
+   "label": {
+    "labelTp": 35,
+    "labelPred": 48,
+    "labelGt": 86,
+    "deviceCodeOk": 47,
+    "deviceCodeTotal": 86
+   },
+   "wire": {
+    "maskInter": 26504,
+    "maskPred": 35286,
+    "maskGt": 36895,
+    "dice": 0.7343760823485405,
+    "iou": 0.5802482649911334
+   },
+   "netSplitMerge": {
+    "falseSplits": 10,
+    "falseMerges": 3,
+    "gtNets": 41,
+    "predNets": 64
+   },
+   "junction": {
+    "nodeMatched": 44,
+    "nodeTypeOk": 44,
+    "nodeGt": 55,
+    "nodePred": 44,
+    "crossGt": 1,
+    "crossHit": 1
+   },
+   "terminalPair": {
+    "precision": 0.76,
+    "recall": 0.776566757493188,
+    "f1": 0.7681940700808626,
+    "tp": 285,
+    "nPred": 375,
+    "nGt": 367
+   },
+   "bays": {
+    "correct": 0,
+    "total": 18,
+    "ratio": 0.0,
+    "details": {
+     "bay-171": "dev-171-dcl_bus: loại/mã disconnector/None ≠ disconnector/171-1",
+     "bay-173": "dev-173-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/173-15",
+     "bay-TUC11": "dev-TUC11-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC11-14",
+     "bay-131": "dev-131-ct: loại/mã current_transformer/None ≠ current_transformer/TI131",
+     "bay-112": "dev-112-dcl_a: loại/mã spark_gap/None ≠ disconnector/112-1",
+     "bay-172": "thiếu dev-172-dcl_bus",
+     "bay-132": "dev-132-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/132-25",
+     "bay-431": "dev-431-ct: loại/mã current_transformer/None ≠ current_transformer/TI431",
+     "bay-471": "thiếu dev-471-dcl_bus",
+     "bay-473": "dev-473-ct: loại/mã current_transformer/None ≠ current_transformer/TI473",
+     "bay-475": "dev-475-es_line: loại/mã earthing_switch/None ≠ earthing_switch/475-76",
+     "bay-TUC41": "dev-TUC41-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC41-14",
+     "bay-412": "cặp dev-412-cb/p1–dev-412-es_b/p1 sai đấu nối",
+     "bay-432": "dev-432-ct: loại/mã current_transformer/None ≠ current_transformer/TI432",
+     "bay-472": "dev-472-ct: loại/mã current_transformer/None ≠ current_transformer/TI472",
+     "bay-474": "dev-474-ct: loại/mã current_transformer/None ≠ current_transformer/TI474",
+     "bay-476": "dev-476-ct: loại/mã current_transformer/None ≠ current_transformer/TI476",
+     "bay-TUC42": "dev-TUC42-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC42-24"
+    }
+   }
+  },
+  "v001_n100_0037": {
+   "deviceMatch": {
+    "matched": 106,
+    "pred": 147,
+    "gt": 109,
+    "typeErrors": 1
+   },
+   "orientation": {
+    "ok": 40,
+    "n": 46
+   },
+   "text": {
+    "codeExact": 59,
+    "codeTotal": 90,
+    "allExact": 64,
+    "allTotal": 105
+   },
+   "label": {
+    "labelTp": 54,
+    "labelPred": 64,
+    "labelGt": 86,
+    "deviceCodeOk": 64,
+    "deviceCodeTotal": 86
+   },
+   "wire": {
+    "maskInter": 50385,
+    "maskPred": 62408,
+    "maskGt": 67942,
+    "dice": 0.7730724971231301,
+    "iou": 0.6300881635715626
+   },
+   "netSplitMerge": {
+    "falseSplits": 15,
+    "falseMerges": 0,
+    "gtNets": 41,
+    "predNets": 110
+   },
+   "junction": {
+    "nodeMatched": 24,
+    "nodeTypeOk": 24,
+    "nodeGt": 54,
+    "nodePred": 62,
+    "crossGt": 0,
+    "crossHit": 0
+   },
+   "terminalPair": {
+    "precision": 0.5793650793650794,
+    "recall": 0.5967302452316077,
+    "f1": 0.5879194630872485,
+    "tp": 219,
+    "nPred": 378,
+    "nGt": 367
+   },
+   "bays": {
+    "correct": 5,
+    "total": 18,
+    "ratio": 0.2777777777777778,
+    "details": {
+     "bay-171": "dev-171-es_line: loại/mã earthing_switch/None ≠ earthing_switch/171-76",
+     "bay-173": "dev-173-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/173-15",
+     "bay-TUC11": "ok",
+     "bay-131": "dev-131-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/131-15",
+     "bay-112": "ok",
+     "bay-172": "dev-172-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/172-25",
+     "bay-132": "thiếu dev-132-es_tx",
+     "bay-431": "dev-431-es_tx: loại/mã earthing_switch/None ≠ earthing_switch/431-38",
+     "bay-471": "dev-471-ct: loại/mã current_transformer/None ≠ current_transformer/TI471",
+     "bay-473": "dev-473-ct: loại/mã current_transformer/None ≠ current_transformer/TI473",
+     "bay-475": "ok",
+     "bay-TUC41": "dev-TUC41-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC41-14",
+     "bay-412": "ok",
+     "bay-432": "ok",
+     "bay-472": "dev-472-es_line: loại/mã earthing_switch/None ≠ earthing_switch/472-76",
+     "bay-474": "dev-474-ct: loại/mã current_transformer/None ≠ current_transformer/TI474",
+     "bay-476": "cặp dev-476-cb/p2–dev-476-es_line/p1 sai đấu nối",
+     "bay-TUC42": "dev-TUC42-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC42-24"
+    }
+   }
+  },
+  "v001_n100_0040": {
+   "deviceMatch": {
+    "matched": 130,
+    "pred": 139,
+    "gt": 133,
+    "typeErrors": 0
+   },
+   "orientation": {
+    "ok": 57,
+    "n": 59
+   },
+   "text": {
+    "codeExact": 45,
+    "codeTotal": 110,
+    "allExact": 49,
+    "allTotal": 128
+   },
+   "label": {
+    "labelTp": 40,
+    "labelPred": 62,
+    "labelGt": 106,
+    "deviceCodeOk": 62,
+    "deviceCodeTotal": 106
+   },
+   "wire": {
+    "maskInter": 29060,
+    "maskPred": 38682,
+    "maskGt": 39141,
+    "dice": 0.7468229186744278,
+    "iou": 0.5959436457970182
+   },
+   "netSplitMerge": {
+    "falseSplits": 11,
+    "falseMerges": 1,
+    "gtNets": 47,
+    "predNets": 81
+   },
+   "junction": {
+    "nodeMatched": 53,
+    "nodeTypeOk": 52,
+    "nodeGt": 68,
+    "nodePred": 53,
+    "crossGt": 1,
+    "crossHit": 0
+   },
+   "terminalPair": {
+    "precision": 0.8869346733668342,
+    "recall": 0.7542735042735043,
+    "f1": 0.815242494226328,
+    "tp": 353,
+    "nPred": 398,
+    "nGt": 468
+   },
+   "bays": {
+    "correct": 3,
+    "total": 21,
+    "ratio": 0.14285714285714285,
+    "details": {
+     "bay-171": "dev-171-ct: loại/mã current_transformer/None ≠ current_transformer/TI171",
+     "bay-173": "dev-173-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/173-15",
+     "bay-175": "dev-175-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/175-15",
+     "bay-TUC11": "ok",
+     "bay-131": "thiếu dev-131-dcl_bus",
+     "bay-112": "cặp dev-112-dcl_a/p1–dev-112-es_a/p1 sai đấu nối",
+     "bay-172": "dev-172-ct: loại/mã current_transformer/None ≠ current_transformer/TI172",
+     "bay-174": "dev-174-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/174-25",
+     "bay-132": "dev-132-ct: loại/mã current_transformer/None ≠ current_transformer/TI132",
+     "bay-471": "dev-471-ct: loại/mã current_transformer/None ≠ current_transformer/TI471",
+     "bay-473": "dev-473-cb: loại/mã circuit_breaker/None ≠ circuit_breaker/473",
+     "bay-475": "dev-475-ct: loại/mã current_transformer/None ≠ current_transformer/TI475",
+     "bay-477": "dev-477-ct: loại/mã current_transformer/None ≠ current_transformer/TI477",
+     "bay-431": "dev-431-ct: loại/mã current_transformer/None ≠ current_transformer/TI431",
+     "bay-TUC41": "ok",
+     "bay-412": "ok",
+     "bay-432": "dev-432-ct: loại/mã current_transformer/None ≠ current_transformer/TI432",
+     "bay-472": "dev-472-ct: loại/mã current_transformer/None ≠ current_transformer/TI472",
+     "bay-474": "dev-474-ct: loại/mã current_transformer/None ≠ current_transformer/TI474",
+     "bay-476": "dev-476-ct: loại/mã current_transformer/None ≠ current_transformer/TI476",
+     "bay-TUC42": "dev-TUC42-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC42-24"
+    }
+   }
+  },
+  "v001_n100_0041": {
+   "deviceMatch": {
+    "matched": 133,
+    "pred": 150,
+    "gt": 133,
+    "typeErrors": 0
+   },
+   "orientation": {
+    "ok": 57,
+    "n": 61
+   },
+   "text": {
+    "codeExact": 53,
+    "codeTotal": 110,
+    "allExact": 58,
+    "allTotal": 128
+   },
+   "label": {
+    "labelTp": 49,
+    "labelPred": 74,
+    "labelGt": 106,
+    "deviceCodeOk": 74,
+    "deviceCodeTotal": 106
+   },
+   "wire": {
+    "maskInter": 31588,
+    "maskPred": 42886,
+    "maskGt": 45649,
+    "dice": 0.7135709041621957,
+    "iou": 0.5546912041020599
+   },
+   "netSplitMerge": {
+    "falseSplits": 15,
+    "falseMerges": 0,
+    "gtNets": 47,
+    "predNets": 95
+   },
+   "junction": {
+    "nodeMatched": 52,
+    "nodeTypeOk": 52,
+    "nodeGt": 68,
+    "nodePred": 52,
+    "crossGt": 1,
+    "crossHit": 1
+   },
+   "terminalPair": {
+    "precision": 0.9770408163265306,
+    "recall": 0.8183760683760684,
+    "f1": 0.8906976744186046,
+    "tp": 383,
+    "nPred": 392,
+    "nGt": 468
+   },
+   "bays": {
+    "correct": 2,
+    "total": 21,
+    "ratio": 0.09523809523809523,
+    "details": {
+     "bay-171": "dev-171-ct: loại/mã current_transformer/None ≠ current_transformer/TI171",
+     "bay-173": "dev-173-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/173-15",
+     "bay-175": "dev-175-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/175-15",
+     "bay-TUC11": "dev-TUC11-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC11-14",
+     "bay-131": "dev-131-ct: loại/mã current_transformer/None ≠ current_transformer/TI131",
+     "bay-112": "cặp dev-112-cb/p1–dev-112-es_b/p1 sai đấu nối",
+     "bay-172": "dev-172-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/172-25",
+     "bay-174": "dev-174-ct: loại/mã current_transformer/None ≠ current_transformer/TI174",
+     "bay-132": "dev-132-es_bus: loại/mã earthing_switch/None ≠ earthing_switch/132-25",
+     "bay-471": "dev-471-ct: loại/mã current_transformer/None ≠ current_transformer/TI471",
+     "bay-473": "dev-473-ct: loại/mã current_transformer/None ≠ current_transformer/TI473",
+     "bay-475": "dev-475-ct: loại/mã current_transformer/None ≠ current_transformer/TI475",
+     "bay-477": "dev-477-ct: loại/mã current_transformer/None ≠ current_transformer/TI477",
+     "bay-431": "ok",
+     "bay-TUC41": "cặp dev-TUC41-fuse/p1–dev-TUC41-cs/p1 sai đấu nối",
+     "bay-412": "cặp dev-412-cb/p1–dev-412-es_b/p1 sai đấu nối",
+     "bay-432": "ok",
+     "bay-472": "dev-472-es_line: loại/mã earthing_switch/None ≠ earthing_switch/472-76",
+     "bay-474": "dev-474-ct: loại/mã current_transformer/None ≠ current_transformer/TI474",
+     "bay-476": "dev-476-es_line: loại/mã earthing_switch/None ≠ earthing_switch/476-76",
+     "bay-TUC42": "dev-TUC42-es: loại/mã earthing_switch/None ≠ earthing_switch/TUC42-24"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "E18.9",
+  "sourceFile": "data/raw_pdfs/typeA/E18.9.pdf",
+  "sourceSha256": "e5721afd9c12ab8a17fb86af844375eb3d4eb98841fbecc6f5cc484c5b1d975a",
+  "pageIndex": 1,
+  "drawingType": "A",
+  "width": 3565,
+  "height": 2521,
+  "unit": "px",
+  "origin": "top-left",
+  "pxPerMm": 12.0,
+  "pxPerMmSource": "pdf_page_size",
+  "pageSizeMm": [
+    297.01,
+    210.02
+  ],
+  "pdfPageSizePt": [
+    595.3200073242188,
+    841.9200439453125
+  ],
+  "renderSizePx": [
+    2521,
+    3565
+  ],
+  "rotationDeg": 270
+}

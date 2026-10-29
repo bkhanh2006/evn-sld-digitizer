@@ -1,9 +1,9 @@
 # Tài Liệu Thiết Kế Hệ Thống (Software Design Document – SDD)
 ## Dự Án: Phân Tích, Khôi Phục Đồ Thị và Tái Dựng Bản Vẽ Sơ Đồ Nhất Thứ Trạm Biến Áp (SVG & AutoCAD)
 
-> **Phiên bản:** 1.4  
+> **Phiên bản:** 1.5  
 > **Ngày cập nhật:** 29/10/2026  
-> **Tài liệu liên kết:** [bao_cao_dinh_huong_phat_trien_san_pham.md](bao_cao_dinh_huong_phat_trien_san_pham.md), [ke_hoach_thuc_hien.md](ke_hoach_thuc_hien.md), [sample_output.json](output/latex/sample_output.json), [tong_hop_cac_doan_chat.md](tong_hop_cac_doan_chat.md)  
+> **Tài liệu liên kết:** [bao_cao_dinh_huong_phat_trien_san_pham.md](bao_cao_dinh_huong_phat_trien_san_pham.md), [ke_hoach_thuc_hien.md](ke_hoach_thuc_hien.md), [sample_output.json](output/latex/sample_output.json)  
 > **Bản trước:** [tmp/thiet_ke_he_thong_sdd_v1.0.md](tmp/thiet_ke_he_thong_sdd_v1.0.md) (v1.1 xem lịch sử git)
 
 ### Lịch sử thay đổi
@@ -14,6 +14,7 @@
 | 1.1 | 29/10/2026 | Chốt danh mục 17 lớp ký hiệu và thuộc tính `netBehavior` / `conduction` (bỏ `conductsWhenClosed`). Thêm mục Quy ước chung (tọa độ, góc, lật hình, đơn vị mm cho DXF). Sửa schema đồ thị: tham chiếu có kiểu, `nets` là nguồn chuẩn duy nhất của quan hệ đấu nối, thêm `bays`, `texts`, `provenance`; bỏ `branchPairs` và nút `bend`. Sửa sơ đồ phụ thuộc pipeline. Thêm interface giữa các khâu, bước chuẩn hóa tỉ lệ, ước lượng hướng ký hiệu. Sửa hàm chi phí ghép cổng và ghép nhãn (cho phép không ghép, ràng buộc cứng). Viết lại luật mã EVN thành ngữ pháp cấu hình được. Thêm thiết kế bộ đi dây của bộ sinh, bộ xuất SVG, giao diện duyệt, thuật toán tô vùng mang điện, so khớp đồ thị khi đánh giá, tiêu chí nghiệm thu có số liệu và yêu cầu phi chức năng. |
 | 1.2 | 29/10/2026 | Viết lại ngữ pháp mã EVN theo Thông tư 44/2014/TT-BCT, Chương IV (bảng cấp áp đầy đủ, chữ số loại ngăn của máy cắt, hậu tố dao tiếp địa sinh theo luật); đóng câu hỏi mở 13.1–13.2. Ghi nhận dữ liệu thật là PDF vector khổ A4: `pxPerMm` theo trang thật, danh mục trang `configs/raw_pages.yaml`, kích thước bitmap thực tế khi xoay trang. Thêm Mục 8.6 (nguồn nhãn vector cho bản vẽ thật) và các script Giai đoạn 0. |
 | 1.4 | 29/10/2026 | Giai đoạn 2. Bộ xuất SVG dùng `<g>` trong `<defs>` thay `<symbol>` (tránh viewport riêng) và nhúng khối `sld-meta` để JS không viết cứng lớp ký hiệu; BFS phía trình duyệt kiểm bằng Node. Bộ xuất DXF mở `symbols.dxf` làm tài liệu mẫu thay vì chép block, cầu vượt là đoạn bulge của LWPOLYLINE. Bộ sinh: mẫu ngăn dựng trong hệ chuẩn đơn vị mm, nhãn chỉ là yêu cầu đặt (chữ phải đứng thẳng sau khi xoay ngăn), thêm mẫu ngăn tổng phía trung áp; tư thế ký hiệu được chuẩn hóa về góc cho phép; vị trí các cấp áp tìm bằng kiểm tra va chạm; router có hành lang quanh dây để chỉ cắt vuông góc. Tắt nghiêng ảnh (làm lệch đáp án). Thêm ảnh sạch `clean/` để kiểm tiêu chí 8 và kiểm round-trip DXF trong `validate_dataset.py`. |
+| 1.5 | 29/10/2026 | Giai đoạn 3 (baseline cổ điển). Cài đặt đủ Phân hệ B: `src/pipeline.py` điều phối các khâu theo `configs/inference_config.yaml`; detector tạm thời `template_ncc` (NCC đa góc, 2 tỉ lệ, kiểm phần dư ngoài trục dây, NMS so trên cửa sổ box nhỏ, luật chấm nối) — Mục 8.2.2a; đo độ dày nét bằng tổng độ đậm lát cắt (8.2.1); OCR dùng `PP-OCRv5_mobile_det` trên CPU vì paddlepaddle 3.3/Windows phải tắt MKLDNN (8.2.4); che chữ giữ nét đi vào hộp chữ (8.2.6); cầu vượt nhận qua khe trên dây (8.2.7); khoảng cách ghép cổng đo tới đoạn [cổng, cổng + n·g], ngưỡng τ chốt 0,60/1,50 và các luật nối cổng còn trống (8.3.1). Đáp án thật đầu tiên `real_gold/dev/E18.9` dựng bán tự động (8.6). Số liệu baseline và đề xuất chốt ngưỡng nghiệm thu (9.3). Câu hỏi mở 13.10–13.12. |
 | 1.3 | 29/10/2026 | Giai đoạn 1. Danh mục lên **19 lớp**: thêm `cable_termination` (đầu cáp) và `coupling_capacitor` (tụ của TU kiểu tụ), cả hai đều thấy trên E18.9. Kích thước ký hiệu đo từ vector E18.9. Gốc tọa độ cục bộ đặt trên trục nối cổng, thêm `bboxLocal` để chiếu đúng ký hiệu lệch tâm. Thêm vai trò chữ `pole_number`. Ghi nhận quy ước vẽ dao cách ly trên E18.9 là câu hỏi mở. |
 
 ---
@@ -186,11 +187,11 @@ Phan tich so do mach dien/
 ├── configs/
 │   ├── generator_config.yaml        # Số mẫu, phân bố độ khó, seed, tham số biến thiên & nhiễu
 │   ├── layout_presets.yaml          # Bố cục vùng cấp điện áp (110 trên, 22 dưới, 35 dọc phải...)
-│   ├── inference_config.yaml        # Chọn cài đặt cho từng interface + mọi ngưỡng τ
+│   ├── inference_config.yaml        # Chọn cài đặt cho từng interface + mọi ngưỡng τ (GĐ3)
 │   ├── evn_codes.yaml               # Ngữ pháp mã vận hành, bảng cấp điện áp, bảng hậu tố
 │   ├── cad_layers.yaml              # Tên layer, màu, độ dày nét, font (cấu hình được)
 │   └── raw_pages.yaml               # Danh mục trang bản vẽ gốc: file, trang, loại A/B, góc xoay, pxPerMm
-├── data/                            # Không đưa vào git (bản vẽ nội bộ)
+├── data/                            # Bản vẽ gốc, dữ liệu sinh, đáp án
 │   ├── raw_pdfs/                    # PDF gốc: typeA/ (sơ đồ nhất thứ trạm), typeB/ (lưới, phiếu thao tác)
 │   ├── raw_images/                  # Ảnh không có PDF gốc (E18.1 độ phân giải thấp)
 │   ├── processed/<id>/              # page.png, page_meta.json, vector.json, overlay.png (Mục 8.6)
@@ -225,10 +226,12 @@ Phan tich so do mach dien/
 │   │   ├── router.py                # Đi dây trực giao giữa các ngăn lộ (A*)
 │   │   ├── renderer.py              # SVG → PNG, biến thiên và nhiễu, vật gây nhiễu
 │   │   └── dataset_writer.py        # Xuất PNG, SVG, DXF, mask, COCO, graph
+│   ├── pipeline.py                  # Điều phối Phân hệ B: Pipeline, load_input, export_result (GĐ3)
 │   ├── perception/
 │   │   ├── scale_normalizer.py      # Ước lượng độ dày nét, đưa về tỉ lệ chuẩn
-│   │   ├── tiler.py                 # Cắt patch có overlap, gộp box bằng WBF
-│   │   ├── symbol_detector.py       # Faster R-CNN / YOLOv8 (cùng interface)
+│   │   ├── tiler.py                 # Cắt patch có overlap, gộp box bằng WBF (GĐ4)
+│   │   ├── templates.py             # Vẽ mẫu ký hiệu từ SVG cho so khớp NCC (GĐ3)
+│   │   ├── symbol_detector.py       # template_ncc (GĐ3), given (dựng đáp án); Faster R-CNN / YOLOv8 (GĐ4)
 │   │   ├── orientation.py           # Ước lượng θ và mirrorX bằng so khớp mẫu
 │   │   ├── ocr_engine.py            # PaddleOCR + xử lý chữ dọc
 │   │   ├── label_matcher.py         # Ghép nhãn Hungarian có lựa chọn "không ghép"
@@ -258,7 +261,8 @@ Phan tich so do mach dien/
 │   ├── generate_substation_dataset.py   # --n 100 --seed --out; cấu hình configs/generator_config.yaml
 │   ├── validate_dataset.py              # 8 tiêu chí (Mục 8.1.5) + round-trip DXF
 │   ├── run_pipeline.py                  # 1 ảnh → JSON + SVG + DXF
-│   └── evaluate_metrics.py              # Chạy đánh giá trên synthetic val / real_gold
+│   ├── evaluate_metrics.py              # Chạy đánh giá trên synthetic val / real_gold → metrics.json, report.md
+│   └── build_real_gold.py               # Đáp án thật bán tự động: nháp pipeline + file hiệu chỉnh (Mục 8.6)
 └── tests/
     ├── test_page_transform.py
     ├── test_raw_pdf_alignment.py
@@ -269,8 +273,11 @@ Phan tich so do mach dien/
     ├── test_svg_interactive_js.py       # BFS JS (Node) ↔ Energizer Python
     ├── test_generator_and_exporters.py
     ├── test_graph_matching.py
-    └── test_pipeline_e18_1.py
+    ├── test_pipeline_e18_1.py           # smoke E18.1, accuracy E18.9, round-trip tổng hợp
+    └── baselines/gd3_real_dev.json      # chỉ số mốc để kiểm hồi quy (không chứa nội dung bản vẽ)
 ```
+
+Ngoài ra: `docs/bao_cao_baseline_gd3.md` (báo cáo baseline GĐ3); `data/real_gold/<split>/<id>_{draft,ocr,edits}` là đầu vào dựng đáp án (Mục 8.6); `output/pipeline/`, `output/eval/`, `output/gold/` là kết quả chạy.
 
 ---
 
@@ -852,6 +859,11 @@ Tile 1024 px và mọi ngưỡng tính bằng px chỉ có nghĩa khi ảnh ở 
 2. Ảnh raster: nhị phân hóa Otsu → biến đổi khoảng cách (distance transform) trên điểm thuộc nét → độ dày nét trung vị $w_{\text{med}}$. Resample sao cho $w_{\text{med}}$ bằng độ dày mục tiêu của dữ liệu huấn luyện. Ghi `pxPerMmSource: "estimated"`.
 3. Nếu cần **phóng to > 1,5×** để đạt tỉ lệ mục tiêu thì vẫn chạy, nhưng sinh issue `low_resolution_input` (severity `error`) và ghi rõ vào báo cáo. Không dùng upscale để che giấu ảnh nguồn kém. Ảnh `so_do_nguon.png` hiện có (1070 × 765 px) rơi vào trường hợp này.
 
+**Cài đặt GĐ3 (`stroke_based`):**
+- Độ dày nét đo trên các đoạn thẳng ngang/dọc dài (mở hình thái), mỗi lát cắt vuông góc lấy **tổng độ đậm** $(255-\text{xám})/255$ trừ nền, nên lẻ được và không phụ thuộc ngưỡng nhị phân. Mỗi đoạn góp một giá trị, trọng số = độ dài chặn ở 10% cạnh ảnh; lấy **phân vị 30%** theo trọng số (dây là nét mảnh nhất; nét ký hiệu, thanh cái, khung dày hơn). Đo được: E18.9 3,05 px (đúng bằng vector), ảnh tổng hợp 1,7–2,3 px.
+- Ảnh không rõ khổ: $\text{pxPerMm} = \min(w_{\text{med}}/0{,}25\text{ mm},\; \text{cạnh dài}/297\text{ mm})$ — chặn trên vì bản vẽ không nhỏ hơn A4 (ảnh độ phân giải thấp có nét bị làm tròn lên 1 px).
+- Chỉ resample khi pxPerMm ngoài [6, 16]; khi đó đưa về 10 px/mm (mọi ngưỡng tính theo w hoặc mm nên không cần một tỉ lệ cố định). E18.9 (12) và ảnh tổng hợp (7–10) giữ nguyên; đồ thị đầu ra nằm ở hệ ảnh đã chuẩn hóa, bộ đánh giá quy đổi về hệ gốc theo `page.normalizationScale`; E18.1 độ phân giải thấp ước lượng 3,6 px/mm → phóng 2,78× → `low_resolution_input`.
+
 #### 8.2.2. `Tiler` (`tiler.py`)
 - `slice_image(img, tile_size=1024, overlap_ratio=0.2) -> list[TileInfo]`: cửa sổ trượt, lưu độ dời $(dx, dy)$ của từng tile.
 - `merge_detections(tile_preds, iou_thresh=0.55) -> list[DetectedSymbol]`:
@@ -860,20 +872,35 @@ Tile 1024 px và mọi ngưỡng tính bằng px chỉ có nghĩa khi ảnh ở 
   3. Gộp các box cùng lớp trong vùng chồng lấn bằng **Weighted Boxes Fusion**. Hai box khác lớp có IoU > 0,7 giữ box điểm cao hơn và sinh issue `class_ambiguity` nếu chênh điểm < 0,1.
 - MBA (70 × 70 lu) có thể lớn hơn vùng overlap. Detector chạy thêm một lượt trên ảnh thu nhỏ 0,5× chỉ cho các lớp `transformer_*`.
 
+#### 8.2.2a. Detector tạm thời không học máy (`symbol_detector.py`, cài đặt `template_ncc`, GĐ3)
+Baseline cho tới khi có mô hình học (GĐ4), cùng interface `SymbolDetector`. Không cần `Tiler`: so khớp chạy trên toàn trang.
+1. **Mẫu:** vẽ từng lớp từ chính `assets/symbols_svg` (`templates.py`) ở mọi tư thế `allowedRotationsDeg` × `allowMirror`, tỉ lệ $\{0{,}9;\,1{,}0\} \times s_{\text{exp}}$ (ký hiệu dao trên E18.9 nhỏ hơn thư viện ~10%), nét dày $w$, có **đoạn dây từ cổng ra mép mẫu** (dây luôn nối vào cổng), lề 2,5 w, làm mờ Gauss σ = w cho cả ảnh và mẫu (chịu lệch hình vài px giữa các bản vẽ).
+2. **NCC** (`TM_CCOEFF_NORMED`) hai lượt: thô trên ảnh thu nhỏ ⌊w/0,9⌋ lần, tinh chỉnh từng đỉnh ở độ phân giải gốc. Cửa sổ có lượng mực < 50% mực của mẫu nhận 0 (nền trắng tuyệt đối của ảnh raster từ PDF có phương sai 0, OpenCV trả giá trị vô nghĩa tới 1,0).
+3. **Kiểm phần dư:** NCC chỉ trên điểm ngoài dải trục dây qua các cổng phải ≥ 0,5 (0,85 với dao đóng, dao tiếp địa đóng). Dây trơn, chữ T đi qua khớp tốt phần trục nhưng không có phần dư.
+4. **Luật chấm nối:** lớp nối tiếp trên dây (≥ 2 cổng, không có hình tô đặc) không được chứa mực đặc dày ≥ 1,5 w ngoài vòng tròn 3 w quanh cổng (đầu cáp, tụ ghép hay bị nhận nhầm ở chấm nối chữ T). Thiết bị một cổng được miễn vì vạch đất sát nhau nhị phân hóa thành khối đặc.
+5. **NMS giữa các lớp:** xung đột khi IoU > 0,3 hoặc box nằm ≥ 75% trong box kia. Ứng viên mới chỉ thay box đã giữ nếu NCC của hai mẫu **so trên cửa sổ của box nhỏ hơn** cho nó thắng; hòa trong 0,02 thì box lớn thắng nếu lớn gấp ≥ 1,5 lần (dao tiếp địa thắng ký hiệu đất ở đuôi nó; nhưng một ký hiệu lớn không "nuốt" được hai đầu cáp ▽…△ kề nhau).
+6. **Ngưỡng theo lớp** (`inference_config.yaml`) chọn giữa nhiễu lớn nhất đo trên ảnh tổng hợp và điểm của ký hiệu thật trên E18.9 (0,75–0,99): mặc định 0,85; dao mở 0,80; TU 0,72; dao đóng 0,985 (trùng hình chữ T của dây).
+7. Sau OCR, pipeline bỏ box có ≥ 60% diện tích nằm trong hộp chữ, trừ box có NCC ≥ 0,95 (hộp OCR có khi ôm cả vòng tròn TI cạnh nhãn "TI 175").
+
+Cài đặt `given` (cùng `orientation_estimator: given`) nhận danh sách ký hiệu đã duyệt, chỉ dùng khi dựng đáp án (Mục 8.6).
+
 #### 8.2.3. Ước lượng hướng và chiếu cổng (`orientation.py`, `symbol_lib.py`)
 - **Lớp đối xứng điện:** $\theta = 0$ nếu $h \ge w$, ngược lại $\theta = 90$ (đối chiếu với `size` của lớp). Hai cổng có thể bị hoán đổi nhưng không ảnh hưởng đấu nối.
 - **Lớp bất đối xứng** (`orientationSensitive: true`): so khớp mẫu.
   1. Render SVG của lớp ở mọi tổ hợp `allowedRotationsDeg` × `allowMirror`, co về kích thước bbox.
   2. Tính tương quan chéo chuẩn hóa (NCC) với vùng ảnh cắt (nới bbox 10%).
   3. Chọn tổ hợp có NCC cao nhất; `orientation_score` = NCC tốt nhất − NCC tốt nhì. Nếu < 0,05 thì sinh issue `ambiguous_orientation`.
+  4. (GĐ3) Mẫu có thêm dây từ cổng chạy ra mép vùng cắt, như mẫu của detector: không có phần này thì mũi tên đầu đường dây hay bị lật ngược (đầu nhọn và đuôi gần như đối xứng sau khi làm mờ).
   
   Phương án này không cần huấn luyện thêm. Nếu đánh giá cho thấy chưa đủ chính xác, thay bằng một head phân loại hướng trên crop (cùng interface `OrientationEstimator`).
 - **Chiếu cổng** theo công thức Mục 2.2 với $s = \frac{1}{2}\left(\frac{w'}{W_0} + \frac{h'}{H_0}\right)$, trong đó $(w', h')$ là kích thước bbox đã hoán đổi khi $\theta \in \{90, 270\}$. Nếu $|s / s_{\text{exp}} - 1| > 0{,}3$ thì sinh issue `unexpected_symbol_scale`.
-- **Tinh chỉnh cổng:** dời cổng tới điểm cuối nét dây gần nhất trong bán kính $2 w_{\text{med}}$ dọc theo hướng `direction` (chỉ dời, không đổi hướng).
+- **Tinh chỉnh cổng:** dời cổng tới điểm cuối nét dây gần nhất trong bán kính $2 w_{\text{med}}$ dọc theo hướng `direction` (chỉ dời, không đổi hướng). GĐ3 cài đặt bước này ngay trong `PortMatcher` (Mục 8.3.1): khoảng cách đo tới cả đoạn từ cổng ra theo hướng cổng.
 
 #### 8.2.4. `TextReader` và `EVNCodeGrammar` (`ocr_engine.py`, `core/evn_codes.py`)
 **Đọc chữ:**
 - `PaddleOCR` (`PP-OCRv5_server_det` + `latin_PP-OCRv5_mobile_rec`) chạy trên toàn ảnh đã chuẩn hóa, theo tile như detector.
+  - **GĐ3:** dùng `PP-OCRv5_mobile_det`. paddlepaddle 3.3 trên Windows lỗi oneDNN (`ConvertPirAttribute2RuntimeAttribute`) nên phải tắt MKLDNN; khi đó `server_det` trên CPU mất 56 s cho 1/8 trang E18.9, `mobile_det` 0,8 s. Tile 1600 px, chồng 200 px; box chạm mép tile bị hạ điểm để bản đầy đủ ở tile kề thắng; gộp box trùng (IoU ≥ 0,4 hoặc nằm ≥ 80% trong box khác). Cả trang E18.9 mất ~67 s trên CPU. Chạy GPU cần cài `paddlepaddle-gpu` (chưa làm).
+  - Cài đặt `ground_truth` đọc chữ từ đồ thị đáp án — chỉ để đo riêng phần ký hiệu + dây + lắp ráp, không phải kết quả OCR.
 - **Chữ dọc:** với vùng chữ có $h / w > 2{,}5$ (cùng ngưỡng với báo cáo định hướng; đưa vào `inference_config`), cắt vùng, nhận dạng ở cả hai hướng xoay 90° và 270°, giữ kết quả có điểm cao hơn, ghi `angle_deg`.
 
 **Chuẩn hóa chuỗi:** viết hoa phần mã; bỏ khoảng trắng giữa tiền tố và số (`TI 173` → `TI173`); thống nhất dấu gạch (`–`, `—` → `-`); chỉ sửa nhầm lẫn OCR (`O→0`, `I/l→1`, `S→5`, `B→8`) ở **vị trí bắt buộc là chữ số** theo mẫu đang thử khớp.
@@ -1026,13 +1053,18 @@ $$
 **Che vùng không phải dây** (dùng chung cho cả hai cài đặt):
 - **Ký hiệu:** xóa phần trong bbox **thu nhỏ vào 1 × $w_{\text{med}}$**. Cổng nằm trên cạnh bbox, nên dây bị cắt đúng tại biên ký hiệu và đầu mút rơi sát cổng. Với TI (`passthrough`), dây đi xuyên qua cũng bị cắt thành hai đoạn, mỗi đoạn kết thúc ở một cổng của TI.
 - **Chữ:** xóa điểm ảnh trong polygon chữ, **trừ** các điểm thuộc nét thẳng dài (kết quả mở hình thái với kernel ngang/dọc dài ≥ 3 × chiều cao chữ). Như vậy dây đi ngang qua vùng nhãn không bị đứt.
+  - (GĐ3) Giữ thêm **nét đi vào hộp chữ từ ngoài**: ở cột/hàng mà ngay ngoài mép hộp có mực, giữ đoạn mực liền từ mép vào. Hộp OCR trên E18.9 có khi ôm cả đoạn dây ngắn giữa hai thiết bị (vd. "TI 175" ôm dây từ dao tiếp địa xuống TI), luật 3 × chiều cao chữ không giữ được.
 - **Khung tên / khung bản vẽ:** loại các đoạn thẳng dài sát biên trang và vùng khung tên (phát hiện bằng hình chữ nhật lớn nhất chứa nhiều chữ ở góc dưới phải).
 
 **Cài đặt cổ điển:** morphology kernel ngang + dọc đa tỉ lệ → `HoughLinesP` → hợp nhất đoạn thẳng hàng → skeleton hóa → truy vết thành polyline. Điểm skeleton bậc ≠ 2 thành `CandidateNode`. Polyline được rút gọn bằng Douglas–Peucker; đỉnh rẽ bậc 2 giữ nguyên là đỉnh của polyline, không thành nút.
+- (GĐ3) Vùng vẽ: khung bản vẽ là các đường ngang/dọc dài ≥ 60% cạnh trang sát biên; khung tên là đường ngang dài cao nhất trong 30% dưới trang. Mực ngoài vùng vẽ bị bỏ; chữ trong khung tên nhận vai trò `title_block`.
+- Mở hình thái với kernel 0,8 mm (giữ đoạn dây ngắn giữa hai thiết bị kề nhau); `HoughLinesP` chỉ lấy lại đoạn xiên ≥ 4 mm, góc 10°–80°.
+- Đồ thị skeleton: tỉa gai < max(2 w, 0,6 mm) từ đầu mút vào nút bậc ≥ 3; gộp hai nút bậc ≥ 3 cách nhau < 3 w (chữ thập skeleton tách thành hai chữ T); nối qua nút bậc 2; bỏ mảnh vụn hai đầu tự do < 1 mm; nắn đoạn lệch < 4° về ngang/dọc.
 
 **Cài đặt U-Net:** U-Net trên patch 512 × 512 (loss `Weighted BCE + Dice`, thử `soft-clDice`) → ngưỡng → skeleton → truy vết như trên.
 
 **Tách thanh cái (`busbar_classifier.py`):** một đoạn là thanh cái nếu độ dày nét ≥ `busbar_stroke_ratio` × $w_{\text{med}}$ **và** dài ≥ 3 lần bề rộng ngăn lộ trung vị, **hoặc** có chữ `busbar_code` ghép vào (Mục 8.2.5). Thanh cái giữ một polyline duy nhất. Các dây chạm vào thân thanh cái tạo nút `junction` style `t_on_busbar`.
+- (GĐ3) Chưa biết bề rộng ngăn ở bước này nên dùng độ dài tối thiểu 20 mm. Độ dày đo dọc thân bằng tổng độ đậm từng lát cắt; thanh cái là đoạn liên tục có độ dày ≥ 1,8 w (cho phép khe ≤ 3 w ở chỗ rẽ). Thanh cái tô đặc (C12 trên E18.9) đo đúng. Chưa dùng điều kiện "có chữ `busbar_code`".
 
 #### 8.2.7. `JunctionClassifier` (`junction_classifier.py`)
 Phân loại mọi `CandidateNode` thành 4 lớp: `junction`, `crossing_no_connect`, `bend`, `false_positive`.
@@ -1041,6 +1073,7 @@ Phân loại mọi `CandidateNode` thành 4 lớp: `junction`, `crossing_no_conn
   - Bậc 4 có chấm đặc (tỉ lệ điểm tối trong đĩa bán kính $1{,}5\,w_{\text{med}}$ > 0,8) → `junction` style `dot`.
   - Bậc 4 không có chấm → `crossing_no_connect` style `plain_cross`.
   - Đoạn skeleton cong dạng nửa cung tròn (độ dài ≈ $\pi r$, hai đầu thẳng hàng, nằm giữa hai đoạn thẳng cùng phương) cắt ngang một dây khác → `crossing_no_connect` style `hop_arc` (kiểu vẽ trên E18.1).
+  - (GĐ3) Cung đã bị mở hình thái bỏ đi, nên luật cài đặt trên **khe**: hai đầu mút tự do thẳng hàng, đối diện nhau, khe 0,8–4,5 mm, có một dây vuông góc đi qua giữa khe → ghép hai đoạn thành một dây và ghi nút crossing; có mực trên nửa cung (≥ 25% điểm lấy mẫu) thì style `hop_arc`, không thì `plain_cross` độ tin cậy 0,5.
   - Bậc 2 có góc → `bend` (chuyển thành đỉnh polyline).
 - **CNN 4 lớp** (phương án thử nghiệm): crop 64 × 64 quanh nút từ ảnh gốc, cùng interface.
 
@@ -1064,6 +1097,8 @@ $$
   - Bản 1.0 dùng $|\mathbf{v}_e \cdot \mathbf{n}_p|$ nên không phân biệt được hai trường hợp này.
 - $d_{\text{norm}}(p) = \max\left(2\,w_{\text{med}},\; 0{,}25 \cdot \min(w, h)_{\text{ký hiệu}}\right)$: chuẩn hóa theo cỡ nét và cỡ ký hiệu, không cố định px.
 - Mặc định $\alpha = 1$, $\beta = 0{,}5$; ngưỡng $\tau_{\text{accept}}$, $\tau_{\text{candidate}}$ lấy từ `inference_config.yaml`.
+- **(GĐ3)** $\|\mathbf{x}_e - \mathbf{x}_p\|$ thay bằng khoảng cách tới **đoạn** $[\mathbf{x}_p,\, \mathbf{x}_p + g\,\mathbf{n}_p]$ với $g = (\text{grow} + 0{,}5)\,w$: WireExtractor che bbox nới `grow` nên đầu dây dừng ngoài cổng một khoảng ≈ g. Ngưỡng chốt $\tau_{\text{accept}} = 0{,}60$, $\tau_{\text{candidate}} = 1{,}50$ (đề xuất cũ 0,35/0,80 làm rơi phần lớn kết nối vì box NCC lệch 1–3 px): trên mẫu tổng hợp 0000 Terminal-pair F1 tăng 0,82 → 0,94.
+- **Cổng còn trống sau gán** (khe ngắn giữa hai thiết bị kề nhau bị mở hình thái xóa mất), lần lượt: sát thân thanh cái ≤ 3 mm → dây ngắn + `t_on_busbar`; đối diện một cổng trống khác ≤ 3 mm → dây ngắn; sát thân một dây ≤ 3 mm theo hướng cổng → cắt dây đó, thêm nút `t_plain`. Các dây này có `connectionStatus: candidate`.
 
 **Gán toàn cục:** dựng ma trận chi phí đầu mút × cổng; cặp có $C > \tau_{\text{candidate}}$ nhận $+\infty$. Mỗi cổng có sức chứa 1, mỗi đầu mút ghép tối đa 1 cổng. Giải bằng Hungarian có cột giả (như Mục 8.2.5) với chi phí giả $= \tau_{\text{candidate}}$.
 
@@ -1243,6 +1278,14 @@ Bản vẽ thật hiện có đều là **PDF vector xuất từ CAD**. Pipeline
 
 **Quy trình dự kiến (Giai đoạn 3–4):** vector → tách glyph, nét dây, hình ký hiệu → người gán loại ký hiệu và mã trên viewer → `NetBuilder` dựng `nets` → `data/real_gold/<split>/<id>_graph.json`.
 
+**Quy trình đã dùng ở GĐ3 (`scripts/build_real_gold.py`)** — chưa dùng vector, vì ảnh `page.png` raster từ chính PDF đã sạch:
+1. Bản nháp `<id>_draft.json` = đầu ra pipeline; `<id>_ocr.json` = kết quả OCR đã lưu.
+2. Người gán nhãn ghi `<id>_edits.yaml`: bỏ/đổi lớp/thêm thiết bị (thêm bằng **một điểm**; script so khớp mẫu cục bộ để lấy bbox và tư thế), mã thiết bị, sửa chuỗi OCR, thêm chữ bị sót, vai trò chữ, mã thanh cái.
+3. Chạy lại pipeline với detector `given` (đúng danh sách thiết bị đã duyệt) để khâu che ký hiệu, trích dây, ghép cổng tự nối dây; rồi áp sửa đấu nối chỉ định bằng **tọa độ điểm** (`connect`, `disconnect`, `remove_wires`, `remove_wires_in`), nên không phụ thuộc id dây sinh lại mỗi lần chạy.
+4. `NetBuilder` dựng `nets`, `EVNRuleValidator` kiểm (đáp án E18.9 hiện không còn issue); script in danh sách cổng chưa có dây và vẽ ảnh soát `output/gold/<id>_review.png`.
+
+Hạn chế khi dùng số liệu: (a) đáp án E18.9 do Claude soát bằng mắt từng vùng ảnh, **chưa có kỹ sư duyệt** (`provenance.config` ghi "CHỜ KỸ SƯ DUYỆT"); (b) bbox của thiết bị mà detector đã tìm đúng lấy nguyên từ bản nháp, nên phần IoU của chỉ số mức 1 lệch có lợi cho pipeline (recall, precision, Terminal-pair F1 không bị ảnh hưởng); (c) hình học dây lấy từ mực thật qua cùng bộ trích dây, sửa tay ở chỗ đứt/dính.
+
 ---
 
 ## 9. Đánh Giá & Tiêu Chí Nghiệm Thu
@@ -1274,10 +1317,23 @@ Các ngưỡng dưới đây là **mục tiêu đề xuất ban đầu**, sẽ c
 | Mốc | Tiêu chí |
 |---|---|
 | Giai đoạn 2 – bộ sinh | 100% mẫu qua 8 tiêu chí của `validate_dataset.py`; round-trip graph → DXF → đọc lại: số `INSERT` = số thiết bị, sai số tọa độ cổng < 0,01 mm |
-| Giai đoạn 3 – baseline | Chạy hết pipeline trên E18.1 bản độ phân giải cao, xuất đủ JSON + SVG + DXF hợp lệ; **ghi nhận** (chưa đặt ngưỡng) mọi chỉ số 9.1 |
+| Giai đoạn 3 – baseline | Chạy hết pipeline trên E18.1 bản độ phân giải cao, xuất đủ JSON + SVG + DXF hợp lệ; **ghi nhận** (chưa đặt ngưỡng) mọi chỉ số 9.1. *Đã ghi nhận (29/10/2026) trên E18.9 thay E18.1 — xem dưới.* |
 | Giai đoạn 4 – detector | Recall ≥ 0,90 trên các lớp chính (`circuit_breaker`, `drawout_breaker`, `disconnector_*`, `earthing_switch_*`, `current_transformer`); exact match mã ≥ 0,95; F1 ghép nhãn ≥ 0,90 |
 | Giai đoạn 5 – đồ thị | Terminal-pair F1 ≥ 0,90; ≥ 70% ngăn lộ đúng hoàn toàn không cần sửa; U-Net chỉ thay baseline nếu tăng Terminal-pair F1 ≥ 2 điểm |
 | Giai đoạn 6 – sản phẩm | Thời gian hiệu chỉnh trung vị ≤ 15 phút/bản vẽ cỡ E18.1; DXF mở được trong AutoCAD, block và thuộc tính đúng khi kỹ sư kiểm tra 3 bản vẽ mẫu |
+
+**Baseline GĐ3 và đề xuất chốt ngưỡng (bản 1.5, chờ duyệt).** Chi tiết: [docs/bao_cao_baseline_gd3.md](docs/bao_cao_baseline_gd3.md). Baseline thật đo trên E18.9 (`real_gold/dev`, đáp án bán tự động chưa có kỹ sư duyệt); tổng hợp đo trên 10 mẫu val.
+
+| Chỉ số | Baseline thật (E18.9) | Baseline tổng hợp (OCR thật) | Đề xuất ngưỡng |
+|---|---|---|---|
+| Recall lớp chính (GĐ4) | 0,51 | 0,95 | Giữ ≥ 0,90 trên thật; thêm mAP@0.5 ≥ 0,85 |
+| Exact match mã (GĐ4) | 0,786 | 0,564 | ≥ 0,92 ở GĐ4, ≥ 0,95 ở GĐ6; tên lộ có dấu đo riêng, ≥ 0,80 |
+| F1 ghép nhãn (GĐ4) | 0,594 | 0,598 (0,974 khi chữ đúng) | Giữ ≥ 0,90 |
+| Terminal-pair F1 (GĐ5) | 0,499 | 0,750 | ≥ 0,85 trên thật, ≥ 0,90 trên tổng hợp |
+| Ngăn lộ đúng hoàn toàn (GĐ5) | 0% | 21% | ≥ 60% trên thật, ≥ 75% trên tổng hợp |
+| Net tách + dính / số Net đáp án (GĐ5, mới) | 19% | 26% | ≤ 5% |
+
+Điều kiện: cần kỹ sư duyệt đáp án E18.9 và thêm ≥ 2 bản vẽ Loại A làm `test` trước khi dùng các ngưỡng này để nghiệm thu GĐ4.
 
 ---
 
@@ -1303,7 +1359,9 @@ Các ngưỡng dưới đây là **mục tiêu đề xuất ban đầu**, sẽ c
 6. **`test_pipeline_e18_1.py`:**
    - **Smoke test** trên [so_do_nguon.png](output/latex/assets/so_do_nguon.png) (1070 × 765 px): pipeline chạy hết, xuất JSON hợp lệ theo schema, có issue `low_resolution_input`. Không kiểm tra độ chính xác vì ảnh dưới yêu cầu tối thiểu.
    - **Accuracy test** trên E18.1 bản gốc độ phân giải cao có đáp án gán tay trong `real_gold/dev`: in ra chỉ số Mục 9.1; chỉ kiểm tra không tụt quá 2 điểm so với lần chạy được ghi lại gần nhất (regression).
+   - (GĐ3) Chưa có E18.1 độ phân giải cao, nên accuracy test chạy trên **E18.9** (`real_gold/dev`); số liệu mốc ghi ở `tests/baselines/gd3_real_dev.json` (chỉ số tổng, không chứa nội dung bản vẽ).
 7. **Round-trip tổng hợp:** 10 mẫu trong tập val tổng hợp → PNG → pipeline → so với đáp án bằng Mục 9.2. Đây là chỉ báo sớm cho lỗi lắp ráp đồ thị, độc lập với chất lượng ảnh thật.
+   - (GĐ3) Nằm trong `test_pipeline_e18_1.py`, chữ lấy từ đáp án (`text_reader: ground_truth`) để cô lập phần lắp ráp; mặc định 3 mẫu cho `pytest` nhanh, `SLD_ROUNDTRIP_N=10` chạy đủ 10. Số liệu đủ 10 mẫu (cả OCR thật) ở `output/eval/` do `scripts/evaluate_metrics.py` sinh.
 
 ---
 
@@ -1351,5 +1409,8 @@ Các ngưỡng dưới đây là **mục tiêu đề xuất ban đầu**, sẽ c
 7. Ký hiệu vòng tròn có mũi tên cạnh dao `172-7` trên E18.9 chưa rõ là thiết bị gì, nên chưa đưa vào danh mục.
 8. **Vai trò cổng MBA 3 cuộn (mới, bản 1.4):** trong `transformer_3w.svg`, cuộn dưới (có tam giác) mang vai trò `lv`, cuộn bên phải mang vai trò `mv`, theo vị trí vẽ trên E18.9. Nhưng trên E18.9 cuộn dưới nối 35 kV, cuộn phải nối 22 kV, nên vai trò không khớp thứ tự cấp áp. Bộ sinh hiện nối theo vị trí (cuộn dưới → cấp dải dưới, cuộn phải → cấp mép phải). Cần chốt: đổi tên vai trò theo vị trí hay đổi cổng theo cấp áp, trước khi luật kiểm tra dùng vai trò cổng.
 9. **Nghiêng ảnh trong bộ sinh (mới, bản 1.4):** đang tắt. Muốn bật cần lưu góc nghiêng và biến đổi đáp án, hoặc chấp nhận lệch vài px rồi nới ngưỡng tiêu chí 3 và 8.
+10. **Ký hiệu E18.9 khác thư viện (mới, bản 1.5):** đầu cáp vẽ hình chữ V hở (không phải tam giác kín); máy cắt 22 kV hợp bộ có chevron « » đôi và nhỏ hơn thư viện ~20%; TU thanh cái (TUC11, TUC12) là TU kiểu tụ cỡ ~0,45 lần TU đường dây; mũi tên đầu đường dây 110 kV là mũi tên đặc dài; MBA T1 vẽ cuộn cao áp nét đậm có mũi tên điều áp. NCC trên các ký hiệu này chỉ đạt 0,72–0,85 nên recall thấp. Detector học (GĐ4) cần mẫu của các biến thể này; chưa thêm lớp mới vì kiểu vẽ khác chứ không phải thiết bị khác.
+11. **Ký hiệu ngoài danh mục trên E18.9 (mới, bản 1.5):** bộ tiếp điểm rút `312-1` (chỉ có « » trên–dưới, không có máy cắt), cầu chì `SI-TD31` vẽ nghiêng 45°, phía 0,4 kV của TD41 nối đất. Đáp án hiện bỏ trống hoặc gán gần đúng (`SI-TD31` → `fuse_disconnector` xoay 0°). Cần quyết định có thêm lớp "dao cách ly kiểu rút" không.
+12. **Đáp án thật chưa được kỹ sư duyệt (mới, bản 1.5):** `real_gold/dev/E18.9_graph.json` do Claude dựng bán tự động (Mục 8.6). Mọi số liệu "thật" của GĐ3 phụ thuộc đáp án này; cần kỹ sư soát (đặc biệt TU kiểu tụ, trung tính T1, 112-1/112-2, ngăn 172) trước khi dùng để chốt nghiệm thu GĐ4.
 
 **Đồng bộ với báo cáo định hướng:** [bao_cao_dinh_huong_phat_trien_san_pham.md](bao_cao_dinh_huong_phat_trien_san_pham.md) đã được cập nhật ngày 29/10/2026 cho khớp với SDD 1.1, bao gồm: danh mục lớp ký hiệu (nay là 19 lớp), tên script `generate_substation_dataset.py`, tên layer cấu hình được, hậu tố `-08`/`-24`/`-28`, chỉ số Terminal-pair F1. Các bản LaTeX/PDF cũ trong `output/` chưa được cập nhật.

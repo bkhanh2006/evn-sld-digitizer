@@ -1,0 +1,17 @@
+{
+  "dataset": "data\\synthetic\\v001_n100",
+  "total": 100,
+  "passed": 100,
+  "perCriterion": {
+    "1_schema": 100,
+    "2_references": 100,
+    "3_wire_ends": 100,
+    "4_no_overlap": 100,
+    "5_inside_page": 100,
+    "6_port_one_connection": 100,
+    "7_nets_rebuild": 100,
+    "8_mask_matches_image": 100,
+    "dxf_round_trip": 100
+  },
+  "failures": {}
+}

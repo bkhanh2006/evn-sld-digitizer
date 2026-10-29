@@ -6,12 +6,17 @@ requires-python = ">=3.11,<3.12"
 dependencies = [
     "ezdxf",
     "numpy",
+    "opencv-contrib-python==4.10.0.84",   # paddlex ghim đúng bản này; đừng cài thêm opencv-python(-headless)
+    "paddleocr>=3.0",
+    "paddlepaddle>=3.0",
     "pillow",
     "pydantic>=2",
     "pymupdf",
     "pypdfium2",
     "pyyaml",
     "resvg-py",
+    "scikit-image",
+    "scipy",
 ]
 
 [project.optional-dependencies]

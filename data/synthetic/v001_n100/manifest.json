@@ -1,0 +1,1435 @@
+{
+  "generatorVersion": "0.2.0",
+  "seed": 20261029,
+  "n": 100,
+  "createdAt": "2026-10-29T15:31:45.937883",
+  "git": {
+    "commit": "40db9c244ec870ed334ce4ee01099f9b9bda9596",
+    "dirty": true
+  },
+  "topologies": 55,
+  "layoutFailures": [
+    {
+      "topology": 1,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-1de3c9c494: size: cấp 110 kV rộng 345 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 1,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-8ca457cdda: size: cấp 110 kV rộng 357 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 1,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-a06fba022a: size: cấp 110 kV rộng 375 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 1,
+      "stage": "variant",
+      "reason": "Không bố cục được topo-f6159855fb: size: cấp 110 kV rộng 404 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 3,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-8fc35d7760: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 3,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-729fded4ba: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 3,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-1c2c370743: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 4,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-fd78d01e1f: size: cấp 110 kV rộng 325 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 4,
+      "stage": "variant",
+      "reason": "Không bố cục được topo-27860d84ab: size: cấp 110 kV rộng 347 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 5,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-8e79e1ff2b: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 5,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-c9c1db8533: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 5,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-9caf92b3ea: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 5,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-bcf05db31f: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 5,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-3689a6d4a5: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 6,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-ddadb6035c: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 6,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-8cc8738f0a: size: cấp dưới rộng 299 mm, còn 295 mm"
+    },
+    {
+      "topology": 6,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-8c59957152: size: cấp dưới rộng 285 mm, còn 296 mm"
+    },
+    {
+      "topology": 12,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-9aef443223: size: cấp 110 kV rộng 313 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 16,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-e14474dee8: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 16,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-bf0b2f949e: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 16,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-d25a91e455: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 16,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-6163028d97: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 16,
+      "stage": "variant",
+      "reason": "Không bố cục được topo-0221ab3f9b: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 18,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-bf6947c496: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 18,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-0b9998cb22: size: cấp 110 kV rộng 405 mm, vùng vẽ 393 mm"
+    },
+    {
+      "topology": 18,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-aecb1d03e9: size: cấp 110 kV rộng 403 mm, vùng vẽ 393 mm"
+    },
+    {
+      "topology": 18,
+      "stage": "variant",
+      "reason": "Không bố cục được topo-3d555a7804: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 19,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-dbdcae1d3e: size: cấp 110 kV rộng 270 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 23,
+      "stage": "variant",
+      "reason": "Không bố cục được topo-2554b1d6b2: size: cấp 110 kV rộng 307 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 29,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-71dd9b5a03: size: cấp 110 kV rộng 302 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 29,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-7bd52f74cf: size: cấp 110 kV rộng 304 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 29,
+      "stage": "variant",
+      "reason": "Không bố cục được topo-0943e75a3d: size: cấp 110 kV rộng 301 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 30,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-a06826f848: size: cấp 110 kV rộng 401 mm, vùng vẽ 393 mm"
+    },
+    {
+      "topology": 30,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-645ba889a5: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 30,
+      "stage": "variant",
+      "reason": "Không bố cục được topo-4317e8ecde: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 32,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-f76eb09f8b: không đi được dây 131.mv → 431"
+    },
+    {
+      "topology": 32,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-45b75df281: không đi được dây 131.mv → 431"
+    },
+    {
+      "topology": 32,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-b49137419b: không đi được dây 131.mv → 431"
+    },
+    {
+      "topology": 33,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-801edba25d: không đi được dây 131.mv → 431"
+    },
+    {
+      "topology": 33,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-e9aa145ed6: không đi được dây 131.mv → 431"
+    },
+    {
+      "topology": 33,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-2ee72fa0c3: không đi được dây 131.mv → 431"
+    },
+    {
+      "topology": 34,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-a83c4fa528: size: cấp 110 kV rộng 347 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 34,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-ed221c5ea0: size: cấp 110 kV rộng 360 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 34,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-e1ddd0118a: size: cấp 110 kV rộng 381 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 34,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-fae87bfd60: size: cấp 110 kV rộng 356 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 34,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-660eb58656: size: cấp 110 kV rộng 401 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 34,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-f55497f80f: size: cấp 110 kV rộng 385 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 34,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-727aabf9f0: size: cấp 110 kV rộng 383 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 34,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-5e0f959cac: size: cấp 110 kV rộng 376 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 34,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-b5ff738947: size: cấp 110 kV rộng 377 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 34,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-1990a85ac1: size: cấp 110 kV rộng 390 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 34,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-24a5c2ab6e: size: cấp 110 kV rộng 349 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 34,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-8b8e706cc0: size: cấp 110 kV rộng 386 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 39,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-8f4c5526a3: size: cấp 110 kV rộng 328 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 39,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-ddfe7cb1c3: size: cấp 110 kV rộng 308 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 45,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-e7cf165686: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 45,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-74882b7c4f: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 45,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-5c3e8033ec: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 46,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-b8d7a564a6: size: cấp dưới rộng 364 mm, còn 293 mm"
+    },
+    {
+      "topology": 46,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-29c36f2f5a: size: cấp dưới rộng 318 mm, còn 292 mm"
+    },
+    {
+      "topology": 46,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-812452df02: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 46,
+      "stage": "variant",
+      "reason": "Không bố cục được topo-784c4cf4fd: size: cấp dưới rộng 312 mm, còn 291 mm"
+    },
+    {
+      "topology": 48,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-754bf52bc6: size: cấp 110 kV rộng 303 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 48,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-03b5174b10: size: cấp 110 kV rộng 319 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 48,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-9ccc8e9bd7: size: cấp 110 kV rộng 348 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 52,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-4eb7c78adc: không đi được dây 131.mv → 431"
+    },
+    {
+      "topology": 52,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-76c94eeb6a: không đi được dây 131.mv → 431"
+    },
+    {
+      "topology": 52,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-882f434a47: không đi được dây 131.mv → 431"
+    },
+    {
+      "topology": 54,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-5fb4061e8f: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 54,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-73e5adb599: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 54,
+      "stage": "variant",
+      "reason": "Không bố cục được topo-0a84c6f8ea: size: không đặt được thanh cái dọc"
+    },
+    {
+      "topology": 57,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-c854fb046c: size: cấp 110 kV rộng 357 mm, vùng vẽ 270 mm"
+    },
+    {
+      "topology": 60,
+      "stage": "compose",
+      "reason": "Không bố cục được topo-913bac2dfa: size: cấp dưới rộng 324 mm, còn 301 mm"
+    }
+  ],
+  "seconds": 342.7,
+  "generatorConfig": {
+    "version": "v001",
+    "seed": 20261029,
+    "n_samples": 100,
+    "variants_per_topology": 2,
+    "preset_weights": {
+      "E18_like": 0.5,
+      "E18_9_like": 0.5
+    },
+    "difficulty": {
+      "simple": {
+        "weight": 0.25,
+        "transformers": [
+          1,
+          1
+        ],
+        "levels": [
+          2,
+          3
+        ],
+        "feeder_bays": [
+          5,
+          8
+        ]
+      },
+      "medium": {
+        "weight": 0.45,
+        "transformers": [
+          2,
+          2
+        ],
+        "levels": [
+          2,
+          3
+        ],
+        "feeder_bays": [
+          9,
+          20
+        ]
+      },
+      "complex": {
+        "weight": 0.3,
+        "transformers": [
+          2,
+          2
+        ],
+        "levels": [
+          3,
+          3
+        ],
+        "feeder_bays": [
+          20,
+          26
+        ]
+      }
+    },
+    "voltages": {
+      "hv": 110,
+      "mv": 35,
+      "lv": 22
+    },
+    "topology": {
+      "hv_lines": [
+        2,
+        6
+      ],
+      "hv_two_buses_p": 0.6,
+      "hv_coupler_breaker_p": 0.5,
+      "line_vt_p": 0.7,
+      "line_exit_turn_p": 0.6,
+      "bus_vt_p": 0.8,
+      "aux_p": 0.6,
+      "capacitor_p": 0.3,
+      "spare_name_p": 0.15,
+      "mv_breaker_drawout_p": 0.8,
+      "windings3_p": 0.8,
+      "pole_number_p": 0.5
+    },
+    "style": {
+      "fonts": [
+        {
+          "family": "Arial",
+          "file": "arial.ttf",
+          "bold": "arialbd.ttf",
+          "weight": 0.6
+        },
+        {
+          "family": "Times New Roman",
+          "file": "times.ttf",
+          "bold": "timesbd.ttf",
+          "weight": 0.4
+        }
+      ],
+      "size_mm": {
+        "code": [
+          1.9,
+          2.4
+        ],
+        "breaker": [
+          2.6,
+          3.2
+        ],
+        "name": [
+          2.0,
+          2.6
+        ],
+        "param": [
+          2.4,
+          3.0
+        ],
+        "bus": [
+          3.0,
+          3.6
+        ],
+        "title": [
+          4.5,
+          5.5
+        ],
+        "title_block": [
+          2.0,
+          2.6
+        ]
+      },
+      "wire_mm": [
+        0.2,
+        0.32
+      ],
+      "busbar_mm": [
+        0.45,
+        0.8
+      ],
+      "symbol_stroke_scale": [
+        0.8,
+        1.3
+      ],
+      "junction_dot_p": 0.4,
+      "hop_arc_p": 0.6,
+      "gap_mm": [
+        2.0,
+        3.0
+      ],
+      "tap_stub_mm": [
+        2.5,
+        3.5
+      ],
+      "bay_margin_mm": [
+        2.0,
+        5.0
+      ],
+      "label_gap_mm": [
+        0.8,
+        1.5
+      ],
+      "switch_closed_p": [
+        0.3,
+        0.8
+      ],
+      "earthing_closed_p": [
+        0.0,
+        0.15
+      ]
+    },
+    "render": {
+      "px_per_mm": {
+        "A4": [
+          8.0,
+          12.0
+        ],
+        "A3": [
+          7.0,
+          10.0
+        ]
+      },
+      "jpeg_quality": [
+        60,
+        95
+      ],
+      "blur_sigma_px": [
+        0.0,
+        0.7
+      ],
+      "gray_unevenness": [
+        0.0,
+        0.12
+      ],
+      "skew_max_deg": 0.0,
+      "stamp_p": 0.8,
+      "signature_p": 0.8,
+      "red_stamp_color": "#d0312d"
+    },
+    "router": {
+      "cell_mm": 1.5,
+      "clearance_mm": 1.2,
+      "bend_cost": 6.0,
+      "cross_cost": 25.0
+    },
+    "compose": {
+      "max_attempts": 12
+    }
+  },
+  "layoutPresets": {
+    "pages": {
+      "A4": [
+        297,
+        210
+      ],
+      "A3": [
+        420,
+        297
+      ]
+    },
+    "frame": {
+      "margin_mm": [
+        15,
+        6,
+        6,
+        6
+      ],
+      "inner_pad_mm": 3,
+      "title_height_mm": 8,
+      "title_block_height_mm": [
+        18,
+        22
+      ]
+    },
+    "presets": {
+      "E18_9_like": {
+        "pages": [
+          "A4",
+          "A3"
+        ],
+        "bottom_level": "mv",
+        "side_level": "lv",
+        "incomer_same_side_p": 0.5,
+        "side_bus_drop_mm": [
+          30,
+          45
+        ]
+      },
+      "E18_like": {
+        "pages": [
+          "A3",
+          "A4"
+        ],
+        "bottom_level": "lv",
+        "side_level": "mv",
+        "incomer_same_side_p": 0.3,
+        "side_bus_drop_mm": [
+          -15,
+          5
+        ]
+      }
+    }
+  },
+  "samples": [
+    {
+      "index": 0,
+      "name": "0000",
+      "topologyId": "topo-b116632ab1",
+      "devices": 149,
+      "wires": 204,
+      "crossings": 3
+    },
+    {
+      "index": 1,
+      "name": "0001",
+      "topologyId": "topo-b116632ab1",
+      "devices": 149,
+      "wires": 204,
+      "crossings": 4
+    },
+    {
+      "index": 2,
+      "name": "0002",
+      "topologyId": "topo-f6159855fb",
+      "devices": 180,
+      "wires": 245,
+      "crossings": 2
+    },
+    {
+      "index": 3,
+      "name": "0003",
+      "topologyId": "topo-917c3fe42b",
+      "devices": 50,
+      "wires": 69,
+      "crossings": 0
+    },
+    {
+      "index": 4,
+      "name": "0004",
+      "topologyId": "topo-917c3fe42b",
+      "devices": 50,
+      "wires": 69,
+      "crossings": 0
+    },
+    {
+      "index": 5,
+      "name": "0005",
+      "topologyId": "topo-da43cad158",
+      "devices": 162,
+      "wires": 225,
+      "crossings": 2
+    },
+    {
+      "index": 6,
+      "name": "0006",
+      "topologyId": "topo-da43cad158",
+      "devices": 162,
+      "wires": 225,
+      "crossings": 3
+    },
+    {
+      "index": 7,
+      "name": "0007",
+      "topologyId": "topo-27860d84ab",
+      "devices": 167,
+      "wires": 226,
+      "crossings": 2
+    },
+    {
+      "index": 8,
+      "name": "0008",
+      "topologyId": "topo-9e376fa12b",
+      "devices": 143,
+      "wires": 195,
+      "crossings": 2
+    },
+    {
+      "index": 9,
+      "name": "0009",
+      "topologyId": "topo-9e376fa12b",
+      "devices": 143,
+      "wires": 195,
+      "crossings": 2
+    },
+    {
+      "index": 10,
+      "name": "0010",
+      "topologyId": "topo-ec87cc324d",
+      "devices": 144,
+      "wires": 197,
+      "crossings": 3
+    },
+    {
+      "index": 11,
+      "name": "0011",
+      "topologyId": "topo-ec87cc324d",
+      "devices": 144,
+      "wires": 197,
+      "crossings": 2
+    },
+    {
+      "index": 12,
+      "name": "0012",
+      "topologyId": "topo-10ddb048b9",
+      "devices": 160,
+      "wires": 216,
+      "crossings": 2
+    },
+    {
+      "index": 13,
+      "name": "0013",
+      "topologyId": "topo-10ddb048b9",
+      "devices": 160,
+      "wires": 216,
+      "crossings": 2
+    },
+    {
+      "index": 14,
+      "name": "0014",
+      "topologyId": "topo-f6e0944953",
+      "devices": 58,
+      "wires": 82,
+      "crossings": 2
+    },
+    {
+      "index": 15,
+      "name": "0015",
+      "topologyId": "topo-f6e0944953",
+      "devices": 58,
+      "wires": 82,
+      "crossings": 1
+    },
+    {
+      "index": 16,
+      "name": "0016",
+      "topologyId": "topo-e8c2d80814",
+      "devices": 81,
+      "wires": 112,
+      "crossings": 1
+    },
+    {
+      "index": 17,
+      "name": "0017",
+      "topologyId": "topo-e8c2d80814",
+      "devices": 81,
+      "wires": 112,
+      "crossings": 0
+    },
+    {
+      "index": 18,
+      "name": "0018",
+      "topologyId": "topo-057f940e17",
+      "devices": 51,
+      "wires": 68,
+      "crossings": 0
+    },
+    {
+      "index": 19,
+      "name": "0019",
+      "topologyId": "topo-057f940e17",
+      "devices": 51,
+      "wires": 68,
+      "crossings": 0
+    },
+    {
+      "index": 20,
+      "name": "0020",
+      "topologyId": "topo-a7f0531a02",
+      "devices": 127,
+      "wires": 173,
+      "crossings": 0
+    },
+    {
+      "index": 21,
+      "name": "0021",
+      "topologyId": "topo-a7f0531a02",
+      "devices": 127,
+      "wires": 173,
+      "crossings": 0
+    },
+    {
+      "index": 22,
+      "name": "0022",
+      "topologyId": "topo-892efe698b",
+      "devices": 147,
+      "wires": 205,
+      "crossings": 2
+    },
+    {
+      "index": 23,
+      "name": "0023",
+      "topologyId": "topo-892efe698b",
+      "devices": 147,
+      "wires": 205,
+      "crossings": 2
+    },
+    {
+      "index": 24,
+      "name": "0024",
+      "topologyId": "topo-eb1b948b18",
+      "devices": 85,
+      "wires": 120,
+      "crossings": 2
+    },
+    {
+      "index": 25,
+      "name": "0025",
+      "topologyId": "topo-eb1b948b18",
+      "devices": 85,
+      "wires": 120,
+      "crossings": 2
+    },
+    {
+      "index": 26,
+      "name": "0026",
+      "topologyId": "topo-0e79828119",
+      "devices": 56,
+      "wires": 75,
+      "crossings": 2
+    },
+    {
+      "index": 27,
+      "name": "0027",
+      "topologyId": "topo-0e79828119",
+      "devices": 56,
+      "wires": 75,
+      "crossings": 2
+    },
+    {
+      "index": 28,
+      "name": "0028",
+      "topologyId": "topo-57b22caef6",
+      "devices": 111,
+      "wires": 158,
+      "crossings": 2
+    },
+    {
+      "index": 29,
+      "name": "0029",
+      "topologyId": "topo-57b22caef6",
+      "devices": 111,
+      "wires": 158,
+      "crossings": 2
+    },
+    {
+      "index": 30,
+      "name": "0030",
+      "topologyId": "topo-0221ab3f9b",
+      "devices": 139,
+      "wires": 194,
+      "crossings": 2
+    },
+    {
+      "index": 31,
+      "name": "0031",
+      "topologyId": "topo-54256676ea",
+      "devices": 48,
+      "wires": 66,
+      "crossings": 0
+    },
+    {
+      "index": 32,
+      "name": "0032",
+      "topologyId": "topo-54256676ea",
+      "devices": 48,
+      "wires": 66,
+      "crossings": 0
+    },
+    {
+      "index": 33,
+      "name": "0033",
+      "topologyId": "topo-3d555a7804",
+      "devices": 176,
+      "wires": 241,
+      "crossings": 2
+    },
+    {
+      "index": 34,
+      "name": "0034",
+      "topologyId": "topo-4cb6b31557",
+      "devices": 157,
+      "wires": 212,
+      "crossings": 2
+    },
+    {
+      "index": 35,
+      "name": "0035",
+      "topologyId": "topo-4cb6b31557",
+      "devices": 157,
+      "wires": 212,
+      "crossings": 2
+    },
+    {
+      "index": 36,
+      "name": "0036",
+      "topologyId": "topo-66bd156c46",
+      "devices": 109,
+      "wires": 147,
+      "crossings": 1
+    },
+    {
+      "index": 37,
+      "name": "0037",
+      "topologyId": "topo-66bd156c46",
+      "devices": 109,
+      "wires": 147,
+      "crossings": 0
+    },
+    {
+      "index": 38,
+      "name": "0038",
+      "topologyId": "topo-7fc577366b",
+      "devices": 126,
+      "wires": 176,
+      "crossings": 1
+    },
+    {
+      "index": 39,
+      "name": "0039",
+      "topologyId": "topo-7fc577366b",
+      "devices": 126,
+      "wires": 176,
+      "crossings": 1
+    },
+    {
+      "index": 40,
+      "name": "0040",
+      "topologyId": "topo-05a18a329c",
+      "devices": 133,
+      "wires": 181,
+      "crossings": 1
+    },
+    {
+      "index": 41,
+      "name": "0041",
+      "topologyId": "topo-05a18a329c",
+      "devices": 133,
+      "wires": 181,
+      "crossings": 1
+    },
+    {
+      "index": 42,
+      "name": "0042",
+      "topologyId": "topo-2554b1d6b2",
+      "devices": 191,
+      "wires": 252,
+      "crossings": 1
+    },
+    {
+      "index": 43,
+      "name": "0043",
+      "topologyId": "topo-97587036cb",
+      "devices": 72,
+      "wires": 98,
+      "crossings": 1
+    },
+    {
+      "index": 44,
+      "name": "0044",
+      "topologyId": "topo-97587036cb",
+      "devices": 72,
+      "wires": 98,
+      "crossings": 1
+    },
+    {
+      "index": 45,
+      "name": "0045",
+      "topologyId": "topo-fb164ee3cb",
+      "devices": 49,
+      "wires": 67,
+      "crossings": 1
+    },
+    {
+      "index": 46,
+      "name": "0046",
+      "topologyId": "topo-fb164ee3cb",
+      "devices": 49,
+      "wires": 67,
+      "crossings": 1
+    },
+    {
+      "index": 47,
+      "name": "0047",
+      "topologyId": "topo-0771a2fd1f",
+      "devices": 123,
+      "wires": 172,
+      "crossings": 1
+    },
+    {
+      "index": 48,
+      "name": "0048",
+      "topologyId": "topo-0771a2fd1f",
+      "devices": 123,
+      "wires": 172,
+      "crossings": 1
+    },
+    {
+      "index": 49,
+      "name": "0049",
+      "topologyId": "topo-f924b83ef7",
+      "devices": 60,
+      "wires": 79,
+      "crossings": 0
+    },
+    {
+      "index": 50,
+      "name": "0050",
+      "topologyId": "topo-f924b83ef7",
+      "devices": 60,
+      "wires": 79,
+      "crossings": 0
+    },
+    {
+      "index": 51,
+      "name": "0051",
+      "topologyId": "topo-cd389c882b",
+      "devices": 155,
+      "wires": 209,
+      "crossings": 5
+    },
+    {
+      "index": 52,
+      "name": "0052",
+      "topologyId": "topo-cd389c882b",
+      "devices": 155,
+      "wires": 209,
+      "crossings": 3
+    },
+    {
+      "index": 53,
+      "name": "0053",
+      "topologyId": "topo-0943e75a3d",
+      "devices": 164,
+      "wires": 226,
+      "crossings": 3
+    },
+    {
+      "index": 54,
+      "name": "0054",
+      "topologyId": "topo-4317e8ecde",
+      "devices": 187,
+      "wires": 253,
+      "crossings": 1
+    },
+    {
+      "index": 55,
+      "name": "0055",
+      "topologyId": "topo-c79289b3ec",
+      "devices": 107,
+      "wires": 154,
+      "crossings": 2
+    },
+    {
+      "index": 56,
+      "name": "0056",
+      "topologyId": "topo-c79289b3ec",
+      "devices": 107,
+      "wires": 154,
+      "crossings": 2
+    },
+    {
+      "index": 57,
+      "name": "0057",
+      "topologyId": "topo-b90f57238d",
+      "devices": 111,
+      "wires": 149,
+      "crossings": 0
+    },
+    {
+      "index": 58,
+      "name": "0058",
+      "topologyId": "topo-b90f57238d",
+      "devices": 111,
+      "wires": 149,
+      "crossings": 0
+    },
+    {
+      "index": 59,
+      "name": "0059",
+      "topologyId": "topo-0d5dd971b3",
+      "devices": 168,
+      "wires": 226,
+      "crossings": 3
+    },
+    {
+      "index": 60,
+      "name": "0060",
+      "topologyId": "topo-0d5dd971b3",
+      "devices": 168,
+      "wires": 226,
+      "crossings": 3
+    },
+    {
+      "index": 61,
+      "name": "0061",
+      "topologyId": "topo-e23b615a14",
+      "devices": 130,
+      "wires": 176,
+      "crossings": 0
+    },
+    {
+      "index": 62,
+      "name": "0062",
+      "topologyId": "topo-e23b615a14",
+      "devices": 130,
+      "wires": 176,
+      "crossings": 0
+    },
+    {
+      "index": 63,
+      "name": "0063",
+      "topologyId": "topo-c052e6c7d0",
+      "devices": 103,
+      "wires": 145,
+      "crossings": 1
+    },
+    {
+      "index": 64,
+      "name": "0064",
+      "topologyId": "topo-c052e6c7d0",
+      "devices": 103,
+      "wires": 145,
+      "crossings": 0
+    },
+    {
+      "index": 65,
+      "name": "0065",
+      "topologyId": "topo-cd433bb6b0",
+      "devices": 56,
+      "wires": 80,
+      "crossings": 1
+    },
+    {
+      "index": 66,
+      "name": "0066",
+      "topologyId": "topo-cd433bb6b0",
+      "devices": 56,
+      "wires": 80,
+      "crossings": 1
+    },
+    {
+      "index": 67,
+      "name": "0067",
+      "topologyId": "topo-8b7d3138ec",
+      "devices": 98,
+      "wires": 136,
+      "crossings": 1
+    },
+    {
+      "index": 68,
+      "name": "0068",
+      "topologyId": "topo-8b7d3138ec",
+      "devices": 98,
+      "wires": 136,
+      "crossings": 2
+    },
+    {
+      "index": 69,
+      "name": "0069",
+      "topologyId": "topo-f0c9bf3150",
+      "devices": 171,
+      "wires": 230,
+      "crossings": 2
+    },
+    {
+      "index": 70,
+      "name": "0070",
+      "topologyId": "topo-f0c9bf3150",
+      "devices": 171,
+      "wires": 230,
+      "crossings": 2
+    },
+    {
+      "index": 71,
+      "name": "0071",
+      "topologyId": "topo-02044eacbf",
+      "devices": 59,
+      "wires": 79,
+      "crossings": 0
+    },
+    {
+      "index": 72,
+      "name": "0072",
+      "topologyId": "topo-02044eacbf",
+      "devices": 59,
+      "wires": 79,
+      "crossings": 0
+    },
+    {
+      "index": 73,
+      "name": "0073",
+      "topologyId": "topo-521b2a8f99",
+      "devices": 158,
+      "wires": 217,
+      "crossings": 1
+    },
+    {
+      "index": 74,
+      "name": "0074",
+      "topologyId": "topo-521b2a8f99",
+      "devices": 158,
+      "wires": 217,
+      "crossings": 1
+    },
+    {
+      "index": 75,
+      "name": "0075",
+      "topologyId": "topo-784c4cf4fd",
+      "devices": 183,
+      "wires": 243,
+      "crossings": 4
+    },
+    {
+      "index": 76,
+      "name": "0076",
+      "topologyId": "topo-70f0b384e2",
+      "devices": 112,
+      "wires": 152,
+      "crossings": 0
+    },
+    {
+      "index": 77,
+      "name": "0077",
+      "topologyId": "topo-70f0b384e2",
+      "devices": 112,
+      "wires": 152,
+      "crossings": 0
+    },
+    {
+      "index": 78,
+      "name": "0078",
+      "topologyId": "topo-c4af8938b2",
+      "devices": 167,
+      "wires": 231,
+      "crossings": 2
+    },
+    {
+      "index": 79,
+      "name": "0079",
+      "topologyId": "topo-c4af8938b2",
+      "devices": 167,
+      "wires": 231,
+      "crossings": 2
+    },
+    {
+      "index": 80,
+      "name": "0080",
+      "topologyId": "topo-628f88964d",
+      "devices": 181,
+      "wires": 245,
+      "crossings": 2
+    },
+    {
+      "index": 81,
+      "name": "0081",
+      "topologyId": "topo-628f88964d",
+      "devices": 181,
+      "wires": 245,
+      "crossings": 2
+    },
+    {
+      "index": 82,
+      "name": "0082",
+      "topologyId": "topo-b0724ae1cf",
+      "devices": 129,
+      "wires": 172,
+      "crossings": 0
+    },
+    {
+      "index": 83,
+      "name": "0083",
+      "topologyId": "topo-b0724ae1cf",
+      "devices": 129,
+      "wires": 172,
+      "crossings": 0
+    },
+    {
+      "index": 84,
+      "name": "0084",
+      "topologyId": "topo-b6bf429aa8",
+      "devices": 118,
+      "wires": 160,
+      "crossings": 2
+    },
+    {
+      "index": 85,
+      "name": "0085",
+      "topologyId": "topo-b6bf429aa8",
+      "devices": 118,
+      "wires": 160,
+      "crossings": 2
+    },
+    {
+      "index": 86,
+      "name": "0086",
+      "topologyId": "topo-137f2f3076",
+      "devices": 95,
+      "wires": 131,
+      "crossings": 1
+    },
+    {
+      "index": 87,
+      "name": "0087",
+      "topologyId": "topo-137f2f3076",
+      "devices": 95,
+      "wires": 131,
+      "crossings": 1
+    },
+    {
+      "index": 88,
+      "name": "0088",
+      "topologyId": "topo-0a84c6f8ea",
+      "devices": 176,
+      "wires": 241,
+      "crossings": 4
+    },
+    {
+      "index": 89,
+      "name": "0089",
+      "topologyId": "topo-8f9cf814b0",
+      "devices": 140,
+      "wires": 195,
+      "crossings": 1
+    },
+    {
+      "index": 90,
+      "name": "0090",
+      "topologyId": "topo-8f9cf814b0",
+      "devices": 140,
+      "wires": 195,
+      "crossings": 1
+    },
+    {
+      "index": 91,
+      "name": "0091",
+      "topologyId": "topo-7b0f7954b2",
+      "devices": 131,
+      "wires": 183,
+      "crossings": 3
+    },
+    {
+      "index": 92,
+      "name": "0092",
+      "topologyId": "topo-7b0f7954b2",
+      "devices": 131,
+      "wires": 183,
+      "crossings": 3
+    },
+    {
+      "index": 93,
+      "name": "0093",
+      "topologyId": "topo-8d7b5bc74b",
+      "devices": 177,
+      "wires": 238,
+      "crossings": 2
+    },
+    {
+      "index": 94,
+      "name": "0094",
+      "topologyId": "topo-8d7b5bc74b",
+      "devices": 177,
+      "wires": 238,
+      "crossings": 2
+    },
+    {
+      "index": 95,
+      "name": "0095",
+      "topologyId": "topo-64d7c5d932",
+      "devices": 171,
+      "wires": 235,
+      "crossings": 1
+    },
+    {
+      "index": 96,
+      "name": "0096",
+      "topologyId": "topo-64d7c5d932",
+      "devices": 171,
+      "wires": 235,
+      "crossings": 1
+    },
+    {
+      "index": 97,
+      "name": "0097",
+      "topologyId": "topo-850e7c3d91",
+      "devices": 150,
+      "wires": 207,
+      "crossings": 2
+    },
+    {
+      "index": 98,
+      "name": "0098",
+      "topologyId": "topo-850e7c3d91",
+      "devices": 150,
+      "wires": 207,
+      "crossings": 2
+    },
+    {
+      "index": 99,
+      "name": "0099",
+      "topologyId": "topo-6d2caceb2d",
+      "devices": 146,
+      "wires": 198,
+      "crossings": 4
+    }
+  ]
+}

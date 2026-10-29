@@ -1,0 +1,54 @@
+{
+  "pageId": "E18.9",
+  "timingsSec": {
+    "scale_normalizer": 0.347,
+    "drawing_area": 0.606,
+    "symbol_detector": 11.073,
+    "text_reader": 62.02,
+    "orientation_estimator": 0.152,
+    "wire_extractor": 2.203,
+    "junction_classifier": 0.137,
+    "label_matcher": 0.005,
+    "graph_assembler": 0.483
+  },
+  "failedStages": {},
+  "pxPerMm": 12.003400762760322,
+  "pxPerMmSource": "pdf_page_size",
+  "scaleFromOriginal": 1.0,
+  "medianStrokePx": 3.050980567932129,
+  "counts": {
+    "devices": 119,
+    "busbars": 6,
+    "wires": 474,
+    "nodes": 156,
+    "nets": 188,
+    "texts": 177,
+    "bays": 21
+  },
+  "devicesByClass": {
+    "disconnector_open": 17,
+    "ground_symbol": 5,
+    "spark_gap": 10,
+    "line_feeder_arrow": 9,
+    "voltage_transformer": 5,
+    "earthing_switch_open": 15,
+    "current_transformer": 24,
+    "circuit_breaker": 11,
+    "surge_arrester": 5,
+    "transformer_2w": 1,
+    "cable_termination": 4,
+    "coupling_capacitor": 5,
+    "drawout_breaker": 6,
+    "fuse_disconnector": 1,
+    "shunt_capacitor": 1
+  },
+  "issuesByType": {
+    "ambiguous_orientation": 7,
+    "dangling_wire_end": 367,
+    "ambiguous_port_connection": 63,
+    "unconnected_port": 26,
+    "missing_label": 9,
+    "busbar_suffix_mismatch": 4,
+    "bay_chain_break": 8
+  }
+}

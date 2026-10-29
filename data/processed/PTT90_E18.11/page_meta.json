@@ -1,0 +1,26 @@
+{
+  "id": "PTT90_E18.11",
+  "sourceFile": "data/raw_pdfs/typeB/PTT90_KP_371_377_E18.11.pdf",
+  "sourceSha256": "221485c2e71ced457bf4db20c153d6badd45c512f060b99e94853d407e8960b8",
+  "pageIndex": 3,
+  "drawingType": "B",
+  "width": 2591,
+  "height": 3353,
+  "unit": "px",
+  "origin": "top-left",
+  "pxPerMm": 12.0,
+  "pxPerMmSource": "pdf_page_size",
+  "pageSizeMm": [
+    215.9,
+    279.4
+  ],
+  "pdfPageSizePt": [
+    612.0,
+    792.0
+  ],
+  "renderSizePx": [
+    2591,
+    3353
+  ],
+  "rotationDeg": 0
+}

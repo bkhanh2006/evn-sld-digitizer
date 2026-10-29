@@ -1,0 +1,10 @@
+{
+ "E18.9": {
+  "mAP50": 0.487,
+  "codeExactMatch": 0.786,
+  "labelF1": 0.594,
+  "wireDice": 0.787,
+  "terminalPairF1": 0.499
+ },
+ "_note": "Baseline GĐ3 (29/10/2026), pipeline mặc định, đáp án data/real_gold/dev/E18.9_graph.json bản bán tự động. Chỉ số không chứa nội dung bản vẽ."
+}

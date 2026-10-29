@@ -1,0 +1,954 @@
+{
+ "meta": {
+  "split": "synthetic/v001_n100:val",
+  "text_reader": "ground_truth",
+  "config": "inference_config.yaml",
+  "thời gian trung bình / bản vẽ": "40.4 s"
+ },
+ "aggregate": {
+  "nDrawings": 10,
+  "level1_symbols": {
+   "mAP50": 0.9447576434792888,
+   "mAP50_95": 0.7656848595198393,
+   "apPerClass50": {
+    "disconnector_closed": 0.7181411795526607,
+    "circuit_breaker": 1.0,
+    "current_transformer": 1.0,
+    "earthing_switch_open": 0.9801980198019802,
+    "voltage_transformer": 1.0,
+    "line_feeder_arrow": 1.0,
+    "disconnector_open": 1.0,
+    "earthing_switch_closed": 0.8910891089108911,
+    "surge_arrester": 1.0,
+    "transformer_3w": 1.0,
+    "cable_termination": 0.9060831199502947,
+    "coupling_capacitor": 0.9778081256401522,
+    "ground_symbol": 0.8408225437928404,
+    "drawout_breaker": 0.8910891089108911,
+    "transformer_2w": 1.0,
+    "fuse_disconnector": 0.9108910891089109,
+    "spark_gap": NaN
+   },
+   "recallPerClass50": {
+    "disconnector_closed": 0.7378640776699029,
+    "circuit_breaker": 1.0,
+    "current_transformer": 1.0,
+    "earthing_switch_open": 0.9865319865319865,
+    "voltage_transformer": 1.0,
+    "line_feeder_arrow": 1.0,
+    "disconnector_open": 1.0,
+    "earthing_switch_closed": 0.8974358974358975,
+    "surge_arrester": 1.0,
+    "transformer_3w": 1.0,
+    "cable_termination": 0.9183673469387755,
+    "coupling_capacitor": 1.0,
+    "ground_symbol": 0.8571428571428571,
+    "drawout_breaker": 0.8947368421052632,
+    "transformer_2w": 1.0,
+    "fuse_disconnector": 0.9166666666666666,
+    "spark_gap": NaN
+   },
+   "nGtPerClass": {
+    "disconnector_closed": 103,
+    "circuit_breaker": 88,
+    "current_transformer": 164,
+    "earthing_switch_open": 297,
+    "voltage_transformer": 64,
+    "line_feeder_arrow": 98,
+    "disconnector_open": 101,
+    "earthing_switch_closed": 39,
+    "surge_arrester": 66,
+    "transformer_3w": 8,
+    "cable_termination": 98,
+    "coupling_capacitor": 28,
+    "ground_symbol": 14,
+    "drawout_breaker": 76,
+    "transformer_2w": 16,
+    "fuse_disconnector": 24,
+    "spark_gap": 0
+   },
+   "nPredPerClass": {
+    "disconnector_closed": 84,
+    "circuit_breaker": 88,
+    "current_transformer": 164,
+    "earthing_switch_open": 306,
+    "voltage_transformer": 64,
+    "line_feeder_arrow": 157,
+    "disconnector_open": 149,
+    "earthing_switch_closed": 37,
+    "surge_arrester": 66,
+    "transformer_3w": 8,
+    "cable_termination": 131,
+    "coupling_capacitor": 29,
+    "ground_symbol": 15,
+    "drawout_breaker": 68,
+    "transformer_2w": 16,
+    "fuse_disconnector": 22,
+    "spark_gap": 23
+   },
+   "orientationAccuracy": 0.9493243243243243,
+   "orientationN": 592,
+   "typeErrors": 10
+  },
+  "level2_text_labels": {
+   "codeExactMatch": 1.0,
+   "codeTotal": 1094,
+   "allTextExactMatch": 0.9872,
+   "labelPairs": {
+    "precision": 0.9989939637826962,
+    "recall": 0.9493307839388145,
+    "f1": 0.9735294117647059,
+    "tp": 993,
+    "nPred": 994,
+    "nGt": 1046
+   },
+   "deviceCodeAccuracy": 0.9493307839388145
+  },
+  "level3_wires": {
+   "dice": 0.7688780529535053,
+   "iou": 0.6245344377119351,
+   "falseSplits": 96,
+   "falseMerges": 20,
+   "gtNets": 456,
+   "junctionTypeAccuracy": 0.9902912621359223,
+   "junctionRecall": 0.7595870206489675,
+   "crossingRecall": 0.5833333333333334,
+   "crossingGt": 12
+  },
+  "level4_topology": {
+   "terminalPair": {
+    "precision": 0.7036119711042311,
+    "recall": 0.7475877192982456,
+    "f1": 0.7249335459861775,
+    "tp": 3409,
+    "nPred": 4845,
+    "nGt": 4560
+   },
+   "bayFullyCorrect": 0.5714285714285714,
+   "baysCorrect": 120,
+   "baysTotal": 210
+  }
+ },
+ "perDrawing": {
+  "v001_n100_0005": {
+   "deviceMatch": {
+    "matched": 151,
+    "pred": 165,
+    "gt": 162,
+    "typeErrors": 0
+   },
+   "orientation": {
+    "ok": 74,
+    "n": 78
+   },
+   "text": {
+    "codeExact": 135,
+    "codeTotal": 135,
+    "allExact": 151,
+    "allTotal": 152
+   },
+   "label": {
+    "labelTp": 116,
+    "labelPred": 116,
+    "labelGt": 129,
+    "deviceCodeOk": 116,
+    "deviceCodeTotal": 129
+   },
+   "wire": {
+    "maskInter": 36945,
+    "maskPred": 53508,
+    "maskGt": 48599,
+    "dice": 0.7236526388984105,
+    "iou": 0.5669715478346276
+   },
+   "netSplitMerge": {
+    "falseSplits": 11,
+    "falseMerges": 5,
+    "gtNets": 55,
+    "predNets": 70
+   },
+   "junction": {
+    "nodeMatched": 67,
+    "nodeTypeOk": 67,
+    "nodeGt": 87,
+    "nodePred": 132,
+    "crossGt": 2,
+    "crossHit": 2
+   },
+   "terminalPair": {
+    "precision": 0.449746192893401,
+    "recall": 0.7358803986710963,
+    "f1": 0.5582860743541272,
+    "tp": 443,
+    "nPred": 985,
+    "nGt": 602
+   },
+   "bays": {
+    "correct": 8,
+    "total": 26,
+    "ratio": 0.3076923076923077,
+    "details": {
+     "bay-171": "cặp dev-171-cb/p1–dev-171-es_cb/p1 sai đấu nối",
+     "bay-175": "cặp dev-175-cb/p1–dev-175-es_cb/p1 sai đấu nối",
+     "bay-TUC11": "ok",
+     "bay-131": "dev-131-tx: loại/mã transformer/None ≠ transformer/T1",
+     "bay-112": "thiếu dev-112-dcl_b",
+     "bay-172": "cặp dev-172-cb/p1–dev-172-es_cb/p1 sai đấu nối",
+     "bay-174": "cặp dev-174-dcl_line/p1–dev-174-cc1/p2 sai đấu nối",
+     "bay-TUC12": "ok",
+     "bay-132": "dev-132-tx: loại/mã transformer/None ≠ transformer/T2",
+     "bay-431": "thiếu dev-431-cb",
+     "bay-441": "ok",
+     "bay-471": "thiếu dev-471-cb",
+     "bay-TUC41": "thiếu dev-TUC41-fuse",
+     "bay-412": "cặp dev-412-dcl_a/p2–dev-412-es_a/p1 sai đấu nối",
+     "bay-432": "thiếu dev-432-cb",
+     "bay-472": "ok",
+     "bay-474": "thiếu dev-474-cb",
+     "bay-TUC42": "ok",
+     "bay-371": "thiếu dev-371-cb",
+     "bay-373": "thiếu dev-373-cb",
+     "bay-331": "thiếu dev-331-cb",
+     "bay-TUC31": "thiếu dev-TUC31-fuse",
+     "bay-312": "ok",
+     "bay-372": "thiếu dev-372-cb",
+     "bay-374": "ok",
+     "bay-332": "ok"
+    }
+   }
+  },
+  "v001_n100_0006": {
+   "deviceMatch": {
+    "matched": 160,
+    "pred": 163,
+    "gt": 162,
+    "typeErrors": 3
+   },
+   "orientation": {
+    "ok": 74,
+    "n": 77
+   },
+   "text": {
+    "codeExact": 135,
+    "codeTotal": 135,
+    "allExact": 151,
+    "allTotal": 152
+   },
+   "label": {
+    "labelTp": 122,
+    "labelPred": 122,
+    "labelGt": 129,
+    "deviceCodeOk": 122,
+    "deviceCodeTotal": 129
+   },
+   "wire": {
+    "maskInter": 46874,
+    "maskPred": 57282,
+    "maskGt": 56810,
+    "dice": 0.8216877607544788,
+    "iou": 0.6973429736082597
+   },
+   "netSplitMerge": {
+    "falseSplits": 1,
+    "falseMerges": 2,
+    "gtNets": 55,
+    "predNets": 57
+   },
+   "junction": {
+    "nodeMatched": 88,
+    "nodeTypeOk": 86,
+    "nodeGt": 88,
+    "nodePred": 88,
+    "crossGt": 3,
+    "crossHit": 1
+   },
+   "terminalPair": {
+    "precision": 0.7959183673469388,
+    "recall": 0.9069767441860465,
+    "f1": 0.8478260869565216,
+    "tp": 546,
+    "nPred": 686,
+    "nGt": 602
+   },
+   "bays": {
+    "correct": 22,
+    "total": 26,
+    "ratio": 0.8461538461538461,
+    "details": {
+     "bay-171": "ok",
+     "bay-175": "ok",
+     "bay-TUC11": "ok",
+     "bay-131": "dev-131-tx: loại/mã transformer/None ≠ transformer/T1",
+     "bay-112": "dev-112-dcl_a: loại/mã line_terminal/None ≠ disconnector/112-1",
+     "bay-172": "ok",
+     "bay-174": "ok",
+     "bay-TUC12": "ok",
+     "bay-132": "dev-132-tx: loại/mã transformer/None ≠ transformer/T2",
+     "bay-431": "ok",
+     "bay-441": "ok",
+     "bay-471": "ok",
+     "bay-TUC41": "ok",
+     "bay-412": "ok",
+     "bay-432": "ok",
+     "bay-472": "ok",
+     "bay-474": "ok",
+     "bay-TUC42": "ok",
+     "bay-371": "ok",
+     "bay-373": "ok",
+     "bay-331": "ok",
+     "bay-TUC31": "ok",
+     "bay-312": "dev-312-dcl_a: loại/mã line_terminal/None ≠ disconnector/312-1",
+     "bay-372": "ok",
+     "bay-374": "ok",
+     "bay-332": "ok"
+    }
+   }
+  },
+  "v001_n100_0020": {
+   "deviceMatch": {
+    "matched": 123,
+    "pred": 137,
+    "gt": 127,
+    "typeErrors": 3
+   },
+   "orientation": {
+    "ok": 56,
+    "n": 59
+   },
+   "text": {
+    "codeExact": 108,
+    "codeTotal": 108,
+    "allExact": 123,
+    "allTotal": 126
+   },
+   "label": {
+    "labelTp": 97,
+    "labelPred": 97,
+    "labelGt": 104,
+    "deviceCodeOk": 97,
+    "deviceCodeTotal": 104
+   },
+   "wire": {
+    "maskInter": 27451,
+    "maskPred": 33921,
+    "maskGt": 34829,
+    "dice": 0.7985745454545454,
+    "iou": 0.6646892176566018
+   },
+   "netSplitMerge": {
+    "falseSplits": 7,
+    "falseMerges": 2,
+    "gtNets": 44,
+    "predNets": 65
+   },
+   "junction": {
+    "nodeMatched": 55,
+    "nodeTypeOk": 55,
+    "nodeGt": 66,
+    "nodePred": 59,
+    "crossGt": 0,
+    "crossHit": 0
+   },
+   "terminalPair": {
+    "precision": 0.8344519015659956,
+    "recall": 0.8307349665924276,
+    "f1": 0.8325892857142857,
+    "tp": 373,
+    "nPred": 447,
+    "nGt": 449
+   },
+   "bays": {
+    "correct": 12,
+    "total": 22,
+    "ratio": 0.5454545454545454,
+    "details": {
+     "bay-171": "cặp dev-171-dcl_line/p1–dev-171-es_line/p1 sai đấu nối",
+     "bay-173": "dev-173-dcl_bus: loại/mã spark_gap/None ≠ disconnector/173-1",
+     "bay-175": "thiếu dev-175-dcl_bus",
+     "bay-TUC11": "cặp dev-TUC11-dcl/p2–dev-TUC11-es/p1 sai đấu nối",
+     "bay-131": "thiếu dev-131-es_tx",
+     "bay-112": "dev-112-dcl_a: loại/mã line_terminal/None ≠ disconnector/112-1",
+     "bay-172": "thiếu dev-172-dcl_bus",
+     "bay-174": "cặp dev-174-dcl_line/p1–dev-174-es_line/p1 sai đấu nối",
+     "bay-TUC12": "ok",
+     "bay-132": "thiếu dev-132-es_tx",
+     "bay-431": "ok",
+     "bay-441": "ok",
+     "bay-471": "ok",
+     "bay-473": "ok",
+     "bay-475": "cặp dev-475-cb/p2–dev-475-es_line/p1 sai đấu nối",
+     "bay-TUC41": "ok",
+     "bay-412": "ok",
+     "bay-432": "ok",
+     "bay-472": "ok",
+     "bay-474": "ok",
+     "bay-476": "ok",
+     "bay-TUC42": "ok"
+    }
+   }
+  },
+  "v001_n100_0021": {
+   "deviceMatch": {
+    "matched": 118,
+    "pred": 130,
+    "gt": 127,
+    "typeErrors": 0
+   },
+   "orientation": {
+    "ok": 57,
+    "n": 61
+   },
+   "text": {
+    "codeExact": 108,
+    "codeTotal": 108,
+    "allExact": 123,
+    "allTotal": 126
+   },
+   "label": {
+    "labelTp": 95,
+    "labelPred": 96,
+    "labelGt": 104,
+    "deviceCodeOk": 95,
+    "deviceCodeTotal": 104
+   },
+   "wire": {
+    "maskInter": 28715,
+    "maskPred": 40167,
+    "maskGt": 39413,
+    "dice": 0.7216637346066851,
+    "iou": 0.5645335692519414
+   },
+   "netSplitMerge": {
+    "falseSplits": 7,
+    "falseMerges": 6,
+    "gtNets": 44,
+    "predNets": 55
+   },
+   "junction": {
+    "nodeMatched": 53,
+    "nodeTypeOk": 53,
+    "nodeGt": 66,
+    "nodePred": 53,
+    "crossGt": 0,
+    "crossHit": 0
+   },
+   "terminalPair": {
+    "precision": 0.6783505154639176,
+    "recall": 0.732739420935412,
+    "f1": 0.7044967880085653,
+    "tp": 329,
+    "nPred": 485,
+    "nGt": 449
+   },
+   "bays": {
+    "correct": 13,
+    "total": 22,
+    "ratio": 0.5909090909090909,
+    "details": {
+     "bay-171": "thiếu dev-171-dcl_line",
+     "bay-173": "thiếu dev-173-dcl_bus",
+     "bay-175": "thiếu dev-175-dcl_line",
+     "bay-TUC11": "thiếu dev-TUC11-dcl",
+     "bay-131": "thiếu dev-131-dcl_tx",
+     "bay-112": "thiếu dev-112-dcl_b",
+     "bay-172": "thiếu dev-172-dcl_bus",
+     "bay-174": "ok",
+     "bay-TUC12": "thiếu dev-TUC12-dcl",
+     "bay-132": "ok",
+     "bay-431": "ok",
+     "bay-441": "cặp dev-441-cb/p2–dev-441-es/p1 sai đấu nối",
+     "bay-471": "ok",
+     "bay-473": "ok",
+     "bay-475": "ok",
+     "bay-TUC41": "ok",
+     "bay-412": "ok",
+     "bay-432": "ok",
+     "bay-472": "ok",
+     "bay-474": "ok",
+     "bay-476": "ok",
+     "bay-TUC42": "ok"
+    }
+   }
+  },
+  "v001_n100_0028": {
+   "deviceMatch": {
+    "matched": 105,
+    "pred": 128,
+    "gt": 111,
+    "typeErrors": 1
+   },
+   "orientation": {
+    "ok": 53,
+    "n": 53
+   },
+   "text": {
+    "codeExact": 104,
+    "codeTotal": 104,
+    "allExact": 113,
+    "allTotal": 114
+   },
+   "label": {
+    "labelTp": 94,
+    "labelPred": 94,
+    "labelGt": 98,
+    "deviceCodeOk": 94,
+    "deviceCodeTotal": 98
+   },
+   "wire": {
+    "maskInter": 27841,
+    "maskPred": 36292,
+    "maskGt": 38953,
+    "dice": 0.7400093029437171,
+    "iou": 0.587313306893933
+   },
+   "netSplitMerge": {
+    "falseSplits": 10,
+    "falseMerges": 1,
+    "gtNets": 41,
+    "predNets": 75
+   },
+   "junction": {
+    "nodeMatched": 42,
+    "nodeTypeOk": 40,
+    "nodeGt": 63,
+    "nodePred": 43,
+    "crossGt": 2,
+    "crossHit": 0
+   },
+   "terminalPair": {
+    "precision": 0.7171717171717171,
+    "recall": 0.5406091370558376,
+    "f1": 0.6164978292329956,
+    "tp": 213,
+    "nPred": 297,
+    "nGt": 394
+   },
+   "bays": {
+    "correct": 11,
+    "total": 18,
+    "ratio": 0.6111111111111112,
+    "details": {
+     "bay-171": "ok",
+     "bay-173": "ok",
+     "bay-TUC11": "ok",
+     "bay-131": "dev-131-tx: loại/mã transformer/None ≠ transformer/T1",
+     "bay-112": "thiếu dev-112-dcl_b",
+     "bay-172": "ok",
+     "bay-TUC12": "ok",
+     "bay-132": "dev-132-tx: loại/mã transformer/None ≠ transformer/T2",
+     "bay-431": "ok",
+     "bay-412": "ok",
+     "bay-432": "thiếu dev-432-cable",
+     "bay-TUC42": "ok",
+     "bay-371": "thiếu dev-371-cable",
+     "bay-331": "ok",
+     "bay-TUC31": "ok",
+     "bay-312": "thiếu dev-312-dcl_a",
+     "bay-332": "dev-332-cable: loại/mã ground/None ≠ cable_termination/None",
+     "bay-TUC32": "ok"
+    }
+   }
+  },
+  "v001_n100_0029": {
+   "deviceMatch": {
+    "matched": 108,
+    "pred": 144,
+    "gt": 111,
+    "typeErrors": 1
+   },
+   "orientation": {
+    "ok": 49,
+    "n": 50
+   },
+   "text": {
+    "codeExact": 104,
+    "codeTotal": 104,
+    "allExact": 113,
+    "allTotal": 114
+   },
+   "label": {
+    "labelTp": 93,
+    "labelPred": 93,
+    "labelGt": 98,
+    "deviceCodeOk": 93,
+    "deviceCodeTotal": 98
+   },
+   "wire": {
+    "maskInter": 54109,
+    "maskPred": 61784,
+    "maskGt": 66693,
+    "dice": 0.8423141885317995,
+    "iou": 0.7275844449225474
+   },
+   "netSplitMerge": {
+    "falseSplits": 10,
+    "falseMerges": 0,
+    "gtNets": 41,
+    "predNets": 87
+   },
+   "junction": {
+    "nodeMatched": 35,
+    "nodeTypeOk": 35,
+    "nodeGt": 63,
+    "nodePred": 60,
+    "crossGt": 2,
+    "crossHit": 2
+   },
+   "terminalPair": {
+    "precision": 0.6572890025575447,
+    "recall": 0.6522842639593909,
+    "f1": 0.6547770700636943,
+    "tp": 257,
+    "nPred": 391,
+    "nGt": 394
+   },
+   "bays": {
+    "correct": 13,
+    "total": 18,
+    "ratio": 0.7222222222222222,
+    "details": {
+     "bay-171": "ok",
+     "bay-173": "ok",
+     "bay-TUC11": "ok",
+     "bay-131": "thiếu dev-131-es_tx",
+     "bay-112": "ok",
+     "bay-172": "cặp dev-172-dcl_line/p1–dev-172-vt/p1 sai đấu nối",
+     "bay-TUC12": "ok",
+     "bay-132": "thiếu dev-132-es_tx",
+     "bay-431": "ok",
+     "bay-412": "ok",
+     "bay-432": "ok",
+     "bay-TUC42": "dev-TUC42-es: loại/mã spark_gap/None ≠ earthing_switch/TUC42-24",
+     "bay-371": "ok",
+     "bay-331": "cặp dev-331-dcl_tx/p1–dev-331-es_tx/p1 sai đấu nối",
+     "bay-TUC31": "ok",
+     "bay-312": "ok",
+     "bay-332": "ok",
+     "bay-TUC32": "ok"
+    }
+   }
+  },
+  "v001_n100_0036": {
+   "deviceMatch": {
+    "matched": 104,
+    "pred": 122,
+    "gt": 109,
+    "typeErrors": 1
+   },
+   "orientation": {
+    "ok": 44,
+    "n": 47
+   },
+   "text": {
+    "codeExact": 90,
+    "codeTotal": 90,
+    "allExact": 104,
+    "allTotal": 105
+   },
+   "label": {
+    "labelTp": 80,
+    "labelPred": 80,
+    "labelGt": 86,
+    "deviceCodeOk": 80,
+    "deviceCodeTotal": 86
+   },
+   "wire": {
+    "maskInter": 26504,
+    "maskPred": 35253,
+    "maskGt": 36895,
+    "dice": 0.7347119809280922,
+    "iou": 0.5806677767066866
+   },
+   "netSplitMerge": {
+    "falseSplits": 10,
+    "falseMerges": 3,
+    "gtNets": 41,
+    "predNets": 64
+   },
+   "junction": {
+    "nodeMatched": 44,
+    "nodeTypeOk": 44,
+    "nodeGt": 55,
+    "nodePred": 44,
+    "crossGt": 1,
+    "crossHit": 1
+   },
+   "terminalPair": {
+    "precision": 0.7559681697612732,
+    "recall": 0.776566757493188,
+    "f1": 0.7661290322580646,
+    "tp": 285,
+    "nPred": 377,
+    "nGt": 367
+   },
+   "bays": {
+    "correct": 8,
+    "total": 18,
+    "ratio": 0.4444444444444444,
+    "details": {
+     "bay-171": "thiếu dev-171-dcl_line",
+     "bay-173": "cặp dev-173-cb/p1–dev-173-es_cb/p1 sai đấu nối",
+     "bay-TUC11": "cặp dev-TUC11-dcl/p2–dev-TUC11-es/p1 sai đấu nối",
+     "bay-131": "cặp dev-131-dcl_tx/p2–dev-131-es_tx/p1 sai đấu nối",
+     "bay-112": "dev-112-dcl_a: loại/mã spark_gap/None ≠ disconnector/112-1",
+     "bay-172": "thiếu dev-172-dcl_bus",
+     "bay-132": "thiếu dev-132-es_tx",
+     "bay-431": "ok",
+     "bay-471": "thiếu dev-471-dcl_bus",
+     "bay-473": "ok",
+     "bay-475": "ok",
+     "bay-TUC41": "ok",
+     "bay-412": "cặp dev-412-cb/p1–dev-412-es_b/p1 sai đấu nối",
+     "bay-432": "ok",
+     "bay-472": "cặp dev-472-cb/p2–dev-472-es_line/p1 sai đấu nối",
+     "bay-474": "ok",
+     "bay-476": "ok",
+     "bay-TUC42": "ok"
+    }
+   }
+  },
+  "v001_n100_0037": {
+   "deviceMatch": {
+    "matched": 107,
+    "pred": 148,
+    "gt": 109,
+    "typeErrors": 1
+   },
+   "orientation": {
+    "ok": 41,
+    "n": 47
+   },
+   "text": {
+    "codeExact": 90,
+    "codeTotal": 90,
+    "allExact": 104,
+    "allTotal": 105
+   },
+   "label": {
+    "labelTp": 85,
+    "labelPred": 85,
+    "labelGt": 86,
+    "deviceCodeOk": 85,
+    "deviceCodeTotal": 86
+   },
+   "wire": {
+    "maskInter": 50481,
+    "maskPred": 61163,
+    "maskGt": 67942,
+    "dice": 0.7820146392471244,
+    "iou": 0.6420558608058609
+   },
+   "netSplitMerge": {
+    "falseSplits": 14,
+    "falseMerges": 0,
+    "gtNets": 41,
+    "predNets": 97
+   },
+   "junction": {
+    "nodeMatched": 26,
+    "nodeTypeOk": 26,
+    "nodeGt": 54,
+    "nodePred": 62,
+    "crossGt": 0,
+    "crossHit": 0
+   },
+   "terminalPair": {
+    "precision": 0.5880829015544041,
+    "recall": 0.6185286103542235,
+    "f1": 0.602921646746348,
+    "tp": 227,
+    "nPred": 386,
+    "nGt": 367
+   },
+   "bays": {
+    "correct": 10,
+    "total": 18,
+    "ratio": 0.5555555555555556,
+    "details": {
+     "bay-171": "cặp dev-171-dcl_line/p1–dev-171-cc1/p1 sai đấu nối",
+     "bay-173": "cặp dev-173-cb/p1–dev-173-es_cb/p1 sai đấu nối",
+     "bay-TUC11": "ok",
+     "bay-131": "thiếu dev-131-cable_lv",
+     "bay-112": "ok",
+     "bay-172": "ok",
+     "bay-132": "thiếu dev-132-es_tx",
+     "bay-431": "dev-431-cable: loại/mã coupling_capacitor/None ≠ cable_termination/None",
+     "bay-471": "cặp dev-471-dcl_line/p2–dev-471-es_line/p1 sai đấu nối",
+     "bay-473": "ok",
+     "bay-475": "ok",
+     "bay-TUC41": "ok",
+     "bay-412": "ok",
+     "bay-432": "ok",
+     "bay-472": "cặp dev-472-cb/p2–dev-472-es_line/p1 sai đấu nối",
+     "bay-474": "cặp dev-474-cb/p2–dev-474-es_line/p1 sai đấu nối",
+     "bay-476": "ok",
+     "bay-TUC42": "ok"
+    }
+   }
+  },
+  "v001_n100_0040": {
+   "deviceMatch": {
+    "matched": 130,
+    "pred": 139,
+    "gt": 133,
+    "typeErrors": 0
+   },
+   "orientation": {
+    "ok": 57,
+    "n": 59
+   },
+   "text": {
+    "codeExact": 110,
+    "codeTotal": 110,
+    "allExact": 126,
+    "allTotal": 128
+   },
+   "label": {
+    "labelTp": 105,
+    "labelPred": 105,
+    "labelGt": 106,
+    "deviceCodeOk": 105,
+    "deviceCodeTotal": 106
+   },
+   "wire": {
+    "maskInter": 29060,
+    "maskPred": 38330,
+    "maskGt": 39141,
+    "dice": 0.7502162099366214,
+    "iou": 0.600276796595815
+   },
+   "netSplitMerge": {
+    "falseSplits": 11,
+    "falseMerges": 1,
+    "gtNets": 47,
+    "predNets": 72
+   },
+   "junction": {
+    "nodeMatched": 53,
+    "nodeTypeOk": 52,
+    "nodeGt": 68,
+    "nodePred": 53,
+    "crossGt": 1,
+    "crossHit": 0
+   },
+   "terminalPair": {
+    "precision": 0.8869346733668342,
+    "recall": 0.7542735042735043,
+    "f1": 0.815242494226328,
+    "tp": 353,
+    "nPred": 398,
+    "nGt": 468
+   },
+   "bays": {
+    "correct": 14,
+    "total": 21,
+    "ratio": 0.6666666666666666,
+    "details": {
+     "bay-171": "cặp dev-171-dcl_line/p1–dev-171-es_line/p1 sai đấu nối",
+     "bay-173": "thiếu dev-173-gnd",
+     "bay-175": "cặp dev-175-dcl_line/p1–dev-175-vt/p1 sai đấu nối",
+     "bay-TUC11": "ok",
+     "bay-131": "thiếu dev-131-dcl_bus",
+     "bay-112": "cặp dev-112-dcl_a/p1–dev-112-es_a/p1 sai đấu nối",
+     "bay-172": "thiếu dev-172-gnd",
+     "bay-174": "cặp dev-174-cb/p1–dev-174-es_cb/p1 sai đấu nối",
+     "bay-132": "ok",
+     "bay-471": "ok",
+     "bay-473": "ok",
+     "bay-475": "ok",
+     "bay-477": "ok",
+     "bay-431": "ok",
+     "bay-TUC41": "ok",
+     "bay-412": "ok",
+     "bay-432": "ok",
+     "bay-472": "ok",
+     "bay-474": "ok",
+     "bay-476": "ok",
+     "bay-TUC42": "ok"
+    }
+   }
+  },
+  "v001_n100_0041": {
+   "deviceMatch": {
+    "matched": 133,
+    "pred": 151,
+    "gt": 133,
+    "typeErrors": 0
+   },
+   "orientation": {
+    "ok": 57,
+    "n": 61
+   },
+   "text": {
+    "codeExact": 110,
+    "codeTotal": 110,
+    "allExact": 126,
+    "allTotal": 128
+   },
+   "label": {
+    "labelTp": 106,
+    "labelPred": 106,
+    "labelGt": 106,
+    "deviceCodeOk": 106,
+    "deviceCodeTotal": 106
+   },
+   "wire": {
+    "maskInter": 31532,
+    "maskPred": 42536,
+    "maskGt": 45649,
+    "dice": 0.7151329591200317,
+    "iou": 0.5565812931354033
+   },
+   "netSplitMerge": {
+    "falseSplits": 15,
+    "falseMerges": 0,
+    "gtNets": 47,
+    "predNets": 90
+   },
+   "junction": {
+    "nodeMatched": 52,
+    "nodeTypeOk": 52,
+    "nodeGt": 68,
+    "nodePred": 52,
+    "crossGt": 1,
+    "crossHit": 1
+   },
+   "terminalPair": {
+    "precision": 0.9745547073791349,
+    "recall": 0.8183760683760684,
+    "f1": 0.8896631823461092,
+    "tp": 383,
+    "nPred": 393,
+    "nGt": 468
+   },
+   "bays": {
+    "correct": 9,
+    "total": 21,
+    "ratio": 0.42857142857142855,
+    "details": {
+     "bay-171": "ok",
+     "bay-173": "cặp dev-173-dcl_line/p1–dev-173-es_line/p1 sai đấu nối",
+     "bay-175": "cặp dev-175-cb/p1–dev-175-es_cb/p1 sai đấu nối",
+     "bay-TUC11": "cặp dev-TUC11-dcl/p2–dev-TUC11-es/p1 sai đấu nối",
+     "bay-131": "cặp dev-131-dcl_bus/p2–dev-131-es_bus/p1 sai đấu nối",
+     "bay-112": "cặp dev-112-cb/p1–dev-112-es_b/p1 sai đấu nối",
+     "bay-172": "cặp dev-172-cb/p1–dev-172-es_cb/p1 sai đấu nối",
+     "bay-174": "cặp dev-174-cb/p1–dev-174-es_cb/p1 sai đấu nối",
+     "bay-132": "cặp dev-132-dcl_bus/p2–dev-132-es_bus/p1 sai đấu nối",
+     "bay-471": "ok",
+     "bay-473": "cặp dev-473-dcl_line/p2–dev-473-es_line/p1 sai đấu nối",
+     "bay-475": "ok",
+     "bay-477": "cặp dev-477-cb/p2–dev-477-es_line/p1 sai đấu nối",
+     "bay-431": "ok",
+     "bay-TUC41": "cặp dev-TUC41-fuse/p1–dev-TUC41-cs/p1 sai đấu nối",
+     "bay-412": "cặp dev-412-cb/p1–dev-412-es_b/p1 sai đấu nối",
+     "bay-432": "ok",
+     "bay-472": "ok",
+     "bay-474": "ok",
+     "bay-476": "ok",
+     "bay-TUC42": "ok"
+    }
+   }
+  }
+ }
+}

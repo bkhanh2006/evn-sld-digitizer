@@ -1,0 +1,26 @@
+{
+  "id": "PTT92_E18.12",
+  "sourceFile": "data/raw_pdfs/typeB/PTT92_KP_377_E18.12.pdf",
+  "sourceSha256": "7e63ffe72e68697b1b292764f983f2ab43bd0eb9dad66417f71df46af2eb093e",
+  "pageIndex": 3,
+  "drawingType": "B",
+  "width": 2591,
+  "height": 3353,
+  "unit": "px",
+  "origin": "top-left",
+  "pxPerMm": 12.0,
+  "pxPerMmSource": "pdf_page_size",
+  "pageSizeMm": [
+    215.9,
+    279.4
+  ],
+  "pdfPageSizePt": [
+    612.0,
+    792.0
+  ],
+  "renderSizePx": [
+    2591,
+    3353
+  ],
+  "rotationDeg": 0
+}

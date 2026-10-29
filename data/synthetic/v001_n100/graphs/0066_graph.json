@@ -1,0 +1,7282 @@
+{
+  "schemaVersion": "1.1",
+  "provenance": {
+    "source": "synthetic_gt",
+    "generatorVersion": "0.2.0",
+    "seed": 20261029
+  },
+  "page": {
+    "id": "v001_n100_0066",
+    "sourceFile": "images/0066.png",
+    "width": 3313,
+    "height": 2343,
+    "unit": "px",
+    "origin": "top-left",
+    "pxPerMm": 7.8880952380952385,
+    "pxPerMmSource": "synthetic",
+    "normalizationScale": 1.0
+  },
+  "bays": [
+    {
+      "id": "bay-171",
+      "code": "171",
+      "voltageKv": 110,
+      "kind": "line",
+      "deviceIds": [
+        "dev-171-dcl_bus",
+        "dev-171-es_bus",
+        "dev-171-cb",
+        "dev-171-ct",
+        "dev-171-es_cb",
+        "dev-171-dcl_line",
+        "dev-171-es_line",
+        "dev-171-vt",
+        "dev-171-line"
+      ]
+    },
+    {
+      "id": "bay-173",
+      "code": "173",
+      "voltageKv": 110,
+      "kind": "line",
+      "deviceIds": [
+        "dev-173-dcl_bus",
+        "dev-173-cb",
+        "dev-173-ct",
+        "dev-173-es_cb",
+        "dev-173-dcl_line",
+        "dev-173-es_line",
+        "dev-173-cc1",
+        "dev-173-vt",
+        "dev-173-cc2",
+        "dev-173-gnd",
+        "dev-173-line"
+      ]
+    },
+    {
+      "id": "bay-TUC11",
+      "code": "TUC11",
+      "voltageKv": 110,
+      "kind": "bus_vt",
+      "deviceIds": [
+        "dev-TUC11-dcl",
+        "dev-TUC11-es",
+        "dev-TUC11-cs",
+        "dev-TUC11-vt"
+      ]
+    },
+    {
+      "id": "bay-131",
+      "code": "131",
+      "voltageKv": 110,
+      "kind": "transformer",
+      "deviceIds": [
+        "dev-131-dcl_bus",
+        "dev-131-es_bus",
+        "dev-131-ct",
+        "dev-131-cb",
+        "dev-131-es_cb",
+        "dev-131-dcl_tx",
+        "dev-131-es_tx",
+        "dev-131-cs_hv",
+        "dev-131-tx",
+        "dev-131-cs_mv",
+        "dev-131-cable_mv",
+        "dev-131-cs_lv",
+        "dev-131-cable_lv",
+        "dev-131-es_n",
+        "dev-131-cs_n"
+      ]
+    },
+    {
+      "id": "bay-331",
+      "code": "331",
+      "voltageKv": 35,
+      "kind": "transformer",
+      "deviceIds": [
+        "dev-331-cb",
+        "dev-331-ct",
+        "dev-331-es_tx",
+        "dev-331-cable"
+      ]
+    },
+    {
+      "id": "bay-471",
+      "code": "471",
+      "voltageKv": 22,
+      "kind": "line",
+      "deviceIds": [
+        "dev-471-cb",
+        "dev-471-ct",
+        "dev-471-es_line",
+        "dev-471-cable",
+        "dev-471-line"
+      ]
+    },
+    {
+      "id": "bay-431",
+      "code": "431",
+      "voltageKv": 22,
+      "kind": "transformer",
+      "deviceIds": [
+        "dev-431-cb",
+        "dev-431-ct",
+        "dev-431-es_tx",
+        "dev-431-cable"
+      ]
+    },
+    {
+      "id": "bay-TUC41",
+      "code": "TUC41",
+      "voltageKv": 22,
+      "kind": "bus_vt",
+      "deviceIds": [
+        "dev-TUC41-es",
+        "dev-TUC41-fuse",
+        "dev-TUC41-cs",
+        "dev-TUC41-vt"
+      ]
+    }
+  ],
+  "busbars": [
+    {
+      "id": "bus-C11",
+      "code": "C11",
+      "voltageKv": 110,
+      "labelTextIds": [
+        "txt-0001"
+      ],
+      "polyline": [
+        [
+          349.90199051495193,
+          601.363212406472
+        ],
+        [
+          1492.876969716975,
+          601.363212406472
+        ]
+      ],
+      "strokeWidthPx": 6.12975560861778,
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "bus-C31",
+      "code": "C31",
+      "voltageKv": 35,
+      "labelTextIds": [
+        "txt-0039"
+      ],
+      "polyline": [
+        [
+          3238.942265052834,
+          631.43655574323
+        ],
+        [
+          3238.942265052834,
+          947.1899485698157
+        ]
+      ],
+      "strokeWidthPx": 6.12975560861778,
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "bus-C41",
+      "code": "C41",
+      "voltageKv": 22,
+      "labelTextIds": [
+        "txt-0043"
+      ],
+      "polyline": [
+        [
+          2195.6343083915563,
+          640.8036885969482
+        ],
+        [
+          2967.5293571717684,
+          640.8036885969482
+        ]
+      ],
+      "strokeWidthPx": 6.12975560861778,
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    }
+  ],
+  "texts": [
+    {
+      "id": "txt-0002",
+      "raw": "171-1",
+      "normalized": "171-1",
+      "bbox": [
+        556.5402806623212,
+        553.707104965596,
+        42.73431283459985,
+        12.016414129087716
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-171-dcl_bus"
+      }
+    },
+    {
+      "id": "txt-0003",
+      "raw": "171-15",
+      "normalized": "171-15",
+      "bbox": [
+        417.2495569131171,
+        510.9729166277921,
+        52.02656075639786,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-171-es_bus"
+      }
+    },
+    {
+      "id": "txt-0004",
+      "raw": "171",
+      "normalized": "171",
+      "bbox": [
+        566.4003997099402,
+        468.5100140762571,
+        36.64733703231358,
+        15.818994402437513
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-171-cb"
+      }
+    },
+    {
+      "id": "txt-0005",
+      "raw": "TI171",
+      "normalized": "TI171",
+      "bbox": [
+        563.4423639956544,
+        418.9032847889809,
+        42.73431283459985,
+        12.016414129087716
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-171-ct"
+      }
+    },
+    {
+      "id": "txt-0006",
+      "raw": "171-75",
+      "normalized": "171-75",
+      "bbox": [
+        417.2495569131171,
+        386.0292154987959,
+        52.02656075639786,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-171-es_cb"
+      }
+    },
+    {
+      "id": "txt-0007",
+      "raw": "171-7",
+      "normalized": "171-7",
+      "bbox": [
+        561.4703401861307,
+        345.46760308393584,
+        42.73431283459985,
+        12.016414129087716
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-171-dcl_line"
+      }
+    },
+    {
+      "id": "txt-0008",
+      "raw": "171-76",
+      "normalized": "171-76",
+      "bbox": [
+        417.2495569131171,
+        303.7194266508938,
+        52.02656075639786,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-171-es_line"
+      }
+    },
+    {
+      "id": "txt-0009",
+      "raw": "TU171",
+      "normalized": "TU171",
+      "bbox": [
+        663.1318422935323,
+        234.1100923767303,
+        50.15474103114359,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-171-vt"
+      }
+    },
+    {
+      "id": "txt-0010",
+      "raw": "DỰ PHÒNG",
+      "normalized": "DỰ PHÒNG",
+      "bbox": [
+        497.17577510709646,
+        134.09761904761905,
+        100.22519476067282,
+        20.47533085614619
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "line_name"
+    },
+    {
+      "id": "txt-0011",
+      "raw": "173-1",
+      "normalized": "173-1",
+      "bbox": [
+        1036.5615313186179,
+        553.6068289088861,
+        42.73431283459985,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-173-dcl_bus"
+      }
+    },
+    {
+      "id": "txt-0012",
+      "raw": "173",
+      "normalized": "173",
+      "bbox": [
+        971.5502588889087,
+        490.29486599121793,
+        36.64733703231358,
+        16.104615134703746
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-173-cb"
+      }
+    },
+    {
+      "id": "txt-0013",
+      "raw": "TI173",
+      "normalized": "TI173",
+      "bbox": [
+        1043.4636146519513,
+        440.73067101336477,
+        42.73431283459985,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-173-ct"
+      }
+    },
+    {
+      "id": "txt-0014",
+      "raw": "173-75",
+      "normalized": "173-75",
+      "bbox": [
+        897.2708075694138,
+        407.9568777798899,
+        52.02656075639786,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-173-es_cb"
+      }
+    },
+    {
+      "id": "txt-0015",
+      "raw": "173-7",
+      "normalized": "173-7",
+      "bbox": [
+        1036.5615313186179,
+        367.2949893083197,
+        42.73431283459985,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-173-dcl_line"
+      }
+    },
+    {
+      "id": "txt-0016",
+      "raw": "173-76",
+      "normalized": "173-76",
+      "bbox": [
+        897.2708075694138,
+        324.66107702722576,
+        52.02656075639786,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-173-es_line"
+      }
+    },
+    {
+      "id": "txt-0017",
+      "raw": "TU173",
+      "normalized": "TU173",
+      "bbox": [
+        1124.4533184192003,
+        392.534823737543,
+        50.15474103114359,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-173-vt"
+      }
+    },
+    {
+      "id": "txt-0018",
+      "raw": "Thạch Việt",
+      "normalized": "Thạch Việt",
+      "bbox": [
+        746.9603665237585,
+        257.82080427700083,
+        92.2028033299477,
+        16.88348742011698
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "line_name"
+    },
+    {
+      "id": "txt-0019",
+      "raw": "26",
+      "normalized": "26",
+      "bbox": [
+        904.995557632054,
+        294.0087306123076,
+        18.584495843596027,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "pole_number"
+    },
+    {
+      "id": "txt-0020",
+      "raw": "TUC11-1",
+      "normalized": "TUC11-1",
+      "bbox": [
+        586.5059290114065,
+        636.8274226190176,
+        67.76990165987579,
+        12.367380327572894
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-TUC11-dcl"
+      }
+    },
+    {
+      "id": "txt-0021",
+      "raw": "TUC11-14",
+      "normalized": "TUC11-14",
+      "bbox": [
+        417.2495569131171,
+        678.4753229953498,
+        77.06214958167381,
+        12.367380327572894
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-TUC11-es"
+      }
+    },
+    {
+      "id": "txt-0022",
+      "raw": "CS-TUC11",
+      "normalized": "CS-TUC11",
+      "bbox": [
+        667.0984185115792,
+        700.4029852764436,
+        81.69156086645447,
+        12.367380327572894
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-TUC11-cs"
+      }
+    },
+    {
+      "id": "txt-0023",
+      "raw": "TUC11",
+      "normalized": "TUC11",
+      "bbox": [
+        531.0776164459453,
+        821.6949579891402,
+        52.912332590669976,
+        12.367380327572894
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-TUC11-vt"
+      }
+    },
+    {
+      "id": "txt-0024",
+      "raw": "131-1",
+      "normalized": "131-1",
+      "bbox": [
+        962.0159195000482,
+        636.9026296615502,
+        42.73431283459985,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-131-dcl_bus"
+      }
+    },
+    {
+      "id": "txt-0025",
+      "raw": "131-15",
+      "normalized": "131-15",
+      "bbox": [
+        822.7251957508443,
+        679.5365419426441,
+        52.02656075639786,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-131-es_bus"
+      }
+    },
+    {
+      "id": "txt-0026",
+      "raw": "TI131",
+      "normalized": "TI131",
+      "bbox": [
+        968.9180028333816,
+        710.3383113665952,
+        42.73431283459985,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-131-ct"
+      }
+    },
+    {
+      "id": "txt-0027",
+      "raw": "131",
+      "normalized": "131",
+      "bbox": [
+        971.8760385476672,
+        759.9025063444484,
+        36.64733703231358,
+        16.104615134703746
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-131-cb"
+      }
+    },
+    {
+      "id": "txt-0028",
+      "raw": "131-35",
+      "normalized": "131-35",
+      "bbox": [
+        822.7251957508443,
+        804.4802430716403,
+        52.02656075639786,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-131-es_cb"
+      }
+    },
+    {
+      "id": "txt-0029",
+      "raw": "131-3",
+      "normalized": "131-3",
+      "bbox": [
+        962.0159195000482,
+        845.1421315432104,
+        42.73431283459985,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-131-dcl_tx"
+      }
+    },
+    {
+      "id": "txt-0030",
+      "raw": "131-38",
+      "normalized": "131-38",
+      "bbox": [
+        822.7251957508443,
+        887.7760438243045,
+        52.02656075639786,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-131-es_tx"
+      }
+    },
+    {
+      "id": "txt-0031",
+      "raw": "CS1T1",
+      "normalized": "CS1T1",
+      "bbox": [
+        805.9797060460102,
+        908.6424871581038,
+        52.009848080279525,
+        12.367380327572894
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-131-cs_hv"
+      }
+    },
+    {
+      "id": "txt-0032",
+      "raw": "T1",
+      "normalized": "T1",
+      "bbox": [
+        1054.7010385476672,
+        884.62766087921,
+        22.48311492988674,
+        13.8713305480021
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-131-tx"
+      }
+    },
+    {
+      "id": "txt-0033",
+      "raw": "25/25/25 MVA",
+      "normalized": "25/25/25 MVA",
+      "bbox": [
+        1054.7010385476672,
+        902.780801447064,
+        123.12732435039086,
+        14.275911022318828
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "parameter"
+    },
+    {
+      "id": "txt-0034",
+      "raw": "115±9x1,78%/38,5±2x2,5%/23kV",
+      "normalized": "115±9x1,78%/38,5±2x2,5%/23kV",
+      "bbox": [
+        1054.7010385476672,
+        921.338522489235,
+        287.8301088710436,
+        17.12724007940815
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "parameter"
+    },
+    {
+      "id": "txt-0035",
+      "raw": "CS3T1",
+      "normalized": "CS3T1",
+      "bbox": [
+        1052.33569975428,
+        1117.4290327043063,
+        52.009848080279525,
+        12.367380327572894
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-131-cs_mv"
+      }
+    },
+    {
+      "id": "txt-0036",
+      "raw": "CS4T1",
+      "normalized": "CS4T1",
+      "bbox": [
+        805.9797060460102,
+        1124.2992835251953,
+        52.009848080279525,
+        12.367380327572894
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-131-cs_lv"
+      }
+    },
+    {
+      "id": "txt-0037",
+      "raw": "131-08",
+      "normalized": "131-08",
+      "bbox": [
+        840.4968944800112,
+        1067.1424255614493,
+        52.02656075639786,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-131-es_n"
+      }
+    },
+    {
+      "id": "txt-0038",
+      "raw": "CS0T1",
+      "normalized": "CS0T1",
+      "bbox": [
+        788.0112194893574,
+        960.6087989077369,
+        52.009848080279525,
+        12.367380327572894
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-131-cs_n"
+      }
+    },
+    {
+      "id": "txt-0001",
+      "raw": "C11",
+      "normalized": "C11",
+      "bbox": [
+        1409.878713816876,
+        566.0418681693636,
+        49.32447270101652,
+        19.93968045360242
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "busbar_code",
+      "assignedTo": {
+        "kind": "busbar",
+        "id": "bus-C11"
+      }
+    },
+    {
+      "id": "txt-0040",
+      "raw": "331",
+      "normalized": "331",
+      "bbox": [
+        3155.3064104460595,
+        698.7841221413952,
+        36.64733703231358,
+        16.104615134703746
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-331-cb"
+      }
+    },
+    {
+      "id": "txt-0041",
+      "raw": "TI331",
+      "normalized": "TI331",
+      "bbox": [
+        3077.090617406679,
+        707.6018305574006,
+        42.73431283459985,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-331-ct"
+      }
+    },
+    {
+      "id": "txt-0042",
+      "raw": "331-38",
+      "normalized": "331-38",
+      "bbox": [
+        3039.6707002123057,
+        813.9850431260479,
+        52.02656075639786,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-331-es_tx"
+      }
+    },
+    {
+      "id": "txt-0039",
+      "raw": "C31",
+      "normalized": "C31",
+      "bbox": [
+        3174.2092194179017,
+        893.549575766721,
+        49.35138185142624,
+        19.966589604012142
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "busbar_code",
+      "assignedTo": {
+        "kind": "busbar",
+        "id": "bus-C31"
+      }
+    },
+    {
+      "id": "txt-0044",
+      "raw": "471",
+      "normalized": "471",
+      "bbox": [
+        2414.104741396068,
+        698.2063774863473,
+        36.64733703231358,
+        15.818994402437513
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-471-cb"
+      }
+    },
+    {
+      "id": "txt-0045",
+      "raw": "TI471",
+      "normalized": "TI471",
+      "bbox": [
+        2409.174681872259,
+        775.2799727612589,
+        42.73431283459985,
+        12.016414129087716
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-471-ct"
+      }
+    },
+    {
+      "id": "txt-0046",
+      "raw": "471-76",
+      "normalized": "471-76",
+      "bbox": [
+        2262.9818747897216,
+        807.9534899380238,
+        52.02656075639786,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-471-es_line"
+      }
+    },
+    {
+      "id": "txt-0047",
+      "raw": "DỰ PHÒNG",
+      "normalized": "DỰ PHÒNG",
+      "bbox": [
+        2383.393820647167,
+        955.1596656964954,
+        19.253739433740314,
+        100.66277974780328
+      ],
+      "angleDeg": 270,
+      "confidence": 1.0,
+      "role": "line_name"
+    },
+    {
+      "id": "txt-0048",
+      "raw": "431",
+      "normalized": "431",
+      "bbox": [
+        2414.104741396068,
+        567.4391949389785,
+        36.64733703231358,
+        16.104615134703746
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-431-cb"
+      }
+    },
+    {
+      "id": "txt-0049",
+      "raw": "TI431",
+      "normalized": "TI431",
+      "bbox": [
+        2409.174681872259,
+        494.2107142468397,
+        42.73431283459985,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-431-ct"
+      }
+    },
+    {
+      "id": "txt-0050",
+      "raw": "431-38",
+      "normalized": "431-38",
+      "bbox": [
+        2262.9818747897216,
+        461.43692101336484,
+        52.02656075639786,
+        12.216966242507818
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-431-es_tx"
+      }
+    },
+    {
+      "id": "txt-0051",
+      "raw": "TUC41-14",
+      "normalized": "TUC41-14",
+      "bbox": [
+        2740.0777634653023,
+        611.7063242473059,
+        77.07886225779215,
+        12.367380327572894
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-TUC41-es"
+      }
+    },
+    {
+      "id": "txt-0052",
+      "raw": "CC-TUC41",
+      "normalized": "CC-TUC41",
+      "bbox": [
+        2558.3539868862717,
+        561.1843167281166,
+        82.6274707290816,
+        12.367380327572894
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-TUC41-fuse"
+      }
+    },
+    {
+      "id": "txt-0053",
+      "raw": "CS-TUC41",
+      "normalized": "CS-TUC41",
+      "bbox": [
+        2485.5827779059414,
+        509.67629730416564,
+        81.70827354257281,
+        12.367380327572894
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-TUC41-cs"
+      }
+    },
+    {
+      "id": "txt-0054",
+      "raw": "TUC41",
+      "normalized": "TUC41",
+      "bbox": [
+        2650.3911645854187,
+        388.38432459146907,
+        52.929045266788314,
+        12.367380327572894
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "device_code",
+      "assignedTo": {
+        "kind": "device",
+        "id": "dev-TUC41-vt"
+      }
+    },
+    {
+      "id": "txt-0043",
+      "raw": "C41",
+      "normalized": "C41",
+      "bbox": [
+        2884.5041921212596,
+        605.4823443598399,
+        49.35138185142624,
+        19.93968045360242
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "busbar_code",
+      "assignedTo": {
+        "kind": "busbar",
+        "id": "bus-C41"
+      }
+    },
+    {
+      "id": "txt-0055",
+      "raw": "SƠ ĐỒ NHẤT THỨ TRẠM 110KV THẠCH TIẾN",
+      "normalized": "SƠ ĐỒ NHẤT THỨ TRẠM 110KV THẠCH TIẾN",
+      "bbox": [
+        1241.6109007906496,
+        63.10476190476191,
+        900.7710555615582,
+        46.773287806705966
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "title_block"
+    },
+    {
+      "id": "txt-0056",
+      "raw": "CÔNG TY ĐIỆN LỰC",
+      "normalized": "CÔNG TY ĐIỆN LỰC",
+      "bbox": [
+        500.02835365285114,
+        2188.5706214681563,
+        180.79114983715493,
+        20.97132439646634
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "title_block"
+    },
+    {
+      "id": "txt-0057",
+      "raw": "ĐỘI QUẢN LÝ VẬN HÀNH LƯỚI 8",
+      "normalized": "ĐỘI QUẢN LÝ VẬN HÀNH LƯỚI 8",
+      "bbox": [
+        442.66121158169676,
+        2233.034727906668,
+        295.5254339794636,
+        21.00873978343595
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "title_block"
+    },
+    {
+      "id": "txt-0058",
+      "raw": "P.GIÁM ĐỐC",
+      "normalized": "P.GIÁM ĐỐC",
+      "bbox": [
+        1194.739240392924,
+        2160.6084583072006,
+        113.25637635700912,
+        17.585231875716648
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "title_block"
+    },
+    {
+      "id": "txt-0059",
+      "raw": "ĐỖ ĐỨC KHÁNH",
+      "normalized": "ĐỖ ĐỨC KHÁNH",
+      "bbox": [
+        1177.8836085631146,
+        2269.1399419440722,
+        146.96764001662763,
+        17.005293377687693
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "title_block"
+    },
+    {
+      "id": "txt-0060",
+      "raw": "TR. PHÒNG ĐIỀU ĐỘ",
+      "normalized": "TR. PHÒNG ĐIỀU ĐỘ",
+      "bbox": [
+        1535.5016073006614,
+        2158.896704353341,
+        187.09564254153418,
+        21.00873978343595
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "title_block"
+    },
+    {
+      "id": "txt-0061",
+      "raw": "VŨ ĐỨC LINH",
+      "normalized": "VŨ ĐỨC LINH",
+      "bbox": [
+        1568.052993964222,
+        2269.1399419440722,
+        121.99286921441302,
+        17.005293377687693
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "title_block"
+    },
+    {
+      "id": "txt-0062",
+      "raw": "NGƯỜI VẼ",
+      "normalized": "NGƯỜI VẼ",
+      "bbox": [
+        1927.8058640472211,
+        2160.6084583072006,
+        94.90412904841547,
+        17.585231875716648
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "title_block"
+    },
+    {
+      "id": "txt-0063",
+      "raw": "VŨ QUỐC DŨNG",
+      "normalized": "VŨ QUỐC DŨNG",
+      "bbox": [
+        1901.4654316206158,
+        2268.747080380891,
+        147.58499390162618,
+        17.791016504049498
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "title_block"
+    },
+    {
+      "id": "txt-0064",
+      "raw": "SƠ ĐỒ NHẤT THỨ TRẠM 110 THẠCH TIẾN",
+      "normalized": "SƠ ĐỒ NHẤT THỨ TRẠM 110 THẠCH TIẾN",
+      "bbox": [
+        2321.0042781986876,
+        2210.79332084067,
+        378.6063007454824,
+        21.00873978343595
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "title_block"
+    },
+    {
+      "id": "txt-0065",
+      "raw": "SBV: E20.17-01",
+      "normalized": "SBV: E20.17-01",
+      "bbox": [
+        3009.763347428403,
+        2184.7206347216793,
+        134.1341622860514,
+        13.843693178755656
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "title_block"
+    },
+    {
+      "id": "txt-0066",
+      "raw": "16/09/2026",
+      "normalized": "16/09/2026",
+      "bbox": [
+        3030.0237794724467,
+        2244.0310535643407,
+        93.61329819796391,
+        13.843693178755656
+      ],
+      "angleDeg": 0,
+      "confidence": 1.0,
+      "role": "title_block"
+    }
+  ],
+  "devices": [
+    {
+      "id": "dev-171-dcl_bus",
+      "detectorClass": "disconnector_open",
+      "type": "disconnector",
+      "bayId": "bay-171",
+      "code": {
+        "normalized": "171-1",
+        "voltageKv": 110,
+        "bayCode": "171",
+        "suffix": "1"
+      },
+      "labelTextIds": [
+        "txt-0002"
+      ],
+      "bbox": [
+        538.4142653445758,
+        539.9950739349018,
+        8.874107142857143,
+        39.44047619047619
+      ],
+      "transform": {
+        "x": 547.2883724874329,
+        "y": 559.7153120301399,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 547.2883724874329,
+          "y": 539.9950739349018
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 547.2883724874329,
+          "y": 579.435550125378
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-171-es_bus",
+      "detectorClass": "earthing_switch_open",
+      "type": "earthing_switch",
+      "bayId": "bay-171",
+      "code": {
+        "normalized": "171-15",
+        "voltageKv": 110,
+        "bayCode": "171",
+        "suffix": "15"
+      },
+      "labelTextIds": [
+        "txt-0003"
+      ],
+      "bbox": [
+        478.5280258444032,
+        509.1933045109508,
+        46.34255952380953,
+        15.776190476190477
+      ],
+      "transform": {
+        "x": 501.20629965392703,
+        "y": 518.0674116538079,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 524.8705853682127,
+          "y": 518.0674116538079
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "open",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-171-cb",
+      "detectorClass": "circuit_breaker",
+      "type": "circuit_breaker",
+      "bayId": "bay-171",
+      "code": {
+        "normalized": "171",
+        "voltageKv": 110,
+        "bayCode": "171"
+      },
+      "labelTextIds": [
+        "txt-0004"
+      ],
+      "bbox": [
+        537.4282534398138,
+        456.69927318223773,
+        19.720238095238095,
+        39.44047619047619
+      ],
+      "transform": {
+        "x": 547.2883724874329,
+        "y": 476.4195112774758,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 547.2883724874329,
+          "y": 456.69927318223773
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 547.2883724874329,
+          "y": 496.13974937271394
+        }
+      ],
+      "drawingState": "unknown",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-171-ct",
+      "detectorClass": "current_transformer",
+      "type": "current_transformer",
+      "bayId": "bay-171",
+      "code": {
+        "normalized": "TI171",
+        "voltageKv": 110,
+        "bayCode": "171"
+      },
+      "labelTextIds": [
+        "txt-0005"
+      ],
+      "bbox": [
+        540.3862891540996,
+        415.0513728059057,
+        13.804166666666667,
+        19.720238095238095
+      ],
+      "transform": {
+        "x": 547.2883724874329,
+        "y": 424.91149185352475,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 547.2883724874329,
+          "y": 415.0513728059057
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 547.2883724874329,
+          "y": 434.77161090114384
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-171-es_cb",
+      "detectorClass": "earthing_switch_open",
+      "type": "earthing_switch",
+      "bayId": "bay-171",
+      "code": {
+        "normalized": "171-75",
+        "voltageKv": 110,
+        "bayCode": "171",
+        "suffix": "75"
+      },
+      "labelTextIds": [
+        "txt-0006"
+      ],
+      "bbox": [
+        478.5280258444032,
+        384.24960338195456,
+        46.34255952380953,
+        15.776190476190477
+      ],
+      "transform": {
+        "x": 501.20629965392703,
+        "y": 393.1237105248117,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 524.8705853682127,
+          "y": 393.1237105248117
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "open",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-171-dcl_line",
+      "detectorClass": "disconnector_closed",
+      "type": "disconnector",
+      "bayId": "bay-171",
+      "code": {
+        "normalized": "171-7",
+        "voltageKv": 110,
+        "bayCode": "171",
+        "suffix": "7"
+      },
+      "labelTextIds": [
+        "txt-0007"
+      ],
+      "bbox": [
+        542.3583129636233,
+        331.7555720532416,
+        9.860119047619047,
+        39.44047619047619
+      ],
+      "transform": {
+        "x": 547.2883724874329,
+        "y": 351.4758101484797,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 547.2883724874329,
+          "y": 331.7555720532416
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 547.2883724874329,
+          "y": 371.1960482437178
+        }
+      ],
+      "drawingState": "closed",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-171-es_line",
+      "detectorClass": "earthing_switch_closed",
+      "type": "earthing_switch",
+      "bayId": "bay-171",
+      "code": {
+        "normalized": "171-76",
+        "voltageKv": 110,
+        "bayCode": "171",
+        "suffix": "76"
+      },
+      "labelTextIds": [
+        "txt-0008"
+      ],
+      "bbox": [
+        478.5280258444032,
+        302.92582643881434,
+        46.34255952380953,
+        13.804166666666667
+      ],
+      "transform": {
+        "x": 501.20629965392703,
+        "y": 309.8279097721477,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 524.8705853682127,
+          "y": 309.8279097721477
+        }
+      ],
+      "drawingState": "closed",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-171-vt",
+      "detectorClass": "voltage_transformer",
+      "type": "voltage_transformer",
+      "bayId": "bay-171",
+      "code": {
+        "normalized": "TU171",
+        "voltageKv": 110,
+        "bayCode": "171"
+      },
+      "labelTextIds": [
+        "txt-0009"
+      ],
+      "bbox": [
+        580.9150531662632,
+        207.68018264084134,
+        72.96488095238095,
+        65.07678571428572
+      ],
+      "transform": {
+        "x": 617.3974936424536,
+        "y": 255.00875406941276,
+        "rotationDeg": 270,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 580.9150531662632,
+          "y": 255.00875406941276
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-171-line",
+      "detectorClass": "line_feeder_arrow",
+      "type": "line_terminal",
+      "bayId": "bay-171",
+      "labelTextIds": [],
+      "bbox": [
+        543.3443248683853,
+        163.82485807865342,
+        7.8880952380952385,
+        47.32857142857143
+      ],
+      "transform": {
+        "x": 547.2883724874329,
+        "y": 187.48914379293913,
+        "rotationDeg": 180,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 547.2883724874329,
+          "y": 211.15342950722484
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-173-dcl_bus",
+      "detectorClass": "disconnector_open",
+      "type": "disconnector",
+      "bayId": "bay-173",
+      "code": {
+        "normalized": "173-1",
+        "voltageKv": 110,
+        "bayCode": "173",
+        "suffix": "1"
+      },
+      "labelTextIds": [
+        "txt-0011"
+      ],
+      "bbox": [
+        1018.4355160008726,
+        539.9950739349018,
+        8.874107142857143,
+        39.44047619047619
+      ],
+      "transform": {
+        "x": 1027.3096231437296,
+        "y": 559.7153120301399,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 1027.3096231437296,
+          "y": 539.9950739349018
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 1027.3096231437296,
+          "y": 579.435550125378
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-173-cb",
+      "detectorClass": "circuit_breaker",
+      "type": "circuit_breaker",
+      "bayId": "bay-173",
+      "code": {
+        "normalized": "173",
+        "voltageKv": 110,
+        "bayCode": "173"
+      },
+      "labelTextIds": [
+        "txt-0012"
+      ],
+      "bbox": [
+        1017.4495040961106,
+        478.62693546333173,
+        19.720238095238095,
+        39.44047619047619
+      ],
+      "transform": {
+        "x": 1027.3096231437296,
+        "y": 498.3471735585698,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 1027.3096231437296,
+          "y": 478.62693546333173
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 1027.3096231437296,
+          "y": 518.0674116538079
+        }
+      ],
+      "drawingState": "unknown",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-173-ct",
+      "detectorClass": "current_transformer",
+      "type": "current_transformer",
+      "bayId": "bay-173",
+      "code": {
+        "normalized": "TI173",
+        "voltageKv": 110,
+        "bayCode": "173"
+      },
+      "labelTextIds": [
+        "txt-0013"
+      ],
+      "bbox": [
+        1020.4075398103963,
+        436.9790350869996,
+        13.804166666666667,
+        19.720238095238095
+      ],
+      "transform": {
+        "x": 1027.3096231437296,
+        "y": 446.8391541346187,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 1027.3096231437296,
+          "y": 436.9790350869996
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 1027.3096231437296,
+          "y": 456.69927318223773
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-173-es_cb",
+      "detectorClass": "earthing_switch_open",
+      "type": "earthing_switch",
+      "bayId": "bay-173",
+      "code": {
+        "normalized": "173-75",
+        "voltageKv": 110,
+        "bayCode": "173",
+        "suffix": "75"
+      },
+      "labelTextIds": [
+        "txt-0014"
+      ],
+      "bbox": [
+        958.5492765006999,
+        406.17726566304856,
+        46.34255952380953,
+        15.776190476190477
+      ],
+      "transform": {
+        "x": 981.2275503102237,
+        "y": 415.0513728059057,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 1004.8918360245094,
+          "y": 415.0513728059057
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "open",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-173-dcl_line",
+      "detectorClass": "disconnector_open",
+      "type": "disconnector",
+      "bayId": "bay-173",
+      "code": {
+        "normalized": "173-7",
+        "voltageKv": 110,
+        "bayCode": "173",
+        "suffix": "7"
+      },
+      "labelTextIds": [
+        "txt-0015"
+      ],
+      "bbox": [
+        1018.4355160008726,
+        353.6832343343355,
+        8.874107142857143,
+        39.44047619047619
+      ],
+      "transform": {
+        "x": 1027.3096231437296,
+        "y": 373.40347242957364,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 1027.3096231437296,
+          "y": 353.6832343343355
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 1027.3096231437296,
+          "y": 393.1237105248117
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-173-es_line",
+      "detectorClass": "earthing_switch_open",
+      "type": "earthing_switch",
+      "bayId": "bay-173",
+      "code": {
+        "normalized": "173-76",
+        "voltageKv": 110,
+        "bayCode": "173",
+        "suffix": "76"
+      },
+      "labelTextIds": [
+        "txt-0016"
+      ],
+      "bbox": [
+        958.5492765006999,
+        322.8814649103844,
+        46.34255952380953,
+        15.776190476190477
+      ],
+      "transform": {
+        "x": 981.2275503102237,
+        "y": 331.75557205324156,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 1004.8918360245094,
+          "y": 331.75557205324156
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "open",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-173-cc1",
+      "detectorClass": "coupling_capacitor",
+      "type": "coupling_capacitor",
+      "bayId": "bay-173",
+      "labelTextIds": [],
+      "bbox": [
+        1093.0926099870117,
+        281.9841760624822,
+        19.720238095238095,
+        11.832142857142857
+      ],
+      "transform": {
+        "x": 1102.9527290346307,
+        "y": 287.9002474910537,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 1112.8128480822497,
+          "y": 287.9002474910537
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 1093.0926099870117,
+          "y": 287.9002474910537
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-173-vt",
+      "detectorClass": "voltage_transformer",
+      "type": "voltage_transformer",
+      "bayId": "bay-173",
+      "code": {
+        "normalized": "TU173",
+        "voltageKv": 110,
+        "bayCode": "173"
+      },
+      "labelTextIds": [
+        "txt-0017"
+      ],
+      "bbox": [
+        1116.9922960776294,
+        310.31803461027386,
+        65.07678571428572,
+        72.96488095238095
+      ],
+      "transform": {
+        "x": 1134.7405103633437,
+        "y": 346.8004750864643,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 1134.7405103633437,
+          "y": 310.31803461027386
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-173-cc2",
+      "detectorClass": "coupling_capacitor",
+      "type": "coupling_capacitor",
+      "bayId": "bay-173",
+      "labelTextIds": [],
+      "bbox": [
+        1156.6681726444374,
+        281.9841760624822,
+        19.720238095238095,
+        11.832142857142857
+      ],
+      "transform": {
+        "x": 1166.5282916920564,
+        "y": 287.9002474910537,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 1176.3884107396755,
+          "y": 287.9002474910537
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 1156.6681726444374,
+          "y": 287.9002474910537
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-173-gnd",
+      "detectorClass": "ground_symbol",
+      "type": "ground",
+      "bayId": "bay-173",
+      "labelTextIds": [],
+      "bbox": [
+        1198.3160730207694,
+        280.0121522529584,
+        19.720238095238095,
+        15.776190476190477
+      ],
+      "transform": {
+        "x": 1208.1761920683884,
+        "y": 287.9002474910537,
+        "rotationDeg": 270,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 1198.3160730207694,
+          "y": 287.9002474910537
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-173-line",
+      "detectorClass": "line_feeder_arrow",
+      "type": "line_terminal",
+      "bayId": "bay-173",
+      "labelTextIds": [],
+      "bbox": [
+        848.4150780285944,
+        283.95619987200604,
+        47.32857142857143,
+        7.8880952380952385
+      ],
+      "transform": {
+        "x": 872.0793637428801,
+        "y": 287.9002474910537,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 895.7436494571658,
+          "y": 287.9002474910537
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-TUC11-dcl",
+      "detectorClass": "disconnector_closed",
+      "type": "disconnector",
+      "bayId": "bay-TUC11",
+      "code": {
+        "normalized": "TUC11-1",
+        "voltageKv": 110,
+        "bayCode": "TUC11",
+        "suffix": "1"
+      },
+      "labelTextIds": [
+        "txt-0020"
+      ],
+      "bbox": [
+        567.3939017888993,
+        623.2908746875661,
+        9.860119047619047,
+        39.44047619047619
+      ],
+      "transform": {
+        "x": 572.3239613127088,
+        "y": 643.0111127828042,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 572.3239613127088,
+          "y": 623.2908746875661
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 572.3239613127088,
+          "y": 662.7313508780422
+        }
+      ],
+      "drawingState": "closed",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-TUC11-es",
+      "detectorClass": "earthing_switch_closed",
+      "type": "earthing_switch",
+      "bayId": "bay-TUC11",
+      "code": {
+        "normalized": "TUC11-14",
+        "voltageKv": 110,
+        "bayCode": "TUC11",
+        "suffix": "14"
+      },
+      "labelTextIds": [
+        "txt-0021"
+      ],
+      "bbox": [
+        503.5636146696791,
+        677.7569298258028,
+        46.34255952380953,
+        13.804166666666667
+      ],
+      "transform": {
+        "x": 526.2418884792029,
+        "y": 684.6590131591361,
+        "rotationDeg": 90,
+        "mirrorX": true,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 549.9061741934886,
+          "y": 684.6590131591361
+        }
+      ],
+      "drawingState": "closed",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-TUC11-cs",
+      "detectorClass": "surge_arrester",
+      "type": "surge_arrester",
+      "bayId": "bay-TUC11",
+      "code": {
+        "normalized": "CS-TUC11",
+        "voltageKv": 110,
+        "bayCode": "TUC11"
+      },
+      "labelTextIds": [
+        "txt-0022"
+      ],
+      "bbox": [
+        594.7417484319291,
+        699.6845921068968,
+        63.10476190476191,
+        13.804166666666667
+      ],
+      "transform": {
+        "x": 626.29412938431,
+        "y": 706.5866754402301,
+        "rotationDeg": 270,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 594.7417484319291,
+          "y": 706.5866754402301
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-TUC11-vt",
+      "detectorClass": "voltage_transformer",
+      "type": "voltage_transformer",
+      "bayId": "bay-TUC11",
+      "code": {
+        "normalized": "TUC11",
+        "voltageKv": 110
+      },
+      "labelTextIds": [
+        "txt-0023"
+      ],
+      "bbox": [
+        524.9953898841374,
+        739.478168861871,
+        65.07678571428572,
+        72.96488095238095
+      ],
+      "transform": {
+        "x": 572.3239613127088,
+        "y": 775.9606093380615,
+        "rotationDeg": 0,
+        "mirrorX": true,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 572.3239613127088,
+          "y": 739.478168861871
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-dcl_bus",
+      "detectorClass": "disconnector_open",
+      "type": "disconnector",
+      "bayId": "bay-131",
+      "code": {
+        "normalized": "131-1",
+        "voltageKv": 110,
+        "bayCode": "131",
+        "suffix": "1"
+      },
+      "labelTextIds": [
+        "txt-0024"
+      ],
+      "bbox": [
+        943.8899041823029,
+        623.2908746875661,
+        8.874107142857143,
+        39.44047619047619
+      ],
+      "transform": {
+        "x": 952.76401132516,
+        "y": 643.0111127828042,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 952.76401132516,
+          "y": 623.2908746875661
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 952.76401132516,
+          "y": 662.7313508780422
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-es_bus",
+      "detectorClass": "earthing_switch_open",
+      "type": "earthing_switch",
+      "bayId": "bay-131",
+      "code": {
+        "normalized": "131-15",
+        "voltageKv": 110,
+        "bayCode": "131",
+        "suffix": "15"
+      },
+      "labelTextIds": [
+        "txt-0025"
+      ],
+      "bbox": [
+        884.0036646821302,
+        677.7569298258028,
+        46.34255952380953,
+        15.776190476190477
+      ],
+      "transform": {
+        "x": 906.681938491654,
+        "y": 684.6590131591361,
+        "rotationDeg": 90,
+        "mirrorX": true,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 930.3462242059397,
+          "y": 684.6590131591361
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "open",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-ct",
+      "detectorClass": "current_transformer",
+      "type": "current_transformer",
+      "bayId": "bay-131",
+      "code": {
+        "normalized": "TI131",
+        "voltageKv": 110,
+        "bayCode": "131"
+      },
+      "labelTextIds": [
+        "txt-0026"
+      ],
+      "bbox": [
+        945.8619279918267,
+        706.5866754402301,
+        13.804166666666667,
+        19.720238095238095
+      ],
+      "transform": {
+        "x": 952.76401132516,
+        "y": 716.4467944878492,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 952.76401132516,
+          "y": 706.5866754402301
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 952.76401132516,
+          "y": 726.3069135354682
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-cb",
+      "detectorClass": "circuit_breaker",
+      "type": "circuit_breaker",
+      "bayId": "bay-131",
+      "code": {
+        "normalized": "131",
+        "voltageKv": 110,
+        "bayCode": "131"
+      },
+      "labelTextIds": [
+        "txt-0027"
+      ],
+      "bbox": [
+        942.903892277541,
+        748.2345758165621,
+        19.720238095238095,
+        39.44047619047619
+      ],
+      "transform": {
+        "x": 952.76401132516,
+        "y": 767.9548139118002,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 952.76401132516,
+          "y": 748.2345758165621
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 952.76401132516,
+          "y": 787.6750520070383
+        }
+      ],
+      "drawingState": "unknown",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-es_cb",
+      "detectorClass": "earthing_switch_open",
+      "type": "earthing_switch",
+      "bayId": "bay-131",
+      "code": {
+        "normalized": "131-35",
+        "voltageKv": 110,
+        "bayCode": "131",
+        "suffix": "35"
+      },
+      "labelTextIds": [
+        "txt-0028"
+      ],
+      "bbox": [
+        884.0036646821302,
+        802.700630954799,
+        46.34255952380953,
+        15.776190476190477
+      ],
+      "transform": {
+        "x": 906.681938491654,
+        "y": 809.6027142881323,
+        "rotationDeg": 90,
+        "mirrorX": true,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 930.3462242059397,
+          "y": 809.6027142881323
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "open",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-dcl_tx",
+      "detectorClass": "disconnector_open",
+      "type": "disconnector",
+      "bayId": "bay-131",
+      "code": {
+        "normalized": "131-3",
+        "voltageKv": 110,
+        "bayCode": "131",
+        "suffix": "3"
+      },
+      "labelTextIds": [
+        "txt-0029"
+      ],
+      "bbox": [
+        943.8899041823029,
+        831.5303765692262,
+        8.874107142857143,
+        39.44047619047619
+      ],
+      "transform": {
+        "x": 952.76401132516,
+        "y": 851.2506146644644,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 952.76401132516,
+          "y": 831.5303765692262
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 952.76401132516,
+          "y": 870.9708527597024
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-es_tx",
+      "detectorClass": "earthing_switch_open",
+      "type": "earthing_switch",
+      "bayId": "bay-131",
+      "code": {
+        "normalized": "131-38",
+        "voltageKv": 110,
+        "bayCode": "131",
+        "suffix": "38"
+      },
+      "labelTextIds": [
+        "txt-0030"
+      ],
+      "bbox": [
+        884.0036646821302,
+        885.996431707463,
+        46.34255952380953,
+        15.776190476190477
+      ],
+      "transform": {
+        "x": 906.681938491654,
+        "y": 892.8985150407963,
+        "rotationDeg": 90,
+        "mirrorX": true,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 930.3462242059397,
+          "y": 892.8985150407963
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "open",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-cs_hv",
+      "detectorClass": "surge_arrester",
+      "type": "surge_arrester",
+      "bayId": "bay-131",
+      "code": {
+        "normalized": "CS1T1",
+        "voltageKv": 110,
+        "bayCode": "T1"
+      },
+      "labelTextIds": [
+        "txt-0031"
+      ],
+      "bbox": [
+        867.2414623011779,
+        907.924093988557,
+        63.10476190476191,
+        13.804166666666667
+      ],
+      "transform": {
+        "x": 898.7938432535587,
+        "y": 914.8261773218903,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 930.3462242059397,
+          "y": 914.8261773218903
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-tx",
+      "detectorClass": "transformer_3w",
+      "type": "transformer",
+      "bayId": "bay-131",
+      "code": {
+        "normalized": "T1"
+      },
+      "labelTextIds": [
+        "txt-0032"
+      ],
+      "bbox": [
+        911.35151132516,
+        947.7176707435312,
+        134.09761904761905,
+        149.87380952380954
+      ],
+      "transform": {
+        "x": 978.4003208489695,
+        "y": 1022.654575505436,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p_hv",
+          "role": "hv",
+          "x": 952.76401132516,
+          "y": 947.7176707435312
+        },
+        {
+          "id": "p_mv",
+          "role": "mv",
+          "x": 1045.449130372779,
+          "y": 1022.654575505436
+        },
+        {
+          "id": "p_lv",
+          "role": "lv",
+          "x": 952.76401132516,
+          "y": 1097.5914802673408
+        },
+        {
+          "id": "p_n",
+          "role": "neutral",
+          "x": 911.35151132516,
+          "y": 989.1301707435313
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-cs_mv",
+      "detectorClass": "surge_arrester",
+      "type": "surge_arrester",
+      "bayId": "bay-131",
+      "code": {
+        "normalized": "CS3T1",
+        "voltageKv": 35,
+        "bayCode": "T1"
+      },
+      "labelTextIds": [
+        "txt-0035"
+      ],
+      "bbox": [
+        1071.4385404610866,
+        1045.0723626246563,
+        13.804166666666667,
+        63.10476190476191
+      ],
+      "transform": {
+        "x": 1078.34062379442,
+        "y": 1076.6247435770374,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 1078.34062379442,
+          "y": 1045.0723626246563
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-cable_mv",
+      "detectorClass": "cable_termination",
+      "type": "cable_termination",
+      "bayId": "bay-131",
+      "labelTextIds": [],
+      "bbox": [
+        1100.2682860755137,
+        1017.7245159816265,
+        19.720238095238095,
+        9.860119047619047
+      ],
+      "transform": {
+        "x": 1110.1284051231328,
+        "y": 1022.654575505436,
+        "rotationDeg": 270,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 1100.2682860755137,
+          "y": 1022.654575505436
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 1119.9885241707518,
+          "y": 1022.654575505436
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-cs_lv",
+      "detectorClass": "surge_arrester",
+      "type": "surge_arrester",
+      "bayId": "bay-131",
+      "code": {
+        "normalized": "CS4T1",
+        "voltageKv": 22,
+        "bayCode": "T1"
+      },
+      "labelTextIds": [
+        "txt-0036"
+      ],
+      "bbox": [
+        867.2414623011779,
+        1123.5808903556483,
+        63.10476190476191,
+        13.804166666666667
+      ],
+      "transform": {
+        "x": 898.7938432535587,
+        "y": 1130.4829736889817,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 930.3462242059397,
+          "y": 1130.4829736889817
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-cable_lv",
+      "detectorClass": "cable_termination",
+      "type": "cable_termination",
+      "bayId": "bay-131",
+      "labelTextIds": [],
+      "bbox": [
+        947.8339518013505,
+        1152.4106359700759,
+        9.860119047619047,
+        19.720238095238095
+      ],
+      "transform": {
+        "x": 952.76401132516,
+        "y": 1162.270755017695,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 952.76401132516,
+          "y": 1152.4106359700759
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 952.76401132516,
+          "y": 1172.130874065314
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-es_n",
+      "detectorClass": "earthing_switch_open",
+      "type": "earthing_switch",
+      "bayId": "bay-131",
+      "code": {
+        "normalized": "131-08",
+        "voltageKv": 110,
+        "bayCode": "131",
+        "suffix": "08"
+      },
+      "labelTextIds": [
+        "txt-0037"
+      ],
+      "bbox": [
+        858.6220796201148,
+        1011.5479578627516,
+        15.776190476190477,
+        46.34255952380953
+      ],
+      "transform": {
+        "x": 867.496186762972,
+        "y": 1035.2122435770373,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 867.496186762972,
+          "y": 1011.5479578627516
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "open",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-131-cs_n",
+      "detectorClass": "surge_arrester",
+      "type": "surge_arrester",
+      "bayId": "bay-131",
+      "code": {
+        "normalized": "CS0T1",
+        "bayCode": "T1"
+      },
+      "labelTextIds": [
+        "txt-0038"
+      ],
+      "bbox": [
+        782.4637625771162,
+        982.228087410198,
+        63.10476190476191,
+        13.804166666666667
+      ],
+      "transform": {
+        "x": 814.0161435294972,
+        "y": 989.1301707435313,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 845.5685244818781,
+          "y": 989.1301707435313
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-331-cb",
+      "detectorClass": "drawout_breaker",
+      "type": "drawout_breaker",
+      "bayId": "bay-331",
+      "code": {
+        "normalized": "331",
+        "voltageKv": 35,
+        "bayCode": "331"
+      },
+      "labelTextIds": [
+        "txt-0040"
+      ],
+      "bbox": [
+        3130.2455551526923,
+        724.1406454509871,
+        86.76904761904763,
+        23.664285714285715
+      ],
+      "transform": {
+        "x": 3173.6300789622164,
+        "y": 735.9727883081299,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 3217.01460277174,
+          "y": 735.9727883081299
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 3130.2455551526923,
+          "y": 735.9727883081299
+        }
+      ],
+      "drawingState": "unknown",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-331-ct",
+      "detectorClass": "current_transformer",
+      "type": "current_transformer",
+      "bayId": "bay-331",
+      "code": {
+        "normalized": "TI331",
+        "voltageKv": 35,
+        "bayCode": "331"
+      },
+      "labelTextIds": [
+        "txt-0041"
+      ],
+      "bbox": [
+        3088.5976547763603,
+        729.0707049747966,
+        19.720238095238095,
+        13.804166666666667
+      ],
+      "transform": {
+        "x": 3098.4577738239796,
+        "y": 735.9727883081299,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 3108.3178928715984,
+          "y": 735.9727883081299
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 3088.5976547763603,
+          "y": 735.9727883081299
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-331-es_tx",
+      "detectorClass": "earthing_switch_open",
+      "type": "earthing_switch",
+      "bayId": "bay-331",
+      "code": {
+        "normalized": "331-38",
+        "voltageKv": 35,
+        "bayCode": "331",
+        "suffix": "38"
+      },
+      "labelTextIds": [
+        "txt-0042"
+      ],
+      "bbox": [
+        3057.795885352409,
+        758.3905754273502,
+        15.776190476190477,
+        46.34255952380953
+      ],
+      "transform": {
+        "x": 3066.6699924952663,
+        "y": 782.0548611416359,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 3066.6699924952663,
+          "y": 758.3905754273502
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "open",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-331-cable",
+      "detectorClass": "cable_termination",
+      "type": "cable_termination",
+      "bayId": "bay-331",
+      "labelTextIds": [],
+      "bbox": [
+        3025.022092118934,
+        731.0427287843204,
+        19.720238095238095,
+        9.860119047619047
+      ],
+      "transform": {
+        "x": 3034.882211166553,
+        "y": 735.9727883081299,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 3044.7423302141724,
+          "y": 735.9727883081299
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 3025.022092118934,
+          "y": 735.9727883081299
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-471-cb",
+      "detectorClass": "drawout_breaker",
+      "type": "drawout_breaker",
+      "bayId": "bay-471",
+      "code": {
+        "normalized": "471",
+        "voltageKv": 22,
+        "bayCode": "471"
+      },
+      "labelTextIds": [
+        "txt-0044"
+      ],
+      "bbox": [
+        2381.1885475068943,
+        662.7313508780422,
+        23.664285714285715,
+        86.76904761904763
+      ],
+      "transform": {
+        "x": 2393.0206903640374,
+        "y": 706.115874687566,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 2393.0206903640374,
+          "y": 662.7313508780422
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 2393.0206903640374,
+          "y": 749.5003984970898
+        }
+      ],
+      "drawingState": "unknown",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-471-ct",
+      "detectorClass": "current_transformer",
+      "type": "current_transformer",
+      "bayId": "bay-471",
+      "code": {
+        "normalized": "TI471",
+        "voltageKv": 22,
+        "bayCode": "471"
+      },
+      "labelTextIds": [
+        "txt-0045"
+      ],
+      "bbox": [
+        2386.118607030704,
+        771.4280607781837,
+        13.804166666666667,
+        19.720238095238095
+      ],
+      "transform": {
+        "x": 2393.0206903640374,
+        "y": 781.2881798258028,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 2393.0206903640374,
+          "y": 771.4280607781837
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 2393.0206903640374,
+          "y": 791.1482988734218
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-471-es_line",
+      "detectorClass": "earthing_switch_open",
+      "type": "earthing_switch",
+      "bayId": "bay-471",
+      "code": {
+        "normalized": "471-76",
+        "voltageKv": 22,
+        "bayCode": "471",
+        "suffix": "76"
+      },
+      "labelTextIds": [
+        "txt-0046"
+      ],
+      "bbox": [
+        2324.2603437210073,
+        806.1738778211824,
+        46.34255952380953,
+        15.776190476190477
+      ],
+      "transform": {
+        "x": 2346.9386175305312,
+        "y": 813.0759611545158,
+        "rotationDeg": 90,
+        "mirrorX": true,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 2370.602903244817,
+          "y": 813.0759611545158
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "open",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-471-cable",
+      "detectorClass": "cable_termination",
+      "type": "cable_termination",
+      "bayId": "bay-471",
+      "labelTextIds": [],
+      "bbox": [
+        2388.0906308402277,
+        835.0036234356097,
+        9.860119047619047,
+        19.720238095238095
+      ],
+      "transform": {
+        "x": 2393.0206903640374,
+        "y": 844.8637424832287,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 2393.0206903640374,
+          "y": 835.0036234356097
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 2393.0206903640374,
+          "y": 854.7238615308479
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-471-line",
+      "detectorClass": "line_feeder_arrow",
+      "type": "line_terminal",
+      "bayId": "bay-471",
+      "labelTextIds": [],
+      "bbox": [
+        2389.07664274499,
+        898.5791860930358,
+        7.8880952380952385,
+        47.32857142857143
+      ],
+      "transform": {
+        "x": 2393.0206903640374,
+        "y": 922.2434718073215,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 2393.0206903640374,
+          "y": 898.5791860930358
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-431-cb",
+      "detectorClass": "drawout_breaker",
+      "type": "drawout_breaker",
+      "bayId": "bay-431",
+      "code": {
+        "normalized": "431",
+        "voltageKv": 22,
+        "bayCode": "431"
+      },
+      "labelTextIds": [
+        "txt-0048"
+      ],
+      "bbox": [
+        2381.1885475068943,
+        532.1069786968066,
+        23.664285714285715,
+        86.76904761904763
+      ],
+      "transform": {
+        "x": 2393.0206903640374,
+        "y": 575.4915025063304,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 2393.0206903640374,
+          "y": 532.1069786968066
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 2393.0206903640374,
+          "y": 618.8760263158542
+        }
+      ],
+      "drawingState": "unknown",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-431-ct",
+      "detectorClass": "current_transformer",
+      "type": "current_transformer",
+      "bayId": "bay-431",
+      "code": {
+        "normalized": "TI431",
+        "voltageKv": 22,
+        "bayCode": "431"
+      },
+      "labelTextIds": [
+        "txt-0049"
+      ],
+      "bbox": [
+        2386.118607030704,
+        490.4590783204746,
+        13.804166666666667,
+        19.720238095238095
+      ],
+      "transform": {
+        "x": 2393.0206903640374,
+        "y": 500.3191973680936,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 2393.0206903640374,
+          "y": 490.4590783204746
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 2393.0206903640374,
+          "y": 510.17931641571266
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-431-es_tx",
+      "detectorClass": "earthing_switch_open",
+      "type": "earthing_switch",
+      "bayId": "bay-431",
+      "code": {
+        "normalized": "431-38",
+        "voltageKv": 22,
+        "bayCode": "431",
+        "suffix": "38"
+      },
+      "labelTextIds": [
+        "txt-0050"
+      ],
+      "bbox": [
+        2324.2603437210073,
+        459.6573088965235,
+        46.34255952380953,
+        15.776190476190477
+      ],
+      "transform": {
+        "x": 2346.9386175305312,
+        "y": 468.53141603938064,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 2370.602903244817,
+          "y": 468.53141603938064
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "open",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-431-cable",
+      "detectorClass": "cable_termination",
+      "type": "cable_termination",
+      "bayId": "bay-431",
+      "labelTextIds": [],
+      "bbox": [
+        2388.0906308402277,
+        426.88351566304857,
+        9.860119047619047,
+        19.720238095238095
+      ],
+      "transform": {
+        "x": 2393.0206903640374,
+        "y": 436.7436347106676,
+        "rotationDeg": 180,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 2393.0206903640374,
+          "y": 446.6037537582867
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 2393.0206903640374,
+          "y": 426.88351566304857
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-TUC41-es",
+      "detectorClass": "earthing_switch_open",
+      "type": "earthing_switch",
+      "bayId": "bay-TUC41",
+      "code": {
+        "normalized": "TUC41-14",
+        "voltageKv": 22,
+        "bayCode": "TUC41",
+        "suffix": "14"
+      },
+      "labelTextIds": [
+        "txt-0051"
+      ],
+      "bbox": [
+        2684.4832957666044,
+        610.0019191729971,
+        46.34255952380953,
+        15.776190476190477
+      ],
+      "transform": {
+        "x": 2708.1475814808905,
+        "y": 618.8760263158542,
+        "rotationDeg": 270,
+        "mirrorX": true,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 2684.4832957666044,
+          "y": 618.8760263158542
+        }
+      ],
+      "drawingState": "open",
+      "operationalState": "open",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-TUC41-fuse",
+      "detectorClass": "fuse_disconnector",
+      "type": "fuse",
+      "bayId": "bay-TUC41",
+      "code": {
+        "normalized": "CC-TUC41",
+        "voltageKv": 22,
+        "bayCode": "TUC41"
+      },
+      "labelTextIds": [
+        "txt-0052"
+      ],
+      "bbox": [
+        2650.233365790242,
+        537.7876497490461,
+        23.664285714285715,
+        59.16071428571429
+      ],
+      "transform": {
+        "x": 2662.0655086473844,
+        "y": 567.3680068919032,
+        "rotationDeg": 0,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "x": 2662.0655086473844,
+          "y": 537.7876497490461
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "x": 2662.0655086473844,
+          "y": 596.9483640347603
+        }
+      ],
+      "drawingState": "closed",
+      "operationalState": "closed",
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-TUC41-cs",
+      "detectorClass": "surge_arrester",
+      "type": "surge_arrester",
+      "bayId": "bay-TUC41",
+      "code": {
+        "normalized": "CS-TUC41",
+        "voltageKv": 22,
+        "bayCode": "TUC41"
+      },
+      "labelTextIds": [
+        "txt-0053"
+      ],
+      "bbox": [
+        2576.542959623402,
+        508.9579041346187,
+        63.10476190476191,
+        13.804166666666667
+      ],
+      "transform": {
+        "x": 2608.095340575783,
+        "y": 515.859987467952,
+        "rotationDeg": 90,
+        "mirrorX": false,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 2639.647721528164,
+          "y": 515.859987467952
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "dev-TUC41-vt",
+      "detectorClass": "voltage_transformer",
+      "type": "voltage_transformer",
+      "bayId": "bay-TUC41",
+      "code": {
+        "normalized": "TUC41",
+        "voltageKv": 22
+      },
+      "labelTextIds": [
+        "txt-0054"
+      ],
+      "bbox": [
+        2644.31729436167,
+        410.00361309393014,
+        65.07678571428572,
+        72.96488095238095
+      ],
+      "transform": {
+        "x": 2662.0655086473844,
+        "y": 446.48605357012065,
+        "rotationDeg": 180,
+        "mirrorX": true,
+        "scale": 0.9860119047619048
+      },
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "x": 2662.0655086473844,
+          "y": 482.9684940463111
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    }
+  ],
+  "wires": [
+    {
+      "id": "w-171-1",
+      "points": [
+        [
+          547.2883724874329,
+          601.363212406472
+        ],
+        [
+          547.2883724874329,
+          579.435550125378
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-171-1"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-171-dcl_bus",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-171-2",
+      "points": [
+        [
+          547.2883724874329,
+          539.9950739349018
+        ],
+        [
+          547.2883724874329,
+          518.0674116538079
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-171-dcl_bus",
+        "portId": "p1"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-171-2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-171-3",
+      "points": [
+        [
+          547.2883724874329,
+          518.0674116538079
+        ],
+        [
+          524.8705853682127,
+          518.0674116538079
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-171-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-171-es_bus",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-171-4",
+      "points": [
+        [
+          547.2883724874329,
+          518.0674116538079
+        ],
+        [
+          547.2883724874329,
+          496.13974937271394
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-171-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-171-cb",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-171-5",
+      "points": [
+        [
+          547.2883724874329,
+          456.69927318223773
+        ],
+        [
+          547.2883724874329,
+          434.77161090114384
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-171-cb",
+        "portId": "p1"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-171-ct",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-171-6",
+      "points": [
+        [
+          547.2883724874329,
+          415.0513728059057
+        ],
+        [
+          547.2883724874329,
+          393.1237105248117
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-171-ct",
+        "portId": "p1"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-171-3"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-171-7",
+      "points": [
+        [
+          547.2883724874329,
+          393.1237105248117
+        ],
+        [
+          524.8705853682127,
+          393.1237105248117
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-171-3"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-171-es_cb",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-171-8",
+      "points": [
+        [
+          547.2883724874329,
+          393.1237105248117
+        ],
+        [
+          547.2883724874329,
+          371.1960482437178
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-171-3"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-171-dcl_line",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-171-9",
+      "points": [
+        [
+          547.2883724874329,
+          331.7555720532416
+        ],
+        [
+          547.2883724874329,
+          309.8279097721477
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-171-dcl_line",
+        "portId": "p1"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-171-4"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-171-10",
+      "points": [
+        [
+          547.2883724874329,
+          309.8279097721477
+        ],
+        [
+          524.8705853682127,
+          309.8279097721477
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-171-4"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-171-es_line",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-171-11",
+      "points": [
+        [
+          547.2883724874329,
+          309.8279097721477
+        ],
+        [
+          547.2883724874329,
+          255.00875406941276
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-171-4"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-171-5"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-171-12",
+      "points": [
+        [
+          547.2883724874329,
+          255.00875406941276
+        ],
+        [
+          580.9150531662632,
+          255.00875406941276
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-171-5"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-171-vt",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-171-13",
+      "points": [
+        [
+          547.2883724874329,
+          255.00875406941276
+        ],
+        [
+          547.2883724874329,
+          211.15342950722484
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-171-5"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-171-line",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-1",
+      "points": [
+        [
+          1027.3096231437296,
+          601.363212406472
+        ],
+        [
+          1027.3096231437296,
+          579.435550125378
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-173-1"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-173-dcl_bus",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-2",
+      "points": [
+        [
+          1027.3096231437296,
+          539.9950739349018
+        ],
+        [
+          1027.3096231437296,
+          518.0674116538079
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-173-dcl_bus",
+        "portId": "p1"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-173-cb",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-3",
+      "points": [
+        [
+          1027.3096231437296,
+          478.62693546333173
+        ],
+        [
+          1027.3096231437296,
+          456.69927318223773
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-173-cb",
+        "portId": "p1"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-173-ct",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-4",
+      "points": [
+        [
+          1027.3096231437296,
+          436.9790350869996
+        ],
+        [
+          1027.3096231437296,
+          415.0513728059057
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-173-ct",
+        "portId": "p1"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-173-2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-5",
+      "points": [
+        [
+          1027.3096231437296,
+          415.0513728059057
+        ],
+        [
+          1004.8918360245094,
+          415.0513728059057
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-173-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-173-es_cb",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-6",
+      "points": [
+        [
+          1027.3096231437296,
+          415.0513728059057
+        ],
+        [
+          1027.3096231437296,
+          393.1237105248117
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-173-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-173-dcl_line",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-7",
+      "points": [
+        [
+          1027.3096231437296,
+          353.6832343343355
+        ],
+        [
+          1027.3096231437296,
+          331.75557205324156
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-173-dcl_line",
+        "portId": "p1"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-173-3"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-8",
+      "points": [
+        [
+          1027.3096231437296,
+          331.75557205324156
+        ],
+        [
+          1004.8918360245094,
+          331.75557205324156
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-173-3"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-173-es_line",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-9",
+      "points": [
+        [
+          1027.3096231437296,
+          331.75557205324156
+        ],
+        [
+          1027.3096231437296,
+          287.9002474910537
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-173-3"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-173-4"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-10",
+      "points": [
+        [
+          1027.3096231437296,
+          287.9002474910537
+        ],
+        [
+          1093.0926099870117,
+          287.9002474910537
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-173-4"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-173-cc1",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-11",
+      "points": [
+        [
+          1112.8128480822497,
+          287.9002474910537
+        ],
+        [
+          1134.7405103633437,
+          287.9002474910537
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-173-cc1",
+        "portId": "p1"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-173-5"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-12",
+      "points": [
+        [
+          1134.7405103633437,
+          287.9002474910537
+        ],
+        [
+          1134.7405103633437,
+          310.31803461027386
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-173-5"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-173-vt",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-13",
+      "points": [
+        [
+          1134.7405103633437,
+          287.9002474910537
+        ],
+        [
+          1156.6681726444374,
+          287.9002474910537
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-173-5"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-173-cc2",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-14",
+      "points": [
+        [
+          1176.3884107396755,
+          287.9002474910537
+        ],
+        [
+          1198.3160730207694,
+          287.9002474910537
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-173-cc2",
+        "portId": "p1"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-173-gnd",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-173-15",
+      "points": [
+        [
+          1027.3096231437296,
+          287.9002474910537
+        ],
+        [
+          895.7436494571658,
+          287.9002474910537
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-173-4"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-173-line",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-TUC11-1",
+      "points": [
+        [
+          572.3239613127088,
+          601.363212406472
+        ],
+        [
+          572.3239613127088,
+          623.2908746875661
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-TUC11-1"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-TUC11-dcl",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-TUC11-2",
+      "points": [
+        [
+          572.3239613127088,
+          662.7313508780422
+        ],
+        [
+          572.3239613127088,
+          684.6590131591361
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-TUC11-dcl",
+        "portId": "p2"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-TUC11-2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-TUC11-3",
+      "points": [
+        [
+          572.3239613127088,
+          684.6590131591361
+        ],
+        [
+          549.9061741934886,
+          684.6590131591361
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-TUC11-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-TUC11-es",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-TUC11-4",
+      "points": [
+        [
+          572.3239613127088,
+          684.6590131591361
+        ],
+        [
+          572.3239613127088,
+          706.5866754402301
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-TUC11-2"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-TUC11-3"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-TUC11-5",
+      "points": [
+        [
+          572.3239613127088,
+          706.5866754402301
+        ],
+        [
+          594.7417484319291,
+          706.5866754402301
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-TUC11-3"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-TUC11-cs",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-TUC11-6",
+      "points": [
+        [
+          572.3239613127088,
+          706.5866754402301
+        ],
+        [
+          572.3239613127088,
+          739.478168861871
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-TUC11-3"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-TUC11-vt",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-1",
+      "points": [
+        [
+          952.76401132516,
+          601.363212406472
+        ],
+        [
+          952.76401132516,
+          623.2908746875661
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-1"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-dcl_bus",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-2",
+      "points": [
+        [
+          952.76401132516,
+          662.7313508780422
+        ],
+        [
+          952.76401132516,
+          684.6590131591361
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-131-dcl_bus",
+        "portId": "p2"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-131-2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-3",
+      "points": [
+        [
+          952.76401132516,
+          684.6590131591361
+        ],
+        [
+          930.3462242059397,
+          684.6590131591361
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-es_bus",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-4",
+      "points": [
+        [
+          952.76401132516,
+          684.6590131591361
+        ],
+        [
+          952.76401132516,
+          706.5866754402301
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-ct",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-5",
+      "points": [
+        [
+          952.76401132516,
+          726.3069135354682
+        ],
+        [
+          952.76401132516,
+          748.2345758165621
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-131-ct",
+        "portId": "p2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-cb",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-6",
+      "points": [
+        [
+          952.76401132516,
+          787.6750520070383
+        ],
+        [
+          952.76401132516,
+          809.6027142881323
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-131-cb",
+        "portId": "p2"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-131-3"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-7",
+      "points": [
+        [
+          952.76401132516,
+          809.6027142881323
+        ],
+        [
+          930.3462242059397,
+          809.6027142881323
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-3"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-es_cb",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-8",
+      "points": [
+        [
+          952.76401132516,
+          809.6027142881323
+        ],
+        [
+          952.76401132516,
+          831.5303765692262
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-3"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-dcl_tx",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-9",
+      "points": [
+        [
+          952.76401132516,
+          870.9708527597024
+        ],
+        [
+          952.76401132516,
+          892.8985150407963
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-131-dcl_tx",
+        "portId": "p2"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-131-4"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-10",
+      "points": [
+        [
+          952.76401132516,
+          892.8985150407963
+        ],
+        [
+          930.3462242059397,
+          892.8985150407963
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-4"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-es_tx",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-11",
+      "points": [
+        [
+          952.76401132516,
+          892.8985150407963
+        ],
+        [
+          952.76401132516,
+          914.8261773218903
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-4"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-131-5"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-12",
+      "points": [
+        [
+          952.76401132516,
+          914.8261773218903
+        ],
+        [
+          930.3462242059397,
+          914.8261773218903
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-5"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-cs_hv",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-13",
+      "points": [
+        [
+          952.76401132516,
+          914.8261773218903
+        ],
+        [
+          952.76401132516,
+          947.7176707435312
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-5"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-tx",
+        "portId": "p_hv"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-14",
+      "points": [
+        [
+          1045.449130372779,
+          1022.654575505436
+        ],
+        [
+          1078.34062379442,
+          1022.654575505436
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-131-tx",
+        "portId": "p_mv"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-131-6"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-15",
+      "points": [
+        [
+          1078.34062379442,
+          1022.654575505436
+        ],
+        [
+          1078.34062379442,
+          1045.0723626246563
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-6"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-cs_mv",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-16",
+      "points": [
+        [
+          1078.34062379442,
+          1022.654575505436
+        ],
+        [
+          1100.2682860755137,
+          1022.654575505436
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-6"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-cable_mv",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-17",
+      "points": [
+        [
+          952.76401132516,
+          1097.5914802673408
+        ],
+        [
+          952.76401132516,
+          1130.4829736889817
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-131-tx",
+        "portId": "p_lv"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-131-7"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-18",
+      "points": [
+        [
+          952.76401132516,
+          1130.4829736889817
+        ],
+        [
+          930.3462242059397,
+          1130.4829736889817
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-7"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-cs_lv",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-19",
+      "points": [
+        [
+          952.76401132516,
+          1130.4829736889817
+        ],
+        [
+          952.76401132516,
+          1152.4106359700759
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-7"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-cable_lv",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-20",
+      "points": [
+        [
+          911.35151132516,
+          989.1301707435313
+        ],
+        [
+          867.496186762972,
+          989.1301707435313
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-131-tx",
+        "portId": "p_n"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-131-8"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-21",
+      "points": [
+        [
+          867.496186762972,
+          989.1301707435313
+        ],
+        [
+          867.496186762972,
+          1011.5479578627516
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-8"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-es_n",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-131-22",
+      "points": [
+        [
+          867.496186762972,
+          989.1301707435313
+        ],
+        [
+          845.5685244818781,
+          989.1301707435313
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-131-8"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-131-cs_n",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-331-1",
+      "points": [
+        [
+          3238.942265052834,
+          735.9727883081299
+        ],
+        [
+          3217.01460277174,
+          735.9727883081299
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-331-1"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-331-cb",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-331-2",
+      "points": [
+        [
+          3130.2455551526923,
+          735.9727883081299
+        ],
+        [
+          3108.3178928715984,
+          735.9727883081299
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-331-cb",
+        "portId": "p2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-331-ct",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-331-3",
+      "points": [
+        [
+          3088.5976547763603,
+          735.9727883081299
+        ],
+        [
+          3066.6699924952663,
+          735.9727883081299
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-331-ct",
+        "portId": "p2"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-331-2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-331-4",
+      "points": [
+        [
+          3066.6699924952663,
+          735.9727883081299
+        ],
+        [
+          3066.6699924952663,
+          758.3905754273502
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-331-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-331-es_tx",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-331-5",
+      "points": [
+        [
+          3066.6699924952663,
+          735.9727883081299
+        ],
+        [
+          3044.7423302141724,
+          735.9727883081299
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-331-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-331-cable",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-471-1",
+      "points": [
+        [
+          2393.0206903640374,
+          640.8036885969482
+        ],
+        [
+          2393.0206903640374,
+          662.7313508780422
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-471-1"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-471-cb",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-471-2",
+      "points": [
+        [
+          2393.0206903640374,
+          749.5003984970898
+        ],
+        [
+          2393.0206903640374,
+          771.4280607781837
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-471-cb",
+        "portId": "p2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-471-ct",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-471-3",
+      "points": [
+        [
+          2393.0206903640374,
+          791.1482988734218
+        ],
+        [
+          2393.0206903640374,
+          813.0759611545158
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-471-ct",
+        "portId": "p2"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-471-2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-471-4",
+      "points": [
+        [
+          2393.0206903640374,
+          813.0759611545158
+        ],
+        [
+          2370.602903244817,
+          813.0759611545158
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-471-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-471-es_line",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-471-5",
+      "points": [
+        [
+          2393.0206903640374,
+          813.0759611545158
+        ],
+        [
+          2393.0206903640374,
+          835.0036234356097
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-471-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-471-cable",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-471-6",
+      "points": [
+        [
+          2393.0206903640374,
+          854.7238615308479
+        ],
+        [
+          2393.0206903640374,
+          898.5791860930358
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-471-cable",
+        "portId": "p2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-471-line",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-431-1",
+      "points": [
+        [
+          2393.0206903640374,
+          640.8036885969482
+        ],
+        [
+          2393.0206903640374,
+          618.8760263158542
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-431-1"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-431-cb",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-431-2",
+      "points": [
+        [
+          2393.0206903640374,
+          532.1069786968066
+        ],
+        [
+          2393.0206903640374,
+          510.17931641571266
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-431-cb",
+        "portId": "p1"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-431-ct",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-431-3",
+      "points": [
+        [
+          2393.0206903640374,
+          490.4590783204746
+        ],
+        [
+          2393.0206903640374,
+          468.53141603938064
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-431-ct",
+        "portId": "p1"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-431-2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-431-4",
+      "points": [
+        [
+          2393.0206903640374,
+          468.53141603938064
+        ],
+        [
+          2370.602903244817,
+          468.53141603938064
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-431-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-431-es_tx",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-431-5",
+      "points": [
+        [
+          2393.0206903640374,
+          468.53141603938064
+        ],
+        [
+          2393.0206903640374,
+          446.6037537582867
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-431-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-431-cable",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-TUC41-1",
+      "points": [
+        [
+          2662.0655086473844,
+          640.8036885969482
+        ],
+        [
+          2662.0655086473844,
+          618.8760263158542
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-TUC41-1"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-TUC41-2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-TUC41-2",
+      "points": [
+        [
+          2662.0655086473844,
+          618.8760263158542
+        ],
+        [
+          2684.4832957666044,
+          618.8760263158542
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-TUC41-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-TUC41-es",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-TUC41-3",
+      "points": [
+        [
+          2662.0655086473844,
+          618.8760263158542
+        ],
+        [
+          2662.0655086473844,
+          596.9483640347603
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-TUC41-2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-TUC41-fuse",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-TUC41-4",
+      "points": [
+        [
+          2662.0655086473844,
+          537.7876497490461
+        ],
+        [
+          2662.0655086473844,
+          515.859987467952
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-TUC41-fuse",
+        "portId": "p1"
+      },
+      "to": {
+        "kind": "node",
+        "id": "n-TUC41-3"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-TUC41-5",
+      "points": [
+        [
+          2662.0655086473844,
+          515.859987467952
+        ],
+        [
+          2639.647721528164,
+          515.859987467952
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-TUC41-3"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-TUC41-cs",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-TUC41-6",
+      "points": [
+        [
+          2662.0655086473844,
+          515.859987467952
+        ],
+        [
+          2662.0655086473844,
+          482.9684940463111
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "node",
+        "id": "n-TUC41-3"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-TUC41-vt",
+        "portId": "p1"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-T1-lv",
+      "points": [
+        [
+          952.76401132516,
+          1172.130874065314
+        ],
+        [
+          952.7640092904762,
+          1193.4287301119048
+        ],
+        [
+          2177.114285714286,
+          1193.4287301119048
+        ],
+        [
+          2177.114285714286,
+          405.5856557309524
+        ],
+        [
+          2393.0206893404766,
+          405.5856557309524
+        ],
+        [
+          2393.0206903640374,
+          426.88351566304857
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-131-cable_lv",
+        "portId": "p2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-431-cable",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    },
+    {
+      "id": "w-T1-mv",
+      "points": [
+        [
+          1119.9885241707518,
+          1022.654575505436
+        ],
+        [
+          1141.2863775714286,
+          1022.6545761166666
+        ],
+        [
+          2366.4285714285716,
+          1022.6545761166666
+        ],
+        [
+          2366.4285714285716,
+          1068.8369047619049
+        ],
+        [
+          3003.724232392857,
+          1068.8369047619049
+        ],
+        [
+          3003.724232392857,
+          735.9727901333333
+        ],
+        [
+          3025.022092118934,
+          735.9727883081299
+        ]
+      ],
+      "strokeWidthPx": 1.7920760157967428,
+      "from": {
+        "kind": "port",
+        "deviceId": "dev-131-cable_mv",
+        "portId": "p2"
+      },
+      "to": {
+        "kind": "port",
+        "deviceId": "dev-331-cable",
+        "portId": "p2"
+      },
+      "connectionStatus": "confirmed",
+      "confidence": 1.0
+    }
+  ],
+  "nodes": [
+    {
+      "id": "n-171-1",
+      "type": "junction",
+      "style": "t_on_busbar",
+      "position": [
+        547.2883724874329,
+        601.363212406472
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-171-1"
+        },
+        {
+          "kind": "busbar",
+          "id": "bus-C11"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-171-2",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        547.2883724874329,
+        518.0674116538079
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-171-2"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-3"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-4"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-171-3",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        547.2883724874329,
+        393.1237105248117
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-171-6"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-7"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-8"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-171-4",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        547.2883724874329,
+        309.8279097721477
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-171-9"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-10"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-11"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-171-5",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        547.2883724874329,
+        255.00875406941276
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-171-11"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-12"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-13"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-173-1",
+      "type": "junction",
+      "style": "t_on_busbar",
+      "position": [
+        1027.3096231437296,
+        601.363212406472
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-173-1"
+        },
+        {
+          "kind": "busbar",
+          "id": "bus-C11"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-173-2",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        1027.3096231437296,
+        415.0513728059057
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-173-4"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-5"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-6"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-173-3",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        1027.3096231437296,
+        331.75557205324156
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-173-7"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-8"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-9"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-173-4",
+      "type": "junction",
+      "style": "t_plain",
+      "position": [
+        1027.3096231437296,
+        287.9002474910537
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-173-9"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-10"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-15"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-173-5",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        1134.7405103633437,
+        287.9002474910537
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-173-11"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-12"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-13"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-TUC11-1",
+      "type": "junction",
+      "style": "t_on_busbar",
+      "position": [
+        572.3239613127088,
+        601.363212406472
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-TUC11-1"
+        },
+        {
+          "kind": "busbar",
+          "id": "bus-C11"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-TUC11-2",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        572.3239613127088,
+        684.6590131591361
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-TUC11-2"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC11-3"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC11-4"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-TUC11-3",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        572.3239613127088,
+        706.5866754402301
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-TUC11-4"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC11-5"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC11-6"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-131-1",
+      "type": "junction",
+      "style": "t_on_busbar",
+      "position": [
+        952.76401132516,
+        601.363212406472
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-131-1"
+        },
+        {
+          "kind": "busbar",
+          "id": "bus-C11"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-131-2",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        952.76401132516,
+        684.6590131591361
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-131-2"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-3"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-4"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-131-3",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        952.76401132516,
+        809.6027142881323
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-131-6"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-7"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-8"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-131-4",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        952.76401132516,
+        892.8985150407963
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-131-9"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-10"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-11"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-131-5",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        952.76401132516,
+        914.8261773218903
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-131-11"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-12"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-13"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-131-6",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        1078.34062379442,
+        1022.654575505436
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-131-14"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-15"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-16"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-131-7",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        952.76401132516,
+        1130.4829736889817
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-131-17"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-18"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-19"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-131-8",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        867.496186762972,
+        989.1301707435313
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-131-20"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-21"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-22"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-331-1",
+      "type": "junction",
+      "style": "t_on_busbar",
+      "position": [
+        3238.942265052834,
+        735.9727883081299
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-331-1"
+        },
+        {
+          "kind": "busbar",
+          "id": "bus-C31"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-331-2",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        3066.6699924952663,
+        735.9727883081299
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-331-3"
+        },
+        {
+          "kind": "wire",
+          "id": "w-331-4"
+        },
+        {
+          "kind": "wire",
+          "id": "w-331-5"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-471-1",
+      "type": "junction",
+      "style": "t_on_busbar",
+      "position": [
+        2393.0206903640374,
+        640.8036885969482
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-471-1"
+        },
+        {
+          "kind": "busbar",
+          "id": "bus-C41"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-471-2",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        2393.0206903640374,
+        813.0759611545158
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-471-3"
+        },
+        {
+          "kind": "wire",
+          "id": "w-471-4"
+        },
+        {
+          "kind": "wire",
+          "id": "w-471-5"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-431-1",
+      "type": "junction",
+      "style": "t_on_busbar",
+      "position": [
+        2393.0206903640374,
+        640.8036885969482
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-431-1"
+        },
+        {
+          "kind": "busbar",
+          "id": "bus-C41"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-431-2",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        2393.0206903640374,
+        468.53141603938064
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-431-3"
+        },
+        {
+          "kind": "wire",
+          "id": "w-431-4"
+        },
+        {
+          "kind": "wire",
+          "id": "w-431-5"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-TUC41-1",
+      "type": "junction",
+      "style": "t_on_busbar",
+      "position": [
+        2662.0655086473844,
+        640.8036885969482
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-TUC41-1"
+        },
+        {
+          "kind": "busbar",
+          "id": "bus-C41"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-TUC41-2",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        2662.0655086473844,
+        618.8760263158542
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-TUC41-1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC41-2"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC41-3"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "n-TUC41-3",
+      "type": "junction",
+      "style": "dot",
+      "position": [
+        2662.0655086473844,
+        515.859987467952
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-TUC41-4"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC41-5"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC41-6"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "x-001",
+      "type": "crossing_no_connect",
+      "style": "hop_arc",
+      "position": [
+        2177.114285714286,
+        1022.6545761166666
+      ],
+      "connections": [
+        {
+          "kind": "wire",
+          "id": "w-T1-mv"
+        },
+        {
+          "kind": "wire",
+          "id": "w-T1-lv"
+        }
+      ],
+      "confidence": 1.0,
+      "reviewStatus": "confirmed"
+    }
+  ],
+  "nets": [
+    {
+      "id": "net-0001",
+      "kind": "power",
+      "voltageKv": 110,
+      "members": [
+        {
+          "kind": "busbar",
+          "id": "bus-C11"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-dcl_bus",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-171-dcl_bus",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-173-dcl_bus",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-TUC11-dcl",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC11-1"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0002",
+      "kind": "power",
+      "voltageKv": 35,
+      "members": [
+        {
+          "kind": "busbar",
+          "id": "bus-C31"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-331-cb",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-331-1"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0003",
+      "kind": "power",
+      "voltageKv": 22,
+      "members": [
+        {
+          "kind": "busbar",
+          "id": "bus-C41"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-431-cb",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-471-cb",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-TUC41-es",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-TUC41-fuse",
+          "portId": "p2"
+        },
+        {
+          "kind": "wire",
+          "id": "w-431-1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-471-1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC41-1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC41-2"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC41-3"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0004",
+      "kind": "power",
+      "voltageKv": 22,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-131-cable_lv",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-cable_lv",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-cs_lv",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-tx",
+          "portId": "p_lv"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-431-cable",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-431-cable",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-431-cb",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-431-ct",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-431-ct",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-431-es_tx",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-17"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-18"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-19"
+        },
+        {
+          "kind": "wire",
+          "id": "w-431-2"
+        },
+        {
+          "kind": "wire",
+          "id": "w-431-3"
+        },
+        {
+          "kind": "wire",
+          "id": "w-431-4"
+        },
+        {
+          "kind": "wire",
+          "id": "w-431-5"
+        },
+        {
+          "kind": "wire",
+          "id": "w-T1-lv"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0005",
+      "kind": "power",
+      "voltageKv": 35,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-131-cable_mv",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-cable_mv",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-cs_mv",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-tx",
+          "portId": "p_mv"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-331-cable",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-331-cable",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-331-cb",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-331-ct",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-331-ct",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-331-es_tx",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-14"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-15"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-16"
+        },
+        {
+          "kind": "wire",
+          "id": "w-331-2"
+        },
+        {
+          "kind": "wire",
+          "id": "w-331-3"
+        },
+        {
+          "kind": "wire",
+          "id": "w-331-4"
+        },
+        {
+          "kind": "wire",
+          "id": "w-331-5"
+        },
+        {
+          "kind": "wire",
+          "id": "w-T1-mv"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0006",
+      "kind": "power",
+      "voltageKv": 110,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-131-cb",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-ct",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-ct",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-dcl_bus",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-es_bus",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-2"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-3"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-4"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-5"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0007",
+      "kind": "power",
+      "voltageKv": 110,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-131-cb",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-dcl_tx",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-es_cb",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-6"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-7"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-8"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0008",
+      "kind": "power",
+      "voltageKv": 110,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-131-cs_hv",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-dcl_tx",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-es_tx",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-tx",
+          "portId": "p_hv"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-10"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-11"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-12"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-13"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-9"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0009",
+      "kind": "power",
+      "voltageKv": 110,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-131-cs_n",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-es_n",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-131-tx",
+          "portId": "p_n"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-20"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-21"
+        },
+        {
+          "kind": "wire",
+          "id": "w-131-22"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0010",
+      "kind": "power",
+      "voltageKv": 110,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-171-cb",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-171-ct",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-171-ct",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-171-dcl_line",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-171-es_cb",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-5"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-6"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-7"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-8"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0011",
+      "kind": "power",
+      "voltageKv": 110,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-171-cb",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-171-dcl_bus",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-171-es_bus",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-2"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-3"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-4"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0012",
+      "kind": "power",
+      "voltageKv": 110,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-171-dcl_line",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-171-es_line",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-171-line",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-171-vt",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-10"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-11"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-12"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-13"
+        },
+        {
+          "kind": "wire",
+          "id": "w-171-9"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0013",
+      "kind": "power",
+      "voltageKv": 110,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-173-cb",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-173-ct",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-173-ct",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-173-dcl_line",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-173-es_cb",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-3"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-4"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-5"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-6"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0014",
+      "kind": "power",
+      "voltageKv": 110,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-173-cb",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-173-dcl_bus",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-2"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0015",
+      "kind": "power",
+      "voltageKv": 110,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-173-cc1",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-173-cc2",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-173-vt",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-11"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-12"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-13"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0016",
+      "kind": "power",
+      "voltageKv": 110,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-173-cc1",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-173-dcl_line",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-173-es_line",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-173-line",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-10"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-15"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-7"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-8"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-9"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0017",
+      "kind": "ground",
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-173-cc2",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-173-gnd",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-173-14"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0018",
+      "kind": "power",
+      "voltageKv": 22,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-471-cable",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-471-cable",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-471-cb",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-471-ct",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-471-ct",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-471-es_line",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-471-line",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-471-2"
+        },
+        {
+          "kind": "wire",
+          "id": "w-471-3"
+        },
+        {
+          "kind": "wire",
+          "id": "w-471-4"
+        },
+        {
+          "kind": "wire",
+          "id": "w-471-5"
+        },
+        {
+          "kind": "wire",
+          "id": "w-471-6"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0019",
+      "kind": "power",
+      "voltageKv": 110,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-TUC11-cs",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-TUC11-dcl",
+          "portId": "p2"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-TUC11-es",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-TUC11-vt",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC11-2"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC11-3"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC11-4"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC11-5"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC11-6"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    },
+    {
+      "id": "net-0020",
+      "kind": "power",
+      "voltageKv": 22,
+      "members": [
+        {
+          "kind": "port",
+          "deviceId": "dev-TUC41-cs",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-TUC41-fuse",
+          "portId": "p1"
+        },
+        {
+          "kind": "port",
+          "deviceId": "dev-TUC41-vt",
+          "portId": "p1"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC41-4"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC41-5"
+        },
+        {
+          "kind": "wire",
+          "id": "w-TUC41-6"
+        }
+      ],
+      "reviewStatus": "confirmed"
+    }
+  ],
+  "issues": []
+}

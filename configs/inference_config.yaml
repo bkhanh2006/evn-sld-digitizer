@@ -1,0 +1,109 @@
+# Cấu hình pipeline nhận dạng (Phân hệ B, SDD 7.2). Mọi ngưỡng của Giai đoạn 3 nằm ở đây.
+# Đơn vị: "w" = độ dày nét dây trung vị (median_stroke_px); "mm" = mm trên giấy (nhân pxPerMm).
+
+pipeline:
+  scale_normalizer: stroke_based
+  symbol_detector: template_ncc          # GĐ4 thay bằng faster_rcnn_r50_fpn_v2 / yolov8_sahi
+  orientation_estimator: template_ncc
+  text_reader: paddleocr_ppocrv5         # ground_truth: đọc chữ từ đáp án (chỉ để đo riêng phần lắp ráp)
+  label_matcher: hungarian_with_null
+  wire_extractor: classical
+  junction_classifier: geometric_rules
+  graph_assembler: default
+
+scale_normalizer:
+  nominal_stroke_mm: 0.25        # độ dày nét dây chuẩn trên giấy (E18.9: 3,05 px / 12 px/mm)
+  min_px_per_mm: 6.0             # thấp hơn thì phóng lên target_px_per_mm (ảnh tổng hợp A3: 7–10)
+  max_px_per_mm: 16.0            # cao hơn thì thu về target_px_per_mm
+  target_px_per_mm: 10.0
+  low_res_upscale: 1.5           # phóng > 1,5× → issue low_resolution_input (SDD 8.2.1)
+  min_page_long_side_mm: 297     # bản vẽ không nhỏ hơn A4: chặn trên của pxPerMm ước lượng
+
+symbol_detector:
+  score_threshold: 0.85          # NCC; ký hiệu thật: tổng hợp 0,95–0,99, E18.9 0,75–0,99
+  class_thresholds:              # chọn theo nhiễu lớn nhất đo trên tổng hợp (0000, 0050) và điểm thật trên E18.9
+    disconnector_open: 0.80      # nhiễu ≤ 0,78; E18.9 0,83–0,93
+    earthing_switch_open: 0.82   # nhiễu ≤ 0,77; E18.9 0,89–0,94
+    surge_arrester: 0.83         # nhiễu ≤ 0,81
+    current_transformer: 0.88    # nhiễu ≤ 0,86; E18.9 0,99
+    voltage_transformer: 0.72    # không có nhiễu ≥ 0,6; TU trên E18.9 vẽ khác thư viện (0,75)
+    circuit_breaker: 0.80
+    drawout_breaker: 0.68         # nằm ngang sát thanh cái đậm chỉ đạt ~0,71; nhiễu < 0,6
+    disconnector_closed: 0.985   # trùng hình chữ T của dây
+    earthing_switch_closed: 0.94
+    cable_termination: 0.93
+    coupling_capacitor: 0.93
+    ground_symbol: 0.94
+    line_feeder_arrow: 0.91
+    shunt_reactor: 0.95
+    spark_gap: 0.88
+    shunt_capacitor: 0.87
+  residual_threshold: 0.5        # NCC trên phần ngoài trục dây (loại dây trơn đi qua)
+  residual_class_thresholds:
+    earthing_switch_closed: 0.85
+    disconnector_closed: 0.85
+  solid_w: 1.5                   # lớp không có hình tô đặc: box chứa mực dày ≥ 1,5 w (chấm nối) thì bỏ
+  coarse_stroke_px: 0.9          # so khớp thô trên ảnh thu nhỏ ⌊w / 0,9⌋ lần rồi tinh chỉnh
+  scales: [0.9, 1.0]             # hệ số nhân với tỉ lệ dự kiến pxPerMm × libraryUnitMm (E18.9: dao ≈ 0,9)
+  pad_w: 2.5                     # lề quanh mẫu (đơn vị w)
+  blur_w: 1.0                    # làm mờ Gauss σ = blur_w × w (chịu lệch hình vài px giữa các bản vẽ)
+  nms_iou: 0.3
+  containment: 0.75              # box nằm trong box điểm cao hơn quá tỉ lệ này thì bỏ
+  text_overlap: 0.6              # box có ≥ 60% diện tích trong vùng chữ thì bỏ (sau OCR)
+  text_overlap_keep_score: 0.95  # trừ khi NCC ≥ 0,95 (hộp chữ "TI 175" phủ cả vòng tròn TI)
+
+orientation_estimator:
+  crop_margin: 0.10              # nới bbox 10% (SDD 8.2.3)
+  ambiguous_margin: 0.05
+
+text_reader:
+  det_model: PP-OCRv5_mobile_det   # server_det trên CPU không MKLDNN chậm ~70× (56 s / 1/8 trang E18.9)
+  rec_model: latin_PP-OCRv5_mobile_rec
+  device: cpu                    # gpu nếu đã cài paddlepaddle-gpu
+  enable_mkldnn: false           # paddlepaddle 3.3 trên Windows lỗi oneDNN (ConvertPirAttribute2RuntimeAttribute)
+  tile_px: 1600
+  overlap_px: 200
+  vertical_ratio: 2.5            # h/w > 2,5 → chữ dọc, thử xoay 90° và 270°
+  min_det_score: 0.3
+  min_rec_score: 0.5
+
+label_matcher:
+  search_text_heights: 8         # R_max = 8 × chiều cao chữ trung vị
+  w1: 1.0
+  w2: 0.5
+  null_cost: 0.60                # c_null
+  pending_ratio: 0.7             # chi phí trong (0,7 c_null, c_null) → pending
+
+wire_extractor:
+  symbol_mask_grow_w: 1.0        # che bbox ký hiệu nới thêm 1 w
+  text_keep_line_heights: 3.0    # giữ nét thẳng dài ≥ 3 × chiều cao chữ đi qua vùng chữ
+  line_kernel_mm: 0.8            # kernel mở hình thái ngang/dọc
+  min_segment_mm: 1.0            # bỏ đoạn skeleton ngắn hơn (gai, vụn)
+  simplify_w: 1.0                # Douglas–Peucker ε = 1 w
+  node_merge_w: 3.0              # gộp nút skeleton gần nhau (chữ thập thành 1 nút bậc 4)
+  frame_line_ratio: 0.6          # đoạn dài ≥ 60% cạnh trang sát biên là khung bản vẽ
+  title_block_zone: 0.3          # khung tên tìm trong 30% chiều cao dưới trang
+  hough_min_mm: 4.0              # HoughLinesP lấy lại đoạn xiên dài ≥ 4 mm
+
+busbar_classifier:
+  busbar_stroke_ratio: 1.8
+  min_length_mm: 20.0            # thay cho "≥ 3 × bề rộng ngăn" của SDD (chưa biết ngăn ở bước này)
+
+junction_classifier:
+  dot_radius_w: 1.5
+  dot_fill: 0.8
+  hop_gap_mm: [0.8, 4.5]         # khe của cầu vượt (≈ 2r) trên dây sau khi bỏ cung
+  hop_arc_ink: 0.25              # tỉ lệ điểm tối trên nửa cung phải có
+  collinear_tol_w: 1.5
+
+port_matcher:
+  alpha: 1.0
+  beta: 0.5
+  port_accept: 0.60              # τ_accept (SDD đề xuất 0,35; chốt lại ở GĐ3: box NCC lệch 1–3 px)
+  port_candidate: 1.50           # τ_candidate (SDD đề xuất 0,80)
+  busbar_snap_w: 2.0             # đầu dây cách thân thanh cái ≤ 2 w → t_on_busbar
+  port_gap_mm: 3.0               # hai cổng trống sát nhau / cổng sát thanh cái → nối bằng dây ngắn
+
+assembler:
+  confirm_score: 0.7             # thiết bị có điểm ≥ ngưỡng → confirmed, còn lại pending
+  unexpected_scale: 0.3          # |s / s_exp − 1| > 0,3 → issue unexpected_symbol_scale
