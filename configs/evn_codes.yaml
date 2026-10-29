@@ -1,0 +1,167 @@
+# Ngữ pháp mã vận hành EVN (SDD mục 8.2.4).
+# Nguồn: Thông tư 44/2014/TT-BCT, Chương IV (Điều 40–61). Số Điều ghi ở từng mục.
+# Mã nguồn không viết cứng regex: mọi mẫu nằm ở đây, đọc bằng src/core/evn_codes.py.
+
+voltage_digit:            # Điều 42: chữ số cấp điện áp → kV
+  "5": 500
+  "2": 220
+  "1": 110
+  "7": 66
+  "3": 35
+  "4": 22
+  "8": 15
+  "9": 10
+  "6": 6
+
+breaker_position_digit:   # Điều 58: chữ số thứ hai của mã máy cắt
+  "3": transformer
+  "4": aux_transformer
+  "5": line               # 5–6 chỉ dùng cho đường dây khi sơ đồ phức tạp
+  "6": line
+  "7": line
+  "8": line
+  "0": shunt_or_generator # tụ bù ngang, đầu cực máy phát, máy bù quay
+# Máy cắt liên lạc (Điều 58): chữ số 2–3 là số thứ tự hai thanh cái (112 nối C11–C12).
+# Máy cắt vòng: x00. Chữ số thứ hai không có trong bảng trên → coi là liên lạc thanh cái.
+
+disconnector_suffix:      # Điều 59: hậu tố dao cách ly → phía nối
+  "1": busbar_1           # số thứ tự thanh cái
+  "2": busbar_2
+  "3": transformer
+  "7": line
+  "9": transfer_bus_or_bypass
+  "0": bypass_or_neutral
+
+earthing_position_digit:  # Điều 60: hậu tố dao tiếp địa = <hậu tố DCL kề> + chữ số này
+  "4": busbar_side
+  "5": breaker_side
+  "6": line_or_capacitor_side
+  "8": transformer_reactor_vt_side
+
+earthing_special_suffixes:  # Điều 60
+  "08": transformer_neutral
+
+# Lớp detector ứng với loại thiết bị suy từ hậu tố (dùng cho suffix_grammar: switch)
+suffix_grammar_types:
+  disconnector: [disconnector_open, disconnector_closed]
+  earthing_switch: [earthing_switch_open, earthing_switch_closed]
+
+# Chuẩn hóa chuỗi trước khi khớp mẫu mã (không áp cho mẫu match_on: raw)
+normalize:
+  dashes: ["–", "—", "‐", "−", "_"]     # đổi thành "-"
+  ocr_digit_fixes: {"O": "0", "Q": "0", "I": "1", "L": "1", "S": "5", "B": "8"}
+  max_ocr_fixes: 3                        # số ký tự tối đa được sửa trong một chuỗi
+
+# Mẫu khớp theo thứ tự; mẫu đầu tiên khớp được chọn.
+#   role: device_code | busbar_code | parameter | bay_label | pole_number
+#   types: lớp detector được phép ghép (ràng buộc cứng của LabelMatcher)
+#   suffix_grammar: switch → loại thiết bị suy từ hậu tố theo Điều 59–60
+#   voltage_from: tên nhóm regex chứa chữ số cấp áp
+patterns:
+  - id: busbar
+    regex: '^C(?P<v>\d)(?P<n>\d)$'                     # Điều 43: C11, C12, C31, C42; C29 = thanh cái vòng
+    role: busbar_code
+    voltage_from: v
+
+  - id: main_switch
+    regex: '^(?P<v>\d)(?P<t>\d)(?P<n>\d)$'             # Điều 58: 171, 131, 112, 371, 471
+    role: device_code
+    types: [circuit_breaker, drawout_breaker]
+    voltage_from: v
+
+  - id: bay_switch
+    regex: '^(?P<bay>(?P<v>\d)\d\d)-(?P<s>\d{1,2})$'   # Điều 59–60: 171-1, 171-76, 131-08, 431-38
+    role: device_code
+    suffix_grammar: switch
+    voltage_from: v
+
+  - id: host_switch
+    regex: '^(?P<bay>TUC(?P<v>\d)\d|T(?P<v2>\d)\d\d|TD(?P<v3>\d)\d)-(?P<s>\d{1,2})$'   # TUC32-28, TUC41-14, T302-2
+    role: device_code
+    suffix_grammar: switch
+    voltage_from: [v, v2, v3]
+
+  - id: ct
+    regex: '^TI(?P<bay>(?P<v>\d)\d\d|T\d)$'            # Điều 55: TI171, TI312
+    role: device_code
+    types: [current_transformer]
+    voltage_from: v
+
+  - id: line_vt
+    regex: '^TU(?P<bay>(?P<v>\d)\d\d)$'                # Điều 54: TU171, TU173
+    role: device_code
+    types: [voltage_transformer]
+    voltage_from: v
+
+  - id: bus_vt
+    regex: '^TUC(?P<v>\d)(?P<n>\d)$'                   # Điều 54: TUC11, TUC32, TUC41
+    role: device_code
+    types: [voltage_transformer]
+    voltage_from: v
+
+  - id: arrester
+    regex: '^CS(?P<v>\d)?-?(?P<host>T\d|TD(?P<v2>\d)\d|TUC(?P<v3>\d)\d|(?P<v4>\d)\d\d)$'  # Điều 56
+    role: device_code                                  # CS1T1, CS3T1, CS-TUC32, CSTD31; CS0T1 = trung tính
+    types: [surge_arrester]
+    voltage_from: [v, v2, v3, v4]
+
+  - id: fuse
+    regex: '^(?:CC|FCO)-?(?P<host>TD(?P<v>\d)\d|TUC(?P<v2>\d)\d)$'   # Điều 57: CC-TD31, CC-TUC41, "CCTUC31"
+    role: device_code
+    types: [fuse_disconnector]
+    voltage_from: [v, v2]
+
+  - id: aux_unknown
+    regex: '^SI-(?P<host>TD(?P<v>\d)\d)$'              # SI-TD31 trên E18.9; ý nghĩa CẦN KIỂM CHỨNG
+    role: device_code
+    types: [fuse_disconnector, disconnector_open, disconnector_closed]
+    voltage_from: v
+
+  - id: aux_transformer
+    regex: '^TD(?P<v>\d)(?P<n>\d)$'                    # Điều 45: TD31, TD41
+    role: device_code
+    types: [transformer_2w]
+    voltage_from: v
+
+  - id: capacitor
+    regex: '^TB[ND](?P<v>\d)\d{2}$'                    # Điều 51: TBN301 (tụ ngang), TBD501 (tụ dọc)
+    role: device_code
+    types: [shunt_capacitor]
+    voltage_from: v
+
+  - id: reactor
+    regex: '^(?:L|KH)(?P<v>\d)\d{2}$'                  # Điều 47, 50: L302, KH504
+    role: device_code
+    types: [shunt_reactor]
+    voltage_from: v
+
+  - id: capacitor_bay_breaker
+    regex: '^T(?P<v>\d)\d{2}$'                         # Điều 58: máy cắt tụ, ký tự đầu "T" (T301)
+    role: device_code
+    types: [circuit_breaker, drawout_breaker]
+    voltage_from: v
+
+  - id: reactor_bay_breaker
+    regex: '^K(?P<v>\d)\d{2}$'                         # Điều 58: máy cắt kháng, ký tự đầu "K"
+    role: device_code
+    types: [circuit_breaker, drawout_breaker]
+    voltage_from: v
+
+  - id: main_transformer
+    regex: '^A?T(?P<n>\d)$'                            # Điều 45: T1, T2; AT1 = MBA tự ngẫu
+    role: device_code
+    types: [transformer_3w, transformer_2w]
+
+  - id: spare_bay
+    regex: '^(DP|DỰPHÒNG)$'                            # ngăn dự phòng
+    role: bay_label
+
+  - id: pole_number
+    regex: '^\d{2}$'                                   # số cột cạnh đầu đường dây: 02, 33, 58
+    role: pole_number
+
+  - id: parameter
+    regex: '(MVA|kVA|MVAr|kVAr|kV|%|\d/\d)'            # 63/63/63MVA, 4MVAr, 100kVA, 22/0,4kV
+    role: parameter
+    match_on: raw                                      # khớp trên chuỗi gốc, không chuẩn hóa
+    ignore_case: true

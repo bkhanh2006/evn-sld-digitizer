@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -22 8 44" data-detector-class="shunt_reactor">
+<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="0" y1="-20" x2="0" y2="-12"/>
+  <polyline points="0,-12 2,-11.46 3.46,-10 4,-8 3.46,-6 2,-4.54 0,-4 2,-3.46 3.46,-2 4,0 3.46,2 2,3.46 0,4 2,4.54 3.46,6 4,8 3.46,10 2,11.46 0,12"/>
+  <line x1="0" y1="12" x2="0" y2="20"/>
+</g>
+</svg>

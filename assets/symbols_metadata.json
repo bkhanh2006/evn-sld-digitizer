@@ -1,0 +1,914 @@
+{
+  "schemaVersion": "1.2",
+  "libraryUnitMm": 0.125,
+  "source": "Đo từ path vector của E18.9 (data/processed/E18.9/vector.json), vẽ lại bằng tay.",
+  "symbols": {
+    "circuit_breaker": {
+      "classId": 1,
+      "type": "circuit_breaker",
+      "drawingState": "unknown",
+      "svgFile": "symbols_svg/circuit_breaker.svg",
+      "dxfBlockName": "SYM_CIRCUIT_BREAKER",
+      "size": {
+        "width": 20.0,
+        "height": 40.0
+      },
+      "bboxLocal": [
+        -10.0,
+        -20.0,
+        10.0,
+        20.0
+      ],
+      "netBehavior": "split",
+      "conduction": "by_state",
+      "orientationSensitive": false,
+      "allowedRotationsDeg": [
+        0,
+        90
+      ],
+      "allowMirror": false,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "localX": 0,
+          "localY": -20,
+          "direction": [
+            0,
+            -1
+          ]
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "localX": 0,
+          "localY": 20,
+          "direction": [
+            0,
+            1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE",
+        "RATING"
+      ]
+    },
+    "drawout_breaker": {
+      "classId": 2,
+      "type": "drawout_breaker",
+      "drawingState": "unknown",
+      "svgFile": "symbols_svg/drawout_breaker.svg",
+      "dxfBlockName": "SYM_DRAWOUT_BREAKER",
+      "size": {
+        "width": 24.0,
+        "height": 88.0
+      },
+      "bboxLocal": [
+        -12.0,
+        -44.0,
+        12.0,
+        44.0
+      ],
+      "netBehavior": "split",
+      "conduction": "by_state",
+      "orientationSensitive": false,
+      "allowedRotationsDeg": [
+        0,
+        90
+      ],
+      "allowMirror": false,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "localX": 0,
+          "localY": -44,
+          "direction": [
+            0,
+            -1
+          ]
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "localX": 0,
+          "localY": 44,
+          "direction": [
+            0,
+            1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE",
+        "RATING"
+      ]
+    },
+    "disconnector_closed": {
+      "classId": 3,
+      "type": "disconnector",
+      "drawingState": "closed",
+      "svgFile": "symbols_svg/disconnector_closed.svg",
+      "dxfBlockName": "SYM_DISCONNECTOR_CLOSED",
+      "size": {
+        "width": 10.0,
+        "height": 40.0
+      },
+      "bboxLocal": [
+        -5.0,
+        -20.0,
+        5.0,
+        20.0
+      ],
+      "netBehavior": "split",
+      "conduction": "by_state",
+      "orientationSensitive": false,
+      "allowedRotationsDeg": [
+        0,
+        90
+      ],
+      "allowMirror": true,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "localX": 0,
+          "localY": -20,
+          "direction": [
+            0,
+            -1
+          ]
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "localX": 0,
+          "localY": 20,
+          "direction": [
+            0,
+            1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE"
+      ]
+    },
+    "disconnector_open": {
+      "classId": 4,
+      "type": "disconnector",
+      "drawingState": "open",
+      "svgFile": "symbols_svg/disconnector_open.svg",
+      "dxfBlockName": "SYM_DISCONNECTOR_OPEN",
+      "size": {
+        "width": 9.0,
+        "height": 40.0
+      },
+      "bboxLocal": [
+        -9.0,
+        -20.0,
+        0.0,
+        20.0
+      ],
+      "netBehavior": "split",
+      "conduction": "by_state",
+      "orientationSensitive": false,
+      "allowedRotationsDeg": [
+        0,
+        90
+      ],
+      "allowMirror": true,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "localX": 0,
+          "localY": -20,
+          "direction": [
+            0,
+            -1
+          ]
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "localX": 0,
+          "localY": 20,
+          "direction": [
+            0,
+            1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE"
+      ]
+    },
+    "earthing_switch_closed": {
+      "classId": 5,
+      "type": "earthing_switch",
+      "drawingState": "closed",
+      "svgFile": "symbols_svg/earthing_switch_closed.svg",
+      "dxfBlockName": "SYM_EARTHING_SWITCH_CLOSED",
+      "size": {
+        "width": 14.0,
+        "height": 47.0
+      },
+      "bboxLocal": [
+        -7.0,
+        -24.0,
+        7.0,
+        23.0
+      ],
+      "netBehavior": "terminal",
+      "conduction": "earthing_by_state",
+      "orientationSensitive": true,
+      "allowedRotationsDeg": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "allowMirror": true,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "localX": 0,
+          "localY": -24,
+          "direction": [
+            0,
+            -1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE"
+      ]
+    },
+    "earthing_switch_open": {
+      "classId": 6,
+      "type": "earthing_switch",
+      "drawingState": "open",
+      "svgFile": "symbols_svg/earthing_switch_open.svg",
+      "dxfBlockName": "SYM_EARTHING_SWITCH_OPEN",
+      "size": {
+        "width": 16.0,
+        "height": 47.0
+      },
+      "bboxLocal": [
+        -9.0,
+        -24.0,
+        7.0,
+        23.0
+      ],
+      "netBehavior": "terminal",
+      "conduction": "earthing_by_state",
+      "orientationSensitive": true,
+      "allowedRotationsDeg": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "allowMirror": true,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "localX": 0,
+          "localY": -24,
+          "direction": [
+            0,
+            -1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE"
+      ]
+    },
+    "fuse_disconnector": {
+      "classId": 7,
+      "type": "fuse",
+      "drawingState": "closed",
+      "svgFile": "symbols_svg/fuse_disconnector.svg",
+      "dxfBlockName": "SYM_FUSE_DISCONNECTOR",
+      "size": {
+        "width": 24.0,
+        "height": 60.0
+      },
+      "bboxLocal": [
+        -12.0,
+        -30.0,
+        12.0,
+        30.0
+      ],
+      "netBehavior": "split",
+      "conduction": "always",
+      "orientationSensitive": false,
+      "allowedRotationsDeg": [
+        0,
+        90
+      ],
+      "allowMirror": false,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "localX": 0,
+          "localY": -30,
+          "direction": [
+            0,
+            -1
+          ]
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "localX": 0,
+          "localY": 30,
+          "direction": [
+            0,
+            1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE",
+        "RATING"
+      ]
+    },
+    "transformer_2w": {
+      "classId": 8,
+      "type": "transformer",
+      "svgFile": "symbols_svg/transformer_2w.svg",
+      "dxfBlockName": "SYM_TRANSFORMER_2W",
+      "size": {
+        "width": 46.0,
+        "height": 83.0
+      },
+      "bboxLocal": [
+        -23.0,
+        -41.5,
+        23.0,
+        41.5
+      ],
+      "netBehavior": "split",
+      "conduction": "always",
+      "orientationSensitive": true,
+      "allowedRotationsDeg": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "allowMirror": true,
+      "ports": [
+        {
+          "id": "p_hv",
+          "role": "hv",
+          "localX": 0,
+          "localY": -41.5,
+          "direction": [
+            0,
+            -1
+          ]
+        },
+        {
+          "id": "p_lv",
+          "role": "lv",
+          "localX": 0,
+          "localY": 41.5,
+          "direction": [
+            0,
+            1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE",
+        "POWER",
+        "VOLTAGE_RATIO"
+      ]
+    },
+    "transformer_3w": {
+      "classId": 9,
+      "type": "transformer",
+      "svgFile": "symbols_svg/transformer_3w.svg",
+      "dxfBlockName": "SYM_TRANSFORMER_3W",
+      "size": {
+        "width": 136.0,
+        "height": 152.0
+      },
+      "bboxLocal": [
+        -68.0,
+        -76.0,
+        68.0,
+        76.0
+      ],
+      "netBehavior": "split",
+      "conduction": "always",
+      "orientationSensitive": true,
+      "allowedRotationsDeg": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "allowMirror": true,
+      "ports": [
+        {
+          "id": "p_hv",
+          "role": "hv",
+          "localX": -26,
+          "localY": -76,
+          "direction": [
+            0,
+            -1
+          ]
+        },
+        {
+          "id": "p_mv",
+          "role": "mv",
+          "localX": 68,
+          "localY": 0,
+          "direction": [
+            1,
+            0
+          ]
+        },
+        {
+          "id": "p_lv",
+          "role": "lv",
+          "localX": -26,
+          "localY": 76,
+          "direction": [
+            0,
+            1
+          ]
+        },
+        {
+          "id": "p_n",
+          "role": "neutral",
+          "localX": -68,
+          "localY": -34,
+          "direction": [
+            -1,
+            0
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE",
+        "POWER",
+        "VOLTAGE_RATIO"
+      ]
+    },
+    "current_transformer": {
+      "classId": 10,
+      "type": "current_transformer",
+      "svgFile": "symbols_svg/current_transformer.svg",
+      "dxfBlockName": "SYM_CURRENT_TRANSFORMER",
+      "size": {
+        "width": 14.0,
+        "height": 20.0
+      },
+      "bboxLocal": [
+        -7.0,
+        -10.0,
+        7.0,
+        10.0
+      ],
+      "netBehavior": "passthrough",
+      "conduction": "always",
+      "orientationSensitive": false,
+      "allowedRotationsDeg": [
+        0,
+        90
+      ],
+      "allowMirror": false,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "localX": 0,
+          "localY": -10,
+          "direction": [
+            0,
+            -1
+          ]
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "localX": 0,
+          "localY": 10,
+          "direction": [
+            0,
+            1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE",
+        "RATIO"
+      ]
+    },
+    "voltage_transformer": {
+      "classId": 11,
+      "type": "voltage_transformer",
+      "svgFile": "symbols_svg/voltage_transformer.svg",
+      "dxfBlockName": "SYM_VOLTAGE_TRANSFORMER",
+      "size": {
+        "width": 66.0,
+        "height": 74.0
+      },
+      "bboxLocal": [
+        -18.0,
+        -37.0,
+        48.0,
+        37.0
+      ],
+      "netBehavior": "terminal",
+      "conduction": null,
+      "orientationSensitive": true,
+      "allowedRotationsDeg": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "allowMirror": true,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "localX": 0,
+          "localY": -37,
+          "direction": [
+            0,
+            -1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE",
+        "RATIO"
+      ]
+    },
+    "surge_arrester": {
+      "classId": 12,
+      "type": "surge_arrester",
+      "svgFile": "symbols_svg/surge_arrester.svg",
+      "dxfBlockName": "SYM_SURGE_ARRESTER",
+      "size": {
+        "width": 14.0,
+        "height": 64.0
+      },
+      "bboxLocal": [
+        -7.0,
+        -32.0,
+        7.0,
+        32.0
+      ],
+      "netBehavior": "terminal",
+      "conduction": null,
+      "orientationSensitive": true,
+      "allowedRotationsDeg": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "allowMirror": false,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "localX": 0,
+          "localY": -32,
+          "direction": [
+            0,
+            -1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE"
+      ]
+    },
+    "spark_gap": {
+      "classId": 13,
+      "type": "spark_gap",
+      "svgFile": "symbols_svg/spark_gap.svg",
+      "dxfBlockName": "SYM_SPARK_GAP",
+      "size": {
+        "width": 14.0,
+        "height": 40.0
+      },
+      "bboxLocal": [
+        -7.0,
+        -20.0,
+        7.0,
+        20.0
+      ],
+      "netBehavior": "terminal",
+      "conduction": null,
+      "orientationSensitive": true,
+      "allowedRotationsDeg": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "allowMirror": false,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "localX": 0,
+          "localY": -20,
+          "direction": [
+            0,
+            -1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE"
+      ]
+    },
+    "shunt_capacitor": {
+      "classId": 14,
+      "type": "shunt_capacitor",
+      "svgFile": "symbols_svg/shunt_capacitor.svg",
+      "dxfBlockName": "SYM_SHUNT_CAPACITOR",
+      "size": {
+        "width": 20.0,
+        "height": 32.0
+      },
+      "bboxLocal": [
+        -10.0,
+        -16.0,
+        10.0,
+        16.0
+      ],
+      "netBehavior": "terminal",
+      "conduction": null,
+      "orientationSensitive": true,
+      "allowedRotationsDeg": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "allowMirror": false,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "localX": 0,
+          "localY": -16,
+          "direction": [
+            0,
+            -1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE",
+        "RATING"
+      ]
+    },
+    "shunt_reactor": {
+      "classId": 15,
+      "type": "reactor",
+      "svgFile": "symbols_svg/shunt_reactor.svg",
+      "dxfBlockName": "SYM_SHUNT_REACTOR",
+      "size": {
+        "width": 4.0,
+        "height": 40.0
+      },
+      "bboxLocal": [
+        0.0,
+        -20.0,
+        4.0,
+        20.0
+      ],
+      "netBehavior": "split",
+      "conduction": "always",
+      "orientationSensitive": false,
+      "allowedRotationsDeg": [
+        0,
+        90
+      ],
+      "allowMirror": true,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "localX": 0,
+          "localY": -20,
+          "direction": [
+            0,
+            -1
+          ]
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "localX": 0,
+          "localY": 20,
+          "direction": [
+            0,
+            1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE",
+        "RATING"
+      ]
+    },
+    "ground_symbol": {
+      "classId": 16,
+      "type": "ground",
+      "svgFile": "symbols_svg/ground_symbol.svg",
+      "dxfBlockName": "SYM_GROUND_SYMBOL",
+      "size": {
+        "width": 16.0,
+        "height": 20.0
+      },
+      "bboxLocal": [
+        -8.0,
+        -10.0,
+        8.0,
+        10.0
+      ],
+      "netBehavior": "terminal",
+      "conduction": null,
+      "orientationSensitive": true,
+      "allowedRotationsDeg": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "allowMirror": false,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "localX": 0,
+          "localY": -10,
+          "direction": [
+            0,
+            -1
+          ]
+        }
+      ],
+      "cadAttributes": []
+    },
+    "line_feeder_arrow": {
+      "classId": 17,
+      "type": "line_terminal",
+      "svgFile": "symbols_svg/line_feeder_arrow.svg",
+      "dxfBlockName": "SYM_LINE_FEEDER_ARROW",
+      "size": {
+        "width": 8.0,
+        "height": 48.0
+      },
+      "bboxLocal": [
+        -4.0,
+        -24.0,
+        4.0,
+        24.0
+      ],
+      "netBehavior": "terminal",
+      "conduction": null,
+      "orientationSensitive": true,
+      "allowedRotationsDeg": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "allowMirror": false,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "conductor",
+          "localX": 0,
+          "localY": -24,
+          "direction": [
+            0,
+            -1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "LINE_NAME"
+      ]
+    },
+    "cable_termination": {
+      "classId": 18,
+      "type": "cable_termination",
+      "svgFile": "symbols_svg/cable_termination.svg",
+      "dxfBlockName": "SYM_CABLE_TERMINATION",
+      "size": {
+        "width": 10.0,
+        "height": 20.0
+      },
+      "bboxLocal": [
+        -5.0,
+        -10.0,
+        5.0,
+        10.0
+      ],
+      "netBehavior": "passthrough",
+      "conduction": "always",
+      "orientationSensitive": false,
+      "allowedRotationsDeg": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "allowMirror": false,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "localX": 0,
+          "localY": -10,
+          "direction": [
+            0,
+            -1
+          ]
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "localX": 0,
+          "localY": 10,
+          "direction": [
+            0,
+            1
+          ]
+        }
+      ],
+      "cadAttributes": []
+    },
+    "coupling_capacitor": {
+      "classId": 19,
+      "type": "coupling_capacitor",
+      "svgFile": "symbols_svg/coupling_capacitor.svg",
+      "dxfBlockName": "SYM_COUPLING_CAPACITOR",
+      "size": {
+        "width": 12.0,
+        "height": 20.0
+      },
+      "bboxLocal": [
+        -6.0,
+        -10.0,
+        6.0,
+        10.0
+      ],
+      "netBehavior": "split",
+      "conduction": "always",
+      "orientationSensitive": false,
+      "allowedRotationsDeg": [
+        0,
+        90
+      ],
+      "allowMirror": false,
+      "ports": [
+        {
+          "id": "p1",
+          "role": "a",
+          "localX": 0,
+          "localY": -10,
+          "direction": [
+            0,
+            -1
+          ]
+        },
+        {
+          "id": "p2",
+          "role": "b",
+          "localX": 0,
+          "localY": 10,
+          "direction": [
+            0,
+            1
+          ]
+        }
+      ],
+      "cadAttributes": [
+        "DEVICE_CODE"
+      ]
+    }
+  }
+}

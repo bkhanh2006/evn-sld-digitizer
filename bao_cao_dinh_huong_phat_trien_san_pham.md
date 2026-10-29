@@ -18,7 +18,7 @@ Thực tế tài liệu tại các đơn vị điện lực có hai nhóm bản 
 ### 1.2. Đầu vào và Đầu ra của hệ thống
 - **Đầu vào (Input):**
   - Ảnh raster độ phân giải cao, xuất từ PDF hoặc bản scan sạch. Hệ thống đưa mọi ảnh về một tỉ lệ chuẩn (mặc định 8 px/mm, tức bản A3 ngang rộng khoảng 3360 px). Ảnh cần phóng to quá 1,5 lần để đạt tỉ lệ này vẫn được xử lý nhưng bị gắn cảnh báo `low_resolution_input`. Không dùng upscale để bù cho ảnh nguồn kém: cần lấy bản gốc độ phân giải cao.
-  - Thư viện ký hiệu gồm **17 lớp** (SVG mẫu, biến thể đóng/mở, hướng hợp lệ, **tọa độ cổng chuẩn – ports/terminals** và hành vi điện của từng lớp), khai báo một lần trong `symbols_metadata.json`.
+  - Thư viện ký hiệu gồm **19 lớp** (SVG mẫu, biến thể đóng/mở, hướng hợp lệ, **tọa độ cổng chuẩn – ports/terminals** và hành vi điện của từng lớp), khai báo một lần trong `symbols_metadata.json`.
 - **Đầu ra (Output – 3 tầng biểu diễn liên kết qua ID):**
   1. **Tầng Hình học & Bản vẽ kỹ thuật (`SVG` + `AutoCAD .dxf/.dwg`):** Tọa độ `bbox`, hướng xoay, tỉ lệ của từng ký hiệu; đường tâm (`polyline`) của dây dẫn và thanh cái; vị trí nhãn chữ. Xuất đồng thời ra **SVG** (cho Web/App) và **AutoCAD `.dxf`** (với đầy đủ `BLOCK`, `ATTRIB`, `LWPOLYLINE`, `LAYER` cho kỹ sư điện).
   2. **Tầng Đấu nối (`topology_graph.json`, schema `SubstationTopologyGraph` v1.1):** Danh sách ngăn lộ (`bays`), thiết bị (`devices`), các đầu cực (`ports/terminals`), thanh cái (`busbars`), dây (`wires`), các điểm nút (`junction` / `crossing_no_connect`), toàn bộ văn bản đọc được (`texts`) và danh sách mạng dây (`nets`). Đảm bảo biết chính xác **cổng nào của thiết bị nào nối vào thanh cái hay đường dây nào**. Quan hệ đấu nối chỉ lưu ở một nơi là `nets`.
@@ -36,7 +36,7 @@ Qua quá trình khảo sát bài báo *arXiv:1903.09495* và thư viện mã ngu
 
 | Tiêu chí | Phương án dùng `PyPowSyBl` + Hậu xử lý SVG | Phương án `EVN Modular Bay Generator` (Đề xuất) |
 |---|---|---|
-| **Độ phủ ký hiệu EVN** | **Thiếu nhiều ký hiệu xuất hiện trên bản vẽ thực tế**: không có sẵn `TI` (biến dòng), `TU` (biến điện áp), `Chống sét van`, `Cầu chì`, `Máy cắt hợp bộ rút kéo` (22kV). | **Phủ đủ 17 lớp** đã thống kê từ `E18.1` / `E18.9`, dùng trực tiếp bộ ký hiệu SVG trích từ các bản vẽ này. |
+| **Độ phủ ký hiệu EVN** | **Thiếu nhiều ký hiệu xuất hiện trên bản vẽ thực tế**: không có sẵn `TI` (biến dòng), `TU` (biến điện áp), `Chống sét van`, `Cầu chì`, `Máy cắt hợp bộ rút kéo` (22kV). | **Phủ đủ 19 lớp** đã thống kê từ `E18.1` / `E18.9`, dùng trực tiếp bộ ký hiệu SVG trích từ các bản vẽ này. |
 | **Bố cục (Macro Layout)** | Chỉ xếp ngăn lộ một chiều theo chuẩn châu Âu; không vẽ được bố cục hỗn hợp của EVN (110kV/22kV nằm ngang, 35kV như `C31/C32` dựng dọc bên phải). | Mỗi ngăn lộ dựng trong một hệ tọa độ chuẩn rồi xoay/lật khi đặt, nên cùng một mẫu cho ra cả ngăn dọc (110kV, 22kV) và ngăn ngang (35kV). Bố cục vùng theo preset cấu hình được. |
 | **Rủi ro khi chèn linh kiện** | `PowSyBl` tính khoảng cách cố định. Cắt dây SVG hậu kỳ để nhét thêm `TI`, nhánh `TU`, `Dao tiếp địa` sẽ gây **đè hình (overlap)** và lệch tọa độ. | Tính tọa độ từ gốc theo kích thước thật của từng linh kiện; **kiểm tra va chạm khi đặt**, mẫu nào còn chồng hình hoặc đứt dây thì bị loại bởi `validate_dataset.py`. |
 | **Chi phí lập trình** | Phải can thiệp vào nhân Java (`powsybl-diagram`) nếu muốn sửa layout và custom symbol chuẩn. | Viết thuần bằng **Python** (`lxml` / `svgwrite` + `networkx`), toàn quyền kiểm soát mã nguồn. Đổi lại phải tự viết bộ đi dây (A\* trực giao). |
@@ -77,7 +77,7 @@ Mã thiết bị trong dữ liệu tổng hợp được sinh ngược từ chí
 
 ### 2.3. Quy chuẩn danh mục lớp (Classes) và Schema Nhãn
 
-Để tránh nhập nhằng khi huấn luyện Detector, các ký hiệu có hình thái đóng/mở khác nhau được tách lớp rõ ràng. Danh mục gồm **17 lớp detector**. Trong đồ thị, lớp detector được quy về `type` + `drawingState` (ví dụ `disconnector_open` → `type: disconnector`, `drawingState: open`). Danh mục đầy đủ kèm vai trò cổng, hành vi khi dựng Net (`netBehavior`) và khi tô vùng mang điện (`conduction`) nằm ở SDD mục 5.
+Để tránh nhập nhằng khi huấn luyện Detector, các ký hiệu có hình thái đóng/mở khác nhau được tách lớp rõ ràng. Danh mục gồm **19 lớp detector**. Trong đồ thị, lớp detector được quy về `type` + `drawingState` (ví dụ `disconnector_open` → `type: disconnector`, `drawingState: open`). Danh mục đầy đủ kèm vai trò cổng, hành vi khi dựng Net (`netBehavior`) và khi tô vùng mang điện (`conduction`) nằm ở SDD mục 5.
 
 | Nhóm | Tên lớp (`class_name`) | Mô tả / Đặc điểm nhận diện trên bản vẽ EVN | Số cổng (`ports`) |
 |---|---|---|---|
@@ -237,7 +237,7 @@ Từ cùng một cấu trúc dữ liệu trung gian `topology_graph.json`, hệ 
    - Dùng cho giao diện Web/App để kiểm duyệt kết quả, bật/tắt lớp hiển thị và tô màu vùng mang điện (BFS) khi giả lập đóng/cắt: click vào máy cắt hoặc dao để đổi trạng thái.
 2. **Bộ xuất AutoCAD (`AutoCADDXFExporter` dùng thư viện `ezdxf`):**
    - Chạy hoàn toàn bằng Python, không cần cài AutoCAD trên máy chủ, sinh file `.dxf` (R2018, đơn vị mm):
-     - **Ký hiệu thiết bị $\rightarrow$ `BLOCK` & `INSERT`:** Mỗi lớp thiết bị (`circuit_breaker`, `disconnector_open`, `current_transformer`...) là một Block có tâm/cổng trùng khớp với SVG. 17 block nằm chung trong một file `assets/symbols.dxf`, **vẽ ở hệ trục Y hướng lên**; nếu chép nguyên hình SVG (Y hướng xuống), các ký hiệu bất đối xứng sẽ bị soi gương trong AutoCAD.
+     - **Ký hiệu thiết bị $\rightarrow$ `BLOCK` & `INSERT`:** Mỗi lớp thiết bị (`circuit_breaker`, `disconnector_open`, `current_transformer`...) là một Block có tâm/cổng trùng khớp với SVG. 19 block nằm chung trong một file `assets/symbols.dxf`, **vẽ ở hệ trục Y hướng lên**; nếu chép nguyên hình SVG (Y hướng xuống), các ký hiệu bất đối xứng sẽ bị soi gương trong AutoCAD.
      - **Nhãn thiết bị $\rightarrow$ `ATTRIB` / `MTEXT`:** Gắn mã hiệu (`171`, `171-1`, `T1`) thành thuộc tính `ATTRIB` đi kèm Block để khi kỹ sư di chuyển thiết bị trên AutoCAD, nhãn tự động di chuyển theo và trích xuất được bảng kê vật tư (`DATAEXTRACTION`). Chữ không thuộc thiết bị (tên lộ, thông số) xuất thành `MTEXT`.
      - **Đường dây & Thanh cái $\rightarrow$ `LWPOLYLINE`:** Dây dẫn xuất thành đường đa tuyến liền mạch; thanh cái có bề rộng nét (`const_width`) lớn hơn. Điểm nối vẽ chấm đặc, giao không nối kiểu cầu vượt vẽ cung tròn.
      - **Tự động phân lớp (`LAYER`):** Dựa vào cấp điện áp của Net, gán đối tượng vào layer theo cấp áp. Tên và màu layer nằm trong file cấu hình `cad_layers.yaml`; mặc định là `HV_110KV`, `MV_35KV`, `MV_22KV`, `BUSBAR_<cấp áp>`, `TEXT`, và layer cảnh báo `AI_REVIEW` (khoanh đám mây vàng tại các vị trí cần kỹ sư kiểm tra). Có thể đổi sang quy định layer riêng của đơn vị nếu có.
@@ -268,7 +268,7 @@ Lộ trình được chia thành **6 giai đoạn ngắn gọn, làm đến đâ
 
 | Giai đoạn | Mục tiêu trọng tâm | Đầu ra cụ thể (Deliverables) |
 |---|---|---|
-| **Giai đoạn 1: Chuẩn hóa Schema & Thư viện Ký hiệu** | Chốt cấu trúc JSON đầu ra và bộ ký hiệu chuẩn EVN. | - Schema `SubstationTopologyGraph` v1.1 dạng Pydantic (`src/core/schema.py`), gồm `bays`, `devices`, `busbars`, `wires`, `nodes`, `texts`, `nets`, `issues`.<br>- Bộ **17 file SVG** ký hiệu trích từ `E18.1` / `E18.9`, file `assets/symbols.dxf` chứa 17 block tương ứng, và `symbols_metadata.json` định nghĩa tọa độ cổng, `netBehavior`, `conduction`, hướng hợp lệ.<br>- Ngữ pháp mã `configs/evn_codes.yaml`.<br>- Unit test khớp tọa độ cổng SVG ↔ DXF và test phân tích mã EVN. |
+| **Giai đoạn 1: Chuẩn hóa Schema & Thư viện Ký hiệu** | Chốt cấu trúc JSON đầu ra và bộ ký hiệu chuẩn EVN. | - Schema `SubstationTopologyGraph` v1.1 dạng Pydantic (`src/core/schema.py`), gồm `bays`, `devices`, `busbars`, `wires`, `nodes`, `texts`, `nets`, `issues`.<br>- Bộ **19 file SVG** ký hiệu trích từ `E18.1` / `E18.9`, file `assets/symbols.dxf` chứa 19 block tương ứng, và `symbols_metadata.json` định nghĩa tọa độ cổng, `netBehavior`, `conduction`, hướng hợp lệ.<br>- Ngữ pháp mã `configs/evn_codes.yaml`.<br>- Unit test khớp tọa độ cổng SVG ↔ DXF và test phân tích mã EVN. |
 | **Giai đoạn 2: Xây dựng Bộ sinh Dữ liệu Tổng hợp (100 mẫu)** | Tạo bộ sinh `EVN Modular Bay Generator` bằng Python và xuất 100 bộ dữ liệu đầu tiên. | - Script `generate_substation_dataset.py` ghép 6 loại khối ngăn lộ, có bộ đi dây A\* trực giao.<br>- Dataset 100 mẫu (25 đơn giản, 45 trung bình, 30 phức tạp) có đủ `PNG + SVG + DXF + BBox (COCO) + Wire Mask + Graph JSON`, kèm `split.json` chia theo topology gốc và `manifest.json` ghi seed.<br>- Script `validate_dataset.py` kiểm tra tự động 8 tiêu chí (SDD mục 8.1.5). |
 | **Giai đoạn 3: Xây dựng Baseline Không Học Máy trên ảnh thật** | Chạy thử pipeline cổ điển trên `E18.1` và `E18.9` để có thước đo cơ sở (Baseline). | - Bản gốc độ phân giải cao của `E18.1` / `E18.9` (ảnh 1070 × 765 px hiện có chỉ đủ cho smoke test).<br>- Pipeline chuẩn hóa tỉ lệ + `Morphology + HoughLinesP + Skeleton` trích dây + phân loại điểm giao bằng luật hình học.<br>- Tích hợp `PaddleOCR` (có xoay chữ dọc $90^\circ$) + ghép nhãn Hungarian + luật mã EVN.<br>- Báo cáo số liệu baseline theo 4 mức đánh giá trên `E18.1`, dùng để chốt ngưỡng nghiệm thu. |
 | **Giai đoạn 4: Gán nhãn Tập thực tế & Huấn luyện Detector** | Giúp mô hình nhận diện chính xác mọi ký hiệu và trạng thái đóng/mở. | - Gán nhãn tay 5–10 bản vẽ thực tế (`E18.1`, `E18.9`...) làm Gold Set, chia `dev` / `test`.<br>- Fine-tune `Faster R-CNN` / `YOLOv8+SAHI` trên 100 ảnh tổng hợp + một phần ảnh thật.<br>- Đạt `Recall ≥ 90%` trên các ký hiệu chính, đọc đúng mã ≥ 95%, F1 ghép nhãn ≥ 90% (mục tiêu đề xuất). |
@@ -280,7 +280,7 @@ Lộ trình được chia thành **6 giai đoạn ngắn gọn, làm đến đâ
 ## 6. Việc Cần Làm Ngay Tiếp Theo (Next Steps)
 
 1. **Tập hợp các file PDF bản vẽ thực tế** (`E18.9.pdf`, `E18.1`, và các file có sơ đồ trạm) vào một thư mục `data/raw_pdfs/` trong workspace. Ưu tiên **bản gốc độ phân giải cao** của `E18.1`.
-2. **Trích xuất bộ 17 ký hiệu chuẩn SVG** từ `E18.1` / `E18.9`, vẽ 17 block DXF tương ứng (hệ Y hướng lên) và khai báo `symbols_metadata.json` (tọa độ `ports`, `netBehavior`, `conduction`, hướng hợp lệ).
+2. **Trích xuất bộ 19 ký hiệu chuẩn SVG** từ `E18.1` / `E18.9`, vẽ 19 block DXF tương ứng (hệ Y hướng lên) và khai báo `symbols_metadata.json` (tọa độ `ports`, `netBehavior`, `conduction`, hướng hợp lệ).
 3. **Viết nguyên mẫu (Prototype) script Python `EVN Bay Generator`** cho 1 sơ đồ rút gọn của `E18.1` / `E18.9` (1 thanh cái 110kV, 1 MBA, 2 ngăn lộ). Mục đích là kiểm chứng việc xuất đồng thời **Ảnh PNG + BBox + Graph JSON + SVG + DXF** và vòng kiểm tra đọc lại, trước khi nhân bản lên 100 ảnh.
 4. **Hỏi chuyên môn để chốt các điểm còn mở** (SDD mục 13):
    - Ý nghĩa chữ số thứ hai của mã máy cắt và vai trò nhãn `T301`/`T302`.

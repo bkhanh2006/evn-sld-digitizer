@@ -1,7 +1,7 @@
 # Tài Liệu Thiết Kế Hệ Thống (Software Design Document – SDD)
 ## Dự Án: Phân Tích, Khôi Phục Đồ Thị và Tái Dựng Bản Vẽ Sơ Đồ Nhất Thứ Trạm Biến Áp (SVG & AutoCAD)
 
-> **Phiên bản:** 1.2  
+> **Phiên bản:** 1.3  
 > **Ngày cập nhật:** 29/10/2026  
 > **Tài liệu liên kết:** [bao_cao_dinh_huong_phat_trien_san_pham.md](bao_cao_dinh_huong_phat_trien_san_pham.md), [ke_hoach_thuc_hien.md](ke_hoach_thuc_hien.md), [sample_output.json](output/latex/sample_output.json), [tong_hop_cac_doan_chat.md](tong_hop_cac_doan_chat.md)  
 > **Bản trước:** [tmp/thiet_ke_he_thong_sdd_v1.0.md](tmp/thiet_ke_he_thong_sdd_v1.0.md) (v1.1 xem lịch sử git)
@@ -13,6 +13,7 @@
 | 1.0 | 26/10/2026 | Bản đầu tiên. |
 | 1.1 | 29/10/2026 | Chốt danh mục 17 lớp ký hiệu và thuộc tính `netBehavior` / `conduction` (bỏ `conductsWhenClosed`). Thêm mục Quy ước chung (tọa độ, góc, lật hình, đơn vị mm cho DXF). Sửa schema đồ thị: tham chiếu có kiểu, `nets` là nguồn chuẩn duy nhất của quan hệ đấu nối, thêm `bays`, `texts`, `provenance`; bỏ `branchPairs` và nút `bend`. Sửa sơ đồ phụ thuộc pipeline. Thêm interface giữa các khâu, bước chuẩn hóa tỉ lệ, ước lượng hướng ký hiệu. Sửa hàm chi phí ghép cổng và ghép nhãn (cho phép không ghép, ràng buộc cứng). Viết lại luật mã EVN thành ngữ pháp cấu hình được. Thêm thiết kế bộ đi dây của bộ sinh, bộ xuất SVG, giao diện duyệt, thuật toán tô vùng mang điện, so khớp đồ thị khi đánh giá, tiêu chí nghiệm thu có số liệu và yêu cầu phi chức năng. |
 | 1.2 | 29/10/2026 | Viết lại ngữ pháp mã EVN theo Thông tư 44/2014/TT-BCT, Chương IV (bảng cấp áp đầy đủ, chữ số loại ngăn của máy cắt, hậu tố dao tiếp địa sinh theo luật); đóng câu hỏi mở 13.1–13.2. Ghi nhận dữ liệu thật là PDF vector khổ A4: `pxPerMm` theo trang thật, danh mục trang `configs/raw_pages.yaml`, kích thước bitmap thực tế khi xoay trang. Thêm Mục 8.6 (nguồn nhãn vector cho bản vẽ thật) và các script Giai đoạn 0. |
+| 1.3 | 29/10/2026 | Giai đoạn 1. Danh mục lên **19 lớp**: thêm `cable_termination` (đầu cáp) và `coupling_capacitor` (tụ của TU kiểu tụ), cả hai đều thấy trên E18.9. Kích thước ký hiệu đo từ vector E18.9. Gốc tọa độ cục bộ đặt trên trục nối cổng, thêm `bboxLocal` để chiếu đúng ký hiệu lệch tâm. Thêm vai trò chữ `pole_number`. Ghi nhận quy ước vẽ dao cách ly trên E18.9 là câu hỏi mở. |
 
 ---
 
@@ -106,7 +107,7 @@ Hệ thống gồm **2 phân hệ** dùng chung tầng lõi: **Danh mục ký hi
 ```mermaid
 flowchart TD
     subgraph SHARED["Tầng lõi dùng chung"]
-        SYM["SymbolLibrary<br/>17 lớp: SVG + block DXF + cổng + netBehavior"]
+        SYM["SymbolLibrary<br/>19 lớp: SVG + block DXF + cổng + netBehavior"]
         SCHEMA["SubstationTopologyGraph<br/>Pydantic schema v1.1"]
         RULES["EVNCodeGrammar + EVNRuleValidator<br/>configs/evn_codes.yaml"]
         NETB["NetBuilder + Energizer"]
@@ -178,8 +179,8 @@ Bộ sinh dữ liệu (Phân hệ A) dùng lại `NetBuilder` để tính `nets`
 ```text
 Phan tich so do mach dien/
 ├── assets/
-│   ├── symbols_svg/                 # 17 file SVG ký hiệu (1 file / lớp detector), hệ Y xuống
-│   ├── symbols.dxf                  # 1 file chứa đủ 17 block (hệ Y lên, đơn vị mm, có ATTDEF)
+│   ├── symbols_svg/                 # 19 file SVG ký hiệu (1 file / lớp detector), hệ Y xuống
+│   ├── symbols.dxf                  # 1 file chứa đủ 19 block (hệ Y lên, đơn vị mm, có ATTDEF)
 │   └── symbols_metadata.json        # Nguồn chuẩn: lớp, kích thước, cổng, netBehavior, hướng
 ├── configs/
 │   ├── generator_config.yaml        # Số mẫu, phân bố độ khó, seed, tham số biến thiên & nhiễu
@@ -288,7 +289,12 @@ Phan tich so do mach dien/
 | 15 | `shunt_reactor` | `reactor` | – | 2: `a`,`b` | `split` | `always` | đối xứng điện |
 | 16 | `ground_symbol` | `ground` | – | 1: `conductor` | `terminal` (Net loại `ground`) | – | **bất đối xứng** |
 | 17 | `line_feeder_arrow` | `line_terminal` | – | 1: `conductor` | `terminal` | – | **bất đối xứng** |
+| 18 | `cable_termination` | `cable_termination` | – | 2: `a`,`b` | `passthrough` | `always` | đối xứng điện |
+| 19 | `coupling_capacitor` | `coupling_capacitor` | – | 2: `a`,`b` | `split` | `always` | đối xứng điện |
 
+Kích thước thật của ký hiệu (đo trên E18.9, ở 12 px/mm) quyết định `size` trong thư viện. Ví dụ: máy cắt 2,5 × 5 mm, TI Ø1,7 mm, TU mỗi vòng Ø4,6 mm, MBA 3 cuộn mỗi vòng Ø10,6 mm, đầu cáp 1,2 mm.
+- **Lớp 18 `cable_termination`** là tam giác rỗng đặt trên dây, thường đi thành cặp ▽…△ (đoạn cáp). Lớp này xuất hiện ở mọi ngăn 35 kV, 22 kV và đầu ra MBA trên E18.9.
+- **Lớp 19 `coupling_capacitor`** là cặp bản tụ "||" cắt ngang dây. Trên E18.9, TU đường dây 110 kV là **TU kiểu tụ**, vẽ theo chuỗi: đường dây → tụ → điểm rẽ sang `voltage_transformer` → tụ → đất.
 Ý nghĩa các thuộc tính:
 - **`netBehavior`** (dùng khi dựng Net, tĩnh, không phụ thuộc trạng thái đóng/mở):
   - `split`: mỗi cổng thuộc Net riêng; thiết bị trở thành **cạnh** nối các Net trong đồ thị thiết bị (Mục 8.3.3).
@@ -310,7 +316,15 @@ Phan tich so do mach dien/
 
 ### 6.1. Schema Thư Viện Ký Hiệu (`assets/symbols_metadata.json`)
 
-Tọa độ cục bộ có gốc $(0,0)$ tại tâm hình học, Y hướng xuống (như SVG), đơn vị `lu`. `direction` là vector đơn vị hướng ra ngoài thân ký hiệu tại cổng.
+Tọa độ cục bộ Y hướng xuống (như SVG), đơn vị `lu`. `direction` là vector đơn vị hướng ra ngoài thân ký hiệu tại cổng.
+- **Gốc $(0,0)$ đặt trên trục nối các cổng** (bản 1.3), không bắt buộc là tâm hình học. Ví dụ dao cách ly mở có lưỡi dao lệch sang trái nhưng hai cổng vẫn ở $x = 0$.
+- **`bboxLocal`** `[x0, y0, x1, y1]` là hộp bao thật của hình vẽ quanh gốc; `size` là kích thước của hộp đó.
+  - Cả hai được `scripts/build_symbols_dxf.py --update-metadata` tính từ file SVG, không sửa tay. Test kiểm tra chúng khớp với SVG.
+  - Khi suy `transform` từ bbox phát hiện được, tâm = tâm bbox trừ độ lệch của tâm `bboxLocal` (đã xoay) so với gốc (`geometry.placement_from_bbox`).
+- **Mọi cổng phải nằm trên cạnh `bboxLocal`**; script dựng thư viện báo lỗi nếu sai. Điều này cần cho bước che ký hiệu ở Mục 8.2.6.
+- File SVG ký hiệu chỉ dùng `line`, `polyline`, `polygon`, `rect`, `circle`, không có `transform`. Nhờ vậy hình chuyển chính xác sang block DXF.
+
+Đoạn JSON dưới đây minh họa cấu trúc. Giá trị thật xem file `assets/symbols_metadata.json`.
 
 ```json
 {
@@ -577,7 +591,7 @@ Ghi chú:
 - **Nút `bend` không tồn tại trong đồ thị:** góc rẽ chỉ là đỉnh của `wire.points`. `nodes` chỉ có `junction` (style `dot` | `t_on_busbar` | `t_plain`) và `crossing_no_connect` (style `plain_cross` | `hop_arc`).
 - **Dây không bị cắt tại điểm giao không nối:** `wire-088` đi xuyên qua `node-x01` là **một** dây liên tục. Nút crossing chỉ ghi nhận vị trí giao để hiển thị và kiểm tra, nên không cần `branchPairs`.
 - `wire.from` / `wire.to` thuộc một trong ba dạng: `port`, `node`, hoặc `{"kind": "dangling", "position": [x, y]}`.
-- `texts` chứa **mọi** văn bản OCR đọc được, kể cả chữ không thuộc thiết bị nào (`assignedTo: null`). `role` ∈ `device_code` | `busbar_code` | `parameter` | `line_name` | `bay_label` | `title_block` | `other`.
+- `texts` chứa **mọi** văn bản OCR đọc được, kể cả chữ không thuộc thiết bị nào (`assignedTo: null`). `role` ∈ `device_code` | `busbar_code` | `parameter` | `line_name` | `bay_label` | `pole_number` | `title_block` | `other`.
 - `issues[].type` lấy từ danh mục cố định (Mục 8.3.4); `resolution` do UI ghi khi kỹ sư xử lý.
 
 ### 6.3. Bất biến của đồ thị (kiểm tra trong `schema.py` và `graph_validator.py`)
@@ -1097,7 +1111,7 @@ Kiểm tra bất biến 6.3 và các luật nghiệp vụ, mỗi vi phạm sinh 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3500 2480">
   <defs>
     <symbol id="sym-circuit_breaker" viewBox="-8 -16 16 32">…</symbol>
-    …                                   <!-- 17 symbol nạp từ assets/symbols_svg -->
+    …                                   <!-- 19 symbol nạp từ assets/symbols_svg -->
   </defs>
   <g id="layer-source" opacity="0.35"><image href="E18.1.png" …/></g>   <!-- tùy chọn -->
   <g id="layer-busbars">  <polyline data-id="bus-C11" data-net="net-0002" …/></g>
@@ -1151,7 +1165,7 @@ class AutoCADDXFExporter:
      - `AI_REVIEW` (màu 2 – vàng)
      
      Tên layer là cấu hình, không ngầm định là chuẩn của EVN.
-2. **Nạp block:** dùng `ezdxf.xref` (hoặc `Importer`) chép 17 block từ **một** file `assets/symbols.dxf` (vẽ ở hệ Y lên, đơn vị mm, có `ATTDEF`).
+2. **Nạp block:** dùng `ezdxf.xref` (hoặc `Importer`) chép 19 block từ **một** file `assets/symbols.dxf` (vẽ ở hệ Y lên, đơn vị mm, có `ATTDEF`).
 3. **Vẽ thanh cái và dây:**
    - Thanh cái: `msp.add_lwpolyline(pts_cad, dxfattribs={"layer": busbar_layer, "const_width": busbar_width_mm})`; `busbar_width_mm` = `strokeWidthPx / pxPerMm` hoặc giá trị cố định trong cấu hình.
    - Dây: `add_lwpolyline` trên layer theo `voltageKv` của Net (tra qua chỉ mục ngược của `nets`).
@@ -1308,5 +1322,7 @@ Các ngưỡng dưới đây là **mục tiêu đề xuất ban đầu**, sẽ c
 3. Số cổng của tụ bù ngang (đang chốt 1) và dao tiếp địa (đang chốt 1). Nếu bản vẽ khác vẽ 2 cổng thì thêm lớp biến thể, không đổi lớp hiện có.
 4. Quy ước vẽ điểm nối (có chấm hay không) và điểm giao không nối (cầu vượt hay chữ thập trơn) trên các bản vẽ ngoài E18.1. Có thể đo trực tiếp từ vector của E18.9 (Mục 8.6).
 5. Nguồn mặc định cho `Energizer` (hiện chọn các đầu đường dây cấp áp cao nhất).
+6. **Quy ước vẽ dao cách ly (mới, bản 1.3):** trên E18.1 và E18.9, **mọi** dao cách ly và dao tiếp địa đều vẽ lưỡi dao xiên có khe hở, kể cả dao chắc chắn đang đóng khi vận hành (ví dụ `171-1`, `171-7`). Nếu đây là quy ước của đơn vị, thì hình vẽ không cho biết trạng thái, và detector chỉ cần một lớp cho mỗi loại; khi đó `drawingState` phải là `unknown` chứ không phải `open`. Cần hỏi chuyên môn trước Giai đoạn 4 (gán nhãn). Hiện thư viện vẫn giữ cả hai biến thể đóng/mở, dùng cho dữ liệu tổng hợp và bộ xuất SVG tương tác.
+7. Ký hiệu vòng tròn có mũi tên cạnh dao `172-7` trên E18.9 chưa rõ là thiết bị gì, nên chưa đưa vào danh mục.
 
-**Đồng bộ với báo cáo định hướng:** [bao_cao_dinh_huong_phat_trien_san_pham.md](bao_cao_dinh_huong_phat_trien_san_pham.md) đã được cập nhật ngày 29/10/2026 cho khớp với SDD 1.1, bao gồm: 17 lớp ký hiệu, tên script `generate_substation_dataset.py`, tên layer cấu hình được, hậu tố `-08`/`-24`/`-28`, chỉ số Terminal-pair F1. Các bản LaTeX/PDF cũ trong `output/` chưa được cập nhật.
+**Đồng bộ với báo cáo định hướng:** [bao_cao_dinh_huong_phat_trien_san_pham.md](bao_cao_dinh_huong_phat_trien_san_pham.md) đã được cập nhật ngày 29/10/2026 cho khớp với SDD 1.1, bao gồm: danh mục lớp ký hiệu (nay là 19 lớp), tên script `generate_substation_dataset.py`, tên layer cấu hình được, hậu tố `-08`/`-24`/`-28`, chỉ số Terminal-pair F1. Các bản LaTeX/PDF cũ trong `output/` chưa được cập nhật.
