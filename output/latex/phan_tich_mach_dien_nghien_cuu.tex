@@ -1,0 +1,560 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[top=2cm,left=3cm,right=3cm,bottom=2cm]{geometry}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc}
+  \usepackage[T5]{fontenc}
+\else
+  \usepackage{fontspec}
+  \setmainfont{texgyretermes-regular.otf}[
+    BoldFont=texgyretermes-bold.otf,
+    ItalicFont=texgyretermes-italic.otf,
+    BoldItalicFont=texgyretermes-bolditalic.otf]
+  \setsansfont{texgyreheros-regular.otf}[BoldFont=texgyreheros-bold.otf]
+  \setmonofont{lmmono10-regular.otf}[Scale=MatchLowercase]
+\fi
+\usepackage[vietnamese]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{multirow,hhline,subcaption}
+\usepackage{array,booktabs,tabularx}
+\usepackage{enumitem}
+\usepackage[unicode,hidelinks]{hyperref}
+\usepackage{microtype}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{3pt}
+\setlist[itemize]{topsep=3pt,itemsep=2pt,parsep=0pt}
+\setlist[enumerate]{topsep=3pt,itemsep=2pt,parsep=0pt}
+\setlength{\emergencystretch}{2em}
+\renewcommand{\arraystretch}{1.18}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\Urlmuskip=0mu plus 2mu
+\title{Phân tích mạch điện\\[4pt]
+  \large Nghiên cứu chuẩn bị cho dự án phân tích sơ đồ nhất thứ dạng raster}
+\author{}
+\date{Ngày 5 tháng 10 năm 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Tài liệu xác định phạm vi dự án, phân rã bài toán nhận dạng sơ đồ điện và đề xuất phương án trích xuất đường dây, phục hồi quan hệ đấu nối. Trọng tâm là thuật toán dây và việc xây dựng dữ liệu, gán nhãn, huấn luyện các mô hình CNN. Đầu vào được giả định có chất lượng tương tự sơ đồ mẫu; nghiên cứu lọc nhiễu và khử nghiêng tạm thời nằm ngoài phạm vi. Các quy mô dữ liệu, cấu hình huấn luyện và phương án thực nghiệm trong tài liệu là đề xuất cần kiểm chứng, chưa phải kết quả của hệ thống đã triển khai.
+\end{abstract}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\newpage
+
+\section{Xác định bài toán}
+\subsection{Mục tiêu}
+Phân tích sơ đồ mạch điện, trước hết là sơ đồ nhất thứ trạm điện, thành các đối tượng riêng biệt; phục hồi hình học, bố cục và quan hệ đấu nối của sơ đồ gốc. Kết quả phải cho phép tái dựng bản vẽ và kiểm tra thiết bị nào đấu vào mạng dây nào.
+\begin{enumerate}
+  \item Nhận dạng thiết bị và văn bản: vị trí, loại ký hiệu, hướng và nhãn liên quan.
+  \item Trích xuất dây và thanh cái: đường đi, điểm rẽ nhánh, giao điểm và vị trí nối vào thiết bị.
+  \item Phục hồi cấu trúc: quan hệ giữa thiết bị, cổng và mạng dây; giữ các trường hợp chưa đủ bằng chứng để kiểm tra.
+\end{enumerate}
+
+\subsection{Đầu vào và phạm vi}
+\begin{itemize}
+  \item Ảnh raster của sơ đồ: ảnh scan, ảnh chụp màn hình hoặc trang PDF được raster hóa. Phương án không dựa vào việc đọc các đối tượng vector trong PDF.
+  \item Thư viện ảnh ký hiệu kỹ thuật, được bổ sung loại, biến thể, hướng hợp lệ và vị trí cổng chuẩn.
+  \item Quy ước của bộ bản vẽ mục tiêu, đặc biệt cách thể hiện giao nối, giao không nối và trạng thái thiết bị.
+\end{itemize}
+Giai đoạn đầu tập trung vào sơ đồ cùng miền với mẫu đã cung cấp. Không giả định mô hình nhận dạng ngay mọi tiêu chuẩn ký hiệu hoặc mọi loại sơ đồ điện. Phân tích dòng điện, tính toán công suất và suy luận trạng thái vận hành toàn hệ thống chưa thuộc mục tiêu ban đầu.
+
+\subsection{Đầu ra}
+\begin{itemize}
+  \item \textbf{Đối tượng:} mã, loại, bounding box, hướng, hình học, văn bản liên quan và độ tin cậy.
+  \item \textbf{Cổng thiết bị:} mã cổng, thiết bị sở hữu, tọa độ, vai trò và trạng thái quan sát được.
+  \item \textbf{Dây và thanh cái:} mask nét nhìn thấy, polyline đường tâm, các điểm đấu và phân loại đối tượng.
+  \item \textbf{Điểm giao:} tọa độ, kiểu giao và nhóm nhánh thực sự nối với nhau.
+  \item \textbf{Cấu trúc đấu nối:} danh sách net và quan hệ thiết bị--cổng--net, xuất dưới dạng JSON.
+  \item \textbf{Bản tái dựng:} SVG giữ bố cục, kèm ảnh chồng lớp kết quả để đối chiếu.
+\end{itemize}
+
+\subsection{Các khái niệm và ranh giới biểu diễn}
+\begin{description}[style=nextline,leftmargin=0pt]
+  \item[Cổng (port)] Vị trí dây bên ngoài nối với một đầu cực của thiết bị trong biểu diễn sơ đồ.
+  \item[Điểm nối (junction)] Vị trí các nhánh dây được xác nhận thuộc cùng một mạng dây theo quy ước bản vẽ.
+  \item[Giao không nối (crossing)] Các dây giao nhau về hình học nhưng không đấu nối tại vị trí đó; cần lưu nhánh nào đi cùng nhánh nào.
+  \item[Mạng dây (net)] Tập dây và thanh cái liên thông theo liên kết đã xác nhận, dừng tại cổng thiết bị; không đi xuyên qua thiết bị để tự động hợp nhất hai phía.
+\end{description}
+Phải phân biệt \textbf{liên thông nét đen} với \textbf{quan hệ đấu nối}. Hai cổng máy cắt vẫn là hai cổng riêng; các phía biến áp không trở thành một net chỉ vì cùng nằm trong một ký hiệu. Khe hở của dao cách ly mở cũng không được sửa như một đoạn dây bị đứt.
+
+\section{Phân tích bài toán}
+\subsection{Các vấn đề có thể gặp phải}
+\begin{itemize}
+  \item Ký hiệu nhỏ so với toàn trang; hai lớp có thể chỉ khác một vài nét.
+  \item Dây đi sát, tiếp xúc hoặc bị che bởi ký hiệu và văn bản.
+  \item Nét ký hiệu, chữ và khung có thể bị nhận nhầm thành dây.
+  \item Đường ngắn giữa các thiết bị có thể bị bỏ sót khi chỉ tìm đường dài.
+  \item Các dây sát nhau, điểm giao và cung vượt có thể gây lỗi gộp hoặc tách net.
+  \item Text nằm ngang/dọc; nhãn có thể thuộc thiết bị, thanh cái, ngăn lộ hoặc toàn trang.
+  \item Ký hiệu bị cắt ở mép patch; dây đi qua nhiều patch.
+  \item Thiếu dữ liệu thật đa dạng, mất cân bằng lớp và khác biệt synthetic--real.
+  \item Ảnh hoặc quy ước không đủ rõ để kết luận một số quan hệ đấu nối.
+\end{itemize}
+
+\subsection{Phân rã bài toán}
+\begin{enumerate}
+  \item Tổ chức ảnh và tọa độ: xác định vùng nghiên cứu, cắt patch và lưu phép đổi tọa độ.
+  \item Nhận dạng ký hiệu và ước lượng cổng.
+  \item Phát hiện, đọc và gán quan hệ văn bản.
+  \item Trích xuất dây và thanh cái.
+  \item Phân biệt điểm rẽ, giao nối, giao không nối và cổng.
+  \item Xây dựng đồ thị hình học và cấu trúc thiết bị--cổng--net.
+  \item Tái dựng SVG, kiểm tra nhất quán và đánh giá.
+\end{enumerate}
+Các mô-đun trao đổi bằng tọa độ toàn trang. Nhận dạng ký hiệu và text có thể thực hiện độc lập rồi phối hợp với mô-đun dây. Cách phân rã nhận dạng và dựng graph có thể tham khảo Bayer và cộng sự \cite{bayer2024}, nhưng cần thích nghi với miền sơ đồ trạm.
+
+\subsection{Câu hỏi nghiên cứu}
+\begin{enumerate}[label=\textbf{Q\arabic*.}]
+  \item Phương án hình học và CNN phân đoạn khác nhau thế nào về chất lượng dây và độ đúng của mạng đấu nối?
+  \item Synthetic có cấu trúc có cải thiện nhận dạng trên sơ đồ thật so với chỉ huấn luyện bằng dữ liệu thật không?
+  \item Nhãn cổng, nhãn điểm giao và loss chú trọng đường tâm giúp giảm lỗi gộp/tách net đến mức nào?
+\end{enumerate}
+Trả lời bằng thực nghiệm đối chứng trên cùng tập kiểm thử, không suy ra từ tên kiến trúc.
+
+\section{Định hướng xử lý bài toán}
+\subsection{Tổ chức đầu vào và tiền xử lý trong phạm vi hiện tại}
+Chất lượng ảnh được xem như cố định theo mẫu. Grayscale hoặc tạo ảnh nhị phân chỉ được dùng khi thuật toán hình học yêu cầu; chưa nghiên cứu sâu adaptive thresholding, deskew, denoise và tăng tương phản.
+
+Chia ảnh thành vùng nhỏ (\emph{tiling}) nhằm giữ chi tiết và giới hạn bộ nhớ. Kích thước patch và overlap dựa vào kích thước ký hiệu/cổng và ngữ cảnh cần quan sát, không mặc định chỉ theo tỷ lệ 10--20\%. Không thu nhỏ toàn trang đến mức mất nét phân biệt. Phóng lớn không khôi phục chi tiết đã mất.
+
+Mỗi patch lưu tọa độ gốc. Đầu mút do crop được đánh dấu là biên patch, không xem là đầu mút thật. Khung và khối tiêu đề có thể đánh dấu ngoài vùng topology, nhưng giữ ảnh nguồn để đối chiếu.
+
+\subsection{Nhận dạng ký hiệu}
+Phát hiện đồng thời \emph{vị trí} và \emph{loại} ký hiệu. Khởi đầu bằng detector có backbone CNN, chẳng hạn Faster R-CNN \cite{fasterrcnn}, hoặc một phiên bản YOLO được chốt khi triển khai. DETR có kiến trúc phát hiện dựa trên Transformer; chỉ đưa vào đối chứng nếu cần, không gọi chung mọi detector là CNN.
+\begin{enumerate}
+  \item Định nghĩa tập lớp và quy tắc ký hiệu phức hợp là một hay nhiều đối tượng.
+  \item Fine-tune detector pretrained bằng box và loại ký hiệu thuộc miền dự án.
+  \item Ghép kết quả patch về toàn trang, loại trùng và xử lý ký hiệu bị cắt.
+  \item Dùng thư viện kiểm tra biến thể, hướng và cấu trúc cổng.
+  \item Nếu thường nhầm lớp khác nét nhỏ, thử classifier CNN trên crop hoặc so khớp hình học để kiểm tra lại.
+\end{enumerate}
+Pretrained cung cấp đặc trưng khởi đầu, không thay thế dữ liệu nhãn điện. Classifier học từ ký hiệu rời chưa giải quyết việc tìm ký hiệu trong sơ đồ.
+
+\subsection{Nhận dạng và gán nhãn văn bản}
+Nhiệm vụ gồm hai phần: \textbf{nhận dạng nội dung chữ} và \textbf{xác định chữ mô tả đối tượng nào}. OCR trả về vùng chữ và chuỗi ký tự; không tự quyết định chuỗi đó là tên thiết bị, tên thanh cái hay thông số. Vì vậy, không đồng nhất đọc đúng chữ với gán đúng quan hệ.
+
+\begin{enumerate}
+  \item \textbf{Xác định các loại văn bản cần xử lý.}
+  Phân biệt nhãn thiết bị, nhãn thanh cái, thông số kỹ thuật, tên ngăn lộ và thông tin toàn trang. Ví dụ, T1 có thể là tên thiết bị, C11 là nhãn thanh cái trong bộ bản vẽ đang xét, còn một dòng điện áp hoặc công suất là thông số. Đây là quy ước của miền dữ liệu cần xác nhận, không phải luật chung cho mọi sơ đồ điện.
+
+  Một thiết bị có thể có nhiều vùng text: mã thiết bị, công suất và điện áp. Một vùng text cũng có thể mô tả cả ngăn lộ hoặc nhóm đối tượng. Vì vậy, không ép mọi text vào một thiết bị duy nhất hoặc mỗi thiết bị chỉ nhận một nhãn.
+
+  \item \textbf{Chọn mô hình OCR pretrained làm baseline.}
+  Đề xuất thử PaddleOCR với bộ phát hiện PP-OCRv5 và bộ nhận dạng hỗ trợ tiếng Việt. Có thể dùng \code{PP-OCRv5_server_det} để phát hiện vùng chữ \cite{paddledet} và \code{latin_PP-OCRv5_mobile_rec} để đọc chữ; tài liệu mô hình Latin có liệt kê tiếng Việt, mã ngôn ngữ \code{vi} \cite{paddlelatin}.
+
+  Khác detector ký hiệu khởi tạo từ COCO, ở đây dùng trọng số chuyên cho text detection và text recognition. Chốt phiên bản thư viện/mô hình khi chạy thực nghiệm; tên mô hình không chứng minh sẵn độ chính xác trên số nhỏ và chữ xoay của sơ đồ trạm.
+
+  \item \textbf{Phát hiện vùng chữ trên ảnh gốc.}
+  Text detector tìm bounding box xoay hoặc polygon của từng dòng/cụm chữ, chưa đọc nội dung. Ví dụ, một polygon quanh nhãn C11 chỉ thể hiện vị trí vùng chữ, chưa có chuỗi C11.
+
+  Với trang lớn, dùng patch giữ đủ chi tiết, chuyển polygon về tọa độ toàn trang và hợp nhất phát hiện trùng do overlap. Không xóa vùng text trên ảnh trước khi chạy OCR. Ký hiệu và text được phát hiện độc lập; kết quả ký hiệu được dùng sau đó để ghép quan hệ, tránh bỏ nhãn khi detector thiết bị bị bỏ sót.
+
+  \item \textbf{Xác định hướng, cắt và đưa vùng chữ về hướng đọc.}
+  Dựa vào polygon và dạng bố trí để tách chữ nằm ngang, dòng chữ bị xoay 90/270 độ và trường hợp chưa rõ. Cắt theo polygon với lề vừa đủ để giữ dấu và nét ngoài cùng; nếu crop xoay thì lưu phép biến đổi để đối chiếu tọa độ nguồn.
+
+  Với dòng bị xoay dọc, đưa crop về ngang rồi nhận dạng. Nếu chưa biết chiều đọc, có thể thử các hướng hợp lệ và so nội dung/điểm số trên validation, không chỉ chọn theo tỷ lệ rộng--cao. Phân biệt dòng chữ bị xoay với các ký tự xếp lần lượt theo chiều dọc; trường hợp sau có thể cần cách nhóm và thứ tự đọc riêng.
+
+  Bộ phân loại hướng dòng PP-LCNet được tài liệu PaddleOCR mô tả với hai lớp 0 và 180 độ \cite{paddleori}. Do đó, không mặc định bật mô-đun này là đã giải quyết mọi nhãn 90/270 độ. Việc định hướng crop cục bộ thuộc pipeline OCR, không mở rộng thành nghiên cứu khử nghiêng toàn trang.
+
+  \item \textbf{Nhận dạng chuỗi ký tự và kiểm tra nội dung.}
+  Text recognizer nhận crop và trả chuỗi cùng điểm số. Lưu cả chuỗi gốc và chuỗi chuẩn hóa; chuẩn hóa khoảng trắng hoặc cách viết chỉ theo quy tắc đã chốt. Chú ý các cặp O/0, I/1, S/5, dấu tiếng Việt và dấu phân cách trong mã thiết bị.
+
+  Dùng mẫu mã thiết bị, danh sách tên hợp lệ và định dạng đơn vị làm bằng chứng kiểm tra. Không thay mọi chữ O thành số 0 hoặc ép chuỗi thành tên có sẵn; giữ chuỗi gốc và đánh dấu ứng viên sửa. Điểm OCR chỉ là điểm của mô hình, không phải xác suất đã được hiệu chuẩn cho miền dự án.
+
+  \item \textbf{Xác định vai trò và sinh đối tượng ứng viên.}
+  Xét nội dung cùng vị trí: nhãn thanh cái ưu tiên đối tượng thanh cái; thông số điện áp/công suất ưu tiên thiết bị hoặc vùng liên quan; tên ngăn lộ xét vùng ngăn lộ. Quy tắc nội dung chỉ giúp thu hẹp ứng viên, không thay thế bằng chứng hình học.
+
+  Với từng vùng text, lấy các thiết bị/thanh cái/vùng lân cận hợp lệ. Khoảng cách nên tính tới box hoặc hình học đối tượng, chuẩn hóa theo kích thước, thay vì chỉ so tâm. Dùng vị trí tương đối, hướng nhãn, cùng ngăn lộ và đường chỉ dẫn nếu có. Không dùng chuỗi chữ làm ID duy nhất vì nhiều vị trí có thể chứa cùng một nội dung.
+
+  \item \textbf{Ghép text với đối tượng và giữ trường hợp chưa rõ.}
+  Kết hợp khoảng cách, bố trí, vai trò text và ngữ cảnh cấu trúc. Hai nhãn ở gần hai thiết bị không được ghép độc lập nếu khiến cả hai nhãn chính cùng gán sai vào một thiết bị.
+
+  Khi quy chuẩn đảm bảo nhãn chính--thiết bị là một-một, có thể dùng Hungarian để chọn phép ghép có tổng chi phí nhỏ nhất; cần lựa chọn không ghép cho nhãn/thiết bị chưa xác định. Thông số nhiều dòng và tên ngăn lộ không ép vào cùng ràng buộc một-một; nhóm chúng theo đối tượng/vùng phù hợp. Các nghiên cứu ghép text--ký hiệu trong sơ đồ trạm là nguồn tham khảo \cite{skid}, không thay thế kiểm chứng trên dữ liệu của dự án.
+
+  \item \textbf{Xuất kết quả và đánh giá riêng từng bước.}
+  Mỗi text lưu ID riêng, polygon toàn trang, hướng, chuỗi gốc, chuỗi chuẩn hóa, vai trò, điểm OCR, đối tượng/vùng được gán, điểm ghép và trạng thái \code{matched}/\code{unmatched}/\code{ambiguous}. Giữ lý do của quan hệ suy đoán.
+
+  Đánh giá phát hiện vùng chữ, độ đúng chuỗi và độ đúng quan hệ riêng. Đọc đúng C11 nhưng gán sang C12 vẫn là lỗi hệ thống. Chọn ngưỡng bằng validation và báo cáo cả tỷ lệ cần kiểm tra, không chỉ độ chính xác các trường hợp đã được chấp nhận.
+\end{enumerate}
+
+Một chi phí ghép đề xuất cho text $t_i$ và đối tượng $o_j$ là
+\begin{equation}
+ C_{\mathrm{text}}(t_i,o_j)=
+ a d_{ij}+b r_{ij}+c s_{ij}+d g_{ij},
+\end{equation}
+trong đó $d_{ij}$ là khoảng cách chuẩn hóa tới hình học đối tượng, $r_{ij}$ là mức sai lệch vị trí/hướng mong đợi, $s_{ij}$ là mức không tương thích giữa vai trò text và loại đối tượng, $g_{ij}$ là mức không phù hợp với ngăn lộ/đường chỉ dẫn. Các thành phần và trọng số cần được chốt từ quy ước cùng validation. Nếu hai ứng viên có chi phí tương đương hoặc mọi ứng viên đều kém, giữ ambiguous/unmatched thay vì bắt buộc ghép.
+
+\textbf{Ví dụ minh họa:} một thiết bị có ba vùng chữ T1, công suất và điện áp. Hệ thống đọc ba crop riêng rồi gán vai trò tên thiết bị/thông số; ba vùng có thể cùng liên kết với thiết bị T1. Nhãn C11 được xét với thanh cái liên quan thay vì gán vào một ký hiệu nhỏ gần nó nhất.
+
+\textbf{Dữ liệu fine-tune:} text detector cần ảnh sơ đồ với polygon từng vùng chữ và quy tắc ignore; recognizer cần crop kèm chuỗi đúng; mô-đun ghép cần vai trò text và ID đối tượng/vùng đúng. Nếu chữ đã được phát hiện nhưng đọc sai thì ưu tiên fine-tune recognizer; nếu bỏ vùng chữ thì xem detector; nếu đọc đúng nhưng ghép sai thì chỉnh mô-đun quan hệ. Chia theo nguồn sơ đồ trước crop và tạo chữ tổng hợp với đúng dấu, hướng và mã phù hợp miền đích.
+
+\subsection{Trích xuất đường dây và thanh cái}
+\subsubsection{Phương án nền bằng hình học}
+Morphology và Hough sinh ứng viên, không trực tiếp quyết định connectivity. Hough dùng biểu diễn đường thẳng
+\begin{equation}
+  \rho=x\cos\theta+y\sin\theta.
+\end{equation}
+HoughLinesP trả đoạn hữu hạn; ngưỡng độ dài và khoảng đứt được chọn trên validation \cite{opencv}.
+\begin{enumerate}
+  \item \textbf{Sinh ứng viên đa độ dài.} Dùng phần tử cấu trúc ngang/dọc ở nhiều độ dài và phát hiện đoạn thẳng; bổ sung nét ngắn quanh cổng.
+  \item \textbf{Loại ứng viên không phải dây.} Kết hợp vùng ký hiệu/text và hình học. Không xóa toàn bộ bounding box vì có thể xóa cả dây đi qua hoặc đầu dây sát cổng.
+  \item \textbf{Tạo mask và đường tâm.} Làm mảnh (\emph{skeletonization}), truy vết từ đầu mút đến cổng, góc hoặc cụm nhánh. Gom cụm pixel giao thành một ứng viên.
+  \item \textbf{Phân loại giao.} Xác định nhánh nối/không nối trước khi gom thành phần liên thông. Lân cận 8 pixel chỉ giúp tìm ứng viên.
+  \item \textbf{Khôi phục đứt có điều kiện.} Xét khoảng cách, hướng và bằng chứng bị che; không nối vượt qua thiết bị, crossing hoặc khe hở có ý nghĩa.
+  \item \textbf{Vector hóa.} Lưu polyline, tách ở cổng/junction, chỉ gộp đoạn liên tiếp phù hợp; giữ góc rẽ và nhánh.
+\end{enumerate}
+Hough dễ bỏ sót cung vượt và nét ngắn. Giữ ảnh/mask tại giao và kết hợp truy vết, không chỉ xử lý danh sách đoạn thẳng.
+
+\subsubsection{Phân biệt dây và thanh cái}
+Ở bước phân đoạn có thể gộp dây/thanh cái thành lớp \code{conductor} để giữ liên tục. Ở tầng đối tượng, phân biệt bằng nhãn, bố cục, chiều dài, số nhánh và quy ước.
+
+Trong mẫu, nhãn C11/C12, C41/C42 và C31/C32 là bằng chứng liên quan thanh cái. Độ dày chỉ hỗ trợ, không quyết định duy nhất. Khi đủ nhãn, thử lớp/head busbar riêng và so với conductor chung.
+
+\subsubsection{Phương án CNN phân đoạn}
+U-Net nhận patch và xuất xác suất pixel thuộc conductor. Encoder--decoder kết hợp ngữ cảnh với định vị chi tiết qua skip connection \cite{unet}. Khởi đầu hai lớp: conductor và background; background gồm text, nét ký hiệu, khung và nền.
+
+Sau phân đoạn vẫn cần làm mảnh, truy vết, xử lý giao và gắn cổng. Mask đẹp không chứng minh mạng điện đúng. Khi hai dây giao không nối có pixel chạm nhau, pairing phải lưu ở tầng graph.
+
+\subsection{Phát hiện điểm nối và vị trí kết nối với thiết bị}
+\subsubsection{Phân loại điểm giao}
+Mỗi ứng viên được phân thành junction, crossing không nối, góc rẽ, cổng hoặc chưa rõ. Với crossing, lưu nhóm nhánh thuộc cùng tuyến. Dấu chấm, cung vượt và chữ T phải diễn giải theo quy ước bộ bản vẽ.
+
+Không đặt luật toàn cục \emph{không chấm thì không nối}. Với ứng viên khó, thử CNN trên crop đủ rộng để nhìn các nhánh. Nếu ảnh không đủ bằng chứng, giữ \code{unknown} thay vì đoán.
+
+\subsubsection{Ước lượng và ghép cổng}
+Mỗi biến thể ký hiệu có cổng chuẩn. Ước lượng cổng bằng hướng và phép biến đổi ký hiệu, tinh chỉnh bằng nét cục bộ hoặc keypoint model nếu cần. Bounding box chỉ cung cấp ước lượng ban đầu.
+
+Với đầu dây $e$ và cổng $p$, có thể dùng
+\begin{equation}
+  C(e,p)=\alpha d(e,p)+\beta a(e,p)+\gamma r(e,p)+\delta q(e,p),
+\end{equation}
+trong đó $d$ là khoảng cách chuẩn hóa, $a$ là sai lệch hướng, $r$ là mức thiếu bằng chứng nét, $q$ là vi phạm loại/vai trò cổng. Chuẩn hóa thành phần; chọn trọng số/ngưỡng trên validation. Không nối vào tâm thiết bị chỉ vì gần nhất.
+
+Giữ ứng viên gần tương đương để kiểm tra. Một cổng được gán một net khi đủ bằng chứng; cổng không nối hoặc chưa xác định có trạng thái riêng.
+
+\subsection{Xây dựng connectivity graph}
+\begin{itemize}
+  \item \textbf{Đồ thị hình học} $G_{\mathrm{geom}}=(V,E)$: đỉnh là đầu mút, góc, junction, cổng; cạnh giữ polyline và bằng chứng.
+  \item \textbf{Cấu trúc đấu nối}: thiết bị $D$, cổng $P$, net $N$ và ánh xạ $f:P\rightarrow N\cup\{\mathrm{unknown},\mathrm{unconnected}\}$. Cổng có thiết bị sở hữu; nội bộ thiết bị biểu diễn riêng.
+\end{itemize}
+Sau khi tách crossing thành các tuyến hợp lệ, dùng thành phần liên thông/union-find trên liên kết được chấp nhận để gom net. Điểm đấu cùng thanh cái có thể cùng net nhưng vẫn giữ tọa độ tái dựng.
+
+Ví dụ: cổng trên Q1 thuộc N0, cổng dưới thuộc N1; hai cổng cùng Q1 không làm N0 và N1 hợp nhất. Trạng thái thiết bị, nếu cần, lưu riêng.
+
+\subsection{Tái dựng SVG và kiểm tra}
+SVG dùng ký hiệu thư viện ở vị trí/hướng dự đoán, polyline dây và text. Mỗi đối tượng có ID đối chiếu JSON. Vẽ overlay theo loại và đánh dấu liên kết suy đoán.
+
+Kiểm tra dây vào đúng cổng, crossing không hợp nhất net, ký hiệu trùng được xử lý và không mất nối qua biên patch. Tái dựng giống về thị giác vẫn cần kiểm tra topology.
+
+\section{Xây dựng dữ liệu cho dự án}
+\subsection{Các bộ nhãn theo nhiệm vụ}
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{L{2.5cm}YY}
+\toprule
+Nhiệm vụ & Đầu vào & Nhãn cần có\\
+\midrule
+Phát hiện ký hiệu & Patch nhiều đối tượng & Box, loại; hướng/trạng thái nếu dùng\\
+Phân đoạn dây & Patch ảnh gốc & Mask conductor và vùng ignore\\
+Phân loại giao & Crop ứng viên & Loại giao và pairing nhánh\\
+Định vị cổng & Crop thiết bị & Keypoint, vai trò, visibility\\
+OCR và quan hệ text & Trang/patch và crop chữ & Polygon, chuỗi đúng, vai trò, ID đối tượng/vùng\\
+Dựng mạng & Trang/vùng gán đầy đủ & Thiết bị, cổng, polyline, junction, net\\
+\bottomrule
+\end{tabularx}
+\end{center}
+Box không thay thế mask; mask không thay thế graph. Các tập con cho từng mô-đun có thể khác nhau nhưng nhãn cùng trang phải nhất quán ID/tọa độ.
+
+\subsection{Dữ liệu thật cùng miền}
+Ưu tiên đa dạng trạm, họ bản vẽ, bố cục và biến thể. Gán thử khoảng 5 trang để thống nhất nhãn và đo công sức. Đếm instance từng lớp, crossing/junction và kiểu cổng, không chỉ số trang.
+
+Pilot đề xuất khoảng 60--100 trang nguồn, tập trung 6--10 lớp phổ biến được chốt từ thư viện. Nếu chỉ có 10--20 trang, vẫn thử nghiệm nhỏ nhưng chưa kết luận tổng quát hóa. Mở rộng theo đường cong học và lỗi khác nguồn; số lượng trên không bảo đảm độ chính xác cụ thể.
+
+Gán box toàn pilot và chọn tập con giàu tình huống để gán mask/graph đầy đủ. Vùng chưa gán phải ignore, không xem là background. Ước tính công sức bằng thời gian trung vị/trang cộng thời gian kiểm tra và sửa.
+
+\subsection{Dữ liệu tổng hợp có cấu trúc}
+\textbf{Tạo graph/netlist trước, sau đó bố trí và raster hóa.} Chỉ paste ký hiệu lên nền trắng chưa có nhãn đúng cho dây, cổng và topology.
+\begin{enumerate}
+  \item \textbf{Thư viện chuẩn:} class, variant, hình vẽ, vùng thân, cổng/vai trò và hướng được phép.
+  \item \textbf{Mẫu cấu trúc:} thanh cái nhiều ngăn lộ, chuỗi thiết bị, nhánh biến áp, liên lạc thanh cái từ các họ sơ đồ đã xác nhận.
+  \item \textbf{Thiết bị và net:} gán cổng vào net, giữ nội bộ thiết bị riêng; không tạo topology điện tùy tiện.
+  \item \textbf{Bố trí và route:} đổi khoảng cách, số nhánh, hướng hợp lệ; tạo junction/crossing theo quy ước.
+  \item \textbf{Text và bố cục:} số thiết bị, tên ngăn lộ, nhãn thanh cái và khung tương tự miền đích.
+  \item \textbf{Xuất nhãn đồng bộ:} raster, box/class, mask visible, polyline, cổng, giao và graph.
+  \item \textbf{Kiểm tra generator:} dây đúng cổng, pairing khớp ảnh, không che nét phân biệt ngoài ý muốn.
+\end{enumerate}
+Khởi đầu có thể 2.000--5.000 sơ đồ từ nhiều graph/layout/style độc lập. Biến thể của một mẫu không tương đương nhiều cấu trúc độc lập. Lưu seed, phiên bản generator và mã mẫu.
+
+Thêm âm khó: nét chữ giống dây, ký hiệu giống junction, khung thẳng. Ảnh AI không có graph kiểm soát không được mặc nhiên dùng làm ground truth đấu nối.
+
+\subsection{Dữ liệu công khai và khoảng cách miền}
+\begin{itemize}
+  \item \textbf{CGHD} \cite{cghd}: mạch vẽ tay, box và một phần segmentation/netlist. Mask là nét vẽ so với nền, không mặc nhiên là mask dây riêng; cần chuyển đổi hoặc gán lại.
+  \item \textbf{AITEE} \cite{aitee}: mạch giáo dục chủ yếu điện trở, có phần tử và điểm nối; tham khảo định dạng/pipeline, khác miền sơ đồ trạm.
+  \item \textbf{SKID/KIEP} \cite{skid}: nghiên cứu dùng 347 bản vẽ trạm cho text, ký hiệu và ghép text--ký hiệu. Không coi là bộ nhãn dây/netlist đầy đủ; có hạn chế truy cập theo Data availability.
+\end{itemize}
+Các nguồn bổ trợ, không thay thế đánh giá trên real cùng miền. Ghi nguồn và điều kiện sử dụng khi đưa vào dataset.
+
+\subsection{Quy chuẩn gán nhãn}
+\subsubsection{Ký hiệu}
+Box ôm thân, không bao dây dài/nhãn số ngoài. Ký hiệu phức hợp gán nhất quán. Tách loại và trạng thái mở/đóng; không thấy rõ để unknown. Đối tượng bị crop có truncated và quy tắc giữ/ignore.
+
+\subsubsection{Dây nhìn thấy và liên kết suy ra}
+Mask chứa dây ngoài thân thiết bị đến cổng, không chứa đường bao/nét nội bộ. Giữ độ dày thực; không phình mask làm dây sát nhau dính lại.
+
+Dây bị chữ che: visible mask chỉ gán phần thấy; liên kết suy ra lưu trong graph kèm căn cứ. Muốn dự đoán phần bị che (amodal) phải định nghĩa bài toán/nhãn riêng.
+
+\subsubsection{Cổng, giao và kiểm tra nhãn}
+Cổng có ID, thiết bị, vai trò, tọa độ, visibility, net. Giao có loại, nhánh incident và nhóm nhánh nối. Biên crop không sinh cổng thật.
+
+Hai người gán độc lập tập nhỏ để thống nhất bất đồng. Kiểm tra box--mask--graph: cổng có chủ, crossing không gộp net, quan hệ nối có đường vẽ hoặc căn cứ ghi rõ. Không đủ thông tin thì tách khỏi nhãn chắc chắn.
+
+\subsection{Chia train, validation và test}
+\begin{enumerate}
+  \item Gom theo trạm/họ bản vẽ/nguồn; phát hiện bản gần trùng, sửa đổi hoặc xuất lại.
+  \item Chia nhóm trước crop/augmentation. Tham khảo 70/15/15, chấp nhận lệch để giữ nguyên nhóm.
+  \item Mọi biến thể/patch overlap cùng nguồn ở cùng split.
+  \item Synthetic chia graph/layout/template trước biến thể; không tái dựng topology/layout test thật thành train.
+  \item Validation chọn tham số/checkpoint, test đánh giá cuối. Ưu tiên test từ trạm hoặc phong cách chưa thấy.
+\end{enumerate}
+Không chia patch một trang vào cả train/test. Công bố thư viện ký hiệu là đầu vào đã biết; muốn đánh giá biến thể chưa thấy cần split riêng.
+
+\section{Phương án huấn luyện CNN}
+\subsection{Mô hình và chiến lược học}
+Ban đầu dùng detector pretrained cho ký hiệu, U-Net cho conductor và quy tắc thư viện cho cổng. CNN giao/keypoint bổ sung khi lỗi baseline cho thấy cần thiết.
+
+So sánh: pretrained rồi real fine-tuning; synthetic kiểm thử trực tiếp trên real; synthetic pretraining rồi real fine-tuning. Bổ sung real từ lỗi validation/pool chưa gán; không dùng test chọn mẫu rồi tiếp tục gọi nó là test độc lập.
+
+\subsection{Huấn luyện detector ký hiệu}
+Minibatch gồm patch và box/class. Với Faster R-CNN, dùng loss phân loại/hồi quy của mô hình, thay head theo tập lớp \cite{fasterrcnn}. Nhiệm vụ hướng/keypoint chỉ thêm khi có nhãn.
+
+Patch 640--1024 pixel là phạm vi chạy thử, theo kích thước ký hiệu và bộ nhớ. Oversampling lớp hiếm cần bối cảnh đa dạng, âm khó và cặp dễ nhầm. Thử fine-tune head rồi mở backbone nếu phù hợp validation.
+
+Đánh giá recall từng lớp, confusion matrix. Ghép box toàn trang, xử lý trùng và đối tượng bị cắt trước đánh giá toàn chuỗi.
+
+\subsection{Huấn luyện U-Net phân đoạn dây}
+\subsubsection{Đầu vào và kiến trúc}
+Với batch $B$, ảnh màu có dạng $X\in\mathbb{R}^{B\times3\times H\times W}$; mask mục tiêu/hợp lệ là $Y,V\in\{0,1\}^{B\times1\times H\times W}$. Mạng xuất logits cùng kích thước; sigmoid cho xác suất $p_i$ thuộc conductor.
+
+Encoder học ngữ cảnh, decoder phục hồi độ phân giải, skip connection giữ chi tiết \cite{unet}. Có thể dùng encoder pretrained; ảnh xám cần cách chuyển kênh được ghi rõ. Không đổi đầu vào train/inference mà chưa kiểm tra.
+
+\subsubsection{Hàm mất mát}
+Dây ít pixel nên accuracy cao vẫn có thể bỏ gần hết dây. Khởi đầu weighted BCE và Dice. Với $v_i$ là mask hợp lệ, $y_i$ là nhãn, $w_+$ là trọng số dương, $\varepsilon>0$:
+\begin{align}
+L_{\mathrm{BCE}}&=-\frac{1}{\sum_i v_i+\varepsilon}
+  \sum_i v_i\bigl[w_+y_i\log p_i+(1-y_i)\log(1-p_i)\bigr],\\
+L_{\mathrm{Dice}}&=1-\frac{2\sum_i v_i p_i y_i+\varepsilon}
+  {\sum_i v_i p_i+\sum_i v_i y_i+\varepsilon}.
+\end{align}
+Triển khai BCE trên logits để ổn định số học. Chọn $w_+$ trên train/validation; tăng trọng số có thể tăng recall nhưng gây nối giả. Focal loss là một đối chứng cho nhiều mẫu nền dễ \cite{focal}.
+
+Thí nghiệm tiếp theo:
+\begin{equation}
+L=\lambda_1L_{\mathrm{BCE}}+\lambda_2L_{\mathrm{Dice}}+
+  \lambda_3L_{\mathrm{soft\text{-}clDice}}.
+\end{equation}
+Với mask nhị phân $P$, nhãn $Y$ và skeleton $S(\cdot)$:
+\begin{align}
+T_{\mathrm{prec}}&=\frac{|S(P)\cap Y|}{|S(P)|},&
+T_{\mathrm{sens}}&=\frac{|S(Y)\cap P|}{|S(Y)|},\\
+\mathrm{clDice}&=\frac{2T_{\mathrm{prec}}T_{\mathrm{sens}}}
+{T_{\mathrm{prec}}+T_{\mathrm{sens}}}.
+\end{align}
+Dùng quy ước mẫu rỗng và hằng số ổn định; soft-clDice dùng skeleton mềm để tính gradient \cite{cldice}.
+
+clDice khuyến khích đường tâm liên tục nhưng không biết hai dây giao có cùng net không. Loss topology chỉ tính trên vùng nhãn đầy đủ, xử lý biên hợp lý; vùng chưa gán không được tạo đứt giả trong skeleton.
+
+\subsubsection{Patch sampling và cấu hình thử}
+Lấy cả vùng dây, giao/cổng và âm khó. Tỷ lệ thử có thể 50\% có dây, 25\% quanh giao/cổng, 25\% âm khó, điều chỉnh theo real. Tránh chỉ patch trắng hoặc chỉ có conductor.
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{L{3.2cm}Y}
+\toprule
+Thành phần & Điểm khởi đầu thực nghiệm\\
+\midrule
+Patch & $512\times512$, đổi nếu thiếu ngữ cảnh/nét quá nhỏ\\
+Batch & 4--8 nếu bộ nhớ cho phép\\
+Optimizer & AdamW\\
+Learning rate & Khoảng $10^{-4}$ khi fine-tune; dò lại nếu train từ đầu\\
+Ngân sách & 50--100 epoch, early stopping trên validation\\
+Checkpoint & Chỉ số validation đã chốt, xét thêm lỗi graph\\
+Inference & Tile overlap, ghép xác suất, truy vết toàn trang\\
+\bottomrule
+\end{tabularx}
+\end{center}
+Đây là cấu hình chạy thử, chưa phải cấu hình tối ưu hay cam kết thời gian GPU. Ghi số bước, phần cứng và bộ nhớ thực đo.
+
+\subsection{CNN phân loại giao điểm}
+Cắt ứng viên từ ảnh gốc với đủ ngữ cảnh. Nhãn gồm loại giao, pairing và unknown. Có cả giao giả từ chữ/ký hiệu. Khởi đầu CNN nhỏ, cross-entropy cho class; pairing cần head/nhãn riêng hoặc tập lớp kiểu nối đã định nghĩa.
+
+Kiểm thử toàn chuỗi phải lấy crop từ ứng viên dự đoán để tính cả lỗi bỏ sót/lệch tâm, không chỉ dùng crop tâm ground truth.
+
+\subsection{Augmentation và vòng huấn luyện}
+Tịnh tiến, scale và xoay hướng hợp lệ. Biến đổi đồng bộ box, mask, cổng, polyline, pairing; mask rời rạc dùng nearest-neighbor. Không lật mặc định làm sai chữ/vai trò cổng. Không xóa nét phân biệt lớp mà giữ nhãn cũ; tạm chưa nghiên cứu augmentation nhiễu/mờ.
+\begin{enumerate}
+  \item Lấy minibatch, biến đổi ảnh và nhãn đồng bộ.
+  \item Forward, tính loss trên vùng hợp lệ.
+  \item Backpropagation, cập nhật trọng số.
+  \item Validation không cập nhật trọng số, lưu checkpoint tốt nhất.
+  \item Chốt ngưỡng/graph bằng validation, chạy test sau khi hoàn tất lựa chọn.
+\end{enumerate}
+Trước train lớn, overfit 2--5 patch để kiểm tra pipeline. Nếu không học được, kiểm tra ảnh--mask, class ID, ignore, logits/loss, augmentation. Lưu seed, phiên bản nhãn, cấu hình và checkpoint.
+
+\subsection{Ghép kết quả và sai lệch toàn chuỗi}
+U-Net ghép xác suất overlap bằng trọng số ưu tiên tâm patch; threshold, làm mảnh và truy vết toàn trang. Không dựng net độc lập từng patch rồi mất nối qua biên.
+
+Detector ghép box và xử lý trùng. Cổng từ box dự đoán có thể lệch; đánh giá cả riêng mô-đun và toàn hệ thống. Có thể thêm sai lệch box hợp lý khi train/tinh chỉnh cổng nếu đã đo được sai lệch thực tế.
+
+\section{Đánh giá và thiết kế thực nghiệm}
+\subsection{Chỉ số từng tầng}
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{L{2.3cm}YY}
+\toprule
+Tầng & Chỉ số & Lỗi cần phân tích\\
+\midrule
+Ký hiệu & mAP, recall từng lớp, confusion matrix & Bỏ sót, nhầm nét nhỏ\\
+Văn bản & F1 vùng chữ, CER, đúng toàn chuỗi, F1 quan hệ & Bỏ chữ, đọc sai, ghép sai đối tượng\\
+Dây & Precision/recall, Dice/IoU, clDice & Thiếu đoạn, nét thừa, đứt đường tâm\\
+Giao & F1 theo loại, pairing accuracy & Nối/tách nhánh sai\\
+Cổng & Precision/recall, sai số chuẩn hóa & Gắn nhầm hoặc bỏ cổng\\
+Đấu nối & F1 cổng--net, lỗi gộp/tách net & Mask gần đúng nhưng topology sai\\
+Toàn trang & Netlist đúng hoàn toàn, số sửa/trang & Công kiểm tra thực tế\\
+\bottomrule
+\end{tabularx}
+\end{center}
+Không so net bằng ID. Ghép thiết bị theo loại/vị trí, cổng theo vai trò, rồi so partition hoặc cặp cổng cùng-net. Thêm độ đúng từng cổng và exact-net để thanh cái nhiều cổng không chi phối toàn bộ điểm.
+
+Với $TP,FP,FN$ là quan hệ đúng, thừa, thiếu theo quy tắc đối chiếu:
+\begin{equation}
+\mathrm{Precision}=\frac{TP}{TP+FP},\quad
+\mathrm{Recall}=\frac{TP}{TP+FN},\quad
+F_1=\frac{2TP}{2TP+FP+FN}.
+\end{equation}
+Công bố quy ước mẫu rỗng. Với OCR, CER là tổng số phép thay, xóa và chèn ký tự cần để đổi chuỗi dự đoán thành chuỗi thật, chia tổng số ký tự thật. Đánh giá recognizer trên crop ground truth giúp tách lỗi đọc khỏi lỗi phát hiện; đồng thời đánh giá toàn chuỗi trên vùng dự đoán để phản ánh hệ thống thực.
+
+\subsection{Mô-đun và toàn hệ thống}
+Đánh giá riêng dây/topology bằng ký hiệu/cổng ground truth, rồi đánh giá toàn chuỗi bằng mọi dự đoán. Tách false merge, false split, nhầm crossing, cổng và thiết bị. Dùng overlay để giải thích. Nếu có từ chối kết luận, báo cáo tỷ lệ unknown/cần kiểm tra cùng độ chính xác phần chấp nhận.
+
+\subsection{Đối chứng thuật toán dây}
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{L{1cm}Y}
+\toprule
+Mã & Phương án\\
+\midrule
+W0 & Morphology/Hough, truy vết, quy tắc graph\\
+W1 & U-Net BCE+Dice, cùng quy tắc graph\\
+W2 & W1 thêm soft-clDice\\
+W3 & W1 hoặc W2 thêm CNN giao, phần còn lại tương đương\\
+\bottomrule
+\end{tabularx}
+\end{center}
+Không chọn chỉ vì IoU tăng. Nếu clDice không giúp validation, không mặc định dùng nó.
+
+\subsection{Đối chứng dữ liệu và đường cong học}
+\begin{itemize}
+  \item D0: pretrained rồi real fine-tuning.
+  \item D1: synthetic, test trực tiếp real.
+  \item D2: synthetic pretraining rồi real fine-tuning.
+  \item D3: D2 thêm real từ lỗi trên pool phát triển.
+\end{itemize}
+Giữ test thật cố định, ghi lượng dữ liệu và tổng bước. Thêm real-only với ngân sách bước tương đương để tách lợi ích synthetic khỏi train lâu hơn. Nếu đủ tài nguyên, 3 seed và trung bình/độ phân tán.
+
+Train tập con 10/25/50/100 trang khi có đủ nguồn, validation/test cố định. Nếu thêm trang cùng kiểu không giúp, thêm họ bản vẽ, cổng hoặc giao còn thiếu.
+
+\section{Kế hoạch chuẩn bị và triển khai dự án}
+\subsection{Giai đoạn và sản phẩm}
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{L{0.7cm}YY}
+\toprule
+Mốc & Công việc & Sản phẩm kiểm chứng\\
+\midrule
+1 & Chốt lớp/cổng/net/quy ước; gán thử 5 trang & Hướng dẫn nhãn, công sức, danh sách chưa rõ\\
+2 & Gom nguồn, split, box và tập con mask/graph & Dataset có phiên bản, split cố định\\
+3 & Detector fine-tune real và baseline hình học & Validation, bảng loại lỗi\\
+4 & Generator thư viện có cổng/graph & Ảnh/nhãn tự động đã kiểm tra\\
+5 & Train U-Net/giao, chạy đối chứng & Kết quả mô-đun và toàn chuỗi\\
+6 & Chốt phương án, test khác nguồn & Báo cáo chất lượng, số sửa và giới hạn\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{Nguồn lực và tổ chức dữ liệu}
+Cần sơ đồ thật, người xác nhận quy ước điện, công cụ nhãn box--mask--keypoint, môi trường học sâu/GPU và quản lý phiên bản. Đo một lượt chạy trước khi chốt thời gian/phần cứng.
+
+Tổ chức theo trang nguồn với ảnh, annotations, masks, splits. Mẫu giữ source ID, group ID, real/synthetic, kích thước, phiên bản nhãn, phép đổi tọa độ. Nhãn trang là nguồn chính; nhãn patch dẫn xuất để tránh sửa lệch.
+
+\subsection{Điều kiện chuyển giai đoạn}
+\begin{itemize}
+  \item Trước train: lớp/cổng/giao thống nhất, split không rò rỉ, nhãn thử nhất quán.
+  \item Trước mở rộng synthetic: ảnh và nhãn generator khớp, graph kiểm tra được.
+  \item Trước chốt model: baseline/đối chứng cùng tập đánh giá, có phân tích lỗi topology.
+  \item Trước tích hợp: có JSON/SVG, unknown và số chỉnh sửa cần thiết.
+\end{itemize}
+Ngưỡng nghiệm thu thống nhất theo mục đích sử dụng sau baseline, không đặt sẵn độ chính xác cao khi chưa có thực nghiệm.
+
+\section{Rủi ro nghiên cứu và hướng xử lý}
+\begin{itemize}
+  \item \textbf{Thiếu đa dạng real:} thêm nhóm trạm/style/lớp hiếm, không chỉ nhân patch.
+  \item \textbf{Synthetic--real khác nhau:} fine-tune real, chỉnh generator theo lỗi miền đích.
+  \item \textbf{Mask tốt nhưng graph sai:} kiểm tra crossing/cổng/gộp-tách net, dùng nhãn topology.
+  \item \textbf{Cổng lệch:} đánh giá toàn chuỗi, tinh chỉnh cục bộ/keypoint.
+  \item \textbf{Quy ước mơ hồ:} xác nhận người hiểu bản vẽ, giữ unknown khi thiếu bằng chứng.
+  \item \textbf{Nhãn bất nhất:} gán chéo, kiểm tra box--mask--graph, quản lý phiên bản.
+\end{itemize}
+Phương án khởi đầu là hệ thống mô-đun: detector ký hiệu, U-Net dây, graph có cổng/điểm giao. CNN bổ sung được quyết định từ lỗi đo được. Nghiên cứu tiếp theo tập trung trả lời thực nghiệm trước khi mở rộng miền ảnh/tập ký hiệu.
+
+\begin{thebibliography}{99}
+\small
+\bibitem{bayer2024}
+J. Bayer, L. van Waveren, A. Dengel.
+\emph{Modular Graph Extraction for Handwritten Circuit Diagram Images}, 2024.
+\url{https://arxiv.org/abs/2402.11093}.
+\bibitem{fasterrcnn}
+S. Ren, K. He, R. Girshick, J. Sun.
+\emph{Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks}, 2015.
+\url{https://arxiv.org/abs/1506.01497}.
+\bibitem{unet}
+O. Ronneberger, P. Fischer, T. Brox.
+\emph{U-Net: Convolutional Networks for Biomedical Image Segmentation}, 2015.
+\url{https://arxiv.org/abs/1505.04597}.
+\bibitem{cldice}
+S. Shit và cộng sự.
+\emph{clDice -- A Novel Topology-Preserving Loss Function for Tubular Structure Segmentation}, CVPR 2021.
+\url{https://arxiv.org/abs/2003.07311}.
+\bibitem{focal}
+T.-Y. Lin và cộng sự.
+\emph{Focal Loss for Dense Object Detection}, ICCV 2017.
+\url{https://arxiv.org/abs/1708.02002}.
+\bibitem{opencv}
+OpenCV. \emph{Hough Line Transform}, tài liệu chính thức.
+\url{https://docs.opencv.org/4.13.0/d9/db0/tutorial_hough_lines.html}.
+\bibitem{cghd}
+DFKI. \emph{Circuit Graph Hand-Drawn (CGHD)}, kho chính thức.
+\url{https://github.com/DFKI/cghd}.
+\bibitem{aitee}
+C. Knievel, A. Bernhardt, C. Bernhardt.
+\emph{AITEE Electrical Circuit Dataset}, 2025.
+\url{https://github.com/CKnievel/aitee-dataset}.
+\bibitem{skid}
+J. Yang và cộng sự.
+\emph{Automated extraction and parsing of key information in complex substation drawings}.
+Discover Applied Sciences, 8, 534, 2026.
+\url{https://doi.org/10.1007/s42452-026-08271-3}.
+\bibitem{paddledet}
+PaddleOCR. \emph{Text Detection Module}, tài liệu chính thức.
+\url{https://www.paddleocr.ai/main/en/version3.x/module_usage/text_detection.html}.
+\bibitem{paddlelatin}
+PaddleOCR. \emph{PP-OCRv5 Multilingual Text Recognition}, tài liệu chính thức và danh sách ngôn ngữ.
+\url{https://github.com/PaddlePaddle/PaddleOCR/blob/main/docs/version3.x/algorithm/PP-OCRv5/PP-OCRv5_multi_languages.en.md}.
+\bibitem{paddleori}
+PaddleOCR. \emph{Text Line Orientation Classification Module}, tài liệu chính thức.
+\url{https://www.paddleocr.ai/main/en/version3.x/module_usage/textline_orientation_classification.html}.
+\end{thebibliography}
+\end{document}

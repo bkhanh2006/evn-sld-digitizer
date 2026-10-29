@@ -1,0 +1,19 @@
+[project]
+name = "sld-digitizer"
+version = "0.0.1"
+description = "Số hóa sơ đồ nhất thứ trạm biến áp EVN thành đồ thị đấu nối, SVG và DXF"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "numpy",
+    "pillow",
+    "pymupdf",
+    "pypdfium2",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

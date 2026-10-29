@@ -1,0 +1,21 @@
+# Môi trường
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Dữ liệu: bản vẽ nội bộ và dữ liệu sinh ra không đưa vào git
+data/*
+!data/raw_pdfs/
+data/raw_pdfs/*
+!data/raw_pdfs/README.md
+
+# Kết quả chạy và trọng số mô hình
+out/
+runs/
+*.pt
+*.pth
+*.onnx
+
+# Tạm
+tmp/

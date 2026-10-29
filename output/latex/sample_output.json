@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "0.1",
+  "exampleOnly": true,
+  "page": {
+    "id": "page-1", "width": 1000, "height": 700,
+    "unit": "px", "origin": "top-left"
+  },
+  "devices": [{
+    "id": "device-001",
+    "type": "circuit_breaker",
+    "label": {"raw": "MC-01", "confirmed": null},
+    "transform": {"x": 120, "y": 100,
+                  "rotationDeg": 0, "scaleX": 1, "scaleY": 1},
+    "geometryMode": "normalized_template",
+    "svgPaths": ["M0 0V10", "M-5 10H5V30H-5Z", "M0 30V40"],
+    "ports": [{"id": "p1", "x": 0, "y": 0},
+              {"id": "p2", "x": 0, "y": 40}],
+    "drawingState": "unknown",
+    "operationalState": "unknown",
+    "reviewStatus": "pending",
+    "sourceRegion": [110, 95, 20, 50]
+  }],
+  "wires": [{
+    "id": "wire-001",
+    "points": [[120, 140], [120, 180]],
+    "from": {"deviceId": "device-001", "portId": "p2"},
+    "to": {"nodeId": "junction-001"},
+    "connectionStatus": "candidate"
+  }],
+  "nodes": [{
+    "id": "junction-001",
+    "position": [120, 180],
+    "reviewStatus": "pending"
+  }],
+  "issues": [{
+    "id": "issue-001",
+    "type": "connection_requires_review",
+    "objectIds": ["wire-001", "junction-001"]
+  }]
+}

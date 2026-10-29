@@ -1,0 +1,39 @@
+# Danh mục trang bản vẽ cần raster hóa.
+# rotationDeg: xoay thêm theo chiều kim đồng hồ để bản vẽ đứng đúng chiều đọc.
+#   Bản vẽ khung EVN đặt ngang trên trang A4 dọc (tiêu đề nằm dọc mép phải) cần 270.
+# pxPerMm: mật độ điểm ảnh. Bản vẽ A4 có chữ nhỏ hơn bản A3 nên dùng mật độ cao hơn
+#   mặc định 8 px/mm của SDD (mục 8.2.1).
+defaults:
+  pxPerMm: 12.0
+
+pages:
+  - id: E18.9
+    file: data/raw_pdfs/typeA/E18.9.pdf
+    page: 1
+    drawingType: A
+    rotationDeg: 270
+  - id: DZ_371_375_E18.9
+    file: data/raw_pdfs/typeB/DZ_371_375_E18.9.pdf
+    page: 1
+    drawingType: B
+    rotationDeg: 270
+  - id: PTT89_E18.11
+    file: data/raw_pdfs/typeB/PTT89_AT_371_377_E18.11.pdf
+    page: 3
+    drawingType: B
+    rotationDeg: 0
+  - id: PTT90_E18.11
+    file: data/raw_pdfs/typeB/PTT90_KP_371_377_E18.11.pdf
+    page: 3
+    drawingType: B
+    rotationDeg: 0
+  - id: PTT91_E18.12
+    file: data/raw_pdfs/typeB/PTT91_AT_377_E18.12.pdf
+    page: 3
+    drawingType: B
+    rotationDeg: 0
+  - id: PTT92_E18.12
+    file: data/raw_pdfs/typeB/PTT92_KP_377_E18.12.pdf
+    page: 3
+    drawingType: B
+    rotationDeg: 0
