@@ -1,7 +1,7 @@
 # Tài Liệu Thiết Kế Hệ Thống (Software Design Document – SDD)
 ## Dự Án: Phân Tích, Khôi Phục Đồ Thị và Tái Dựng Bản Vẽ Sơ Đồ Nhất Thứ Trạm Biến Áp (SVG & AutoCAD)
 
-> **Phiên bản:** 1.3  
+> **Phiên bản:** 1.4  
 > **Ngày cập nhật:** 29/10/2026  
 > **Tài liệu liên kết:** [bao_cao_dinh_huong_phat_trien_san_pham.md](bao_cao_dinh_huong_phat_trien_san_pham.md), [ke_hoach_thuc_hien.md](ke_hoach_thuc_hien.md), [sample_output.json](output/latex/sample_output.json), [tong_hop_cac_doan_chat.md](tong_hop_cac_doan_chat.md)  
 > **Bản trước:** [tmp/thiet_ke_he_thong_sdd_v1.0.md](tmp/thiet_ke_he_thong_sdd_v1.0.md) (v1.1 xem lịch sử git)
@@ -13,6 +13,7 @@
 | 1.0 | 26/10/2026 | Bản đầu tiên. |
 | 1.1 | 29/10/2026 | Chốt danh mục 17 lớp ký hiệu và thuộc tính `netBehavior` / `conduction` (bỏ `conductsWhenClosed`). Thêm mục Quy ước chung (tọa độ, góc, lật hình, đơn vị mm cho DXF). Sửa schema đồ thị: tham chiếu có kiểu, `nets` là nguồn chuẩn duy nhất của quan hệ đấu nối, thêm `bays`, `texts`, `provenance`; bỏ `branchPairs` và nút `bend`. Sửa sơ đồ phụ thuộc pipeline. Thêm interface giữa các khâu, bước chuẩn hóa tỉ lệ, ước lượng hướng ký hiệu. Sửa hàm chi phí ghép cổng và ghép nhãn (cho phép không ghép, ràng buộc cứng). Viết lại luật mã EVN thành ngữ pháp cấu hình được. Thêm thiết kế bộ đi dây của bộ sinh, bộ xuất SVG, giao diện duyệt, thuật toán tô vùng mang điện, so khớp đồ thị khi đánh giá, tiêu chí nghiệm thu có số liệu và yêu cầu phi chức năng. |
 | 1.2 | 29/10/2026 | Viết lại ngữ pháp mã EVN theo Thông tư 44/2014/TT-BCT, Chương IV (bảng cấp áp đầy đủ, chữ số loại ngăn của máy cắt, hậu tố dao tiếp địa sinh theo luật); đóng câu hỏi mở 13.1–13.2. Ghi nhận dữ liệu thật là PDF vector khổ A4: `pxPerMm` theo trang thật, danh mục trang `configs/raw_pages.yaml`, kích thước bitmap thực tế khi xoay trang. Thêm Mục 8.6 (nguồn nhãn vector cho bản vẽ thật) và các script Giai đoạn 0. |
+| 1.4 | 29/10/2026 | Giai đoạn 2. Bộ xuất SVG dùng `<g>` trong `<defs>` thay `<symbol>` (tránh viewport riêng) và nhúng khối `sld-meta` để JS không viết cứng lớp ký hiệu; BFS phía trình duyệt kiểm bằng Node. Bộ xuất DXF mở `symbols.dxf` làm tài liệu mẫu thay vì chép block, cầu vượt là đoạn bulge của LWPOLYLINE. Bộ sinh: mẫu ngăn dựng trong hệ chuẩn đơn vị mm, nhãn chỉ là yêu cầu đặt (chữ phải đứng thẳng sau khi xoay ngăn), thêm mẫu ngăn tổng phía trung áp; tư thế ký hiệu được chuẩn hóa về góc cho phép; vị trí các cấp áp tìm bằng kiểm tra va chạm; router có hành lang quanh dây để chỉ cắt vuông góc. Tắt nghiêng ảnh (làm lệch đáp án). Thêm ảnh sạch `clean/` để kiểm tiêu chí 8 và kiểm round-trip DXF trong `validate_dataset.py`. |
 | 1.3 | 29/10/2026 | Giai đoạn 1. Danh mục lên **19 lớp**: thêm `cable_termination` (đầu cáp) và `coupling_capacitor` (tụ của TU kiểu tụ), cả hai đều thấy trên E18.9. Kích thước ký hiệu đo từ vector E18.9. Gốc tọa độ cục bộ đặt trên trục nối cổng, thêm `bboxLocal` để chiếu đúng ký hiệu lệch tâm. Thêm vai trò chữ `pole_number`. Ghi nhận quy ước vẽ dao cách ly trên E18.9 là câu hỏi mở. |
 
 ---
@@ -195,10 +196,11 @@ Phan tich so do mach dien/
 │   ├── processed/<id>/              # page.png, page_meta.json, vector.json, overlay.png (Mục 8.6)
 │   ├── synthetic/                   # Mỗi lần sinh 1 thư mục con có ghi seed + version
 │   │   └── v001_n100/
-│   │       ├── images/ svg/ dxf/ masks/ graphs/
+│   │       ├── images/ clean/ svg/ dxf/ masks/ graphs/   # clean/: ảnh xám trước nhiễu
 │   │       ├── annotations_coco.json
 │   │       ├── split.json           # Chia train/val theo topology gốc
-│   │       └── manifest.json        # seed, git hash, generator_config đã dùng
+│   │       ├── manifest.json        # seed, git hash, generator_config đã dùng
+│   │       └── validation_report.json
 │   └── real_gold/
 │       ├── dev/                     # Bản vẽ dùng để chỉnh tham số (gồm E18.1)
 │       └── test/                    # Bản vẽ giữ riêng, chỉ chạy khi chốt kết quả
@@ -212,10 +214,12 @@ Phan tich so do mach dien/
 │   │   ├── page_transform.py        # Đổi tọa độ trang PDF → ảnh đã xoay (Mục 2.1)
 │   │   ├── raw_pages.py             # Đọc configs/raw_pages.yaml
 │   │   ├── symbol_lib.py            # Đọc symbols_metadata, PortProjector
+│   │   ├── symbol_svg.py            # Đọc tập con SVG của ký hiệu
+│   │   ├── text_metrics.py          # Đo chữ bằng font thật: bbox nhãn ↔ cỡ chữ + điểm neo
 │   │   ├── evn_codes.py             # EVNCodeGrammar: chuẩn hóa + phân tích mã
 │   │   └── net_builder.py           # NetBuilder + Energizer (dùng chung A và B)
 │   ├── generator/
-│   │   ├── bay_templates.py         # 6 mẫu ngăn lộ dựng trong hệ chuẩn
+│   │   ├── bay_templates.py         # 6 mẫu ngăn lộ (+ ngăn tổng trung áp) dựng trong hệ chuẩn
 │   │   ├── topology_sampler.py      # Sinh cấu trúc trạm + mã thiết bị
 │   │   ├── layout_composer.py       # Đặt thanh cái, ngăn lộ, nhãn; kiểm tra chồng hình
 │   │   ├── router.py                # Đi dây trực giao giữa các ngăn lộ (A*)
@@ -237,7 +241,8 @@ Phan tich so do mach dien/
 │   │   ├── assembler.py             # Lắp đồ thị từ các kết quả trung gian
 │   │   └── graph_validator.py       # Luật EVN + bất biến → issues
 │   ├── exporters/
-│   │   ├── svg_exporter.py          # SVG tương tác (Mục 8.4.1)
+│   │   ├── svg_exporter.py          # SVG tương tác (Mục 8.4.1), hàm vẽ dùng chung với renderer
+│   │   ├── svg_interactive.js       # JS nhúng vào SVG: layer, đổi trạng thái, BFS tô màu
 │   │   └── dxf_exporter.py          # AutoCAD .dxf bằng ezdxf (Mục 8.4.2)
 │   ├── review_ui/
 │   │   ├── api.py                   # FastAPI: tải đồ thị, nhận EditOperation, trả issues
@@ -249,8 +254,9 @@ Phan tich so do mach dien/
 ├── scripts/
 │   ├── rasterize_pdf.py                 # PDF → page.png + page_meta.json theo raw_pages.yaml
 │   ├── extract_vector.py                # PDF → vector.json (tọa độ ảnh) + overlay, đo độ khớp
-│   ├── generate_substation_dataset.py   # --n 100 --config configs/generator_config.yaml
-│   ├── validate_dataset.py              # 8 tiêu chí (Mục 8.1.5)
+│   ├── build_symbols_dxf.py             # SVG ký hiệu → assets/symbols.dxf (+ bboxLocal/size)
+│   ├── generate_substation_dataset.py   # --n 100 --seed --out; cấu hình configs/generator_config.yaml
+│   ├── validate_dataset.py              # 8 tiêu chí (Mục 8.1.5) + round-trip DXF
 │   ├── run_pipeline.py                  # 1 ảnh → JSON + SVG + DXF
 │   └── evaluate_metrics.py              # Chạy đánh giá trên synthetic val / real_gold
 └── tests/
@@ -259,6 +265,8 @@ Phan tich so do mach dien/
     ├── test_geometry_svg_dxf.py
     ├── test_evn_codes.py
     ├── test_net_builder.py
+    ├── test_exporters.py                # lát cắt dọc: graph dựng tay → SVG/DXF/PNG
+    ├── test_svg_interactive_js.py       # BFS JS (Node) ↔ Energizer Python
     ├── test_generator_and_exporters.py
     ├── test_graph_matching.py
     └── test_pipeline_e18_1.py
@@ -751,20 +759,23 @@ thresholds:
 Nguyên tắc **graph-first**: sinh cấu trúc mạng trước, rồi mới bố trí và vẽ. Đáp án của mọi nhiệm vụ (bbox, mask, OCR, graph) được xuất từ cùng một đối tượng nên luôn khớp nhau.
 
 #### 8.1.1. Mẫu ngăn lộ (`bay_templates.py`)
-Mỗi mẫu dựng một `BaySubGraph` trong **hệ chuẩn của ngăn lộ**: điểm nối thanh cái tại gốc, ngăn chạy theo chiều $+y$. Sau đó `LayoutComposer` áp một phép biến đổi đặt ngăn (xoay 0/90/180/270, lật) để có ngăn dọc phía trên thanh cái, dọc phía dưới, hoặc nằm ngang như 35 kV ở E18.1. Nhờ vậy không cần viết hàm riêng cho ngăn ngang và ngăn dọc.
+Mỗi mẫu dựng một `BaySubGraph` trong **hệ chuẩn của ngăn lộ**: đơn vị mm trên giấy, điểm nối thanh cái tại gốc, ngăn chạy theo chiều $+y$. Sau đó `LayoutComposer` áp một phép biến đổi đặt ngăn (xoay 0/90/180/270, lật) để có ngăn dọc phía trên thanh cái, dọc phía dưới, hoặc nằm ngang như 35 kV ở E18.1. Nhờ vậy không cần viết hàm riêng cho ngăn ngang và ngăn dọc.
 
 ```python
 @dataclass
 class BaySubGraph:
     bay: Bay
-    devices: list[Device]            # transform trong hệ chuẩn của ngăn
+    devices: list[Device]                 # transform trong hệ chuẩn của ngăn (mm)
     wires: list[Wire]
     nodes: list[Node]
-    texts: list[Text]
-    bus_attach_port: PortRef         # cổng nối vào thanh cái
-    external_ports: dict[str, PortRef]   # ví dụ "line_out", "to_transformer"
-    footprint: tuple[float, float]   # rộng × dài trong hệ chuẩn (lu)
+    labels: list[LabelRequest]            # yêu cầu đặt nhãn, chưa phải Text
+    bus_attach_nodes: list[str]           # nút nối thanh cái: nút đầu ở gốc; ngăn liên lạc có thêm nút ở cuối
+    external_ports: dict[str, PortRef]    # ví dụ "lv", "mv" (cuộn MBA), "to_transformer" (ngăn tổng)
 ```
+
+- **Nhãn là yêu cầu, không phải `Text`** (bản 1.4): chữ phải luôn đứng thẳng trên trang, nên mẫu chỉ ghi thiết bị neo, hướng đặt trong hệ chuẩn (có thể chéo, ví dụ thông số MBA ở góc trên), vai trò, cỡ chữ và thứ tự dòng. `LayoutComposer` tính bbox chữ sau khi biến đổi, bằng font thật (`core/text_metrics.py`). Tên lộ đi theo ngăn dọc được xoay 270°.
+- Mẫu dựng bằng một "chuỗi" thiết bị nối tiếp theo một trục: `inline` (thiết bị hai cổng), `junction` + `tap` (dao tiếp địa, chống sét, TU treo bên cạnh), `terminal` (thiết bị một cổng cuối chuỗi), `bend` (gấp khúc dây, không tạo nút).
+- Cổng ngoài luôn là cổng thiết bị (thêm đầu cáp nếu cần) để router nối được và mỗi cổng có đúng một dây.
 
 Sáu mẫu (khớp báo cáo định hướng, mục 2.2):
 
@@ -772,41 +783,52 @@ Sáu mẫu (khớp báo cáo định hướng, mục 2.2):
 |---|---|---|
 | `line_bay(code, voltage_kv, has_vt, earthing_set)` | DCL `-1`/`-2` → DTĐ `-15` → MC → TI → DTĐ `-75` → DCL `-7` → DTĐ `-76` → mũi tên đường dây | Nhánh TU (`TU{code}`), chống sét |
 | `mv_feeder_bay(code, voltage_kv, breaker="drawout")` | MC hợp bộ → TI → DTĐ `-38`/`-76` → mũi tên cáp xuất tuyến | Chống sét, tên lộ viết dọc |
-| `transformer_bay(tx_name, windings=2\|3, sides)` | Mỗi phía: DCL `-3` → MC → TI → cuộn MBA; trung tính: DCL `-08` + khe hở + chống sét | Tụ bù / kháng |
+| `transformer_bay(n, hv_kv, side_kvs, windings=2\|3)` | Phía cao áp: DCL `-1` → DTĐ `-15` → TI → MC → DTĐ `-35` → DCL `-3` → DTĐ `-38` → MBA; trung tính: DTĐ `-08` + chống sét `CS0T`; mỗi cuộn còn lại: chống sét → đầu cáp → cổng ngoài | Chống sét, đầu cáp, phía của cuộn mv |
+| `incomer_bay(n, kv, breaker)` | Ngăn tổng phía trung áp (331, 431): MC hợp bộ (hoặc DCL + MC + DCL `-3`) → TI → DTĐ `-38` → đầu cáp → cổng ngoài `to_transformer` | Treo cùng phía xuất tuyến (dây đi vòng như E18.9) hoặc phía về MBA |
 | `bus_coupler_bay(code)` | DCL `-1` → MC → TI → DCL `-2` (+ DTĐ hai phía) | Phân đoạn hoặc liên lạc |
 | `bus_vt_bay(bus_code)` | DCL → cầu chì → DTĐ → TU 2 hoặc 3 cuộn | TU có/không cầu chì |
 | `aux_or_capacitor_bay(code, kind="aux"\|"capacitor")` | Tự dùng: cầu chì → MBA tự dùng; Tụ bù: DCL → MC → TI → kháng → tụ | |
 
-Mã thiết bị được sinh bằng chính `EVNCodeGrammar` (sinh ngược từ mẫu), nên mã trong dữ liệu tổng hợp luôn hợp lệ theo cùng luật mà pipeline dùng để đọc.
+Mã thiết bị được sinh bằng chính `EVNCodeGrammar` (sinh ngược từ mẫu), nên mã trong dữ liệu tổng hợp luôn hợp lệ theo cùng luật mà pipeline dùng để đọc. Test kiểm tra mọi mã sinh ra đọc lại được và `expected_types` chứa đúng lớp ký hiệu.
 
 #### 8.1.2. Lấy mẫu topology (`topology_sampler.py`)
 - Đầu vào: phân bố trong `generator_config.yaml`, gồm số cấp điện áp (2–3), số MBA (1–2), số thanh cái mỗi cấp (1–2), số ngăn mỗi thanh cái, và tỉ lệ các tùy chọn.
 - Đầu ra: danh sách `BaySubGraph` + các liên kết liên cấp (cuộn MBA ↔ ngăn tổng ở cấp khác).
 - Độ khó: `simple` (1 MBA, ≤ 8 ngăn), `medium` (2 MBA, 9–20 ngăn), `complex` (2 MBA, 3 cấp áp, > 20 ngăn, có dây vòng và điểm giao). Phân bố 25/45/30.
-- Mỗi topology gốc có `topologyId`. `split.json` chia train/val theo `topologyId`.
+- Mỗi topology gốc có `topologyId` (băm cấu trúc). Mỗi topology được vẽ `variants_per_topology` lần (bố cục, font, nét khác nhau); `split.json` chia train/val theo `topologyId` bằng băm, nên các biến thể luôn cùng một phía.
+- Đánh số theo Thông tư 44: đường dây 110 kV số lẻ trên C11, số chẵn trên C12; xuất tuyến trung áp đánh 71, 72…; MBA `T1`, `T2` với ngăn `131/331/431`, `132/332/432`. Trạm 3 cấp áp thì `T1` luôn 3 cuộn để mọi cấp đều có nguồn.
+- Bố cục không vừa trang thì bỏ bớt một ngăn xuất tuyến rồi thử lại (`drop_one_feeder`); mẫu thực tế vì thế có thể ít ngăn hơn khoảng cấu hình.
 
 #### 8.1.3. Bố cục và đi dây (`layout_composer.py`, `router.py`)
-1. **Chọn preset vùng** từ `layout_presets.yaml`. Ví dụ preset `E18_like`: 110 kV ở dải trên với thanh cái ngang, 22 kV ở dải dưới với thanh cái ngang, 35 kV ở dải phải với thanh cái dọc, MBA ở giữa.
-2. **Đặt thanh cái** theo preset; độ dài thanh cái = tổng `footprint` các ngăn + khoảng cách ngẫu nhiên trong khoảng cấu hình.
-3. **Đặt ngăn lộ** dọc thanh cái, áp phép biến đổi đặt ngăn và kiểm tra va chạm bbox (ký hiệu + nhãn + lề). Va chạm thì đổi khoảng cách; thử quá $N$ lần thì loại mẫu và lấy mẫu lại.
-4. **Đi dây liên kết** (MBA → ngăn tổng cấp khác, cáp vòng ra thanh cái xa) bằng **A\* trên lưới thô** (ô = 2 × độ dày nét lớn nhất):
-   - Chỉ đi ngang/dọc. Chi phí = độ dài + $\lambda_{\text{bend}}$ × số lần rẽ + $\lambda_{\text{cross}}$ × số lần cắt dây khác.
-   - Không đi xuyên bbox ký hiệu hoặc nhãn.
-   - Chỉ cho phép cắt dây khác **vuông góc**. Mỗi điểm cắt sinh một nút `crossing_no_connect`, style `plain_cross` hoặc `hop_arc` theo tỉ lệ cấu hình (E18.1 dùng `hop_arc`).
-   - Mọi chỗ dây gặp dây có chủ đích nối sinh nút `junction`, style `dot` hoặc `t_plain` theo cấu hình.
-5. **Đặt nhãn:** nhãn mã đặt bên trái hoặc phải ký hiệu (ngăn dọc), hoặc trên/dưới (ngăn ngang); tên lộ 22 kV viết dọc (`angleDeg: 270`); thông số MBA nhiều dòng.
-6. **Tính `nets`** bằng `NetBuilder` dùng chung (Mục 8.3.3).
+1. **Chọn preset vùng** từ `layout_presets.yaml`. Hai preset:
+   - `E18_like` (E18.1, khổ A3/A4): 110 kV dải trên, 22 kV dải dưới (thanh cái ngang), 35 kV mép phải (thanh cái dọc).
+   - `E18_9_like` (E18.9, khổ A4/A3): như trên nhưng 35 kV dải dưới, 22 kV mép phải.
+   - Trạm 2 cấp áp chỉ dùng dải dưới. Khổ giấy thử theo thứ tự trong preset; quá 3 lần thất bại vì kích thước thì sang khổ lớn hơn.
+2. **Đặt thanh cái và ngăn**: mỗi phân đoạn thanh cái có hai dãy ngăn độc lập (phía xuất tuyến và phía về MBA), xếp theo hộp bao thật của từng ngăn đã biến đổi (ký hiệu + nhãn + dây) cộng khoảng cách ngẫu nhiên. Ngăn liên lạc nằm thẳng hàng giữa hai phân đoạn. Nhãn thanh cái đặt ở khoảng trống đầu/cuối phân đoạn.
+3. **Tư thế ký hiệu** sau khi ghép phép biến đổi của ngăn: $R(\varphi) M_b R(\theta) M = R(\varphi \pm \theta) M_b M$. Nếu góc không thuộc `allowedRotationsDeg` thì dùng $R(\theta) M = R(\theta - 180°)\,M(\neg m)\,F_y$: với ký hiệu đối xứng điện, $F_y$ chỉ đổi chỗ hai cổng tương đương, nên đổi tên cổng trong dây cho khớp. Lớp không cho lật (`allowMirror: false`) thì bỏ lật (mọi cổng nằm trên trục $x = 0$).
+4. **Đặt các cấp áp**: 110 kV căn đầu vùng vẽ; cấp mép phải và cấp dưới được hạ dần (thử vài vị trí ngang) tới vị trí cao nhất mà mọi hộp bao cách vùng đã chiếm ít nhất một "khe đi dây" ($3 \times$ ô lưới $+ 2 \times$ khoảng hở). Không vừa thì thử lại với tham số khác.
+5. **Đi dây liên kết** MBA ↔ ngăn tổng bằng **A\* trên lưới thô** (`router.py`, ô 1,5 mm, khoảng hở 1,2 mm):
+   - Chỉ đi ngang/dọc. Chi phí = độ dài + $\lambda_{\text{bend}}$ × số lần rẽ + $\lambda_{\text{cross}}$ × số lần cắt dây khác. Trạng thái A\* gồm cả hướng đi để tính phạt rẽ.
+   - Không đi xuyên bbox ký hiệu, nhãn, thanh cái (đã nới thêm khoảng hở).
+   - Chỉ cắt dây khác **vuông góc**: quanh mỗi đoạn dây có hành lang rộng ±khoảng hở; trong hành lang của đoạn dọc chỉ được đi ngang thẳng (không rẽ), và ngược lại; quanh đầu mút và góc gấp của dây bị cấm, nên điểm cắt luôn nằm giữa đoạn.
+   - Lưới gồm các đường cách đều cộng tọa độ điểm dẫn ra khỏi hai cổng (đi thẳng theo hướng cổng một đoạn), nên đường dây khớp đúng cổng mà không cần nấc lệch nhỏ.
+   - Mỗi điểm cắt sinh một nút `crossing_no_connect` style `plain_cross` hoặc `hop_arc` theo tỉ lệ cấu hình (E18.1 dùng `hop_arc`). **Dây đứng đầu `connections` là dây vẽ cầu vượt.**
+   - Điểm rẽ trong ngăn là nút `junction` style `dot` hoặc `t_plain` (chọn theo mẫu); điểm nối thanh cái là `t_on_busbar`.
+6. **Đặt nhãn:** theo hướng yêu cầu của mẫu. Nếu nhãn chạm ký hiệu, nhãn khác, dây hoặc đường thanh cái thì thử dời dọc cạnh, rồi thử phía đối diện. Tên lộ trên ngăn dọc viết dọc (`angleDeg: 270`); tên đường dây 110 kV viết ngang; thông số MBA nhiều dòng.
+7. **Kiểm tra toàn trang** (tiêu chí 4–5): không có hai hộp ký hiệu/nhãn/thanh cái chồng nhau, ký hiệu nằm trong vùng vẽ. Trượt thì thử lại.
+8. **Đổi đơn vị** mm → px bằng `pxPerMm` của mẫu (nhân mọi tọa độ, độ dày nét và `transform.scale`), rồi **tính `nets`** bằng `NetBuilder` dùng chung (Mục 8.3.3).
 
 #### 8.1.4. Vẽ và biến thiên (`renderer.py`)
-- SVG → PNG bằng `resvg` hoặc `cairosvg`, ở `pxPerMm` ngẫu nhiên trong khoảng mục tiêu.
-- Biến thiên: độ dày nét (dây, thanh cái), font (Arial, Times, font CAD dạng nét đơn), cỡ chữ, khoảng cách.
-- Nhiễu: nén JPEG (chất lượng 60–95), mờ nhẹ, xám hóa không đều, nghiêng ≤ 0,5°.
-- **Vật gây nhiễu** (không có nhãn, mục đích để mô hình học bỏ qua): khung bản vẽ, khung tên, con dấu tròn đỏ, chữ ký, bảng ghi chú. Ảnh E18.1 có đủ các thành phần này.
+- SVG tĩnh (dùng chung hàm vẽ với `SVGInteractiveExporter`) → PNG bằng `resvg-py` (`cairosvg` khó cài trên Windows), chỉ nạp các file font trong cấu hình để kết quả ổn định. `pxPerMm` ngẫu nhiên theo khổ (A4: 8–12, A3: 7–10).
+- Biến thiên: độ dày nét dây/thanh cái/ký hiệu, font (Arial, Times New Roman; máy chưa có font CAD nét đơn), cỡ chữ theo loại nhãn, khe giữa thiết bị, khoảng giữa ngăn, tỉ lệ dao vẽ đóng/mở.
+- Nhiễu: xám hóa không đều, mờ nhẹ, nén JPEG (chất lượng 60–95). **Chưa bật nghiêng** (`skew_max_deg: 0`): nghiêng làm lệch đáp án vì `rotationDeg` chỉ nhận bội của 90°; muốn bật phải biến đổi cả đồ thị và lưu góc nghiêng.
+- **Vật gây nhiễu**: khung bản vẽ, khung tên có lưới ô, con dấu tròn đỏ (chữ chạy vòng + ngôi sao), chữ ký nét tay. Chữ trong khung tên và tên sơ đồ là `texts` vai trò `title_block`; dấu và chữ ký không có nhãn. Bảng ghi chú chưa làm.
 
 #### 8.1.5. Xuất dữ liệu (`dataset_writer.py`) và kiểm tra (`validate_dataset.py`)
-Xuất cho mỗi mẫu: `images/NNNN.png`, `svg/NNNN.svg`, `dxf/NNNN.dxf` (qua `AutoCADDXFExporter`), `masks/NNNN_wire.png`, `graphs/NNNN_graph.json`, và cộng dồn vào `annotations_coco.json`.
+Xuất cho mỗi mẫu: `images/NNNN.png` (có nhiễu), `clean/NNNN.png` (ảnh xám trước nhiễu, cho tiêu chí 8), `svg/NNNN.svg` (SVG tương tác), `dxf/NNNN.dxf` (qua `AutoCADDXFExporter`), `masks/NNNN_wire.png`, `graphs/NNNN_graph.json`, và cộng dồn vào `annotations_coco.json`. `images[]` của COCO mang thêm `topologyId`, `difficulty`, `preset`, `pxPerMm`, `titleBlockBbox`, `seed` để kiểm tra lại.
 - **Mask dây:** vẽ busbar + wire + chấm junction với đúng độ dày nét đã render, nền 0, dây 255. **Không** vẽ phần dây nằm trong thân ký hiệu, để khớp định nghĩa đầu ra của `WireExtractor` (Mục 8.2.6).
-- **COCO:** `category` = `detectorClass`; `bbox` là hộp song song trục sau biến đổi; thêm `attributes: {rotationDeg, mirrorX}` để huấn luyện/đánh giá bước ước lượng hướng.
+- **Mask** được vẽ bằng cùng bộ vẽ resvg với ảnh (nét trắng trên nền đen), nên khớp từng pixel.
+- **COCO:** `category` = `detectorClass`; `bbox` là hộp song song trục sau biến đổi; thêm `attributes: {rotationDeg, mirrorX}` để huấn luyện/đánh giá bước ước lượng hướng, và `deviceId`.
 
 Tám tiêu chí của `validate_dataset.py` (mẫu nào trượt thì loại và ghi log):
 1. Graph JSON hợp lệ theo Pydantic schema v1.1.
@@ -816,7 +838,9 @@ Tám tiêu chí của `validate_dataset.py` (mẫu nào trượt thì loại và
 5. Mọi ký hiệu nằm trọn trong trang và không bị khung tên che.
 6. Mọi cổng có đúng 1 kết nối.
 7. `NetBuilder` dựng lại cho đúng `nets` đã lưu (bất biến 6.3-5).
-8. Mask khớp ảnh: ≥ 99% điểm 255 của mask rơi vào điểm tối của PNG (trước nhiễu); mọi bbox COCO chứa điểm tối.
+8. Mask khớp ảnh: ≥ 99% điểm 255 của mask rơi vào điểm tối (xám < 160) của ảnh sạch; mọi bbox COCO chứa điểm tối.
+
+Ngoài 8 tiêu chí, `validate_dataset.py` kiểm **round-trip DXF** (mốc 9.3-GĐ2): đọc lại, `audit` sạch, số `INSERT` = số thiết bị, tọa độ cổng suy từ POINT cổng trong block × ma trận INSERT lệch < 0,01 mm. Kết quả ghi vào `validation_report.json`.
 
 ### 8.2. Mô-đun Nhận Dạng & Trích Xuất (`src/perception/`)
 
@@ -1110,8 +1134,7 @@ Kiểm tra bất biến 6.3 và các luật nghiệp vụ, mỗi vi phạm sinh 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3500 2480">
   <defs>
-    <symbol id="sym-circuit_breaker" viewBox="-8 -16 16 32">…</symbol>
-    …                                   <!-- 19 symbol nạp từ assets/symbols_svg -->
+    <g id="sym-circuit_breaker">…</g>    <!-- hình nạp từ assets/symbols_svg, đơn vị lu -->
   </defs>
   <g id="layer-source" opacity="0.35"><image href="E18.1.png" …/></g>   <!-- tùy chọn -->
   <g id="layer-busbars">  <polyline data-id="bus-C11" data-net="net-0002" …/></g>
@@ -1124,13 +1147,15 @@ Kiểm tra bất biến 6.3 và các luật nghiệp vụ, mỗi vi phạm sinh 
   <g id="layer-texts">    <text data-id="txt-0041" …>171</text></g>
   <g id="layer-issues">   <rect data-issue="issue-001" class="issue-warning" …/></g>
   <script type="application/json" id="graph-data">{ …SubstationTopologyGraph… }</script>
-  <script>/* bật/tắt layer, click đổi trạng thái, BFS tô màu */</script>
+  <script type="application/json" id="sld-meta">{ symbols: {lớp: type, netBehavior, conduction, drawingState}, màu… }</script>
+  <script>/* src/exporters/svg_interactive.js: bật/tắt layer, click đổi trạng thái, BFS tô màu */</script>
 </svg>
 ```
 
-- `transform` của `<use>` = `translate(x y) rotate(θ) scale(m·k k)`, đúng quy ước Mục 2.2.
-- Ký hiệu `disconnector` đổi giữa hình đóng/mở theo `operationalState` (`href` trỏ tới `sym-disconnector_closed` hoặc `sym-disconnector_open`).
-- **Tương tác:** click thiết bị `by_state` để đổi `operationalState`, chạy lại BFS của `Energizer` phía trình duyệt (bản JS cài cùng thuật toán Mục 8.3.3, có test so khớp với bản Python trên cùng bộ đồ thị) và tô màu Net. Màu: có điện = màu theo cấp áp (`cad_layers.yaml`), mất điện = xám, nối đất = xanh lá, không xác định = gạch chéo.
+- `transform` của `<use>` = `translate(x y) rotate(θ) scale(m·s s)`, với $s$ = `transform.scale` (px/lu), đúng quy ước Mục 2.2. Hình ký hiệu đặt trong `<g>` thuộc `<defs>` chứ không dùng `<symbol>`: `<symbol>` không có viewBox tạo viewport riêng và cắt mất phần tọa độ âm.
+- Ký hiệu có biến thể đóng/mở (`disconnector`, `earthing_switch`) đổi `href` theo `operationalState`: JS tìm lớp cùng `type` có `drawingState` bằng trạng thái mới trong `sld-meta`, không viết cứng tên lớp.
+- Khối `sld-meta` lấy từ nguồn chuẩn: hành vi điện từ `symbols_metadata.json`, `nonConductingPortRoles` và loại thiết bị nguồn từ `net_builder.py`, màu từ `cad_layers.yaml`. Màu ban đầu được Python tô sẵn bằng `Energizer`, nên SVG vẫn đúng màu khi trình xem tắt JS.
+- **Tương tác:** click thiết bị `by_state`/`earthing_by_state` để đổi `operationalState`, chạy lại BFS của `Energizer` phía trình duyệt (bản JS cài cùng thuật toán Mục 8.3.3; `tests/test_svg_interactive_js.py` chạy đúng đoạn script nhúng trong SVG bằng Node và so với Python trên đồ thị dựng tay và đồ thị tổng hợp, mỗi đồ thị nhiều tổ hợp trạng thái) và tô màu Net. Màu: có điện = màu theo cấp áp (`cad_layers.yaml`), mất điện = xám, nối đất = xanh lá, không xác định = gạch chéo.
 - SVG mở được độc lập trong trình duyệt, không cần máy chủ.
 
 #### 8.4.2. `AutoCADDXFExporter` (`dxf_exporter.py`, thư viện `ezdxf`)
@@ -1165,15 +1190,15 @@ class AutoCADDXFExporter:
      - `AI_REVIEW` (màu 2 – vàng)
      
      Tên layer là cấu hình, không ngầm định là chuẩn của EVN.
-2. **Nạp block:** dùng `ezdxf.xref` (hoặc `Importer`) chép 19 block từ **một** file `assets/symbols.dxf` (vẽ ở hệ Y lên, đơn vị mm, có `ATTDEF`).
+2. **Nạp block:** mở `assets/symbols.dxf` (vẽ ở hệ Y lên, đơn vị mm, có `ATTDEF`, layer `SYM_PORTS`, APPID) làm **tài liệu mẫu** rồi vẽ vào modelspace của nó. Cách này đơn giản hơn chép block bằng `ezdxf.xref` mà kết quả như nhau.
 3. **Vẽ thanh cái và dây:**
    - Thanh cái: `msp.add_lwpolyline(pts_cad, dxfattribs={"layer": busbar_layer, "const_width": busbar_width_mm})`; `busbar_width_mm` = `strokeWidthPx / pxPerMm` hoặc giá trị cố định trong cấu hình.
    - Dây: `add_lwpolyline` trên layer theo `voltageKv` của Net (tra qua chỉ mục ngược của `nets`).
    - Nút `junction` style `dot`: `HATCH` hình tròn bán kính cấu hình (mặc định 0,6 mm).
-   - Nút `hop_arc`: `ARC` nửa vòng.
+   - Nút `hop_arc`: đoạn cung nửa vòng ngay trong `LWPOLYLINE` của dây vẽ cầu vượt (bulge ±1), dây vẫn là một thực thể.
 4. **Chèn thiết bị:** với mỗi device:
    - `block_ref = msp.add_blockref(block_name, insert=_to_cad_point(t.x, t.y), dxfattribs={"layer": layer, **_to_cad_insert(t, page)})`.
-   - `block_ref.add_auto_attribs({"DEVICE_CODE": dev.code.normalized, ...})`.
+   - `block_ref.add_auto_attribs({"DEVICE_CODE": dev.code.normalized, ...})`; INSERT mang xdata (APPID, id thiết bị) để đọc lại khi kiểm tra round-trip.
    - Nếu có nhãn OCR, dời `ATTRIB` tương ứng tới vị trí quy đổi của `texts[labelTextIds[0]].bbox`, để bố cục chữ giống bản gốc.
    - Chữ không thuộc thiết bị (`line_name`, `parameter` chưa gán…) xuất thành `MTEXT` trên layer `TEXT`, giữ góc xoay.
 5. **Đánh dấu vùng cần kiểm tra:** với mỗi issue hoặc đối tượng `reviewStatus == "pending"`, vẽ khung đám mây (polyline có bulge) trên layer `AI_REVIEW` kèm `MTEXT` ngắn: loại issue + id.
@@ -1324,5 +1349,7 @@ Các ngưỡng dưới đây là **mục tiêu đề xuất ban đầu**, sẽ c
 5. Nguồn mặc định cho `Energizer` (hiện chọn các đầu đường dây cấp áp cao nhất).
 6. **Quy ước vẽ dao cách ly (mới, bản 1.3):** trên E18.1 và E18.9, **mọi** dao cách ly và dao tiếp địa đều vẽ lưỡi dao xiên có khe hở, kể cả dao chắc chắn đang đóng khi vận hành (ví dụ `171-1`, `171-7`). Nếu đây là quy ước của đơn vị, thì hình vẽ không cho biết trạng thái, và detector chỉ cần một lớp cho mỗi loại; khi đó `drawingState` phải là `unknown` chứ không phải `open`. Cần hỏi chuyên môn trước Giai đoạn 4 (gán nhãn). Hiện thư viện vẫn giữ cả hai biến thể đóng/mở, dùng cho dữ liệu tổng hợp và bộ xuất SVG tương tác.
 7. Ký hiệu vòng tròn có mũi tên cạnh dao `172-7` trên E18.9 chưa rõ là thiết bị gì, nên chưa đưa vào danh mục.
+8. **Vai trò cổng MBA 3 cuộn (mới, bản 1.4):** trong `transformer_3w.svg`, cuộn dưới (có tam giác) mang vai trò `lv`, cuộn bên phải mang vai trò `mv`, theo vị trí vẽ trên E18.9. Nhưng trên E18.9 cuộn dưới nối 35 kV, cuộn phải nối 22 kV, nên vai trò không khớp thứ tự cấp áp. Bộ sinh hiện nối theo vị trí (cuộn dưới → cấp dải dưới, cuộn phải → cấp mép phải). Cần chốt: đổi tên vai trò theo vị trí hay đổi cổng theo cấp áp, trước khi luật kiểm tra dùng vai trò cổng.
+9. **Nghiêng ảnh trong bộ sinh (mới, bản 1.4):** đang tắt. Muốn bật cần lưu góc nghiêng và biến đổi đáp án, hoặc chấp nhận lệch vài px rồi nới ngưỡng tiêu chí 3 và 8.
 
 **Đồng bộ với báo cáo định hướng:** [bao_cao_dinh_huong_phat_trien_san_pham.md](bao_cao_dinh_huong_phat_trien_san_pham.md) đã được cập nhật ngày 29/10/2026 cho khớp với SDD 1.1, bao gồm: danh mục lớp ký hiệu (nay là 19 lớp), tên script `generate_substation_dataset.py`, tên layer cấu hình được, hậu tố `-08`/`-24`/`-28`, chỉ số Terminal-pair F1. Các bản LaTeX/PDF cũ trong `output/` chưa được cập nhật.

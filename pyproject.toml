@@ -11,6 +11,7 @@ dependencies = [
     "pymupdf",
     "pypdfium2",
     "pyyaml",
+    "resvg-py",
 ]
 
 [project.optional-dependencies]

@@ -6,7 +6,8 @@ from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
 
-from src.core.geometry import Placement, direction_to_page, local_to_page, placement_from_bbox
+from src.core.geometry import (Placement, direction_to_page, local_to_page, placement_from_bbox,
+                               rotated_bbox_local)
 from src.core.types import ProjectedPort
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -107,6 +108,13 @@ class SymbolLibrary:
                           direction_to_page(*p.direction, placement))
             for p in sym.ports
         ]
+
+    def page_bbox(self, detector_class: str, placement: Placement) -> tuple[float, float, float, float]:
+        """bbox [x, y, w, h] trên trang của hình ký hiệu (đường tâm nét) khi đặt theo placement."""
+        x0, y0, x1, y1 = rotated_bbox_local(self.symbols[detector_class].bbox_local, placement.rotation_deg,
+                                            placement.mirror_x)
+        s = placement.scale
+        return placement.x + s * x0, placement.y + s * y0, s * (x1 - x0), s * (y1 - y0)
 
     def placement_from_bbox(self, detector_class: str, bbox: tuple[float, float, float, float],
                             rotation_deg: int, mirror_x: bool) -> Placement:

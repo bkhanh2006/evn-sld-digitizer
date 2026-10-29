@@ -16,6 +16,8 @@ from src.core.symbol_lib import SymbolLibrary
 NON_CONDUCTING_PORT_ROLES = frozenset({"neutral"})
 # Loại thiết bị đổi cấp điện áp: không lan voltageKv của mã sang các Net của nó
 VOLTAGE_CHANGING_TYPES = frozenset({"transformer"})
+# Loại thiết bị làm nguồn mặc định khi tô vùng mang điện (SDD 8.3.3)
+SOURCE_DEVICE_TYPE = "line_terminal"
 
 
 class _UnionFind:
@@ -194,7 +196,7 @@ class Energizer:
         index = graph.net_index()
         kv_of = {n.id: n.voltage_kv for n in graph.nets}
         terminals = [index[("port", d.id, p.id)] for d in graph.devices
-                     if self.lib[d.detector_class].type == "line_terminal" for p in d.ports]
+                     if self.lib[d.detector_class].type == SOURCE_DEVICE_TYPE for p in d.ports]
         known = [kv_of[n] for n in terminals if kv_of.get(n) is not None]
         if not known:
             return sorted(set(terminals))

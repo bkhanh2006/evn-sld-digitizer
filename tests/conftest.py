@@ -2,9 +2,10 @@ import pytest
 
 from src.core.evn_codes import default_grammar
 from src.core.geometry import Placement
-from src.core.schema import (Busbar, BusbarRef, Device, DeviceCode, DevicePort, Node, NodeRef, Page, PortRef,
-                             Provenance, SubstationTopologyGraph, Transform, Wire, WireRef)
+from src.core.schema import (Busbar, BusbarRef, Device, DeviceCode, DevicePort, DeviceRef, Node, NodeRef, Page,
+                             PortRef, Provenance, SubstationTopologyGraph, Text, Transform, Wire, WireRef)
 from src.core.symbol_lib import default_library
+from src.core.text_metrics import find_font, text_bbox
 
 
 class GraphBuilder:
@@ -30,7 +31,7 @@ class GraphBuilder:
             dev_code = DeviceCode(normalized=parsed.normalized, voltage_kv=parsed.voltage_kv,
                                   bay_code=parsed.bay_code, suffix=parsed.suffix)
         drawing_state = sym.drawing_state if sym.drawing_state in ("open", "closed", "unknown") else None
-        dev = Device(id=id, detector_class=cls, type=sym.type, code=dev_code, bbox=(x - 5, y - 5, 10, 10),
+        dev = Device(id=id, detector_class=cls, type=sym.type, code=dev_code, bbox=self.lib.page_bbox(cls, placement),
                      transform=Transform(x=x, y=y, rotation_deg=rotation, mirror_x=mirror), ports=ports,
                      drawing_state=drawing_state, operational_state=state or drawing_state,
                      review_status="confirmed")
@@ -122,3 +123,55 @@ def line_bay(builder: GraphBuilder) -> GraphBuilder:
     b.wire("w-es", node_ref("node-es"), port("dev-171-76", "p1"), points=[(500, 380), (516, 380)])
     b.wire("w-line", node_ref("node-es"), port("dev-line", "p1"), points=[(500, 380), (500, 324)])
     return b
+
+
+@pytest.fixture
+def slice_graph(line_bay: GraphBuilder) -> SubstationTopologyGraph:
+    """Lát cắt dọc (SDD 1.1-5): thanh cái C11 110 kV, ngăn đường dây 171 đi lên, ngăn MBA 131 đi xuống
+    tới T1 110/22 kV, phía 22 kV ra một đầu xuất tuyến. Mỗi thiết bị có mã kèm một nhãn bên phải."""
+    b = line_bay
+    b.device("dev-131-1", "disconnector_closed", 700, 640, code="131-1", state="closed")
+    b.device("dev-131", "circuit_breaker", 700, 700, code="131", state="closed")
+    b.device("dev-TI131", "current_transformer", 700, 750, code="TI131")
+    b.device("dev-T1", "transformer_2w", 700, 830, code="T1")
+    b.device("dev-471", "line_feeder_arrow", 700, 940)
+    b.busbars[0] = b.busbars[0].model_copy(update={"polyline": [(300, 600), (900, 600)]})
+    b.node("node-131", "junction", "t_on_busbar", (700, 600), [busbar_ref("bus-C11"), wire_ref("w-131-bus")])
+    b.wire("w-131-bus", node_ref("node-131"), port("dev-131-1", "p1"), points=[(700, 600), (700, 620)])
+    b.wire("w-131-cb", port("dev-131-1", "p2"), port("dev-131", "p1"))
+    b.wire("w-131-ti", port("dev-131", "p2"), port("dev-TI131", "p1"))
+    b.wire("w-131-tx", port("dev-TI131", "p2"), port("dev-T1", "p_hv"))
+    b.wire("w-T1-lv", port("dev-T1", "p_lv"), port("dev-471", "p1"))
+    g = b.graph()
+    font = str(find_font("arial.ttf"))
+    for d in g.devices:
+        if d.code is None:
+            continue
+        x, y, w, h = d.bbox
+        tid = f"txt-{d.id}"
+        g.texts.append(Text(id=tid, raw=d.code.normalized, normalized=d.code.normalized,
+                            bbox=text_bbox(d.code.normalized, font, 14, (x + w + 6, y + h / 2 + 5)),
+                            role="device_code", assigned_to=DeviceRef(id=d.id)))
+        d.label_text_ids = [tid]
+    return g
+
+
+@pytest.fixture(scope="session")
+def synthetic_layout():
+    """Một bố cục tổng hợp cỡ vừa (2 MBA, có đi dây liên cấp), seed cố định."""
+    import random
+
+    from src.generator.layout_composer import LayoutComposer, LayoutFailed
+    from src.generator.topology_sampler import TopologySampler, load_configs
+    gen, presets = load_configs()
+    lib, grammar = default_library(), default_grammar()
+    sampler = TopologySampler(grammar, gen, presets)
+    composer = LayoutComposer(lib, grammar, gen, presets)
+    rng = random.Random(3)
+    topo = sampler.sample(rng, difficulty="medium", preset="E18_9_like")
+    for _ in range(10):
+        try:
+            return composer.compose(topo, rng)
+        except LayoutFailed:
+            sampler.drop_one_feeder(topo, rng)
+    pytest.fail("không bố cục được topology thử")

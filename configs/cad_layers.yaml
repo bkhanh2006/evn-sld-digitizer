@@ -1,0 +1,47 @@
+# Layer, màu, độ dày nét và font cho bộ xuất DXF/SVG (SDD 8.4).
+# Tên layer là cấu hình, không ngầm định là chuẩn CAD của EVN.
+#   color: số màu ACI của AutoCAD; svgColor: màu khi tô vùng có điện trong SVG tương tác.
+
+voltage_layers:
+  500: {layer: HV_500KV, busbarLayer: BUSBAR_500KV, color: 6, svgColor: "#9c27b0"}
+  220: {layer: HV_220KV, busbarLayer: BUSBAR_220KV, color: 4, svgColor: "#00897b"}
+  110: {layer: HV_110KV, busbarLayer: BUSBAR_110KV, color: 1, svgColor: "#d62728"}
+  35: {layer: MV_35KV, busbarLayer: BUSBAR_35KV, color: 30, svgColor: "#ff7f0e"}
+  22: {layer: MV_22KV, busbarLayer: BUSBAR_22KV, color: 5, svgColor: "#1f77b4"}
+  10: {layer: MV_10KV, busbarLayer: BUSBAR_10KV, color: 140, svgColor: "#17becf"}
+  6: {layer: MV_6KV, busbarLayer: BUSBAR_6KV, color: 150, svgColor: "#8c564b"}
+
+# Net chưa biết cấp áp (phía 0,4 kV của MBA tự dùng, net trung tính…)
+unknown_voltage: {layer: SLD_OTHER, busbarLayer: BUSBAR_OTHER, color: 7, svgColor: "#555555"}
+ground: {layer: GROUND, color: 3}
+
+text:
+  layer: TEXT
+  color: 7
+  style: SLD_TEXT
+  font: arial.ttf           # hỗ trợ tiếng Việt có dấu; DXF R2018 lưu Unicode
+  heightMm: 2.0             # cỡ chữ khi nhãn không có bbox
+
+review:
+  layer: AI_REVIEW
+  color: 2
+  cloudMarginMm: 2.0
+  textHeightMm: 1.5
+
+lineweight:                 # 1/100 mm
+  busbar: 50
+  wire: 25
+
+busbarWidthMm: null         # null → strokeWidthPx / pxPerMm của từng thanh cái
+junctionDotRadiusMm: 0.6
+hopRadiusMm: 1.0
+
+# Màu SVG tương tác (SDD 8.4.1)
+svg:
+  fontFamily: Arial
+  fontFile: arial.ttf       # tìm trong thư mục font hệ thống, dùng để khớp chữ vào bbox
+  deenergized: "#9e9e9e"
+  earthed: "#2ca02c"
+  unknown: "#9467bd"
+  unknownDash: "6 4"
+  issueColors: {error: "#e53935", warning: "#fb8c00", info: "#1e88e5"}
